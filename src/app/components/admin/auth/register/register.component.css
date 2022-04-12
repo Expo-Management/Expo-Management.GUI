@@ -1,0 +1,60 @@
+* {
+    box-sizing: border-box;
+}
+
+.registration-form-wrapper {
+    width: 50%;
+    height: 100%;
+    margin: 0 auto;
+}
+
+.flex-container,
+.flex-container-name {
+    width: 83%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.flex-container-name {
+    width: 100%;
+    justify-content: space-between;
+}
+
+form.registration-form {
+    margin-top: 4em;
+    /* max-width: 80%; */
+    width: 100%;
+}
+
+.full-width {
+    font-size: 1.2rem;
+    width: 100%;
+}
+
+.half-width {
+    font-size: 1.2rem;
+    width: 45%;
+}
+
+#sumbit-button {
+    width: 83%;
+    height: 3rem;
+    background-color: #354F52;
+    margin: 2rem auto;
+    border-radius: 5px;
+}
+
+
+/* #title {
+    margin-top: -5%;
+    background-color: #9ECB60;
+    font-size: 16pt;
+    color: #fff;
+    padding: 1em 2.5em;
+    border-radius: 5px;
+    box-shadow: 5px 8px 8px 0px rgba(0, 0, 0, 0.24);
+    -webkit-box-shadow: 5px 8px 8px 0px rgba(0, 0, 0, 0.24);
+    -moz-box-shadow: 5px 8px 8px 0px rgba(0, 0, 0, 0.24);
+} */
