@@ -1,0 +1,80 @@
+<div class="flex-container">
+    <div class="top-options">
+        <h1>Crear un nuevo proyecto</h1>
+    </div>
+    <div class="content">
+        <div class="left-side">
+            <div class="projects-form">
+                <form class="login-form variable-width" [formGroup]="newProjectForm" (ngSubmit)="onSubmit()">
+                    <div class="form-flex-container">
+                        <mat-form-field class="variable-width" appearance="outline">
+                            <mat-label>Nombre del proyecto</mat-label>
+                            <input type="text" matInput formControlName="name">
+                        </mat-form-field>
+                        <mat-form-field class="variable-width" hintLabel="Max 400 caracteres" appearance="outline">
+                            <mat-label>Descripcion del proyecto</mat-label>
+                            <textarea #txtArea matInput [maxlength]="400" formControlName="description"></textarea>
+                            <mat-hint align="end">{{txtArea.value?.length || 0}}/400</mat-hint>
+                        </mat-form-field>
+                        <mat-form-field class="variable-width" appearance="outline">
+                            <mat-label>Integrante del grupo 2</mat-label>
+                            <input type="text" matInput formControlName="teammate1">
+                        </mat-form-field>
+                        <mat-form-field class="variable-width" appearance="outline">
+                            <mat-label>Integrante del grupo 3</mat-label>
+                            <input type="text" matInput formControlName="teammate2">
+                        </mat-form-field>
+                        <mat-form-field class="variable-width" appearance="outline">
+                            <mat-label>Categoria del proyecto</mat-label>
+                            <mat-select formControlName="category" name="judge">
+                                <mat-option *ngFor="let category of categories" [value]="category.name">
+                                    {{category.name}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <mat-checkbox formControlName="creatorLeader">Seleccionar el usuario actual como lider del proyecto?</mat-checkbox>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <mat-divider vertical style="height:85%; margin: 0 5%;"></mat-divider>
+        <div class="left-side">
+            <div class="title">
+                <h1>Inserte los documentos de inscripcion del proyecto para la Expo-Ingenieria</h1>
+            </div>
+            <div class="center">
+                <ngx-file-drop dropZoneLabel="Drop files here" (onFileDrop)="dropped($event)" (onFileOver)="fileOver($event)" (onFileLeave)="fileLeave($event)">
+                    <ng-template ngx-file-drop-content-tmp let-openFileSelector="openFileSelector">
+                        <div class="ng-template-content">
+                            <h3>
+                                Drop files to upload here
+                            </h3>
+                            <button id="sumbit-button" (click)="openFileSelector()" mat-raised-button color="primary">Browse files</button>
+                        </div>
+                    </ng-template>
+                </ngx-file-drop>
+                <div class="upload-table">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Size</th>
+                                <th>Last Modified Date</th>
+                            </tr>
+                        </thead>
+                        <tbody class="upload-name-style">
+                            <tr *ngFor="let item of files; let i=index">
+                                <td>{{ item.relativePath }}</td>
+                                <td>{{ item.relativePath }}</td>
+                                <td>{{ item.relativePath }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="bottom">
+                <button id="sumbit-button" class="variable-width" mat-raised-button color="primary">Subir propuesta de proyecto</button>
+            </div>
+        </div>
+    </div>
+</div>

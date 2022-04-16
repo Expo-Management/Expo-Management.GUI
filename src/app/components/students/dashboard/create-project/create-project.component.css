@@ -1,0 +1,95 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.flex-container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.top-options {
+    height: 15%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+}
+
+.content {
+    height: 85%;
+    display: flex;
+    flex-direction: row;
+}
+
+.left-side,
+.right-side {
+    width: 40%;
+    height: 85%;
+    padding-top: 1rem;
+}
+
+.projects-form {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    overflow: scroll;
+}
+
+.login-form {
+    height: 100%;
+}
+
+.form-flex-container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-around;
+    padding-left: 5rem;
+}
+
+.variable-width {
+    width: 100%;
+}
+
+::-webkit-scrollbar {
+    width: 0;
+    background: transparent;
+}
+
+.title {
+    text-align: center;
+    margin-bottom: 5rem;
+}
+
+.center {
+    height: 60%;
+}
+
+.bottom {
+    height: 5%;
+}
+
+.ng-template-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.upload-table {
+    margin-top: 5rem;
+}
+
+#sumbit-button {
+    width: 100%;
+    background-color: #354F52;
+    border-radius: 0px;
+    margin-bottom: .5rem;
+}
