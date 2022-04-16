@@ -6,6 +6,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatNativeDateModule } from '@angular/material/core';
+import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { MatRippleModule } from '@angular/material/core';
 import { MatInputModule } from '@angular/material/input';
@@ -34,6 +35,7 @@ import { NgModule } from '@angular/core';
     MatToolbarModule,
     MatButtonModule,
     MatRippleModule,
+    MatSelectModule,
     MatInputModule,
     MatTableModule,
     MatCardModule,
