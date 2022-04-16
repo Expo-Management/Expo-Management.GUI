@@ -8,6 +8,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { MaterialsModule } from 'src/app/shared/materials/materials.module';
 import { HttpClientModule } from '@angular/common/http';
+import { ProjectsListComponent } from './dashboard/projects-list/projects-list.component';
 
 
 
@@ -16,7 +17,8 @@ import { HttpClientModule } from '@angular/common/http';
     JudgesComponent,
     DashboardComponent,
     SideBarComponent,
-    TopMenuComponent
+    TopMenuComponent,
+    ProjectsListComponent
   ],
   imports: [
     ReactiveFormsModule,
@@ -29,8 +31,8 @@ import { HttpClientModule } from '@angular/common/http';
         path: '', 
         component: JudgesComponent,
         children: [
-          /*{ path: 'home', component: ContentComponent },
-          { path: 'documentation', component: FairDocumentsComponent },
+          { path: 'home', component: ProjectsListComponent },
+          /*{ path: 'documentation', component: FairDocumentsComponent },
           { path: '**', component: ContentComponent }*/
         ]
       },
