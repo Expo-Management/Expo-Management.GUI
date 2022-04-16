@@ -1,0 +1,49 @@
+<div class="content">
+    <div class="left-side">
+        <div class="section-title">
+            <mat-icon>group</mat-icon>
+            <div class="title">
+                <h2>Detalles del proyecto</h2>
+            </div>
+        </div>
+        <div class="details-content">
+            <h3 class="space">Nombre del proyecto: {{ project_name }}</h3>
+            <h3 class="space">Numero del grupo: {{ group_number }}</h3>
+            <h3 class="space">Descripcion del proyecto: {{ project_description }}</h3>
+            <h3 class="space">Miembros del grupo: </h3>
+            <div class="members" *ngFor="let group_member of group_members">
+                <h3>{{ group_member }}</h3>
+            </div>
+            <h3 class="space">Categoria: {{ category }}</h3>
+            <h3 class="space">Calificacion Final: {{ qualification }}</h3>
+        </div>
+    </div>
+    <mat-divider vertical style="height:85%; margin: 0 5%;"></mat-divider>
+    <div class="right-side">
+        <div class="section-title">
+            <mat-icon>group</mat-icon>
+            <div class="title">
+                <h2>Detalles de la calificacion</h2>
+            </div>
+        </div>
+        <div class="details-content">
+            <div class="space2">
+                <mat-form-field appearance="fill">
+                    <mat-label>Nombre del juez que califica</mat-label>
+                    <mat-select [(ngModel)]="selectedValue" name="judge">
+                        <mat-option *ngFor="let judge of judges" [value]="judge.name">
+                            {{judge.name}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <!-- <h3 class="space2">Nombre del juez: {{ judge_name }}</h3> -->
+            <h3 class="space">Calificacion obtenida: </h3>
+            <div class="button-group space">
+                <button class="button" mat-raised-button>Desglose de nota</button>
+                <button class="button" mat-raised-button>Recomendaciones</button>
+                <button class="button" mat-raised-button>Apelar</button>
+            </div>
+        </div>
+    </div>
+</div>
