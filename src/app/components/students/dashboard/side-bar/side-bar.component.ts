@@ -21,7 +21,7 @@ export class SideBarComponent implements OnInit {
 
   user_options = [
     { 
-      link: 'security-protocols',
+      link: 'new-project',
       icon: 'add',
       text: 'Crear Proyecto'
     },
