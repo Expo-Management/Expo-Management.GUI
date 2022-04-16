@@ -2,6 +2,7 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -30,6 +31,7 @@ import { NgModule } from '@angular/core';
     MatDatepickerModule,
     MatNativeDateModule,
     MatExpansionModule,
+    MatCheckboxModule,
     MatDividerModule,
     MatSidenavModule,
     MatToolbarModule,
