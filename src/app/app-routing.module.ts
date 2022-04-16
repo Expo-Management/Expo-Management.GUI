@@ -5,8 +5,8 @@ const routes: Routes = [
   { path: 'auth', loadChildren: () => import('./components/admin/admin.module').then(m => m.AdminModule)},
   { path: 'administrator', loadChildren: () => import('./components/administrator/administrator.module').then(m => m.AdministratorModule)},
   { path: 'student', loadChildren: () => import('./components/students/students.module').then(m => m.StudentsModule)},
+  { path: 'judges', loadChildren: () => import('./components/judges/judges.module').then(m => m.JudgesModule)},
   // { path: 'professor', component: DashboardComponent },
-  // { path: 'judge', component: DashboardComponent },
 
   // { path: '', redirectTo: 'home', pathMatch: 'full' },
   // { path: '**', component: DashboardComponent }
