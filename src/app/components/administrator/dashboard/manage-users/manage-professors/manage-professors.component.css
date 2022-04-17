@@ -51,14 +51,13 @@
 }
 
 .btn-delete{
-  
     color: #C01122;
     font-size: 15pt;
     margin-left: 2rem;
     cursor: pointer;
 }
 table {
-    width: 92%;
+    width: 90%;
 }
 
 ::-webkit-scrollbar {

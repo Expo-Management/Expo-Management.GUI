@@ -1,11 +1,11 @@
 <div class="flex-container">
     <div class="top-options">
-        <h1>Documentos de la Feria</h1>
+        <h1>Administracion de Jueces</h1>
         <div class="sub-container">
             <form class="example-form">
                 <mat-form-field class="example-full-width" appearance="outline">
-                    <mat-label>Buscar documentos</mat-label>
-                    <input type="text" matInput placeholder="Ingrese nombre del documento">
+                    <mat-label>Buscar jueces</mat-label>
+                    <input type="text" matInput placeholder="Ingrese nombre del juez">
                     <mat-icon matSuffix>search</mat-icon>
                 </mat-form-field>
             </form>
@@ -18,22 +18,27 @@
                 <th mat-header-cell *matHeaderCellDef> Nombre </th>
                 <td mat-cell *matCellDef="let element"> {{element.name}} </td>
             </ng-container>
-            <ng-container matColumnDef="date">
-                <th mat-header-cell *matHeaderCellDef> Fecha </th>
-                <td mat-cell *matCellDef="let element"> {{element.date}} </td>
+            <ng-container matColumnDef="last">
+                <th mat-header-cell *matHeaderCellDef> Apellido </th>
+                <td mat-cell *matCellDef="let element"> {{element.last}} </td>
             </ng-container>
-            <ng-container matColumnDef="type">
-                <th mat-header-cell *matHeaderCellDef> Tipo </th>
-                <td mat-cell *matCellDef="let element"> {{element.type}} </td>
+            <ng-container matColumnDef="email">
+                <th mat-header-cell *matHeaderCellDef> Correo </th>
+                <td mat-cell *matCellDef="let element"> {{element.email}} </td>
             </ng-container>
-            <ng-container matColumnDef="size">
-                <th mat-header-cell *matHeaderCellDef> Tamaño </th>
-                <td mat-cell *matCellDef="let element"> {{element.size}} </td>
+            <ng-container matColumnDef="phone">
+                <th mat-header-cell *matHeaderCellDef> Telefono </th>
+                <td mat-cell *matCellDef="let element"> {{element.phone}} </td>
+            </ng-container>
+            <ng-container matColumnDef="institution">
+                <th mat-header-cell *matHeaderCellDef> Institución </th>
+                <td mat-cell *matCellDef="let element"> {{element.institution}} </td>
             </ng-container>
              <!--Buttons-->
              <ng-container matColumnDef="actions">
                 <th mat-header-cell *matHeaderCellDef></th>
                 <td mat-cell *matCellDef="let mat-icon" >
+                    <mat-icon class="btn-edit">border_color</mat-icon>                 
                     <mat-icon onclick="dialogDelete()" class="btn-delete">clear</mat-icon>                 
                 </td>
               </ng-container>
