@@ -20,6 +20,12 @@ import { EditStudentsComponent } from './dashboard/edit-users/edit-students/edit
 import { EditJudgesComponent } from './dashboard/edit-users/edit-judges/edit-judges.component';
 import { EditProfessorsComponent } from './dashboard/edit-users/edit-professors/edit-professors.component';
 import { FairCalendarComponent } from './dashboard/fair-calendar/fair-calendar.component';
+//calendar imports
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
+import { FlatpickrModule } from 'angularx-flatpickr';
 
 @NgModule({
   declarations: [
@@ -74,6 +80,14 @@ import { FairCalendarComponent } from './dashboard/fair-calendar/fair-calendar.c
         ]
       },
     ]),
+    //calendar imports
+    NgbModalModule,
+    FlatpickrModule.forRoot(),
+    BrowserAnimationsModule,
+    CalendarModule.forRoot({
+      provide: DateAdapter,
+      useFactory: adapterFactory,
+    }),
   ]
 })
 export class AdministratorModule { }
