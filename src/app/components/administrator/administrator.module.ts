@@ -83,7 +83,6 @@ import { FlatpickrModule } from 'angularx-flatpickr';
     //calendar imports
     NgbModalModule,
     FlatpickrModule.forRoot(),
-    BrowserAnimationsModule,
     CalendarModule.forRoot({
       provide: DateAdapter,
       useFactory: adapterFactory,
