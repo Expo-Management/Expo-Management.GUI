@@ -9,20 +9,14 @@ export class SideBarComponent implements OnInit {
 
   user_options = [
     { 
+      link: 'list-project',
       icon: 'check_circle',
       text: 'Calificar Proyectos'
     },
-    {
-      icon: 'account_circle',
-      text: 'Profesores'
-    },
     { 
+      link: 'list',
       icon: 'account_circle',
       text: 'Jueces'
-    },
-    { 
-      icon: 'account_circle',
-      text: 'Estudiantes'
     },
   ]
 

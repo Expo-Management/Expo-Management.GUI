@@ -3,19 +3,10 @@
         <h3>Calificar Proyectos</h3>
         <div class="options">
             <div *ngFor="let user_option of user_options">
-                <div class="option" [routerLink]="['list-project']">
+                <div class="option" [routerLink]="[user_option.link]">
                     <mat-icon class="icon">{{ user_option.icon }}</mat-icon>
                     <span>{{ user_option.text }}</span>
                 </div>
-            </div>
-        </div>
-    </div>
-    <div class="admin-fair-options flexbox-container">
-        <h3>Administracion de usuarios</h3>
-        <div class="options">
-            <div class="option" *ngFor="let user_option of user_options">
-                <mat-icon class="icon">{{ user_option.icon }}</mat-icon>
-                <span>{{ user_option.text }}</span>
             </div>
         </div>
     </div>

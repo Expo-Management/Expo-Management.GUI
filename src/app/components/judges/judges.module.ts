@@ -47,9 +47,9 @@ import { ListComponent } from './dashboard/list/list.component';
           { path: 'home', component: ProjectsListComponent },
           { path: 'project-details/:project_id', component: ProjectToQualifyDetailsComponent },
           { path: 'project-qualify/:project_id', component: QualifyProjectComponent },
+          { path: 'list', component: ListComponent },
           //{ path: 'recomendations', component: RecomendationsComponent },
           { path: '**', component: ProjectsListComponent },
-          { path: 'list', component: ListComponent },
           /*{ path: 'home', component: ContentComponent },
           { path: 'documentation', component: FairDocumentsComponent },
           { path: '**', component: ContentComponent }*/
