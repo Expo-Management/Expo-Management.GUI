@@ -10,26 +10,31 @@ export class SideBarComponent implements OnInit {
   user_options = [
     { 
       icon: 'account_circle',
-      text: 'Profesores'
+      text: 'Profesores',
+      link: 'manage-professors',
     },
     { 
       icon: 'account_circle',
-      text: 'Jueces'
+      text: 'Jueces',
+      link: 'manage-judges',
     },
     { 
       icon: 'account_circle',
-      text: 'Estudiantes'
+      text: 'Estudiantes',
+      link: 'manage-students',
     },
   ]
 
   fair_options = [
     { 
       icon: 'assignment',
-      text: 'Documentos de la feria'
+      text: 'Documentos de la feria',
+      link: 'fair-documents',
     },
     { 
       icon: 'calendar_today',
-      text: 'Calendario de la feria'
+      text: 'Calendario de la feria',
+      link: 'fair-calendar',
     }
   ]
 

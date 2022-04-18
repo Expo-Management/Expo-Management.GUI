@@ -1,25 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from 'src/app/shared/interfaces/user';
 
-const ELEMENT_DATA: User[] = [
-  {project: 'Proyecto', name: 'Jafet', last: 'Mora Ugalde', email: 'jafet.mora@gmail.com', phone: '888-888-888'},
-  {project: 'Proyecto', name: 'Jafet', last: 'Mora Ugalde', email: 'jafet.mora@gmail.com', phone: '888-888-888'},
-  {project: 'Proyecto', name: 'Jafet', last: 'Mora Ugalde', email: 'jafet.mora@gmail.com', phone: '888-888-888'},
-  {project: 'Proyecto', name: 'Jafet', last: 'Mora Ugalde', email: 'jafet.mora@gmail.com', phone: '888-888-888'},
-  {project: 'Proyecto', name: 'Jafet', last: 'Mora Ugalde', email: 'jafet.mora@gmail.com', phone: '888-888-888'},
-  {project: 'Proyecto', name: 'Jafet', last: 'Mora Ugalde', email: 'jafet.mora@gmail.com', phone: '888-888-888'},
-  {project: 'Proyecto', name: 'Jafet', last: 'Mora Ugalde', email: 'jafet.mora@gmail.com', phone: '888-888-888'},
-  {project: 'Proyecto', name: 'Jafet', last: 'Mora Ugalde', email: 'jafet.mora@gmail.com', phone: '888-888-888'},
-  {project: 'Proyecto', name: 'Jafet', last: 'Mora Ugalde', email: 'jafet.mora@gmail.com', phone: '888-888-888'},
-  {project: 'Proyecto', name: 'Jafet', last: 'Mora Ugalde', email: 'jafet.mora@gmail.com', phone: '888-888-888'},
-  {project: 'Proyecto', name: 'Jafet', last: 'Mora Ugalde', email: 'jafet.mora@gmail.com', phone: '888-888-888'},
-  {project: 'Proyecto', name: 'Jafet', last: 'Mora Ugalde', email: 'jafet.mora@gmail.com', phone: '888-888-888'},
-  {project: 'Proyecto', name: 'Jafet', last: 'Mora Ugalde', email: 'jafet.mora@gmail.com', phone: '888-888-888'},
-  {project: 'Proyecto', name: 'Jafet', last: 'Mora Ugalde', email: 'jafet.mora@gmail.com', phone: '888-888-888'},
-  {project: 'Proyecto', name: 'Jafet', last: 'Mora Ugalde', email: 'jafet.mora@gmail.com', phone: '888-888-888'},
-  {project: 'Proyecto', name: 'Jafet', last: 'Mora Ugalde', email: 'jafet.mora@gmail.com', phone: '888-888-888'},
-  {project: 'Proyecto', name: 'Jafet', last: 'Mora Ugalde', email: 'jafet.mora@gmail.com', phone: '888-888-888'},
-  {project: 'Proyecto', name: 'Jafet', last: 'Mora Ugalde', email: 'jafet.mora@gmail.com', phone: '888-888-888'},
+export interface Errors {
+  id: string;
+  name: string;
+  date: string;
+  description: string;
+}
+
+const ELEMENT_DATA: Errors[] = [
+  {id: '002', name: 'Fallo al actualizar datos', date: '04/13/2022', description: 'El estudiante Andrés Barrantes tuvo un fallo al actualizar los datos de su proyecto'},
+  {id: '007', name: 'Fallo al subir calificación', date: '04/16/2022', description: 'El juez Eduardo Castillo tuvo un fallo al subir la calificación del proyecto TrackerBar'},
+
 ];
 
 @Component({
@@ -28,7 +19,7 @@ const ELEMENT_DATA: User[] = [
   styleUrls: ['./content.component.css']
 })
 export class ContentComponent implements OnInit {
-  displayedColumns: string[] = ['project', 'name', 'last', 'email', 'phone'];
+  displayedColumns: string[] = ['id', 'name', 'date', 'description'];
   dataSource = ELEMENT_DATA;
 
   constructor() { }
