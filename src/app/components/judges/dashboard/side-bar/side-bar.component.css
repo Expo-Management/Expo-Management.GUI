@@ -1,0 +1,56 @@
+* {
+    margin: 0;
+    padding: 0;
+    background-color: #354F52;
+}
+
+.side-bar-menu {
+    height: 100%;
+    width: 100%;
+    padding-left: 2rem;
+}
+
+/*.admin-users-options {
+    height: 30%;
+    width: 100%;
+}
+
+.admin-fair-options {
+    height: 40%;
+    width: 100%;
+}*/
+
+h3 {
+    margin-top: 2rem;
+    color: #BDBBB6;
+}
+
+.option {
+    color: #FFFFFF;
+}
+
+.flexbox-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.option {
+    margin: 2rem auto;
+    display: flex;
+    flex-direction: row;
+}
+
+span {
+    margin-left: 1rem;
+    margin-right: 1.5rem;
+    font-size: 16pt;
+    font-weight: 300;
+    cursor: pointer;
+}
+
+mat-icon {
+    font-size: 25pt;
+    cursor: pointer;
+}

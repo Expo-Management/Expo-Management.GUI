@@ -1,0 +1,15 @@
+<div class="modal-header">
+    <h3 class="modal-title" id="modal-basic-title">Contactar estudiantes</h3>
+</div>
+<div class="details-content">
+    <h3 class="space">Correos de los estudiantes del grupo {{project_name}} </h3>
+    <div class="members">
+        <div class="memers" *ngFor="let group_members_emails of group_members_emails">
+            <a class="mails" href="mailto:">{{ group_members_emails }}</a>
+        </div>
+    </div>
+
+    <br>
+
+    <button mat-raised-button class="buttonOk" (click)="onNoClick()">Ok</button>
+</div>
