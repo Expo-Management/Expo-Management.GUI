@@ -12,10 +12,10 @@
             <mat-form-field appearance="fill">
                 <mat-label>Filtrar por categorias</mat-label>
                 <mat-select>
-                  <mat-option>Seleccione una categoria</mat-option>
-                  <mat-option *ngFor="let cateogories of cateogories" [value]="cateogories">{{cateogories}}</mat-option>
+                    <mat-option>Seleccione una categoria</mat-option>
+                    <mat-option *ngFor="let cateogories of cateogories" [value]="cateogories">{{cateogories}}</mat-option>
                 </mat-select>
-              </mat-form-field>
+            </mat-form-field>
         </div>
     </div>
     <div class="users-content">
@@ -38,10 +38,10 @@
             </ng-container>
             <ng-container matColumnDef="qualify">
                 <th mat-header-cell *matHeaderCellDef>Calificar</th>
-                <td mat-cell *matCellDef="let mat-icon" >
-                    <mat-icon class="btn_calificar">border_color</mat-icon>                 
+                <td mat-cell *matCellDef="let mat-icon">
+                    <mat-icon [routerLink]="['/judges/project-details/1']" class="btn_calificar">border_color</mat-icon>
                 </td>
-              </ng-container>
+            </ng-container>
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         </table>
