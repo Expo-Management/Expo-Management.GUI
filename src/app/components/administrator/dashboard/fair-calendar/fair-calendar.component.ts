@@ -51,16 +51,12 @@ export class FairCalendarComponent implements OnInit{
   ngOnInit(): void {}
 
   view: CalendarView = CalendarView.Month;
-
   CalendarView = CalendarView;
-
   viewDate: Date = new Date();
-
   modalData: {
     action: string;
     event: CalendarEvent;
   } | undefined;
-
   actions: CalendarEventAction[] = [
     {
       label: '<i class="fas fa-fw fa-pencil-alt"></i>',
@@ -80,7 +76,6 @@ export class FairCalendarComponent implements OnInit{
   ];
 
   refresh = new Subject<void>();
-
   events: CalendarEvent[] = [
     {
       start: subDays(startOfDay(new Date()), 1),
@@ -108,11 +103,9 @@ export class FairCalendarComponent implements OnInit{
       actions: this.actions,
     },
   ];
-
   activeDayIsOpen: boolean = true;
 
   constructor(private modal: NgbModal, public dialog: MatDialog) {}
-
 
   openDialog() {
     const dialogRef = this.dialog.open(AddEventsDialogComponent);
