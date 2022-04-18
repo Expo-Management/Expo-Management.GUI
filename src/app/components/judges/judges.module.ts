@@ -13,8 +13,12 @@ import { ProjectsListComponent } from './dashboard/projects-list/projects-list.c
 import { ProjectToQualifyDetailsComponent } from './dashboard/project-to-qualify-details/project-to-qualify-details.component';
 import { QualifyProjectComponent } from './dashboard/qualify-project/qualify-project.component';
 import { RecomendationsPopupComponent } from './dashboard/recomendations-popup/recomendations-popup.component';
+import { ListComponent } from './dashboard/list/list.component';
+import { SettingsComponent } from './dashboard/settings/settings.component';
+
 
 @NgModule({
+ 
   declarations: [
     JudgesComponent,
     DashboardComponent,
@@ -25,6 +29,9 @@ import { RecomendationsPopupComponent } from './dashboard/recomendations-popup/r
     QualifyProjectComponent,
     RecomendationsPopupComponent,
     ContactStudentsPopupComponent,
+    ListComponent,
+    TopMenuComponent,
+    SettingsComponent
   ],
   imports: [
     ReactiveFormsModule,
@@ -32,6 +39,7 @@ import { RecomendationsPopupComponent } from './dashboard/recomendations-popup/r
     MaterialsModule,
     CommonModule,
     FormsModule,
+    
     RouterModule.forChild([
       { 
         path: '', 
@@ -41,11 +49,15 @@ import { RecomendationsPopupComponent } from './dashboard/recomendations-popup/r
           { path: 'home', component: ProjectsListComponent },
           { path: 'project-details/:project_id', component: ProjectToQualifyDetailsComponent },
           { path: 'project-qualify/:project_id', component: QualifyProjectComponent },
-          //{ path: 'recomendations', component: RecomendationsComponent },
-          { path: '**', component: ProjectsListComponent }
+          { path: 'list', component: ListComponent },
+          { path: 'settings', component: SettingsComponent },
+          { path: '**', component: ProjectsListComponent },
+          /*{ path: 'home', component: ContentComponent },
+          { path: 'documentation', component: FairDocumentsComponent },
+          { path: '**', component: ContentComponent }*/
         ]
       },
     ]),
-  ]
+  ],
 })
 export class JudgesModule { }

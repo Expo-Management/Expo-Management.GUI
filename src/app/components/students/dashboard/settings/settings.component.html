@@ -1,0 +1,82 @@
+<div class="flex-container">
+    <div class="left-side">
+        <div class="top-options">
+            <div class="profile-edit">
+                <mat-icon>account_circle</mat-icon>
+                <div>
+                    <h3>Foto de perfil</h3>
+                    <span id="links"><a>Cambiar foto de perfil</a></span>
+                </div>
+            </div>
+            <span id="links"><a>Compartir redes sociales</a></span>
+        </div>
+        <div class="user-info">
+            <form class="add-form">
+                <mat-form-field class="" appearance="outline">
+                    <!--for name-->
+                    <mat-label>Nombre</mat-label>
+                    <input type="name" matInput [formControl]="NameFormControl" [errorStateMatcher]="matcher">
+                    <mat-error *ngIf=" NameFormControl.hasError('required')">
+                        <strong>Por favor digita su nombre</strong>
+                    </mat-error>
+                </mat-form-field>
+                <!--for last-->
+                <mat-form-field class="" appearance="outline">
+                    <mat-label>Apellidos</mat-label>
+                    <input type="last" matInput [formControl]="LastFormControl" [errorStateMatcher]="matcher">
+                    <mat-error *ngIf=" LastFormControl.hasError('required')">
+                        <strong>Por favor digita sus apellidos</strong>
+                    </mat-error>
+                </mat-form-field>
+                <!--for email-->
+                <mat-form-field class="" appearance="outline">
+                    <mat-label>Correo electronico</mat-label>
+                    <input type="email" matInput [formControl]="EmailFormControl" [errorStateMatcher]="matcher" placeholder="Ej. smith@gmail.com">
+                    <mat-error *ngIf="EmailFormControl.hasError('email') && !EmailFormControl.hasError('required')">
+                        Por favor digita un correo valido
+                    </mat-error>
+                    <mat-error *ngIf="EmailFormControl.hasError('required')">
+                        <strong>Por favor digita su correo electronico</strong>
+                    </mat-error>
+                </mat-form-field>
+                <!--for password-->
+                <mat-form-field class="" appearance="outline">
+                    <mat-label>Celular</mat-label>
+                    <input type="last" matInput [formControl]="PhoneFormControl" [errorStateMatcher]="matcher">
+                    <mat-error *ngIf=" PhoneFormControl.hasError('required')">
+                        <strong>Por favor digita su numero celular</strong>
+                    </mat-error>
+                </mat-form-field>
+
+
+                <!--for id-->
+                <mat-form-field class="" appearance="outline" *ngIf="!isJudge">
+                    <mat-label>Cédula</mat-label>
+                    <input type="id" matInput [formControl]="IdFormControl" [errorStateMatcher]="matcher" placeholder="XX-XXXX-XXXX">
+                    <mat-error *ngIf="IdFormControl.hasError('required')">
+                        <strong>Por favor digita la cédula</strong>
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="" appearance="outline" *ngIf="isJudge">
+                    <mat-label>Institucion</mat-label>
+                    <input type="id" matInput [formControl]="IdFormControl" [errorStateMatcher]="matcher" placeholder="XX-XXXX-XXXX">
+                    <mat-error *ngIf="IdFormControl.hasError('required')">
+                        <strong>Por favor indicar su actual institucion</strong>
+                    </mat-error>
+                </mat-form-field>
+            </form>
+        </div>
+        <div class="bottom">
+            <button mat-raised-button class="add-button">Actualizar datos</button>
+        </div>
+    </div>
+    <mat-divider vertical style="height:85%; margin: 0 5%;"></mat-divider>
+    <div class="right-side">
+        <h3 class="space">Mas opciones: </h3>
+        <div class="button-group space">
+            <button class="add-button" mat-raised-button>Cambio de contrasena</button>
+            <button class="add-button" mat-raised-button>Otros ajustes</button>
+        </div>
+    </div>
+</div>

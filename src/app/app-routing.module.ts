@@ -6,7 +6,6 @@ const routes: Routes = [
   { path: 'administrator', loadChildren: () => import('./components/administrator/administrator.module').then(m => m.AdministratorModule)},
   { path: 'student', loadChildren: () => import('./components/students/students.module').then(m => m.StudentsModule)},
   { path: 'judges', loadChildren: () => import('./components/judges/judges.module').then(m => m.JudgesModule)},
-  // { path: 'professor', component: DashboardComponent },
 
   // { path: '', redirectTo: 'home', pathMatch: 'full' },
   // { path: '**', component: DashboardComponent }

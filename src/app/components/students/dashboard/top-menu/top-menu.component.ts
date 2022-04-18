@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TopMenuComponent implements OnInit {
   user_name = 'Andres Barrantes'
-  user_role = 'Admin'
+  user_role = 'Student'
 
   constructor() { }
 

@@ -6,9 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./top-menu.component.css']
 })
 export class TopMenuComponent implements OnInit {
-  user_name = 'Andrés Barrantes'
+  user_name = 'Andres Barrantes'
   user_role = 'Juez'
-
   constructor() { }
 
   ngOnInit(): void {
