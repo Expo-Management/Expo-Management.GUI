@@ -8,6 +8,7 @@ import { MaterialsModule } from 'src/app/shared/materials/materials.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+//pages
 import { AdministratorComponent } from './administrator.component';
 import { FairDocumentsComponent } from './dashboard/fair-documents/fair-documents.component';
 import { ManageJudgesComponent } from './dashboard/manage-users/manage-judges/manage-judges.component';
@@ -26,7 +27,9 @@ import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import { FlatpickrModule } from 'angularx-flatpickr';
-
+//dialogs
+import { DeleteDialogComponent } from './dashboard/delete-dialog/delete-dialog.component';
+import { AddEventsDialogComponent } from './dashboard/add-events-dialog/add-events-dialog.component';
 @NgModule({
   declarations: [
     DashboardComponent,
@@ -49,6 +52,8 @@ import { FlatpickrModule } from 'angularx-flatpickr';
     EditStudentsComponent,
     EditJudgesComponent,
     EditProfessorsComponent,
+    DeleteDialogComponent,
+    AddEventsDialogComponent,
   ],
   imports: [
     ReactiveFormsModule,
@@ -62,7 +67,7 @@ import { FlatpickrModule } from 'angularx-flatpickr';
         component: AdministratorComponent,
         children: [
           //fair stuff
-          { path: 'home', component: ContentComponent },
+          { path: '', component: ContentComponent },
           { path: 'fair-documents', component: FairDocumentsComponent },
           { path: 'fair-calendar', component: FairCalendarComponent },
           //manage users

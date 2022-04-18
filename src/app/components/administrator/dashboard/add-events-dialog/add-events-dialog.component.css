@@ -30,16 +30,6 @@
     width: 90%;
 }
 
-.add-button {
-    color: #FFFFFF;
-    background-color: #354F52;
-    height: 2.5rem;
-    margin-left: 2rem;
-    margin-bottom: 1rem;
- 
-}
-
-
 mat-icon {
     margin: 0 .5rem;
     font-size: 40px;

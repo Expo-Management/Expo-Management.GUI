@@ -20,8 +20,7 @@ import {
   CalendarEventTimesChangedEvent,
   CalendarView,
 } from 'angular-calendar';
-import {MatDialog} from '@angular/material/dialog';
-import { AddEventsDialogComponent } from '../add-events-dialog/add-events-dialog.component';
+import {MatDialog, MatDialogRef} from '@angular/material/dialog';
 
 const colors: any = {
   red: {
@@ -39,16 +38,16 @@ const colors: any = {
 };
 
 @Component({
-  selector: 'app-fair-calendar',
+  selector: 'app-add-events-dialog',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  templateUrl: './fair-calendar.component.html',
-  styleUrls: ['./fair-calendar.component.css']
+  templateUrl: './add-events-dialog.component.html',
+  styleUrls: ['./add-events-dialog.component.css']
 })
-export class FairCalendarComponent implements OnInit{
-
-  @ViewChild('modalContent', { static: true }) modalContent: TemplateRef<any> | undefined;
+export class AddEventsDialogComponent implements OnInit{
 
   ngOnInit(): void {}
+
+  @ViewChild('modalContent', { static: true }) modalContent: TemplateRef<any> | undefined;
 
   view: CalendarView = CalendarView.Month;
 
@@ -111,17 +110,11 @@ export class FairCalendarComponent implements OnInit{
 
   activeDayIsOpen: boolean = true;
 
-  constructor(private modal: NgbModal, public dialog: MatDialog) {}
+  constructor(private modal: NgbModal, public dialogRef: MatDialogRef<AddEventsDialogComponent> ){}
 
-
-  openDialog() {
-    const dialogRef = this.dialog.open(AddEventsDialogComponent);
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
+  onNoClick(): void{
+    this.dialogRef.close();
   }
-
 
   dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {
     if (isSameMonth(date, this.viewDate)) {

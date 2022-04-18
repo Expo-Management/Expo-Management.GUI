@@ -19,21 +19,13 @@
 }
 
 .users-content {
-    padding-top: 15%;
-    height: 85%;
-    max-height: 85%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: scroll;
-}
-
-.add-button {
-    color: #FFFFFF;
-    background-color: #354F52;
-    height: 2.5rem;
-    margin-left: 2rem;
-    margin-bottom: 1rem;
+    padding-top: 3rem;
+        height: 85%;
+        max-height: 85%;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        overflow: scroll;
 }
 
 .sub-container {
