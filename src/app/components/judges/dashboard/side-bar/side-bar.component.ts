@@ -12,6 +12,18 @@ export class SideBarComponent implements OnInit {
       icon: 'check_circle',
       text: 'Calificar Proyectos'
     },
+    {
+      icon: 'account_circle',
+      text: 'Profesores'
+    },
+    { 
+      icon: 'account_circle',
+      text: 'Jueces'
+    },
+    { 
+      icon: 'account_circle',
+      text: 'Estudiantes'
+    },
   ]
 
   /*fair_options = [
@@ -24,7 +36,6 @@ export class SideBarComponent implements OnInit {
       text: 'Calendario de la feria'
     }
   ]*/
-
   constructor() { }
 
   ngOnInit(): void {
