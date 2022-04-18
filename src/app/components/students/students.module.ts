@@ -48,7 +48,7 @@ import { CurrentDocumentationComponent } from './dashboard/current-documentation
         path: '', 
         component: StudentsComponent,
         children: [
-          { path: 'home', component: ContentComponent },
+          { path: 'home', component: ProjectDetailsComponent },
           { path: 'security-protocols', component: ProtocolListComponent },
           { path: 'past-projects', component: PastProyectProposalsComponent },
           { path: 'current-projects', component: CurrentProyectProposalsComponent },
@@ -58,7 +58,7 @@ import { CurrentDocumentationComponent } from './dashboard/current-documentation
           { path: 'fair-documents', component: DocumentationComponent },
           { path: 'saved-documents', component: CurrentDocumentationComponent },
           { path: 'settings', component: SettingsComponent },
-          { path: '**', component: ContentComponent }
+          { path: '**', component: ProjectDetailsComponent }
         ]
       },
     ]),
