@@ -1,15 +1,15 @@
 <div class="flex-container">
     <div class="top-options">
-        <h1>Administracion de Profesores</h1>
+        <h1>Administracion de integrantes del grupo</h1>
         <div class="sub-container">
             <form class="example-form">
                 <mat-form-field class="example-full-width" appearance="outline">
-                    <mat-label>Buscar Profesores</mat-label>
-                    <input type="text" matInput placeholder="Ingrese nombre del profesor">
+                    <mat-label>Buscar jueces</mat-label>
+                    <input type="text" matInput placeholder="Ingrese nombre del estudiante">
                     <mat-icon matSuffix>search</mat-icon>
                 </mat-form-field>
             </form>
-            <button mat-raised-button class="add-button" routerLink="/administrator/add-professors">Agregar</button>
+            <button mat-raised-button class="add-button">Agregar</button>
         </div>
     </div>
     <div class="users-content">
@@ -30,20 +30,21 @@
                 <th mat-header-cell *matHeaderCellDef> Telefono </th>
                 <td mat-cell *matCellDef="let element"> {{element.phone}} </td>
             </ng-container>
-            <ng-container matColumnDef="subject">
-                <th mat-header-cell *matHeaderCellDef> Materias </th>
-                <td mat-cell *matCellDef="let element"> {{element.subject}} </td>
-            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
             <!--Buttons-->
             <ng-container matColumnDef="actions">
                 <th mat-header-cell *matHeaderCellDef></th>
                 <td mat-cell *matCellDef="let mat-icon">
-                    <mat-icon class="btn-edit" routerLink="/administrator/edit-professors">border_color</mat-icon>
-                    <mat-icon (click)="dialogDelete()" class="btn-delete">clear</mat-icon>
+                    <mat-icon class="btn-edit">delete</mat-icon>
                 </td>
             </ng-container>
-            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            <ng-container matColumnDef="admin">
+                <th mat-header-cell *matHeaderCellDef>Make admin?</th>
+                <td mat-cell *matCellDef="let row">
+                    <mat-checkbox></mat-checkbox>
+                </td>
+            </ng-container>
         </table>
     </div>
 </div>

@@ -10,14 +10,17 @@ import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CommonModule } from '@angular/common';
-import {MatDialogModule} from '@angular/material/dialog';
+import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { CustomPopUpComponent } from './shared/components/custom-pop-up/custom-pop-up.component';
 
 @NgModule({
   declarations: [
-    AppComponent    
+    AppComponent,
+    CustomPopUpComponent    
   ],
   imports: [
     BrowserModule,
+    MatDialogModule,
     CommonModule,
     MaterialsModule,
     AppRoutingModule,
@@ -26,7 +29,12 @@ import {MatDialogModule} from '@angular/material/dialog';
     NgbModule,
     MatDialogModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: MatDialogRef,
+      useValue: {}
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

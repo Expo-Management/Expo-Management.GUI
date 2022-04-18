@@ -11,17 +11,17 @@ export class SideBarComponent implements OnInit {
     { 
       icon: 'account_circle',
       text: 'Profesores',
-      link: 'manage-professors"',
+      link: 'manage-professors',
     },
     { 
       icon: 'account_circle',
       text: 'Jueces',
-      link: '/administrator/manage-judges"',
+      link: 'manage-judges',
     },
     { 
       icon: 'account_circle',
       text: 'Estudiantes',
-      link: '/administrator/manage-students"',
+      link: 'manage-students',
     },
   ]
 
@@ -29,12 +29,12 @@ export class SideBarComponent implements OnInit {
     { 
       icon: 'assignment',
       text: 'Documentos de la feria',
-      link: '/administrator/fair-documents"',
+      link: 'fair-documents',
     },
     { 
       icon: 'calendar_today',
       text: 'Calendario de la feria',
-      link: '/administrator/fair-calendar"',
+      link: 'fair-calendar',
     }
   ]
 

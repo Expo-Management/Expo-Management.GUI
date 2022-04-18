@@ -1,0 +1,70 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.flex-container {
+    height: 100%;
+    width: 100%;
+}
+
+.top-options {
+    height: 15%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+}
+
+.users-content {
+    padding-bottom: 1rem;
+    padding-top: 5%;
+    height: 85%;
+    max-height: 85%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    overflow: scroll;
+}
+
+h1 {
+    width: 75%;
+}
+
+.sub-container {
+    width: 25%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+table {
+    width: 92%;
+}
+
+::-webkit-scrollbar {
+    width: 0;
+    background: transparent;
+}
+
+#sumbit-button {
+    width: 100%;
+    background-color: #354F52;
+    border-radius: 0px;
+    margin-bottom: 2rem;
+}
+
+button.mat-focus-indicator.add-button.mat-raised-button.mat-button-base {
+    margin-bottom: 1rem;
+}
+
+.mat-icon {
+    cursor: pointer;
+}
+
+.mat-checkbox {
+    margin-left: 1rem;
+}

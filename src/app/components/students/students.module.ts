@@ -13,7 +13,8 @@ import { PastProyectProposalsComponent } from './dashboard/past-proyect-proposal
 import { CurrentProyectProposalsComponent } from './dashboard/current-proyect-proposals/current-proyect-proposals.component';
 import { ProjectDetailsComponent } from './dashboard/project-details/project-details.component';
 import { CreateProjectComponent } from './dashboard/create-project/create-project.component';
-import { NgxFileDropComponent, NgxFileDropModule } from 'ngx-file-drop';
+import { NgxFileDropModule } from 'ngx-file-drop';
+import { ProjectGroupComponent } from './dashboard/project-group/project-group.component';
 
 
 @NgModule({
@@ -27,6 +28,7 @@ import { NgxFileDropComponent, NgxFileDropModule } from 'ngx-file-drop';
     CurrentProyectProposalsComponent,
     ProjectDetailsComponent,
     CreateProjectComponent,
+    ProjectGroupComponent,
   ],
   imports: [
     ReactiveFormsModule,
@@ -44,6 +46,7 @@ import { NgxFileDropComponent, NgxFileDropModule } from 'ngx-file-drop';
           { path: 'security-protocols', component: ProtocolListComponent },
           { path: 'past-projects', component: PastProyectProposalsComponent },
           { path: 'current-projects', component: CurrentProyectProposalsComponent },
+          { path: 'project-group', component: ProjectGroupComponent },
           { path: 'project/:project_id', component: ProjectDetailsComponent },
           { path: 'new-project', component: CreateProjectComponent },
           { path: '**', component: ContentComponent }

@@ -1,0 +1,11 @@
+<div class="modal-header">
+    <h4 class="modal-title" style="margin-bottom: 0;">{{ title }}</h4>
+    <button type="button" class="btn btn-outline-danger close-btn" (click)="dismiss()">&times;
+    </button>
+</div>
+<div class="modal-body">
+    {{ message }}
+</div>
+<div class="modal-footer">
+    <button ngbAutofocus mat-raised-button class="ok-button" (click)="accept()">{{ btnOkText }}</button>
+</div>

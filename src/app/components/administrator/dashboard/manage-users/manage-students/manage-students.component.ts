@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CustomPopUpService } from 'src/app/shared/services/custom-pop-up.service';
 
 export interface Students {
   name: string;
@@ -24,9 +25,20 @@ export class ManageStudentsComponent implements OnInit {
   displayedColumns: string[] = ['name', 'last', 'email', 'phone', 'project', 'actions'];
   dataSource = ELEMENT_DATA;
 
-  constructor() { }
+  constructor(private customPopUpService: CustomPopUpService) {}
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+  dialogDelete(): void{ //not working
+    this.openCustomPopUp("¿Estás seguro de borrar el usuario?") ;
+  }
+
+  public openCustomPopUp(message: string) {
+    this.customPopUpService.confirm(
+      'Configuracion de estudiantes', 
+      message,
+      undefined
+      );
   }
 
 }

@@ -26,7 +26,7 @@ export class SideBarComponent implements OnInit {
       text: 'Crear Proyecto'
     },
     { 
-      link: 'security-protocols',
+      link: 'project-group',
       icon: 'group',
       text: 'Equipo de proyecto'
     },
