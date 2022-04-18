@@ -17,14 +17,15 @@
     align-items: center;
     padding: 0 2rem;
 }
-
+ 
 .users-content {
-    padding-top: 15%;
-    height: 85%;
+    /* padding-top: auto;   */
+    height: 85%; 
+    height: 100%; 
     max-height: 85%;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     overflow: scroll;
 }
 
@@ -35,6 +36,16 @@
     margin-left: 2rem;
     margin-bottom: 1rem;
 }
+.projects-content {
+    padding-top: 25%;
+    padding-bottom: 1rem;
+    height: 85%;
+    max-height: 85%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: scroll;
+}
 
 .sub-container {
     display: flex;
@@ -44,7 +55,7 @@
 }
 
 table {
-    width: 100%;
+    width: 92%;
 }
 
 ::-webkit-scrollbar {

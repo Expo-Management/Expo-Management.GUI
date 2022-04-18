@@ -8,14 +8,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { MaterialsModule } from 'src/app/shared/materials/materials.module';
 import { HttpClientModule } from '@angular/common/http';
-
-
+import { ListComponent } from './dashboard/list/list.component';
 
 @NgModule({
+ 
   declarations: [
     JudgesComponent,
     DashboardComponent,
     SideBarComponent,
+    ListComponent,
     TopMenuComponent
   ],
   imports: [
@@ -24,17 +25,19 @@ import { HttpClientModule } from '@angular/common/http';
     MaterialsModule,
     CommonModule,
     FormsModule,
+    
     RouterModule.forChild([
       { 
         path: '', 
         component: JudgesComponent,
         children: [
+          { path: 'list', component: ListComponent },
           /*{ path: 'home', component: ContentComponent },
           { path: 'documentation', component: FairDocumentsComponent },
           { path: '**', component: ContentComponent }*/
         ]
       },
     ]),
-  ]
+  ],
 })
 export class JudgesModule { }
