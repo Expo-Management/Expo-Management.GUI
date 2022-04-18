@@ -11,16 +11,7 @@ import { RouterModule } from '@angular/router';
 //pages
 import { AdministratorComponent } from './administrator.component';
 import { FairDocumentsComponent } from './dashboard/fair-documents/fair-documents.component';
-import { ManageJudgesComponent } from './dashboard/manage-users/manage-judges/manage-judges.component';
-import { ManageStudentsComponent } from './dashboard/manage-users/manage-students/manage-students.component';
-import { ManageProfessorsComponent } from './dashboard/manage-users/manage-professors/manage-professors.component';
-import { AddStudentsComponent } from './dashboard/add-users/add-students/add-students.component';
-import { AddJudgesComponent } from './dashboard/add-users/add-judges/add-judges.component';
-import { AddProfessorsComponent } from './dashboard/add-users/add-professors/add-professors.component';
-import { EditStudentsComponent } from './dashboard/edit-users/edit-students/edit-students.component';
-import { EditJudgesComponent } from './dashboard/edit-users/edit-judges/edit-judges.component';
-import { EditProfessorsComponent } from './dashboard/edit-users/edit-professors/edit-professors.component';
-import { FairCalendarComponent } from './dashboard/fair-calendar/fair-calendar.component';
+
 //calendar imports
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
@@ -29,7 +20,18 @@ import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import { FlatpickrModule } from 'angularx-flatpickr';
 //dialogs
 import { DeleteDialogComponent } from './dashboard/delete-dialog/delete-dialog.component';
+import { SettingsComponent } from './dashboard/settings/settings.component';
+import { ManageJudgesComponent } from './dashboard/manage-users/manage-judges/manage-judges.component';
+import { ManageStudentsComponent } from './dashboard/manage-users/manage-students/manage-students.component';
+import { FairCalendarComponent } from './dashboard/fair-calendar/fair-calendar.component';
+import { ManageProfessorsComponent } from './dashboard/manage-users/manage-professors/manage-professors.component';
+import { AddJudgesComponent } from './dashboard/add-users/add-judges/add-judges.component';
+import { AddStudentsComponent } from './dashboard/add-users/add-students/add-students.component';
+import { AddProfessorsComponent } from './dashboard/add-users/add-professors/add-professors.component';
+import { EditStudentsComponent } from './dashboard/edit-users/edit-students/edit-students.component';
+import { EditProfessorsComponent } from './dashboard/edit-users/edit-professors/edit-professors.component';
 import { AddEventsDialogComponent } from './dashboard/add-events-dialog/add-events-dialog.component';
+import { EditJudgesComponent } from './dashboard/edit-users/edit-judges/edit-judges.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +57,7 @@ import { AddEventsDialogComponent } from './dashboard/add-events-dialog/add-even
     EditProfessorsComponent,
     DeleteDialogComponent,
     AddEventsDialogComponent,
+    SettingsComponent,
   ],
   imports: [
     ReactiveFormsModule,
@@ -82,7 +85,8 @@ import { AddEventsDialogComponent } from './dashboard/add-events-dialog/add-even
           //edit users
           { path: 'edit-students', component: EditStudentsComponent },
           { path: 'edit-judges', component: EditJudgesComponent },
-          { path: 'edit-professors', component: EditProfessorsComponent }
+          { path: 'edit-professors', component: EditProfessorsComponent },
+          { path: 'settings', component: SettingsComponent }
         ]
       },
     ]),

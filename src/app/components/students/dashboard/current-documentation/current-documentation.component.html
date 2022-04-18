@@ -1,0 +1,44 @@
+<div class="flex-container">
+    <div class="top-options">
+        <h1>Documentos de la Feria</h1>
+        <div class="sub-container">
+            <form class="example-form">
+                <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Buscar documentos</mat-label>
+                    <input type="text" matInput placeholder="Ingrese nombre del documento">
+                    <mat-icon matSuffix>search</mat-icon>
+                </mat-form-field>
+            </form>
+            <button mat-raised-button class="add-button">Agregar</button>
+        </div>
+    </div>
+    <div class="users-content">
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+            <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef> Nombre </th>
+                <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+            </ng-container>
+            <ng-container matColumnDef="date">
+                <th mat-header-cell *matHeaderCellDef> Fecha </th>
+                <td mat-cell *matCellDef="let element"> {{element.date}} </td>
+            </ng-container>
+            <ng-container matColumnDef="type">
+                <th mat-header-cell *matHeaderCellDef> Tipo </th>
+                <td mat-cell *matCellDef="let element"> {{element.type}} </td>
+            </ng-container>
+            <ng-container matColumnDef="size">
+                <th mat-header-cell *matHeaderCellDef> Tamaño </th>
+                <td mat-cell *matCellDef="let element"> {{element.size}} </td>
+            </ng-container>
+            <!--Buttons-->
+            <ng-container matColumnDef="actions">
+                <th mat-header-cell *matHeaderCellDef></th>
+                <td mat-cell *matCellDef="let mat-icon">
+                    <mat-icon class="btn-delete">edit</mat-icon>
+                </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+    </div>
+</div>

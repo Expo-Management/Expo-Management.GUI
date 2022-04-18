@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
-import {ErrorStateMatcher} from '@angular/material/core';
-
+import { FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
+import { ErrorStateMatcher } from '@angular/material/core';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -10,11 +9,12 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   }
 }
 @Component({
-  selector: 'app-ajustes',
-  templateUrl: './ajustes.component.html',
-  styleUrls: ['./ajustes.component.css']
+  selector: 'app-settings',
+  templateUrl: './settings.component.html',
+  styleUrls: ['./settings.component.css']
 })
-export class AjustesComponent implements OnInit {
+export class SettingsComponent implements OnInit {
+  isJudge = true
   NameFormControl = new FormControl('', [Validators.required, Validators.required]);
   LastFormControl = new FormControl('', [Validators.required, Validators.required]);
   EmailFormControl = new FormControl('', [Validators.required, Validators.email]);
@@ -22,6 +22,7 @@ export class AjustesComponent implements OnInit {
   IdFormControl = new FormControl('', [Validators.required, Validators.required]);
 
   matcher = new MyErrorStateMatcher();
+
   constructor() { }
 
   ngOnInit(): void {

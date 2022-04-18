@@ -15,6 +15,9 @@ import { ProjectDetailsComponent } from './dashboard/project-details/project-det
 import { CreateProjectComponent } from './dashboard/create-project/create-project.component';
 import { NgxFileDropModule } from 'ngx-file-drop';
 import { ProjectGroupComponent } from './dashboard/project-group/project-group.component';
+import { SettingsComponent } from './dashboard/settings/settings.component';
+import { DocumentationComponent } from './dashboard/documentation/documentation.component';
+import { CurrentDocumentationComponent } from './dashboard/current-documentation/current-documentation.component';
 
 
 @NgModule({
@@ -29,6 +32,9 @@ import { ProjectGroupComponent } from './dashboard/project-group/project-group.c
     ProjectDetailsComponent,
     CreateProjectComponent,
     ProjectGroupComponent,
+    SettingsComponent,
+    DocumentationComponent,
+    CurrentDocumentationComponent,
   ],
   imports: [
     ReactiveFormsModule,
@@ -49,6 +55,9 @@ import { ProjectGroupComponent } from './dashboard/project-group/project-group.c
           { path: 'project-group', component: ProjectGroupComponent },
           { path: 'project/:project_id', component: ProjectDetailsComponent },
           { path: 'new-project', component: CreateProjectComponent },
+          { path: 'fair-documents', component: DocumentationComponent },
+          { path: 'saved-documents', component: CurrentDocumentationComponent },
+          { path: 'settings', component: SettingsComponent },
           { path: '**', component: ContentComponent }
         ]
       },

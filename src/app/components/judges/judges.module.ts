@@ -14,6 +14,7 @@ import { ProjectToQualifyDetailsComponent } from './dashboard/project-to-qualify
 import { QualifyProjectComponent } from './dashboard/qualify-project/qualify-project.component';
 import { RecomendationsPopupComponent } from './dashboard/recomendations-popup/recomendations-popup.component';
 import { ListComponent } from './dashboard/list/list.component';
+import { SettingsComponent } from './dashboard/settings/settings.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { ListComponent } from './dashboard/list/list.component';
     RecomendationsPopupComponent,
     ContactStudentsPopupComponent,
     ListComponent,
-    TopMenuComponent
+    TopMenuComponent,
+    SettingsComponent
   ],
   imports: [
     ReactiveFormsModule,
@@ -48,7 +50,7 @@ import { ListComponent } from './dashboard/list/list.component';
           { path: 'project-details/:project_id', component: ProjectToQualifyDetailsComponent },
           { path: 'project-qualify/:project_id', component: QualifyProjectComponent },
           { path: 'list', component: ListComponent },
-          //{ path: 'recomendations', component: RecomendationsComponent },
+          { path: 'settings', component: SettingsComponent },
           { path: '**', component: ProjectsListComponent },
           /*{ path: 'home', component: ContentComponent },
           { path: 'documentation', component: FairDocumentsComponent },

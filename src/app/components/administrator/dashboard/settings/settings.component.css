@@ -1,0 +1,100 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.flex-container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.top-options {
+    height: 10%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0 2rem;
+    margin-top: 2rem;
+}
+
+.profile-edit {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.left-side,
+.right-side {
+    width: 40%;
+    height: 85%;
+    padding-top: 1rem;
+}
+
+.add-form {
+    display: flex;
+    flex-direction: column;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    min-width: 100px;
+    max-width: 550px;
+    width: 100%;
+    height: 100%;
+    padding: 0 2rem;
+    justify-content: space-around;
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 70%;
+}
+
+.bottom {
+    height: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.add-button {
+    color: #FFFFFF;
+    background-color: #354F52;
+    height: 2.5rem;
+    margin: 3rem;
+}
+
+.space {
+    display: flex;
+    flex-direction: column;
+}
+
+::-webkit-scrollbar {
+    width: 0;
+    background: transparent;
+}
+
+.mat-icon {
+    font-size: 30pt;
+    margin-right: 3rem;
+}
+
+#links {
+    cursor: pointer;
+    color: #255BB8;
+}
+
+.right-side {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

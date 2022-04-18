@@ -13,7 +13,7 @@ export class SideBarComponent implements OnInit {
       text: 'Detalles del proyecto'
     },
     { 
-      link: 'security-protocols',
+      link: 'saved-documents',
       icon: 'insert_drive_file',
       text: 'Documentacion del proyecto'
     },
@@ -49,7 +49,7 @@ export class SideBarComponent implements OnInit {
       text: 'Lista de proyectos actuales'
     },
     { 
-      link: '',
+      link: 'fair-documents',
       icon: 'folder',
       text: 'Documentacion necesaria'
     },
