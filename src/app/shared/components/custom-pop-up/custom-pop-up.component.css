@@ -1,0 +1,13 @@
+.close-btn {
+    border: none;
+    font-size: 2rem;
+    padding: 0px 5px;
+}
+
+.ok-button {
+    color: #FFFFFF;
+    background-color: #354F52;
+    height: 2.5rem;
+    /* margin-left: 2rem;
+    margin-bottom: 1rem; */
+}

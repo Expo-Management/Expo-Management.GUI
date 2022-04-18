@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CustomPopUpService } from 'src/app/shared/services/custom-pop-up.service';
 
 export interface Judges {
   name: string;
@@ -25,13 +26,20 @@ export class ManageJudgesComponent implements OnInit {
   displayedColumns: string[] = ['name', 'last', 'email', 'phone', 'institution', 'actions'];
   dataSource = ELEMENT_DATA;
 
-  constructor() {}
+  constructor(private customPopUpService: CustomPopUpService) {}
 
   ngOnInit(): void {}
 
   dialogDelete(): void{ //not working
-    if(confirm("¿Estás seguro de borrar el usuario?")) {
-    }
+    this.openCustomPopUp("¿Estás seguro de borrar el usuario?") ;
+  }
+
+  public openCustomPopUp(message: string) {
+    this.customPopUpService.confirm(
+      'Configuracion de jueces', 
+      message,
+      undefined
+      );
   }
   
 }
