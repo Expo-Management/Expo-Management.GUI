@@ -1,0 +1,12 @@
+.example-full-width{
+    width: 100%;
+}
+
+.button{
+    display: flex;
+    align-items: center;
+    height: 2rem;
+    color: #FFFFFF;
+    background-color: #354F52;
+    border-radius: 0px;
+}

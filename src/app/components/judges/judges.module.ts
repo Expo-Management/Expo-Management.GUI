@@ -8,15 +8,23 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { MaterialsModule } from 'src/app/shared/materials/materials.module';
 import { HttpClientModule } from '@angular/common/http';
-
-
+import { ContactStudentsPopupComponent } from './dashboard/contact-students-popup/contact-students-popup.component';
+import { ProjectsListComponent } from './dashboard/projects-list/projects-list.component';
+import { ProjectToQualifyDetailsComponent } from './dashboard/project-to-qualify-details/project-to-qualify-details.component';
+import { QualifyProjectComponent } from './dashboard/qualify-project/qualify-project.component';
+import { RecomendationsPopupComponent } from './dashboard/recomendations-popup/recomendations-popup.component';
 
 @NgModule({
   declarations: [
     JudgesComponent,
     DashboardComponent,
     SideBarComponent,
-    TopMenuComponent
+    TopMenuComponent,
+    ProjectsListComponent,
+    ProjectToQualifyDetailsComponent,
+    QualifyProjectComponent,
+    RecomendationsPopupComponent,
+    ContactStudentsPopupComponent,
   ],
   imports: [
     ReactiveFormsModule,
@@ -29,9 +37,12 @@ import { HttpClientModule } from '@angular/common/http';
         path: '', 
         component: JudgesComponent,
         children: [
-          /*{ path: 'home', component: ContentComponent },
-          { path: 'documentation', component: FairDocumentsComponent },
-          { path: '**', component: ContentComponent }*/
+          { path: 'list-project', component: ProjectsListComponent },
+          { path: 'home', component: ProjectsListComponent },
+          { path: 'project-details/:project_id', component: ProjectToQualifyDetailsComponent },
+          { path: 'project-qualify/:project_id', component: QualifyProjectComponent },
+          //{ path: 'recomendations', component: RecomendationsComponent },
+          { path: '**', component: ProjectsListComponent }
         ]
       },
     ]),

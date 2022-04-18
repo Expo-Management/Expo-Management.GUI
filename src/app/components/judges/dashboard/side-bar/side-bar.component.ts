@@ -7,6 +7,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SideBarComponent implements OnInit {
 
+  user_options = [
+    { 
+      icon: 'check_circle',
+      text: 'Calificar Proyectos'
+    },
+  ]
+
+  /*fair_options = [
+    { 
+      icon: 'assignment',
+      text: 'Documentos de la feria'
+    },
+    { 
+      icon: 'calendar_today',
+      text: 'Calendario de la feria'
+    }
+  ]*/
+
   constructor() { }
 
   ngOnInit(): void {

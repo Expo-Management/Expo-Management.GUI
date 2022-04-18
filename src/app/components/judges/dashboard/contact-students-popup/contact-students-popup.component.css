@@ -1,0 +1,34 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.details-content {
+    margin-left: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 300px;
+}
+
+.members {
+    display: flex;
+    flex-direction: column;
+    margin-left: 1.5rem;
+    justify-content: space-around;
+    height: 150px;
+    margin-bottom: .1rem;
+}
+
+.mails{
+    margin-left: 1.5rem;
+    justify-content: space-around;
+}
+
+.buttonOk{
+    height: rem;
+    color: #FFFFFF;
+    background-color: #354F52;
+    border-radius: 0px;
+    width: 10%;
+}
