@@ -11,7 +11,6 @@ import { AdministratorComponent } from './administrator.component';
 import { FairDocumentsComponent } from './dashboard/fair-documents/fair-documents.component';
 
 
-
 @NgModule({
   declarations: [
     TopMenuComponent,

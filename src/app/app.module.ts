@@ -8,7 +8,7 @@ import { MaterialsModule } from './shared/materials/materials.module';
 
 @NgModule({
   declarations: [
-    AppComponent    
+    AppComponent,
   ],
   imports: [
     BrowserModule,
