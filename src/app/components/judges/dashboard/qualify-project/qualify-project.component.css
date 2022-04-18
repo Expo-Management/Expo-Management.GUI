@@ -62,3 +62,30 @@ table {
 .example-full-width{
     margin-right: 2dp;
 }
+
+.btn-edit {
+    text-align: right;
+  }
+
+td.mat-cell.cdk-cell.cdk-column-name.mat-column-name.ng-star-inserted {
+    width: 30%;
+}
+
+th.mat-header-cell.cdk-header-cell.cdk-column-pts.mat-column-pts.ng-star-inserted {
+    text-align: center;
+    width: 35%;
+}
+
+td.mat-cell.cdk-cell.cdk-column-pts.mat-column-pts.ng-star-inserted {
+    text-align: center;
+}
+
+.space{
+    padding: 0 5rem;
+}
+
+.judge_info{
+    display: flex;
+    flex-direction: row;
+    align-items: left;
+}

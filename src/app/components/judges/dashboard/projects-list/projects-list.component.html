@@ -9,13 +9,13 @@
                     <mat-icon matSuffix>search</mat-icon>
                 </mat-form-field>
             </form>
-            <!--<mat-form-field appearance="fill">
-                <mat-label>State</mat-label>
+            <mat-form-field appearance="fill">
+                <mat-label>Filtrar por categorias</mat-label>
                 <mat-select>
-                  <mat-option>None</mat-option>
-                  <mat-option *ngFor="let state of states" [value]="state">{{state}}</mat-option>
+                  <mat-option>Seleccione una categoria</mat-option>
+                  <mat-option *ngFor="let cateogories of cateogories" [value]="cateogories">{{cateogories}}</mat-option>
                 </mat-select>
-              </mat-form-field>-->
+              </mat-form-field>
         </div>
     </div>
     <div class="users-content">

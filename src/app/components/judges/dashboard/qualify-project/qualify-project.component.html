@@ -1,0 +1,436 @@
+<!--<div class="flex-container">
+  <div class="top-options">
+      <h1>Rúbrica de calificación para el proyecto {{ projectName }}</h1>
+  </div>
+  <div>
+    <div class="users-content">
+      <table mat-table [dataSource]="datasourceTestTest" class="mat-elevation-z8">
+            <ng-container matColumnDef="aboutIt">
+                <th mat-header-cell *matHeaderCellDef> I.	Planteamiento del problema, cada aspecto vale 2 ptos. Total 10 pts. </th>
+                <td mat-cell *matCellDef="let element"> {{element.aboutIt}} </td>
+            </ng-container>
+            <ng-container [matColumnDef]="col.key" *ngFor="let col of columnsSchemaTest">
+              <th mat-header-cell *matHeaderCellDef>
+                {{ col.label }}
+              </th>
+              <td mat-cell *matCellDef="let element">
+                <div [ngSwitch]="col.type" *ngIf="!element.isEdit">
+                  <div class="btn-edit" *ngSwitchCase="'isEdit'">
+                    <button mat-button (click)="element.isEdit = !element.isEdit">Calificar indicador</button>
+                  </div>
+                  <span *ngSwitchDefault>
+                    {{ element[col.key] }}
+                  </span>
+                </div>
+                <div *ngIf="element.isEdit">
+                  <div class="btn-edit" *ngIf="col.key === 'isEdit'; else dataField">
+                    <button mat-button (click)="element.isEdit = !element.isEdit">Listo</button>
+                  </div>
+                  <ng-template #dataField>
+                    <mat-form-field>
+                      <input
+                        [type]="col.type"
+                        matInput
+                        [(ngModel)]="element[col.key]"
+                      />
+                    </mat-form-field>
+                  </ng-template>
+                </div>
+              </td>
+            </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+    </div>
+  </div>
+  <h3 class="space">SubTotal: {{ sub_total_1 }} pts.</h3>
+  <br>-->
+  
+  <!--<div>
+    <div class="users-content">
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+          <ng-container matColumnDef="name">
+              <th mat-header-cell *matHeaderCellDef> Nombre del Proyecto. </th>
+              <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+          </ng-container>
+          <ng-container matColumnDef="description">
+              <th mat-header-cell *matHeaderCellDef> Descripcion </th>
+              <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+          </ng-container>
+          <ng-container matColumnDef="groupLeader">
+              <th mat-header-cell *matHeaderCellDef> Lider del grupo </th>
+              <td mat-cell *matCellDef="let element"> {{element.groupLeader}} </td>
+          </ng-container>
+          <ng-container matColumnDef="category">
+              <th mat-header-cell *matHeaderCellDef> Categoria </th>
+              <td mat-cell *matCellDef="let element"> {{element.category}} </td>
+          </ng-container>
+          <ng-container matColumnDef="qualify">
+            <td mat-cell *matCellDef="let element">
+              <div [ngSwitch]="col.type" *ngIf="!element.isEdit">
+                <div class="btn-edit" *ngSwitchCase="'isEdit'">
+                  <button mat-button (click)="element.isEdit = !element.isEdit">Calificar indicador</button>
+                </div>
+                <span *ngSwitchDefault>
+                  {{ element[col.key] }}
+                </span>
+              </div>
+              <div *ngIf="element.isEdit">
+                <div class="btn-edit" *ngIf="col.key === 'isEdit'; else dataField">
+                  <button mat-button (click)="element.isEdit = !element.isEdit">Listo</button>
+                </div>
+                <ng-template #dataField>
+                  <mat-form-field>
+                    <input
+                      [type]="col.type"
+                      *ngIf="col.key != 'name'"
+                      matInput
+                      [(ngModel)]="element[col.key]"
+                    />
+                    <span *ngIf="col.key == 'name'"> {{element[col.key]}} </span>
+                  </mat-form-field>
+                </ng-template>
+              </div>
+            </ng-container>
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+  </div>
+  </div>-->
+
+<!--1-->
+<div class="flex-container">
+    <div class="top-options">
+        <h1>Rúbrica de calificación para el proyecto {{ projectName }}</h1>
+    </div>
+    <div>
+      <div class="users-content">
+        <table mat-table [dataSource]="dataSource">
+          <ng-container [matColumnDef]="col.key" *ngFor="let col of columnsSchema">
+            <th mat-header-cell *matHeaderCellDef>
+              {{ col.label }}
+            </th>
+            <td mat-cell *matCellDef="let element">
+              <div [ngSwitch]="col.type" *ngIf="!element.isEdit">
+                <div class="btn-edit" *ngSwitchCase="'isEdit'">
+                  <button mat-button (click)="element.isEdit = !element.isEdit">Calificar indicador</button>
+                </div>
+                <span *ngSwitchDefault>
+                  {{ element[col.key] }}
+                </span>
+              </div>
+              <div *ngIf="element.isEdit">
+                <div class="btn-edit" *ngIf="col.key === 'isEdit'; else dataField">
+                  <button mat-button (click)="element.isEdit = !element.isEdit">Listo</button>
+                </div>
+                <ng-template #dataField>
+                  <mat-form-field>
+                    <input
+                      [type]="col.type"
+                      matInput
+                      [(ngModel)]="element[col.key]"
+                    />
+                  </mat-form-field>
+                </ng-template>
+              </div>
+            </td>
+          </ng-container>
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        </table>
+      </div>
+    </div>
+    <h3 class="space">SubTotal: {{ sub_total_1 }} pts.</h3>
+    <br>
+    <!--2-->
+    <div>
+      <div class="users-content">
+        <table mat-table [dataSource]="dataSource2">
+          <ng-container [matColumnDef]="col.key" *ngFor="let col of columnsSchema2">
+            <th mat-header-cell *matHeaderCellDef>
+              {{ col.label }}
+            </th>
+            <td mat-cell *matCellDef="let element">
+              <div [ngSwitch]="col.type" *ngIf="!element.isEdit">
+                <div class="btn-edit" *ngSwitchCase="'isEdit'">
+                  <button mat-button (click)="element.isEdit = !element.isEdit">Calificar indicador</button>
+                </div>
+                <span *ngSwitchDefault>
+                  {{ element[col.key] }}
+                </span>
+              </div>
+              <div *ngIf="element.isEdit">
+                <div class="btn-edit" *ngIf="col.key === 'isEdit'; else dataField">
+                  <button mat-button (click)="element.isEdit = !element.isEdit">Listo</button>
+                </div>
+                <ng-template #dataField>
+                  <mat-form-field>
+                    <input
+                      [type]="col.type"
+                      matInput
+                      [(ngModel)]="element[col.key]"
+                    />
+                  </mat-form-field>
+                </ng-template>
+              </div>
+            </td>
+          </ng-container>
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        </table>
+      </div>
+    </div>
+    <h3 class="space">SubTotal: {{ sub_total_2 }} pts.</h3>
+    <br>
+<!--3-->
+    <div>
+      <div class="users-content">
+        <table mat-table [dataSource]="dataSource3">
+          <ng-container [matColumnDef]="col.key" *ngFor="let col of columnsSchema3">
+            <th mat-header-cell *matHeaderCellDef>
+              {{ col.label }}
+            </th>
+            <td mat-cell *matCellDef="let element">
+              <div [ngSwitch]="col.type" *ngIf="!element.isEdit">
+                <div class="btn-edit" *ngSwitchCase="'isEdit'">
+                  <button mat-button (click)="element.isEdit = !element.isEdit">Calificar indicador</button>
+                </div>
+                <span *ngSwitchDefault>
+                  {{ element[col.key] }}
+                </span>
+              </div>
+              <div *ngIf="element.isEdit">
+                <div class="btn-edit" *ngIf="col.key === 'isEdit'; else dataField">
+                  <button mat-button (click)="element.isEdit = !element.isEdit">Listo</button>
+                </div>
+                <ng-template #dataField>
+                  <mat-form-field>
+                    <input
+                      [type]="col.type"
+                      matInput
+                      [(ngModel)]="element[col.key]"
+                    />
+                  </mat-form-field>
+                </ng-template>
+              </div>
+            </td>
+          </ng-container>
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        </table>
+      </div>
+    </div>
+    <h3 class="space">SubTotal: {{ sub_total_3 }} pts.</h3>
+    <br>
+<!--4-->
+    <div>
+      <div class="users-content">
+        <table mat-table [dataSource]="dataSource4">
+          <ng-container [matColumnDef]="col.key" *ngFor="let col of columnsSchema4">
+            <th mat-header-cell *matHeaderCellDef>
+              {{ col.label }}
+            </th>
+            <td mat-cell *matCellDef="let element">
+              <div [ngSwitch]="col.type" *ngIf="!element.isEdit">
+                <div class="btn-edit" *ngSwitchCase="'isEdit'">
+                  <button mat-button (click)="element.isEdit = !element.isEdit">Calificar indicador</button>
+                </div>
+                <span *ngSwitchDefault>
+                  {{ element[col.key] }}
+                </span>
+              </div>
+              <div *ngIf="element.isEdit">
+                <div class="btn-edit" *ngIf="col.key === 'isEdit'; else dataField">
+                  <button mat-button (click)="element.isEdit = !element.isEdit">Listo</button>
+                </div>
+                <ng-template #dataField>
+                  <mat-form-field>
+                    <input
+                      [type]="col.type"
+                      matInput
+                      [(ngModel)]="element[col.key]"
+                    />
+                  </mat-form-field>
+                </ng-template>
+              </div>
+            </td>
+          </ng-container>
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        </table>
+      </div>
+    </div>
+    <h3 class="space">SubTotal: {{ sub_total_4 }} pts.</h3>
+    <br>
+<!--5-->
+    <div>
+      <div class="users-content">
+        <table mat-table [dataSource]="dataSource5">
+          <ng-container [matColumnDef]="col.key" *ngFor="let col of columnsSchema5">
+            <th mat-header-cell *matHeaderCellDef>
+              {{ col.label }}
+            </th>
+            <td mat-cell *matCellDef="let element">
+              <div [ngSwitch]="col.type" *ngIf="!element.isEdit">
+                <div class="btn-edit" *ngSwitchCase="'isEdit'">
+                  <button mat-button (click)="element.isEdit = !element.isEdit">Calificar indicador</button>
+                </div>
+                <span *ngSwitchDefault>
+                  {{ element[col.key] }}
+                </span>
+              </div>
+              <div *ngIf="element.isEdit">
+                <div class="btn-edit" *ngIf="col.key === 'isEdit'; else dataField">
+                  <button mat-button (click)="element.isEdit = !element.isEdit">Listo</button>
+                </div>
+                <ng-template #dataField>
+                  <mat-form-field>
+                    <input
+                      [type]="col.type"
+                      matInput
+                      [(ngModel)]="element[col.key]"
+                    />
+                  </mat-form-field>
+                </ng-template>
+              </div>
+            </td>
+          </ng-container>
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        </table>
+      </div>
+    </div>
+    <h3 class="space">SubTotal: {{ sub_total_5 }} pts.</h3>
+    <br>
+<!--6-->
+    <div>
+      <div class="users-content">
+        <table mat-table [dataSource]="dataSource6">
+          <ng-container [matColumnDef]="col.key" *ngFor="let col of columnsSchema6">
+            <th mat-header-cell *matHeaderCellDef>
+              {{ col.label }}
+            </th>
+            <td mat-cell *matCellDef="let element">
+              <div [ngSwitch]="col.type" *ngIf="!element.isEdit">
+                <div class="btn-edit" *ngSwitchCase="'isEdit'">
+                  <button mat-button (click)="element.isEdit = !element.isEdit">Calificar indicador</button>
+                </div>
+                <span *ngSwitchDefault>
+                  {{ element[col.key] }}
+                </span>
+              </div>
+              <div *ngIf="element.isEdit">
+                <div class="btn-edit" *ngIf="col.key === 'isEdit'; else dataField">
+                  <button mat-button (click)="element.isEdit = !element.isEdit">Listo</button>
+                </div>
+                <ng-template #dataField>
+                  <mat-form-field>
+                    <input
+                      [type]="col.type"
+                      matInput
+                      [(ngModel)]="element[col.key]"
+                    />
+                  </mat-form-field>
+                </ng-template>
+              </div>
+            </td>
+          </ng-container>
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        </table>
+      </div>
+    </div>
+    <h3 class="space">SubTotal: {{ sub_total_6 }} pts.</h3>
+    <br>
+<!--7-->
+    <div>
+      <div class="users-content">
+        <table mat-table [dataSource]="dataSource7">
+          <ng-container [matColumnDef]="col.key" *ngFor="let col of columnsSchema7">
+            <th mat-header-cell *matHeaderCellDef>
+              {{ col.label }}
+            </th>
+            <td mat-cell *matCellDef="let element">
+              <div [ngSwitch]="col.type" *ngIf="!element.isEdit">
+                <div class="btn-edit" *ngSwitchCase="'isEdit'">
+                  <button mat-button (click)="element.isEdit = !element.isEdit">Calificar indicador</button>
+                </div>
+                <span *ngSwitchDefault>
+                  {{ element[col.key] }}
+                </span>
+              </div>
+              <div *ngIf="element.isEdit">
+                <div class="btn-edit" *ngIf="col.key === 'isEdit'; else dataField">
+                  <button mat-button (click)="element.isEdit = !element.isEdit">Listo</button>
+                </div>
+                <ng-template #dataField>
+                  <mat-form-field>
+                    <input
+                      [type]="col.type"
+                      matInput
+                      [(ngModel)]="element[col.key]"
+                    />
+                  </mat-form-field>
+                </ng-template>
+              </div>
+            </td>
+          </ng-container>
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        </table>
+      </div>
+    </div>
+    <h3 class="space">SubTotal: {{ sub_total_7 }} pts.</h3>
+    <br>
+<!--8-->
+    <div>
+      <div class="users-content">
+        <table mat-table [dataSource]="dataSource8">
+          <ng-container [matColumnDef]="col.key" *ngFor="let col of columnsSchema8">
+            <th mat-header-cell *matHeaderCellDef>
+              {{ col.label }}
+            </th>
+            <td mat-cell *matCellDef="let element">
+              <div [ngSwitch]="col.type" *ngIf="!element.isEdit">
+                <div class="btn-edit" *ngSwitchCase="'isEdit'">
+                  <button mat-button (click)="element.isEdit = !element.isEdit">Calificar indicador</button>
+                </div>
+                <span *ngSwitchDefault>
+                  {{ element[col.key] }}
+                </span>
+              </div>
+              <div *ngIf="element.isEdit">
+                <div class="btn-edit" *ngIf="col.key === 'isEdit'; else dataField">
+                  <button mat-button (click)="element.isEdit = !element.isEdit">Listo</button>
+                </div>
+                <ng-template #dataField>
+                  <mat-form-field>
+                    <input
+                      [type]="col.type"
+                      matInput
+                      [(ngModel)]="element[col.key]"
+                    />
+                  </mat-form-field>
+                </ng-template>
+              </div>
+            </td>
+          </ng-container>
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        </table>
+      </div>
+    </div>
+    <h3 class="space">SubTotal: {{ sub_total_8 }} pts.</h3>
+    <br>
+
+    <mat-divider horizontal style="height:3%; margin: 0 3%;"></mat-divider>
+
+    <div class="judge_info">
+      <h3 class="space">Nombre: {{ judge_name }}</h3>
+      <h3 class="space">Apellidos: {{ judge_last_1 }} {{judge_last_2}}</h3>
+      <h3 class="space">Fecha de revision: {{ date }}</h3>
+      <button mat-raised-button class="add-button">Calificar proyecto</button>
+    </div>
+
+    <mat-divider horizontal style="height:5%; margin: 0 3%;"></mat-divider>
+</div>

@@ -1,0 +1,38 @@
+<div class="content">
+    <div class="left-side">
+        <div class="section-title">
+            <mat-icon>group</mat-icon>
+            <div class="title">
+                <h2>Detalles del proyecto</h2>
+            </div>
+        </div>
+        <div class="details-content">
+            <h3 class="space">Nombre del proyecto: {{ project_name }}</h3>
+            <h3 class="space">Numero del grupo: {{ group_number }}</h3>
+            <h3 class="space">Descripcion del proyecto: {{ project_description }}</h3>
+            <h3 class="space">Miembros del grupo: </h3>
+            <div class="members" *ngFor="let group_member of group_members">
+                <h3>{{ group_member }}</h3>
+            </div>
+            <h3 class="space">Categoria: {{ category }}</h3>
+            <button class="buttonDescargar" mat-raised-button>Descargar documentación</button>
+        </div>
+    </div>
+    <mat-divider vertical style="height:85%; margin: 0 5%;"></mat-divider>
+    <div class="right-side">
+        <div class="section-title">
+            <mat-icon>check</mat-icon>
+            <div class="title">
+                <h2>Calificar Proyecto</h2>
+            </div>
+        </div>
+        <div class="details-content">
+            <h3 class="space">Seleccione alguna de las 3 opciones a continuación: </h3>
+            <div class="button-group space">
+                <button class="button" mat-raised-button>Calificar proyecto</button>
+                <button class="button" mat-raised-button (click)="openRecomendation()">Dar recomendación</button>
+                <button class="button" mat-raised-button (click)="openEmails()" >Contactar estudiantes</button>
+            </div>
+        </div>
+    </div>
+</div>
