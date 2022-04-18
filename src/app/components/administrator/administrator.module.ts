@@ -30,6 +30,7 @@ import { FlatpickrModule } from 'angularx-flatpickr';
 //dialogs
 import { DeleteDialogComponent } from './dashboard/delete-dialog/delete-dialog.component';
 import { AddEventsDialogComponent } from './dashboard/add-events-dialog/add-events-dialog.component';
+
 @NgModule({
   declarations: [
     DashboardComponent,
