@@ -1,4 +1,5 @@
 export interface CurrentProyectProposals {
     name: string, 
-    description: string
+    description: string,
+    grade: string
 }
