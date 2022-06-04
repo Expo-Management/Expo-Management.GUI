@@ -2,18 +2,10 @@
     <div class="image-container">
     </div>
     <div class="form-container">
-        <div class="form-header" [style.height]="show_register ? '30%': '40%'">
+        <div class="form-header">
             <h1>{{ title }}</h1>
-            <div class="form-header-options">
-                <h3 id="sign-up-link">Sign Up</h3>
-                <h3 id="sign-in-link">Sign In</h3>
-                <span id="hint-message"></span>
-            </div>
         </div>
         <div class="container-flex ">
-            <div class="sign-up-container " *ngIf="show_register ">
-                <app-register></app-register>
-            </div>
             <div class="sign-in-container " *ngIf="!show_register ">
                 <app-login></app-login>
             </div>
