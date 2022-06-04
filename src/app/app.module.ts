@@ -12,6 +12,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CommonModule } from '@angular/common';
 import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { CustomPopUpComponent } from './shared/components/custom-pop-up/custom-pop-up.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { CustomPopUpComponent } from './shared/components/custom-pop-up/custom-p
     MatDialogModule,
     CommonModule,
     MaterialsModule,
+    HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     CalendarModule.forRoot({ provide: DateAdapter, useFactory: adapterFactory }),
