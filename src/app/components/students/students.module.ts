@@ -18,6 +18,7 @@ import { ProjectGroupComponent } from './dashboard/project-group/project-group.c
 import { SettingsComponent } from './dashboard/settings/settings.component';
 import { DocumentationComponent } from './dashboard/documentation/documentation.component';
 import { CurrentDocumentationComponent } from './dashboard/current-documentation/current-documentation.component';
+import { LoggedInGuard } from 'src/app/shared/guards/logged-in.guard';
 
 
 @NgModule({
@@ -58,8 +59,11 @@ import { CurrentDocumentationComponent } from './dashboard/current-documentation
           { path: 'fair-documents', component: DocumentationComponent },
           { path: 'saved-documents', component: CurrentDocumentationComponent },
           { path: 'settings', component: SettingsComponent },
-          { path: '**', component: ProjectDetailsComponent }
-        ]
+          { path: '**', component: ProjectDetailsComponent },
+          { path: '', redirectTo: 'home', pathMatch: 'full' },
+          { path: '**', redirectTo: 'home', pathMatch: 'full' }
+        ],
+        // canActivate: [ LoggedInGuard ]
       },
     ]),
   ]

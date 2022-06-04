@@ -15,6 +15,7 @@ import { QualifyProjectComponent } from './dashboard/qualify-project/qualify-pro
 import { RecomendationsPopupComponent } from './dashboard/recomendations-popup/recomendations-popup.component';
 import { ListComponent } from './dashboard/list/list.component';
 import { SettingsComponent } from './dashboard/settings/settings.component';
+import { LoggedInGuard } from 'src/app/shared/guards/logged-in.guard';
 
 
 @NgModule({
@@ -45,8 +46,8 @@ import { SettingsComponent } from './dashboard/settings/settings.component';
         path: '', 
         component: JudgesComponent,
         children: [
-          { path: 'list-project', component: ProjectsListComponent },
           { path: 'home', component: ProjectsListComponent },
+          { path: 'list-project', component: ProjectsListComponent },
           { path: 'project-details/:project_id', component: ProjectToQualifyDetailsComponent },
           { path: 'project-qualify/:project_id', component: QualifyProjectComponent },
           { path: 'list', component: ListComponent },
@@ -55,7 +56,11 @@ import { SettingsComponent } from './dashboard/settings/settings.component';
           /*{ path: 'home', component: ContentComponent },
           { path: 'documentation', component: FairDocumentsComponent },
           { path: '**', component: ContentComponent }*/
-        ]
+
+          { path: '', redirectTo: 'home', pathMatch: 'full' },
+          { path: '**', redirectTo: 'home', pathMatch: 'full' }
+        ],
+        // canActivate: [ LoggedInGuard ]
       },
     ]),
   ],

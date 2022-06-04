@@ -3,19 +3,17 @@ import { CommonModule } from '@angular/common';
 import { AuthComponent } from './auth/auth.component';
 import { RouterModule } from '@angular/router';
 import { LoginComponent } from './auth/login/login.component';
-import { RegisterComponent } from './auth/register/register.component';
-import { SelectUserComponent } from './auth/select-user/select-user.component';
 import { MaterialsModule } from 'src/app/shared/materials/materials.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { AuthGuard } from 'src/app/shared/guards/auth.guard';
+import { LoggedInGuard } from 'src/app/shared/guards/logged-in.guard';
 
 
 @NgModule({
   declarations: [
     AuthComponent,
     LoginComponent,
-    RegisterComponent,
-    SelectUserComponent
   ],
   imports: [
     ReactiveFormsModule,
@@ -29,8 +27,7 @@ import { HttpClientModule } from '@angular/common/http';
         component: AuthComponent,
         children: [
           { path: 'login', component: LoginComponent },
-          { path: 'register', component: RegisterComponent },
-        ]
+        ],
       },
     ]),
   ]

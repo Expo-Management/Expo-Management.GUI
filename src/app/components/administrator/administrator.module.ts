@@ -32,6 +32,7 @@ import { EditStudentsComponent } from './dashboard/edit-users/edit-students/edit
 import { EditProfessorsComponent } from './dashboard/edit-users/edit-professors/edit-professors.component';
 import { AddEventsDialogComponent } from './dashboard/add-events-dialog/add-events-dialog.component';
 import { EditJudgesComponent } from './dashboard/edit-users/edit-judges/edit-judges.component';
+import { LoggedInGuard } from 'src/app/shared/guards/logged-in.guard';
 
 @NgModule({
   declarations: [
@@ -71,7 +72,7 @@ import { EditJudgesComponent } from './dashboard/edit-users/edit-judges/edit-jud
         component: AdministratorComponent,
         children: [
           //fair stuff
-          { path: '', component: ContentComponent },
+          { path: 'home', component: ContentComponent },
           { path: 'fair-documents', component: FairDocumentsComponent },
           { path: 'fair-calendar', component: FairCalendarComponent },
           //manage users
@@ -86,7 +87,10 @@ import { EditJudgesComponent } from './dashboard/edit-users/edit-judges/edit-jud
           { path: 'edit-students', component: EditStudentsComponent },
           { path: 'edit-judges', component: EditJudgesComponent },
           { path: 'edit-professors', component: EditProfessorsComponent },
-          { path: 'settings', component: SettingsComponent }
+          { path: 'settings', component: SettingsComponent },
+          
+          { path: '', redirectTo: 'home', pathMatch: 'full' },
+          { path: '**', redirectTo: 'home', pathMatch: 'full' }
         ]
       },
     ]),
