@@ -1,19 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { CustomPopUpService } from 'src/app/shared/services/custom-pop-up.service';
+import { JudgesService } from 'src/app/shared/services/judges.service';
 
 export interface Judges {
+  id: string
   name: string;
-  last: string;
+  lastname: string;
   email: string;
   phone: string;
   institution: string;
 }
-
-const ELEMENT_DATA: Judges[] = [
-  { name: 'Andrés', last: 'Bolaños', email: 'andres.bolaños@gmail.com', phone: '888-888-888', institution: 'Colegio Técnico Profesional Mario Quirós Sasso'},
-  { name: 'Jafet', last: 'Mora Ugalde', email: 'jafet.mora@gmail.com', phone: '888-888-888', institution: 'vacio'},
- 
-];
 
 @Component({
   selector: 'app-manage-judges',
@@ -23,14 +19,25 @@ const ELEMENT_DATA: Judges[] = [
 
 
 export class ManageJudgesComponent implements OnInit {
-  displayedColumns: string[] = ['name', 'last', 'email', 'phone', 'institution', 'actions'];
-  dataSource = ELEMENT_DATA;
+  displayedColumns : string[] = [];
+  dataSource : any[] = [];
 
-  constructor(private customPopUpService: CustomPopUpService) {}
+  constructor(
+    private customPopUpService: CustomPopUpService,
+    private judgesServices: JudgesService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.displayedColumns = ['name', 'lastname', 'email', 'phoneNumber', 'institution', 'actions'];
 
-  dialogDelete(): void{ //not working
+    this.judgesServices.getJudges().subscribe(
+      data => {
+        console.log(data);
+        this.dataSource = data;
+      }
+    );
+  }
+
+  dialogDelete(email: string): void{
     this.openCustomPopUp("¿Estás seguro de borrar el usuario?") ;
   }
 
@@ -40,6 +47,7 @@ export class ManageJudgesComponent implements OnInit {
       message,
       undefined
       );
+    console.log('here')
   }
   
 }
