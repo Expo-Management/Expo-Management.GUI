@@ -85,7 +85,7 @@ import { LoggedInGuard } from 'src/app/shared/guards/logged-in.guard';
           { path: 'add-professors', component: AddProfessorsComponent },
           //edit users
           { path: 'edit-students', component: EditStudentsComponent },
-          { path: 'edit-judges', component: EditJudgesComponent },
+          { path: 'edit-judges/:judge_email', component: EditJudgesComponent },
           { path: 'edit-professors', component: EditProfessorsComponent },
           { path: 'settings', component: SettingsComponent },
           
