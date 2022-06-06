@@ -14,6 +14,29 @@ const httpOptions = {
 export class JudgesService {
   constructor(private httpClient: HttpClient) {}
 
+  addJudge(
+    userId: string,
+    username: string,
+    name: string,
+    last: string,
+    email: string,
+    phone: string,
+    password: string
+  ) {
+    return this.httpClient.post(
+      '/api/Authenticate/register-judge', 
+      {
+        id: userId,
+        username: username,
+        name: name,
+        lastname: last,
+        email: email,
+        phone: phone,
+        password: password
+      }, 
+      httpOptions);
+  }
+
   getJudges(): Observable<any> {
     return this.httpClient.get('/api/Users/judges', httpOptions);
   }
@@ -29,7 +52,7 @@ export class JudgesService {
     username: string,
     userId: string,
     phone: string
-  ){
+  ): Observable<any> {
     return this.httpClient.put(
       '/api/Users/judge', 
       {
@@ -41,5 +64,9 @@ export class JudgesService {
         phone: phone
       }, 
       httpOptions)
+  }
+
+  deleteJudge(email: string): Observable<any> {
+    return this.httpClient.delete(`/api/Users/judge?email=${email}`, httpOptions);
   }
 }
