@@ -31,25 +31,48 @@ export class ManageJudgesComponent implements OnInit {
 
     this.judgesServices.getJudges().subscribe(
       data => {
-        console.log(data);
         this.dataSource = data;
+      } ,
+      err => {
+        if (err.status === 404) {
+          this.openCustomPopUp('There are no judges registered.');
+        } else {
+          this.openCustomPopUp('There was an internal problem, try again later.');
+        }
       }
     );
   }
 
   dialogDelete(email: string): void{
-    this.openCustomPopUp("¿Estás seguro de borrar el usuario?") ;
+    this.openCustomPopUp("¿Estás seguro de borrar el usuario?").then(
+      (result: boolean) => {
+        this.judgesServices.deleteJudge(email).subscribe(
+          data => {
+            this.judgeDeleted();
+          },
+          err => {
+            if (err.status === 200) {
+              this.judgeDeleted();
+            } else {
+              this.openCustomPopUp('There was an internal problem, try again later.');
+            }
+          }
+        );
+      });
   }
 
-  public openCustomPopUp(message: string) {
-    this.customPopUpService.confirm(
+  private judgeDeleted() {
+    this.openCustomPopUp('Judge deleted!');
+    window.location.reload();
+  }
+
+  public openCustomPopUp(message: string): Promise<boolean> {
+    return this.customPopUpService.confirm(
       'Configuracion de jueces', 
       message,
       undefined
       );
-    console.log('here')
   }
-  
 }
 
 
