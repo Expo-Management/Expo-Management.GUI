@@ -2,55 +2,43 @@
     <div class="top-options">
         <h1>Agregar Juez</h1>
         <h3>Crea una cuenta para un nuevo juez</h3>
-      </div>
-      <form class="add-form">
+    </div>
+    <form class="add-form" [formGroup]="createJudgeForm" (ngSubmit)="onSubmit()">
         <mat-form-field class="flex-container" appearance="fill">
-        <!--for name-->
-          <mat-label>Nombre del juez</mat-label>
-          <input type="name" matInput [formControl]="NameFormControl" [errorStateMatcher]="matcher">
-          <mat-error *ngIf=" NameFormControl.hasError('required')">
-            <strong>Por favor digita nombre del juez</strong>
-          </mat-error>
+            <!--for name-->
+            <mat-label>Nombre del juez</mat-label>
+            <input type="text" matInput formControlName="NameFormControl">
         </mat-form-field>
         <!--for last-->
-        <mat-form-field class="flex-container" appearance="fill"> 
-          <mat-label>Apellidos del juez</mat-label>
-          <input type="last" matInput [formControl]="LastFormControl" [errorStateMatcher]="matcher">
-          <mat-error *ngIf=" LastFormControl.hasError('required')">
-            <strong>Por favor digita los apellidos del juez</strong>
-          </mat-error>
+        <mat-form-field class="flex-container" appearance="fill">
+            <mat-label>Apellidos del juez</mat-label>
+            <input type="text" matInput formControlName="LastFormControl">
         </mat-form-field>
-          <!--for email-->
-          <mat-form-field class="flex-container" appearance="fill">
+        <!--for username-->
+        <mat-form-field class="flex-container" appearance="fill">
+            <mat-label>Nombre de usuario del juez</mat-label>
+            <input type="text" matInput formControlName="UsernameFormControl">
+        </mat-form-field>
+        <!--for email-->
+        <mat-form-field class="flex-container" appearance="fill">
             <mat-label>Correo del juez</mat-label>
-          <input type="email" matInput [formControl]="EmailFormControl" [errorStateMatcher]="matcher"
-                 placeholder="Ej. smith@gmail.com">
-          <mat-error *ngIf="EmailFormControl.hasError('email') && !EmailFormControl.hasError('required')">
-            Por favor digita un correo valido
-          </mat-error>
-           <mat-error *ngIf="EmailFormControl.hasError('required')">
-            <strong>Por favor digita el correo del juez</strong>
-          </mat-error>
-          </mat-form-field>
-          <!--for password-->
-          <mat-form-field class="flex-container" appearance="fill">
-           <mat-label>Contraseña del juez</mat-label>
-          <input type="last" matInput [formControl]="PasswordFormControl" [errorStateMatcher]="matcher">
-          <mat-error *ngIf=" PasswordFormControl.hasError('required')">
-            <strong>Por favor digita la contraseña temporal del juez</strong>
-          </mat-error>
-          </mat-form-field>
-          <!--for id-->
-          <mat-form-field class="flex-container" appearance="fill">
-           <mat-label>Cédula del juez</mat-label>
-          <input type="id" matInput [formControl]="IdFormControl" [errorStateMatcher]="matcher"
-                 placeholder="XX-XXXX-XXXX">
-          <mat-error *ngIf="IdFormControl.hasError('required')">
-             <strong>Por favor digita la cédula del juez</strong>
-          </mat-error>
-          </mat-form-field>
-      </form>
-      <div >
-          <button mat-raised-button class="add-button">Crear Juez</button>
-      </div>
-  </div>
+            <input type="email" matInput formControlName="EmailFormControl" placeholder="Ej. smith@gmail.com">
+        </mat-form-field>
+        <!--for phone-->
+        <mat-form-field class="flex-container" appearance="fill">
+            <mat-label>Telefono del juez</mat-label>
+            <input type="phone" matInput formControlName="PhoneFormControl" placeholder="Ej. smith@gmail.com">
+        </mat-form-field>
+        <!--for password-->
+        <mat-form-field class="flex-container" appearance="fill">
+            <mat-label>Contraseña del juez</mat-label>
+            <input type="password" matInput formControlName="PasswordFormControl">
+        </mat-form-field>
+        <!--for id-->
+        <mat-form-field class="flex-container" appearance="fill">
+            <mat-label>Cédula del juez</mat-label>
+            <input type="text" matInput formControlName="IdFormControl" placeholder="XX-XXXX-XXXX">
+        </mat-form-field>
+        <button mat-raised-button id="submit-button" class="add-button">Crear Juez</button>
+    </form>
+</div>
