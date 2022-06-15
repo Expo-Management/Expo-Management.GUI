@@ -30,11 +30,11 @@
                 <th mat-header-cell *matHeaderCellDef> Telefono </th>
                 <td mat-cell *matCellDef="let element"> {{element.phone}} </td>
             </ng-container>
-            
+
             <!--Buttons-->
             <ng-container matColumnDef="actions">
                 <th mat-header-cell *matHeaderCellDef></th>
-                <td mat-cell *matCellDef="let mat-icon">
+                <td mat-cell *matCellDef="let element">
                     <mat-icon class="btn-edit" [routerLink]="['/administrator/edit-professors', element.email]">border_color</mat-icon>
                     <mat-icon (click)="dialogDelete(element.email)" class="btn-delete">clear</mat-icon>
                 </td>

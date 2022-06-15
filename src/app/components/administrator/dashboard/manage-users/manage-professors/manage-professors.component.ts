@@ -69,8 +69,8 @@ export class ManageProfessorsComponent implements OnInit {
     window.location.reload();
   }
 
-  public openCustomPopUp(message: string) {
-    this.customPopUpService.confirm(
+  public openCustomPopUp(message: string): Promise<boolean> {
+    return this.customPopUpService.confirm(
       'Profesores', 
       message,
       undefined
