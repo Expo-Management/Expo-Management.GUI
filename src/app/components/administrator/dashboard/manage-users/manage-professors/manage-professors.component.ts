@@ -10,12 +10,6 @@ export interface Professors {
   phone: string;
 }
 
-/*const ELEMENT_DATA: Professors[] = [
-  { name: 'Andrés', last: 'Bolaños', email: 'andres.bolaños@gmail.com', phone: '888-888-888'},
-  { name: 'Jafet', last: 'Mora Ugalde', email: 'jafet.mora@gmail.com', phone: '888-888-888'},
- 
-];*/
-
 @Component({
   selector: 'app-manage-professors',
   templateUrl: './manage-professors.component.html',
@@ -76,24 +70,5 @@ export class ManageProfessorsComponent implements OnInit {
       undefined
       );
   }
-
-/*export class ManageProfessorsComponent implements OnInit {
-  displayedColumns: string[] = ['name', 'last', 'email', 'phone', 'actions'];
-  dataSource = ELEMENT_DATA;
-
-  constructor(private customPopUpService: CustomPopUpService) {}
-
-  
-  dialogDelete(): void{ //not working
-    this.openCustomPopUp("¿Estás seguro de borrar el usuario?") ;
-  }
-
-  public openCustomPopUp(message: string) {
-    this.customPopUpService.confirm(
-      'Configuracion de profesores', 
-      message,
-      undefined
-      );
-  }*/
   
 }
