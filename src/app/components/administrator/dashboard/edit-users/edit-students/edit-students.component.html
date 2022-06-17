@@ -2,35 +2,33 @@
     <div class="top-options">
         <h1>Editar Estudiante</h1>
         <h3>Edita los datos necesarios del estudiante seleccionado</h3>
-      </div>
-      <form class="add-form">
-        <mat-form-field class="flex-container" appearance="fill">
-        <!--for name-->
-          <mat-label>Nombre del estudiante</mat-label>
-          <input type="name" matInput formControlName="NameFormControl">
+    </div>
+    <form class="add-form" [formGroup]="studentForm" (ngSubmit)="onSubmit()">
+        <mat-form-field class="flex-container" appearance="outline">
+            <!--for name-->
+            <mat-label>Nombre del estudiante</mat-label>
+            <input type="name" matInput formControlName="NameFormControl">
         </mat-form-field>
         <!--for last-->
-        <mat-form-field class="flex-container" appearance="fill"> 
-          <mat-label>Apellidos del estudiante</mat-label>
-          <input type="last" matInput formControlName="LastFormControl">
+        <mat-form-field class="flex-container" appearance="outline">
+            <mat-label>Apellidos del estudiante</mat-label>
+            <input type="last" matInput formControlName="LastFormControl">
         </mat-form-field>
-          <!--for email-->
-          <mat-form-field class="flex-container" appearance="fill">
+        <!--for email-->
+        <mat-form-field class="flex-container" appearance="outline">
             <mat-label>Correo del estudiante</mat-label>
-          <input type="email" matInput formControlName="EmailFormControl" placeholder="Ej. smith@gmail.com">
-          </mat-form-field>
-          <!--for username-->
-        <mat-form-field class="flex-container" appearance="fill">
-          <mat-label>Nombre de usuario del estudiante</mat-label>
-          <input type="text" matInput formControlName="UsernameFormControl">
-      </mat-form-field>
-          <!--for id-->
-          <mat-form-field class="flex-container" appearance="fill">
-           <mat-label>Cédula del estudiante</mat-label>
-          <input type="id" matInput formControlName="IdFormControl" placeholder="XX-XXXX-XXXX">
-          </mat-form-field>
-      </form>
-      <div >
-          <button mat-raised-button id="sumbit-button" class="add-button">Editar Estudiante</button>
-      </div>
-  </div>
+            <input type="email" matInput formControlName="EmailFormControl" placeholder="Ej. smith@gmail.com">
+        </mat-form-field>
+        <!--for username-->
+        <mat-form-field class="flex-container" appearance="outline">
+            <mat-label>Nombre de usuario del estudiante</mat-label>
+            <input type="text" matInput formControlName="UsernameFormControl">
+        </mat-form-field>
+        <!--for id-->
+        <mat-form-field class="flex-container" appearance="outline">
+            <mat-label>Cédula del estudiante</mat-label>
+            <input type="id" matInput formControlName="IdFormControl" placeholder="XX-XXXX-XXXX">
+        </mat-form-field>
+        <button mat-raised-button id="sumbit-button" class="add-button">Editar Estudiante</button>
+    </form>
+</div>

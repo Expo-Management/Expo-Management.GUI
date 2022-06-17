@@ -2,13 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { CustomPopUpService } from 'src/app/shared/services/custom-pop-up.service';
 import { AdminService } from 'src/app/shared/services/admin.service';
 
-export interface Professors {
-  id: string;
-  name: string;
-  last: string;
-  email: string;
-  phone: string;
-}
 
 @Component({
   selector: 'app-manage-professors',

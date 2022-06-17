@@ -1,14 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
-import {ErrorStateMatcher} from '@angular/material/core';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+import { CustomPopUpService } from 'src/app/shared/services/custom-pop-up.service';
+import { StudentsService } from 'src/app/shared/services/students.service';
 
-//error validations when sumitted
-export class MyErrorStateMatcher implements ErrorStateMatcher {
-  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
-    const isSubmitted = form && form.submitted;
-    return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
-  }
-}
 
 @Component({
   selector: 'app-add-students',
@@ -16,16 +10,81 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   styleUrls: ['./add-students.component.css']
 })
 export class AddStudentsComponent implements OnInit {
-  NameFormControl = new FormControl('', [Validators.required, Validators.required]);
-  LastFormControl = new FormControl('', [Validators.required, Validators.required]);
-  EmailFormControl = new FormControl('', [Validators.required, Validators.email]);
-  PasswordFormControl = new FormControl('', [Validators.required, Validators.required]);
-  IdFormControl = new FormControl('', [Validators.required, Validators.required]);
+  createStudentForm = new FormGroup({
+    NameFormControl: new FormControl('', {
+      validators: [
+        Validators.required
+      ]
+    }),
+    LastFormControl: new FormControl('', {
+      validators: [
+        Validators.required
+      ]
+    }),
+    UsernameFormControl: new FormControl('', {
+      validators: [
+        Validators.required
+      ]
+    }),
+    PhoneFormControl: new FormControl('', {
+      validators: [
+        Validators.required
+      ]
+    }),
+    EmailFormControl: new FormControl('', {
+      validators: [
+        Validators.required
+      ]
+    }),
+    PasswordFormControl: new FormControl('', {
+      validators: [
+        Validators.required
+      ]
+    }),
+    IdFormControl: new FormControl('', {
+      validators: [
+        Validators.required
+      ]
+    }),
+  })
+  
+  constructor(
+    private studentService: StudentsService,
+    private customPopUpService: CustomPopUpService
+  ) { }
 
-  matcher = new MyErrorStateMatcher();
-  constructor() { }
+  openCustomPopUp(message: string) {
+    this.customPopUpService.confirm(
+      'Judge creation', 
+      message,
+      'administrator/manage-students'
+      );
+  }
 
   ngOnInit(): void {
+  }
+
+  onSubmit() {
+    this.studentService.addStudent(
+      this.createStudentForm.controls['IdFormControl'].value,
+      this.createStudentForm.controls['UsernameFormControl'].value,
+      this.createStudentForm.controls['NameFormControl'].value,
+      this.createStudentForm.controls['LastFormControl'].value,
+      this.createStudentForm.controls['EmailFormControl'].value,
+      this.createStudentForm.controls['PhoneFormControl'].value,
+      this.createStudentForm.controls['PasswordFormControl'].value,
+    ).subscribe(
+      data => {
+        this.openCustomPopUp('Estudiante creado!');
+      },
+      err => {
+        if (err.status === 200) {
+          this.openCustomPopUp('Estudiante creado!');
+        } else {
+          this.openCustomPopUp('Hubo un problema creando el usuario, intente mas tarde!');
+        }
+      }
+    );
   }
 
 }

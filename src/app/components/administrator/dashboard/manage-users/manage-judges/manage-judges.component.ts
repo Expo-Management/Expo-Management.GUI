@@ -2,14 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { CustomPopUpService } from 'src/app/shared/services/custom-pop-up.service';
 import { JudgesService } from 'src/app/shared/services/judges.service';
 
-export interface Judges {
-  id: string
-  name: string;
-  lastname: string;
-  email: string;
-  phone: string;
-  institution: string;
-}
 
 @Component({
   selector: 'app-manage-judges',

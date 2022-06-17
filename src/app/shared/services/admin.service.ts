@@ -13,7 +13,7 @@ export class AdminService {
 
   constructor(private httpClient: HttpClient) {}
 
-  addJudge(
+  addProfesor(
     userId: string,
     username: string,
     name: string,

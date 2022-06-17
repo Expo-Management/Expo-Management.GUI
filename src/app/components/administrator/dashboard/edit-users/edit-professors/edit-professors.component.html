@@ -6,35 +6,30 @@
     <form class="add-form" [formGroup]="adminForm" (ngSubmit)="onSubmit()">
 
         <!--for name-->
-        <mat-form-field class="flex-container" appearance="fill">
+        <mat-form-field class="flex-container" appearance="outline">
             <mat-label>Nombre del profesor</mat-label>
-            <input type="name" matInput formControlName="LastFormControl">
+            <input type="name" matInput formControlName="NameFormControl">
         </mat-form-field>
         <!--for last-->
-        <mat-form-field class="flex-container" appearance="fill">
+        <mat-form-field class="flex-container" appearance="outline">
             <mat-label>Apellidos del profesor</mat-label>
             <input type="last" matInput formControlName="LastFormControl">
         </mat-form-field>
         <!--for email-->
-        <mat-form-field class="flex-container" appearance="fill">
+        <mat-form-field class="flex-container" appearance="outline">
             <mat-label>Correo del profesor</mat-label>
             <input type="email" matInput formControlName="EmailFormControl" placeholder="Ej. smith@gmail.com">
         </mat-form-field>
         <!--for username-->
-        <mat-form-field class="flex-container" appearance="fill">
+        <mat-form-field class="flex-container" appearance="outline">
             <mat-label>Nombre de usuario del profesor</mat-label>
             <input type="name" matInput formControlName="UsernameFormControl">
         </mat-form-field>
         <!--for id-->
-        <mat-form-field class="flex-container" appearance="fill">
+        <mat-form-field class="flex-container" appearance="outline">
             <mat-label>Cédula del profesor</mat-label>
             <input type="id" matInput formControlName="IdFormControl" placeholder="XX-XXXX-XXXX">
         </mat-form-field>
-        <!--for phone number
-        <mat-form-field class="flex-container" appearance="fill">
-          <mat-label>Numero de teléfono del profesor</mat-label>
-          <input type="last" matInput formControl="PhoneNumberFormControl" placeholder="88888888">
-        </mat-form-field>-->
         <button mat-raised-button id="sumbit-button" class="add-button">Editar Profesor</button>
     </form>
 </div>
