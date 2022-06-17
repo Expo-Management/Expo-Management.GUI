@@ -33,7 +33,7 @@ export class ManageStudentsComponent implements OnInit {
     private studentsServices: StudentsService) {}
 
   ngOnInit(): void {
-    this.displayedColumns = ['name', 'lastname', 'email', 'phoneNumber', 'proyecto', 'actions'];
+    this.displayedColumns = ['name', 'lastname', 'email', 'phoneNumber', 'actions'];
 
     this.studentsServices.getStudents().subscribe(
       data => {
