@@ -20,25 +20,22 @@
 }
 
 .add-form {
-    margin-top: 2rem;  
-    margin-bottom: 2rem; 
+    margin-top: 1rem;
+    margin-bottom: 2rem;
     min-width: 100px;
     max-width: 550px;
     width: 100%;
     padding: 0 2rem;
-  }
+}
 
-  .add-button {
+.add-button {
     color: #FFFFFF;
     background-color: #354F52;
     height: 2.5rem;
-    margin-left: 2rem;
-    margin-bottom: 1rem;
- 
+    margin: 1rem 0;
 }
- 
+
 ::-webkit-scrollbar {
     width: 0;
     background: transparent;
 }
- 
