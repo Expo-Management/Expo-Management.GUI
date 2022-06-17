@@ -58,15 +58,17 @@ export class LoginComponent implements OnInit {
         },
         err => {
           console.log(err)
-          if (err.status === 404) {
+          if (err.status == 401) {
+            this.errorMessage = 'User does not exists, contact the administrator to create an account!';
+            this.isLoginFailed = true;
+          } else if (err.status === 404) {
             this.errorMessage = 'No server found!';
-            this.openCustomPopUp('No server found!');
             this.isLoginFailed = true;
           } else {
-            this.errorMessage = err.error.message;
-            this.openCustomPopUp(this.errorMessage);
+            this.errorMessage = 'There is a problem with the credentials provided, contact administration';
             this.isLoginFailed = true;
           }
+          this.openCustomPopUp(this.errorMessage);
         }
       );
   }
