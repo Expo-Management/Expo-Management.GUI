@@ -11,7 +11,7 @@ import { JudgesService } from 'src/app/shared/services/judges.service';
 
 
 export class ManageJudgesComponent implements OnInit {
-  displayedColumns : string[] = [];
+  displayedColumns : string[] = ['name', 'lastname', 'email', 'phoneNumber', 'institution', 'actions'];
   dataSource : any[] = [];
 
   constructor(
@@ -19,8 +19,6 @@ export class ManageJudgesComponent implements OnInit {
     private judgesServices: JudgesService) {}
 
   ngOnInit(): void {
-    this.displayedColumns = ['name', 'lastname', 'email', 'phoneNumber', 'institution', 'actions'];
-
     this.judgesServices.getJudges().subscribe(
       data => {
         this.dataSource = data;
