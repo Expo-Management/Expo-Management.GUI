@@ -9,17 +9,17 @@ export class SideBarComponent implements OnInit {
 
   user_options = [
     { 
-      icon: 'account_circle',
+      icon: 'supervised_user_circle',
       text: 'Profesores',
       link: 'manage-professors',
     },
     { 
-      icon: 'account_circle',
+      icon: 'assignment_ind',
       text: 'Jueces',
       link: 'manage-judges',
     },
     { 
-      icon: 'account_circle',
+      icon: 'school',
       text: 'Estudiantes',
       link: 'manage-students',
     },
@@ -35,6 +35,19 @@ export class SideBarComponent implements OnInit {
       icon: 'calendar_today',
       text: 'Calendario de la feria',
       link: 'fair-calendar',
+    },
+  ]
+
+  general_options = [
+    { 
+      icon: 'home',
+      text: 'Principal',
+      link: 'content',
+    },
+    { 
+      icon: 'info',
+      text: 'Bitacora del sistema',
+      link: 'logs',
     }
   ]
 

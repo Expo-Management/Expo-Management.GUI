@@ -5,7 +5,7 @@
             <form class="example-form">
                 <mat-form-field class="example-full-width" appearance="outline">
                     <mat-label>Buscar estudiantes</mat-label>
-                    <input type="text" matInput placeholder="Ingrese nombre del estudiante">
+                    <input type="text" matInput (keyup)="applyFilter($event)" placeholder="Ingrese nombre del estudiante">
                     <mat-icon matSuffix>search</mat-icon>
                 </mat-form-field>
             </form>

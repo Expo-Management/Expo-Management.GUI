@@ -1,4 +1,16 @@
 <div class="side-bar-menu">
+    <div class="admin-general-options flexbox-container">
+        <h3>General</h3>
+        <div class="options">
+            <div *ngFor="let general_option of general_options">
+                <div class="option " [routerLink]="[general_option.link]">
+                    <mat-icon class="icon">{{ general_option.icon }}</mat-icon>
+                    <span>{{ general_option.text }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
     <div class="admin-users-options flexbox-container">
         <h3>Administracion de usuarios</h3>
         <div class="options">
@@ -10,6 +22,7 @@
             </div>
         </div>
     </div>
+
     <div class="admin-fair-options flexbox-container">
         <h3>Administracion de feria</h3>
         <div class="options">

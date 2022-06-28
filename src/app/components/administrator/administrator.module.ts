@@ -33,6 +33,7 @@ import { EditProfessorsComponent } from './dashboard/edit-users/edit-professors/
 import { AddEventsDialogComponent } from './dashboard/add-events-dialog/add-events-dialog.component';
 import { EditJudgesComponent } from './dashboard/edit-users/edit-judges/edit-judges.component';
 import { LoggedInGuard } from 'src/app/shared/guards/logged-in.guard';
+import { LogsComponent } from './dashboard/logs/logs.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { LoggedInGuard } from 'src/app/shared/guards/logged-in.guard';
     AdministratorComponent,
     FairDocumentsComponent,
     FairCalendarComponent,
+    LogsComponent,
     //manage users
     ManageStudentsComponent,
     ManageJudgesComponent,
@@ -75,6 +77,7 @@ import { LoggedInGuard } from 'src/app/shared/guards/logged-in.guard';
           { path: 'home', component: ContentComponent },
           { path: 'fair-documents', component: FairDocumentsComponent },
           { path: 'fair-calendar', component: FairCalendarComponent },
+          { path: 'logs', component: LogsComponent},
           //manage users
           { path: 'manage-students', component: ManageStudentsComponent },
           { path: 'manage-judges', component: ManageJudgesComponent },
