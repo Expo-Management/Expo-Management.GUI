@@ -13,20 +13,17 @@ import { Judges } from '../../fair-documents/fair-documents.component';
 
 
 export class ManageJudgesComponent implements OnInit {
-<<<<<<< HEAD
   displayedColumns : string[] = [];
   listOfJudges: Array<Judges> = []
   dataSource = new MatTableDataSource(this.listOfJudges);
-=======
-  displayedColumns : string[] = ['name', 'lastname', 'email', 'phoneNumber', 'institution', 'actions'];
-  dataSource : any[] = [];
->>>>>>> f2821711c370afad2b2f85da58541063f89bc7cf
 
   constructor(
     private customPopUpService: CustomPopUpService,
     private judgesServices: JudgesService) {}
 
   ngOnInit(): void {
+    this.displayedColumns = ['name', 'lastname', 'email', 'phoneNumber', 'institution', 'actions'];
+
     this.judgesServices.getJudges().subscribe(
       data => {
         this.dataSource = new MatTableDataSource(data);
