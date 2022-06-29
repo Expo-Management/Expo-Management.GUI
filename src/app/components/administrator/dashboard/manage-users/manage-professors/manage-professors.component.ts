@@ -60,7 +60,7 @@ export class ManageProfessorsComponent implements OnInit {
   }
 
   private adminDeleted() {
-    this.openCustomPopUp('Professor eliminado!');
+    this.openCustomPopUp('¡Professor eliminado!');
     window.location.reload();
   }
 

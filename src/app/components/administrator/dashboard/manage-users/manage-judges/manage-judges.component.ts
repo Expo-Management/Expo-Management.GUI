@@ -13,7 +13,7 @@ import { Judges } from '../../fair-documents/fair-documents.component';
 
 
 export class ManageJudgesComponent implements OnInit {
-displayedColumns : string[] = ['name', 'lastname', 'email', 'phoneNumber', 'institution', 'actions'];
+  displayedColumns : string[] = [];
   listOfJudges: Array<Judges> = []
   dataSource = new MatTableDataSource(this.listOfJudges);
 
@@ -22,6 +22,8 @@ displayedColumns : string[] = ['name', 'lastname', 'email', 'phoneNumber', 'inst
     private judgesServices: JudgesService) {}
 
   ngOnInit(): void {
+    this.displayedColumns = ['name', 'lastname', 'email', 'phoneNumber', 'institution', 'actions'];
+
     this.judgesServices.getJudges().subscribe(
       data => {
         this.dataSource = new MatTableDataSource(data);
@@ -60,7 +62,7 @@ displayedColumns : string[] = ['name', 'lastname', 'email', 'phoneNumber', 'inst
   }
 
   private judgeDeleted() {
-    this.openCustomPopUp('Judge deleted!');
+    this.openCustomPopUp('¡Juez eliminado!');
     window.location.reload();
   }
 
