@@ -61,7 +61,7 @@ export class ManageStudentsComponent implements OnInit {
   }
 
   private studentDeleted() {
-    this.openCustomPopUp('Estudiante eliminado!');
+    this.openCustomPopUp('¡Estudiante eliminado!');
     window.location.reload();
   }
 

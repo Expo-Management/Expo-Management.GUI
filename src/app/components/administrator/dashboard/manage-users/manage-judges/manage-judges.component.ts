@@ -62,7 +62,7 @@ export class ManageJudgesComponent implements OnInit {
   }
 
   private judgeDeleted() {
-    this.openCustomPopUp('Judge deleted!');
+    this.openCustomPopUp('¡Juez eliminado!');
     window.location.reload();
   }
 
