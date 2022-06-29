@@ -48,13 +48,19 @@ export class LoginComponent implements OnInit {
       this.loginForm.controls['password'].value).subscribe(
         data => {
           console.log(data)
-          this.token.saveToken(data.token);
-          this.user_info.saveRole(
-            data.role
-          )
-          this.isLoginFailed = false;
-          this.isLoggedIn = true;
-          this.reloadPage();
+
+          if (data.emailConfirmed) {
+            this.token.saveToken(data.token);
+            this.user_info.saveRole(
+              data.role
+            )
+            this.isLoginFailed = false;
+            this.isLoggedIn = true;
+            this.reloadPage();
+          } else {
+            this.errorMessage = 'Please confirm the account, check the email or contact the administrator.';
+            this.openCustomPopUp(this.errorMessage);
+          }
         },
         err => {
           console.log(err)
