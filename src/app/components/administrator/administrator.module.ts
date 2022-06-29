@@ -33,6 +33,8 @@ import { EditProfessorsComponent } from './dashboard/edit-users/edit-professors/
 import { AddEventsDialogComponent } from './dashboard/add-events-dialog/add-events-dialog.component';
 import { EditJudgesComponent } from './dashboard/edit-users/edit-judges/edit-judges.component';
 import { LoggedInGuard } from 'src/app/shared/guards/logged-in.guard';
+import { CreateAppointmentsComponent } from './dashboard/create-appointments/create-appointments.component';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -59,6 +61,7 @@ import { LoggedInGuard } from 'src/app/shared/guards/logged-in.guard';
     DeleteDialogComponent,
     AddEventsDialogComponent,
     SettingsComponent,
+    CreateAppointmentsComponent,
   ],
   imports: [
     ReactiveFormsModule,

@@ -21,7 +21,7 @@ import {
   CalendarView,
 } from 'angular-calendar';
 import {MatDialog} from '@angular/material/dialog';
-import { AddEventsDialogComponent } from '../add-events-dialog/add-events-dialog.component';
+import { CreateAppointmentsComponent } from '../create-appointments/create-appointments.component';
 
 const colors: any = {
   red: {
@@ -105,15 +105,9 @@ export class FairCalendarComponent implements OnInit{
   ];
   activeDayIsOpen: boolean = true;
 
-  constructor(private modal: NgbModal, public dialog: MatDialog) {}
-
-  openDialog() {
-    const dialogRef = this.dialog.open(AddEventsDialogComponent);
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
-  }
+  constructor(
+    public modalService: NgbModal, 
+    public dialog: MatDialog) {}
 
 
   dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {
@@ -150,24 +144,25 @@ export class FairCalendarComponent implements OnInit{
 
   handleEvent(action: string, event: CalendarEvent): void {
     this.modalData = { event, action };
-    this.modal.open(this.modalContent, { size: 'lg' });
+    this.modalService.open(this.modalContent, { size: 'lg' });
   }
 
-  addEvent(): void {
-    this.events = [
-      ...this.events,
-      {
-        title: 'New event',
-        start: startOfDay(new Date()),
-        end: endOfDay(new Date()),
-        color: colors.red,
-        draggable: true,
-        resizable: {
-          beforeStart: true,
-          afterEnd: true,
-        },
-      },
-    ];
+  createEvent(): void {
+    this.modalService.open(CreateAppointmentsComponent, { centered: true });
+    // this.events = [
+    //   ...this.events,
+    //   {
+    //     title: 'New event',
+    //     start: startOfDay(new Date()),
+    //     end: endOfDay(new Date()),
+    //     color: colors.red,
+    //     draggable: true,
+    //     resizable: {
+    //       beforeStart: true,
+    //       afterEnd: true,
+    //     },
+    //   },
+    // ];
   }
 
   deleteEvent(eventToDelete: CalendarEvent) {
