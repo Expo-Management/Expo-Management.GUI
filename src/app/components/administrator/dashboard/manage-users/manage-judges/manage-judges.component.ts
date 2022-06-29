@@ -13,7 +13,7 @@ import { Judges } from '../../fair-documents/fair-documents.component';
 
 
 export class ManageJudgesComponent implements OnInit {
-  displayedColumns : string[] = [];
+displayedColumns : string[] = ['name', 'lastname', 'email', 'phoneNumber', 'institution', 'actions'];
   listOfJudges: Array<Judges> = []
   dataSource = new MatTableDataSource(this.listOfJudges);
 
@@ -22,8 +22,6 @@ export class ManageJudgesComponent implements OnInit {
     private judgesServices: JudgesService) {}
 
   ngOnInit(): void {
-    this.displayedColumns = ['name', 'lastname', 'email', 'phoneNumber', 'institution', 'actions'];
-
     this.judgesServices.getJudges().subscribe(
       data => {
         this.dataSource = new MatTableDataSource(data);

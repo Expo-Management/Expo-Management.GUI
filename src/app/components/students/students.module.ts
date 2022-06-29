@@ -19,6 +19,8 @@ import { SettingsComponent } from './dashboard/settings/settings.component';
 import { DocumentationComponent } from './dashboard/documentation/documentation.component';
 import { CurrentDocumentationComponent } from './dashboard/current-documentation/current-documentation.component';
 import { LoggedInGuard } from 'src/app/shared/guards/logged-in.guard';
+import { MentionsComponent } from './dashboard/mentions/mentions.component';
+import { FairNewsComponent } from './dashboard/fair-news/fair-news.component';
 
 
 @NgModule({
@@ -36,6 +38,8 @@ import { LoggedInGuard } from 'src/app/shared/guards/logged-in.guard';
     SettingsComponent,
     DocumentationComponent,
     CurrentDocumentationComponent,
+    MentionsComponent,
+    FairNewsComponent,
   ],
   imports: [
     ReactiveFormsModule,
@@ -57,7 +61,9 @@ import { LoggedInGuard } from 'src/app/shared/guards/logged-in.guard';
           { path: 'project/:project_id', component: ProjectDetailsComponent },
           { path: 'new-project', component: CreateProjectComponent },
           { path: 'fair-documents', component: DocumentationComponent },
+          { path: 'fair-news', component: FairNewsComponent },
           { path: 'saved-documents', component: CurrentDocumentationComponent },
+          { path: 'project-mentions', component: MentionsComponent },
           { path: 'settings', component: SettingsComponent },
           { path: '**', component: ProjectDetailsComponent },
           { path: '', redirectTo: 'home', pathMatch: 'full' },
