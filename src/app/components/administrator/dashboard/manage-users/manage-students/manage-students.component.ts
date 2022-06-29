@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatTableDataSource } from '@angular/material/table';
+import { User } from 'src/app/shared/interfaces/user';
 import { CustomPopUpService } from 'src/app/shared/services/custom-pop-up.service';
 import { StudentsService } from 'src/app/shared/services/students.service';
 
@@ -12,18 +14,18 @@ import { StudentsService } from 'src/app/shared/services/students.service';
 
 export class ManageStudentsComponent implements OnInit {
   displayedColumns: string[] = [];
-  dataSource : any[] = [];
+  listOfStudents: Array<User> = []
+  dataSource = new MatTableDataSource(this.listOfStudents);
 
   constructor(
-    private customPopUpService: CustomPopUpService,
-    private studentsServices: StudentsService) {}
+    private customPopUpService: CustomPopUpService, private studentsServices: StudentsService) {}
 
   ngOnInit(): void {
     this.displayedColumns = ['name', 'lastname', 'email', 'phoneNumber', 'actions'];
 
     this.studentsServices.getStudents().subscribe(
       data => {
-        this.dataSource = data;
+        this.dataSource = new MatTableDataSource(data);
       } ,
       err => {
         if (err.status === 404) {
@@ -33,6 +35,11 @@ export class ManageStudentsComponent implements OnInit {
         }
       }
     );
+  }
+
+  applyFilter(event: Event){
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
   dialogDelete(email: string): void{ 
@@ -54,7 +61,7 @@ export class ManageStudentsComponent implements OnInit {
   }
 
   private studentDeleted() {
-    this.openCustomPopUp('Estudiante eliminado!');
+    this.openCustomPopUp('¡Estudiante eliminado!');
     window.location.reload();
   }
 

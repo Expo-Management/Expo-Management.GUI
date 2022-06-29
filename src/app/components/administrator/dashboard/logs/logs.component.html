@@ -1,0 +1,27 @@
+<div class="flex-container">
+    <div class="top-options">
+        <h1>Bitacora del sistema</h1>
+    </div>
+    <div class="logs-content">
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+            <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef> Id </th>
+                <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+            </ng-container>
+            <ng-container matColumnDef="message">
+                <th mat-header-cell *matHeaderCellDef> Mensaje </th>
+                <td mat-cell *matCellDef="let element"> {{element.message}} </td>
+            </ng-container>
+            <ng-container matColumnDef="level">
+                <th mat-header-cell *matHeaderCellDef> Nivel del error </th>
+                <td mat-cell *matCellDef="let element"> {{element.level}} </td>
+            </ng-container>
+            <ng-container matColumnDef="timeStamp">
+                <th mat-header-cell *matHeaderCellDef> Fecha </th>
+                <td mat-cell *matCellDef="let element"> {{element.timeStamp | date}} </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+    </div>
+</div>

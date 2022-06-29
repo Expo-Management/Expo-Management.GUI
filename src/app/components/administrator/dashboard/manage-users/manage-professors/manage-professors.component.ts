@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CustomPopUpService } from 'src/app/shared/services/custom-pop-up.service';
 import { AdminService } from 'src/app/shared/services/admin.service';
+import { Professors } from 'src/app/shared/interfaces/professors';
+import { MatTableDataSource } from '@angular/material/table';
 
 
 @Component({
@@ -12,7 +14,8 @@ import { AdminService } from 'src/app/shared/services/admin.service';
 
 export class ManageProfessorsComponent implements OnInit {
   displayedColumns: string[] = [];
-  dataSource : any[] = [];
+  listOfProfessors: Array<Professors> = []
+  dataSource = new MatTableDataSource(this.listOfProfessors);
 
   constructor(private customPopUpService: CustomPopUpService, private adminServices: AdminService) {}
 
@@ -21,16 +24,21 @@ export class ManageProfessorsComponent implements OnInit {
 
     this.adminServices.getAdmins().subscribe(
       data => {
-        this.dataSource = data;
+        this.dataSource = new MatTableDataSource(data);
       } ,
       err => {
         if (err.status === 404) {
           this.openCustomPopUp('No hay profesores registrados.');
         } else {
-          this.openCustomPopUp('Hubo un problema interno, por favor vuelve a intentarlo mas tarde.');
+          this.openCustomPopUp('Ocurrio un problema interno. Por favor, vuelve a intentarlo más tarde.');
         }
       }
     );
+  }
+
+  applyFilter(event: Event){
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
   
   dialogDelete(email: string): void{
@@ -44,7 +52,7 @@ export class ManageProfessorsComponent implements OnInit {
             if (err.status === 200) {
               this.adminDeleted();
             } else {
-              this.openCustomPopUp('Hubo un problema interno, por favor vuelve a intentarlo mas tarde.');
+              this.openCustomPopUp('Ocurrio un problema interno. Por favor, vuelve a intentarlo más tarde.');
             }
           }
         );
@@ -52,7 +60,7 @@ export class ManageProfessorsComponent implements OnInit {
   }
 
   private adminDeleted() {
-    this.openCustomPopUp('Professor eliminado!');
+    this.openCustomPopUp('¡Professor eliminado!');
     window.location.reload();
   }
 
