@@ -19,13 +19,13 @@
 }
 
 .logs-content {
-        padding-top: 1rem;
-        height: 85%;
-        max-height: 85%;
-        display: flex;
-        justify-content: center;
-        align-items: flex-start;
-        overflow: scroll;
+    padding-top: 1rem;
+    height: 85%;
+    max-height: 85%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    overflow: scroll;
 }
 
 .sub-container {
@@ -42,4 +42,11 @@ table {
 ::-webkit-scrollbar {
     width: 0;
     background: transparent;
+}
+
+th.mat-header-cell,
+td.mat-cell,
+td.mat-footer-cell {
+    padding: .5rem;
+    max-width: 1000px;
 }
