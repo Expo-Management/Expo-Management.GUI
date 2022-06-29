@@ -44,6 +44,11 @@ export class SideBarComponent implements OnInit {
       text: 'Proyectos anteriores'
     },
     { 
+      link: 'project-mentions',
+      icon: 'stars',
+      text: 'Menciones de proyecto'
+    },
+    { 
       link: 'current-projects',
       icon: 'list',
       text: 'Lista de proyectos actuales'
@@ -53,8 +58,13 @@ export class SideBarComponent implements OnInit {
       icon: 'folder',
       text: 'Documentacion necesaria'
     },
+    { 
+      link: 'fair-news',
+      icon: 'new_releases',
+      text: 'Noticias de la feria'
+    },
   ]
-
+  
   constructor() { }
 
   ngOnInit(): void {
