@@ -5,37 +5,29 @@
             <form class="example-form">
                 <mat-form-field class="example-full-width" appearance="outline">
                     <mat-label>Buscar proyectos</mat-label>
-                    <input type="text" matInput placeholder="Ingrese nombre del estudiante">
+                    <input type="text" matInput (keyup)="applyFilter($event)" placeholder="Ingrese nombre del proyecto">
                     <mat-icon matSuffix>search</mat-icon>
                 </mat-form-field>
             </form>
-            <mat-form-field appearance="fill">
-                <mat-label>Filtrar por categorias</mat-label>
-                <mat-select>
-                    <mat-option>Seleccione una categoria</mat-option>
-                    <mat-option *ngFor="let cateogories of cateogories" [value]="cateogories">{{cateogories}}</mat-option>
-                </mat-select>
-            </mat-form-field>
+            
         </div>
     </div>
     <div class="users-content">
         <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
             <ng-container matColumnDef="name">
-                <th mat-header-cell *matHeaderCellDef> Nombre del Proyecto. </th>
+                <th mat-header-cell *matHeaderCellDef> Nombre del Proyecto </th>
                 <td mat-cell *matCellDef="let element"> {{element.name}} </td>
             </ng-container>
             <ng-container matColumnDef="description">
                 <th mat-header-cell *matHeaderCellDef> Descripcion </th>
                 <td mat-cell *matCellDef="let element"> {{element.description}} </td>
             </ng-container>
-            <ng-container matColumnDef="groupLeader">
-                <th mat-header-cell *matHeaderCellDef> Lider del grupo </th>
-                <td mat-cell *matCellDef="let element"> {{element.groupLeader}} </td>
-            </ng-container>
-            <ng-container matColumnDef="category">
-                <th mat-header-cell *matHeaderCellDef> Categoria </th>
-                <td mat-cell *matCellDef="let element"> {{element.category}} </td>
-            </ng-container>
+            <!--<ng-container matColumnDef="files">
+                <th mat-header-cell *matHeaderCellDef> Documentación </th>
+                <td mat-cell *matCellDef="let element"> {{element.files}} </td>
+            </ng-container>-->
+
+            <!--Button-->
             <ng-container matColumnDef="qualify">
                 <th mat-header-cell *matHeaderCellDef>Calificar</th>
                 <td mat-cell *matCellDef="let mat-icon">

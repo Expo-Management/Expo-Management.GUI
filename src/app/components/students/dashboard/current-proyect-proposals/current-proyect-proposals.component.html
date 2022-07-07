@@ -5,7 +5,7 @@
             <form class="example-form">
                 <mat-form-field class="example-full-width" appearance="outline">
                     <mat-label>Filtrar proyectos</mat-label>
-                    <input type="text" matInput placeholder="Ejemplo: Robot inteligente">
+                    <input type="text" matInput (keyup)="applyFilter($event)" placeholder="Ejemplo: Robot inteligente">
                     <mat-icon matSuffix>search</mat-icon>
                 </mat-form-field>
             </form>
@@ -18,11 +18,11 @@
                 <td mat-cell *matCellDef="let element"> {{element.name}} </td>
             </ng-container>
             <ng-container matColumnDef="description">
-                <th mat-header-cell *matHeaderCellDef> Descripcion </th>
+                <th mat-header-cell *matHeaderCellDef> Descripción </th>
                 <td mat-cell *matCellDef="let element"> {{element.description}} </td>
             </ng-container>
             <ng-container matColumnDef="grade">
-                <th mat-header-cell *matHeaderCellDef> Calification </th>
+                <th mat-header-cell *matHeaderCellDef> Calificación </th>
                 <td mat-cell *matCellDef="let element"> {{element.grade}} </td>
             </ng-container>
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
