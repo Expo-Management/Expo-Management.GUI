@@ -1,56 +1,35 @@
 <div class="flex-container">
     <div class="top-options">
         <h1>Editar Profesor</h1>
-        <h3>Edita los datos necesarios del profesor seleccionado</h3>
-      </div>
-      <form class="add-form">
-        <mat-form-field class="flex-container" appearance="fill">
+        <h3>Edita los datos del profesor seleccionado</h3>
+    </div>
+    <form class="add-form" [formGroup]="adminForm" (ngSubmit)="onSubmit()">
+
         <!--for name-->
-          <mat-label>Nombre del profesor</mat-label>
-          <input type="name" matInput [formControl]="NameFormControl" [errorStateMatcher]="matcher">
-          <mat-error *ngIf=" NameFormControl.hasError('required')">
-            <strong>Por favor digita nombre del profesor</strong>
-          </mat-error>
+        <mat-form-field class="flex-container" appearance="outline">
+            <mat-label>Nombre del profesor</mat-label>
+            <input type="name" matInput formControlName="NameFormControl">
         </mat-form-field>
         <!--for last-->
-        <mat-form-field class="flex-container" appearance="fill"> 
-          <mat-label>Apellidos del profesor</mat-label>
-          <input type="last" matInput [formControl]="LastFormControl" [errorStateMatcher]="matcher">
-          <mat-error *ngIf=" LastFormControl.hasError('required')">
-            <strong>Por favor digita los apellidos del profesor</strong>
-          </mat-error>
+        <mat-form-field class="flex-container" appearance="outline">
+            <mat-label>Apellidos del profesor</mat-label>
+            <input type="last" matInput formControlName="LastFormControl">
         </mat-form-field>
-          <!--for email-->
-          <mat-form-field class="flex-container" appearance="fill">
+        <!--for email-->
+        <mat-form-field class="flex-container" appearance="outline">
             <mat-label>Correo del profesor</mat-label>
-          <input type="email" matInput [formControl]="EmailFormControl" [errorStateMatcher]="matcher"
-                 placeholder="Ej. smith@gmail.com">
-          <mat-error *ngIf="EmailFormControl.hasError('email') && !EmailFormControl.hasError('required')">
-            Por favor digita un correo valido
-          </mat-error>
-           <mat-error *ngIf="EmailFormControl.hasError('required')">
-            <strong>Por favor digita el correo del profesor</strong>
-          </mat-error>
-          </mat-form-field>
-          <!--for password-->
-          <mat-form-field class="flex-container" appearance="fill">
-           <mat-label>Contraseña del profesor</mat-label>
-          <input type="last" matInput [formControl]="PasswordFormControl" [errorStateMatcher]="matcher">
-          <mat-error *ngIf=" PasswordFormControl.hasError('required')">
-            <strong>Por favor digita la contraseña temporal del profesor</strong>
-          </mat-error>
-          </mat-form-field>
-          <!--for id-->
-          <mat-form-field class="flex-container" appearance="fill">
-           <mat-label>Cédula del profesor</mat-label>
-          <input type="id" matInput [formControl]="IdFormControl" [errorStateMatcher]="matcher"
-                 placeholder="XX-XXXX-XXXX">
-          <mat-error *ngIf="IdFormControl.hasError('required')">
-             <strong>Por favor digita la cédula del profesor</strong>
-          </mat-error>
-          </mat-form-field>
-      </form>
-      <div >
-          <button mat-raised-button class="add-button">Editar Profesor</button>
-      </div>
-  </div>
+            <input type="email" matInput formControlName="EmailFormControl" placeholder="Ej. smith@gmail.com">
+        </mat-form-field>
+        <!--for username-->
+        <mat-form-field class="flex-container" appearance="outline">
+            <mat-label>Nombre de usuario del profesor</mat-label>
+            <input type="name" matInput formControlName="UsernameFormControl">
+        </mat-form-field>
+        <!--for id-->
+        <mat-form-field class="flex-container" appearance="outline">
+            <mat-label>Cédula del profesor</mat-label>
+            <input type="id" matInput formControlName="IdFormControl" placeholder="XX-XXXX-XXXX">
+        </mat-form-field>
+        <button mat-raised-button id="sumbit-button" class="add-button">Editar Profesor</button>
+    </form>
+</div>

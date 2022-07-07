@@ -18,8 +18,8 @@
     padding: 0 2rem;
 }
 
-.projects-content {
-    padding-bottom: 1rem;
+.logs-content {
+    padding-top: 1rem;
     height: 85%;
     max-height: 85%;
     display: flex;
@@ -36,10 +36,17 @@
 }
 
 table {
-    width: 92%;
+    width: 90%;
 }
 
 ::-webkit-scrollbar {
     width: 0;
     background: transparent;
+}
+
+th.mat-header-cell,
+td.mat-cell,
+td.mat-footer-cell {
+    padding: .5rem;
+    max-width: 1000px;
 }

@@ -5,13 +5,14 @@
             <form class="example-form">
                 <mat-form-field class="example-full-width" appearance="outline">
                     <mat-label>Buscar jueces</mat-label>
-                    <input type="text" matInput placeholder="Ingrese nombre del juez">
+                    <input type="text" matInput (keyup)="applyFilter($event)" placeholder="Ingrese nombre del juez">
                     <mat-icon matSuffix>search</mat-icon>
                 </mat-form-field>
             </form>
             <button mat-raised-button class="add-button" routerLink="/administrator/add-judges">Agregar</button>
         </div>
     </div>
+
     <div class="users-content">
         <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
             <ng-container matColumnDef="name">

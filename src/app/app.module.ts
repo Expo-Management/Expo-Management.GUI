@@ -13,11 +13,13 @@ import { CommonModule } from '@angular/common';
 import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { CustomPopUpComponent } from './shared/components/custom-pop-up/custom-pop-up.component';
 import { HttpClientModule } from '@angular/common/http';
+//import { LogsComponent } from './administrator/dashboard/logs/logs.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CustomPopUpComponent    
+    CustomPopUpComponent,
+    //LogsComponent    
   ],
   imports: [
     BrowserModule,

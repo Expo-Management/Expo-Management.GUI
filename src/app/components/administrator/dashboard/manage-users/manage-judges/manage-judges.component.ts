@@ -1,15 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { MatTableDataSource } from '@angular/material/table';
 import { CustomPopUpService } from 'src/app/shared/services/custom-pop-up.service';
 import { JudgesService } from 'src/app/shared/services/judges.service';
+import { Judges } from '../../fair-documents/fair-documents.component';
 
-export interface Judges {
-  id: string
-  name: string;
-  lastname: string;
-  email: string;
-  phone: string;
-  institution: string;
-}
 
 @Component({
   selector: 'app-manage-judges',
@@ -20,7 +14,8 @@ export interface Judges {
 
 export class ManageJudgesComponent implements OnInit {
   displayedColumns : string[] = [];
-  dataSource : any[] = [];
+  listOfJudges: Array<Judges> = []
+  dataSource = new MatTableDataSource(this.listOfJudges);
 
   constructor(
     private customPopUpService: CustomPopUpService,
@@ -31,16 +26,21 @@ export class ManageJudgesComponent implements OnInit {
 
     this.judgesServices.getJudges().subscribe(
       data => {
-        this.dataSource = data;
+        this.dataSource = new MatTableDataSource(data);
       } ,
       err => {
         if (err.status === 404) {
-          this.openCustomPopUp('There are no judges registered.');
+          this.openCustomPopUp('No hay jueces registrados.');
         } else {
-          this.openCustomPopUp('There was an internal problem, try again later.');
+          this.openCustomPopUp('Ocurrio un problema interno. Por favor, vuelve a intentarlo más tarde.');
         }
       }
     );
+  }
+
+  applyFilter(event: Event){
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
   dialogDelete(email: string): void{
@@ -54,7 +54,7 @@ export class ManageJudgesComponent implements OnInit {
             if (err.status === 200) {
               this.judgeDeleted();
             } else {
-              this.openCustomPopUp('There was an internal problem, try again later.');
+              this.openCustomPopUp('Ocurrio un problema interno. Por favor, vuelve a intentarlo más tarde.');
             }
           }
         );
@@ -62,7 +62,7 @@ export class ManageJudgesComponent implements OnInit {
   }
 
   private judgeDeleted() {
-    this.openCustomPopUp('Judge deleted!');
+    this.openCustomPopUp('¡Juez eliminado!');
     window.location.reload();
   }
 
