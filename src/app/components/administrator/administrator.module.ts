@@ -34,6 +34,7 @@ import { AddEventsDialogComponent } from './dashboard/add-events-dialog/add-even
 import { EditJudgesComponent } from './dashboard/edit-users/edit-judges/edit-judges.component';
 import { LoggedInGuard } from 'src/app/shared/guards/logged-in.guard';
 
+
 @NgModule({
   declarations: [
     DashboardComponent,
@@ -59,6 +60,7 @@ import { LoggedInGuard } from 'src/app/shared/guards/logged-in.guard';
     DeleteDialogComponent,
     AddEventsDialogComponent,
     SettingsComponent,
+   
   ],
   imports: [
     ReactiveFormsModule,
@@ -87,7 +89,7 @@ import { LoggedInGuard } from 'src/app/shared/guards/logged-in.guard';
           { path: 'edit-students', component: EditStudentsComponent },
           { path: 'edit-judges/:judge_email', component: EditJudgesComponent },
           { path: 'edit-professors', component: EditProfessorsComponent },
-          { path: 'settings', component: SettingsComponent },
+          { path: 'settings', component: SettingsComponent },         
           
           { path: '', redirectTo: 'home', pathMatch: 'full' },
           { path: '**', redirectTo: 'home', pathMatch: 'full' }

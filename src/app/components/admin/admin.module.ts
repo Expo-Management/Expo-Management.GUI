@@ -8,12 +8,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthGuard } from 'src/app/shared/guards/auth.guard';
 import { LoggedInGuard } from 'src/app/shared/guards/logged-in.guard';
-
+import { ForgetPasswordComponent } from '../admin/auth/forget-password/forget-password.component';
+import { ResetPasswordComponent } from '../admin/auth/reset-password/reset-password.component';
 
 @NgModule({
   declarations: [
     AuthComponent,
     LoginComponent,
+     ForgetPasswordComponent,
+     ResetPasswordComponent
   ],
   imports: [
     ReactiveFormsModule,
@@ -27,6 +30,8 @@ import { LoggedInGuard } from 'src/app/shared/guards/logged-in.guard';
         component: AuthComponent,
         children: [
           { path: 'login', component: LoginComponent },
+          { path: 'forget-password', component: ForgetPasswordComponent},
+          { path: 'reset-password', component: ResetPasswordComponent},
         ],
       },
     ]),
