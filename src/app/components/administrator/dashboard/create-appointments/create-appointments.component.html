@@ -1,4 +1,4 @@
-<!-- <div class="modal-header">
+<div class="modal-header">
     <h2 class="modal-title" style="margin-bottom: 0;">Create new appointment</h2>
     <button type="button" class="btn btn-outline-danger close-btn" (click)="dismiss()">&times;
     </button>
@@ -7,77 +7,44 @@
     <form [formGroup]="newAppoitmentForm" (ngSubmit)="onSubmit()" novalidate>
         <mat-card>
             <div class="row">
-                <div class="col-10">
+                <div class="col-12">
                     <mat-form-field class="full-width" appearance="legacy">
                         <mat-label>Title</mat-label>
                         <input class="full-width" matInput formControlName="title">
                     </mat-form-field>
                 </div>
-                <!-- <div class="col-2">
-                    <div class="color-picker">
-                        <input type="color" formControlName="color">
-                    </div>
-                </div>
-</div>
-</mat-card>
+            </div>
 
-<mat-card>
-    <div class="row justify-content-evenly dates">
-        <div class="col-6">
-            <mat-form-field class="datetime-picker">
-                <input matInput [ngxMatDatetimePicker]="start" placeholder="Choose the start of the appoitment" formControlName="start">
-                <mat-datepicker-toggle matSuffix [for]="$any(start)"></mat-datepicker-toggle>
-                <ngx-mat-datetime-picker #start [showSpinners]="false">
-                    <ng-template>
-                        <span>OK</span>
-                    </ng-template>
-                </ngx-mat-datetime-picker>
-            </mat-form-field>
+            <div class="row dates">
+                <mat-form-field appearance="fill">
+                    <mat-label>Escoja un rango de fechas</mat-label>
+                    <mat-date-range-input [rangePicker]="picker">
+                        <input matStartDate formControlName="start" placeholder="Start date">
+                        <input matEndDate formControlName="finish" placeholder="End date">
+                    </mat-date-range-input>
+                    <mat-hint>MM/DD/AAAA – MM/DD/AAAA</mat-hint>
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-date-range-picker #picker></mat-date-range-picker>
+
+                    <mat-error *ngIf="newAppoitmentForm.controls.start.hasError('matStartDateInvalid')">Fecha invalida</mat-error>
+                    <mat-error *ngIf="newAppoitmentForm.controls.finish.hasError('matEndDateInvalid')">Fecha invalida</mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="row">
+                <mat-form-field class="full-width" appearance="legacy">
+                    <mat-label>Lugar del evento</mat-label>
+                    <input class="full-width" matInput formControlName="location">
+                </mat-form-field>
+            </div>
+
+            <div class="dates">
+                <mat-slide-toggle style="float: right;" formControlName="allDay">Todo el dia</mat-slide-toggle>
+            </div>
+        </mat-card>
+        <div class="modal-footer ">
+            <button mat-raised-button type="button" id="submit-button" class="cancel-button" (click)="decline()">Cancel</button>
+            <button mat-raised-button type="button" id="submit-button" class="add-button" (click)="accept()">Add</button>
         </div>
-        <div class="col-6">
-            <mat-form-field class="datetime-picker">
-                <input matInput [ngxMatDatetimePicker]="end" placeholder="Choose the end of the appoitment" formControlName="ends">
-                <mat-datepicker-toggle matSuffix [for]="$any(end)"></mat-datepicker-toggle>
-                <ngx-mat-datetime-picker #end [showSpinners]="false">
-                    <ng-template>
-                        <span>OK</span>
-                    </ng-template>
-                </ngx-mat-datetime-picker>
-            </mat-form-field>
-        </div>
-    </div>
-    <div class="dates">
-        <mat-slide-toggle style="float: right;" formControlName="allDay">All day</mat-slide-toggle>
-    </div>
-</mat-card>
-
-<mat-expansion-panel class="full-width">
-    <mat-expansion-panel-header>
-        <mat-panel-title>
-            Add details
-        </mat-panel-title>
-    </mat-expansion-panel-header>
-    <mat-panel-description>
-
-    </mat-panel-description>
-    <div>
-        <mat-form-field appearance="legacy" class="full-width">
-            <mat-label>Notes</mat-label>
-            <input matInput formControlName="notes">
-        </mat-form-field>
-    </div>
-
-    <div>
-        <mat-form-field appearance="legacy" class="full-width">
-            <mat-label>Location</mat-label>
-            <input matInput formControlName="location">
-        </mat-form-field>
-    </div>
-</mat-expansion-panel>
-
-<div class="modal-footer">
-    <button mat-raised-button type="button" class="btn btn-danger" (click)="decline()">Cancel</button>
-    <button mat-raised-button type="button" class="btn btn-primary" (click)="accept()">Add</button>
+    </form>
 </div>
-</form>
-</div> -->
