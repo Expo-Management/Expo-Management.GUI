@@ -18,4 +18,25 @@ export class FairService {
   getNews(fairId: number): Observable<any> {
     return this.httpClient.get(`/api/Events/news?FairId=${fairId}`, httpOptions);
   }
+
+  createEvent(
+    description: string,
+    location: string,
+    startDate: Date,
+    endDate: Date,
+    details: string,
+    fairId: number
+  ): Observable<any>{
+    return this.httpClient.post(
+      '/api/Events/event', 
+      {
+        description: description,
+        location: location,
+        startDate: startDate,
+        endDate: endDate,
+        details: details,
+        fairId: fairId
+      },
+      httpOptions);
+  }
 }
