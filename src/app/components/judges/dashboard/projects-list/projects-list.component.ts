@@ -1,23 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { CustomPopUpService } from 'src/app/shared/services/custom-pop-up.service';
+import { MatTableDataSource } from '@angular/material/table';
+import { Projects } from 'src/app/shared/interfaces/projects';
+import { ProjectsService } from 'src/app/shared/services/projects.service';
 
-export interface User {
-  name: string;
-  description: string;
-  groupLeader: string;
-  category: string;
-  qualify: string;
-}
-
-const ELEMENT_DATA: User[] = [
-  {name: 'Proyecto', description: 'Descripcion del proyecto', groupLeader: 'Andrés Barrantes', category: 'Tecnologico', qualify: 'Ver opciones'},
-  {name: 'Proyecto', description: 'Descripcion del proyecto', groupLeader: 'Andrés Barrantes', category: 'Tecnologico', qualify: 'Ver opciones'},
-  {name: 'Proyecto', description: 'Descripcion del proyecto', groupLeader: 'Andrés Barrantes', category: 'Tecnologico', qualify: 'Ver opciones'},
-  {name: 'Proyecto', description: 'Descripcion del proyecto', groupLeader: 'Andrés Barrantes', category: 'Tecnologico', qualify: 'Ver opciones'},
-  {name: 'Proyecto', description: 'Descripcion del proyecto', groupLeader: 'Andrés Barrantes', category: 'Tecnologico', qualify: 'Ver opciones'},
-  {name: 'Proyecto', description: 'Descripcion del proyecto', groupLeader: 'Andrés Barrantes', category: 'Tecnologico', qualify: 'Ver opciones'},
-  {name: 'Proyecto', description: 'Descripcion del proyecto', groupLeader: 'Andrés Barrantes', category: 'Tecnologico', qualify: 'Ver opciones'},
-  {name: 'Proyecto', description: 'Descripcion del proyecto', groupLeader: 'Andrés Barrantes', category: 'Tecnologico', qualify: 'Ver opciones'},
-];
 
 @Component({
   selector: 'app-projects-list',
@@ -27,19 +13,40 @@ const ELEMENT_DATA: User[] = [
 })
 
 export class ProjectsListComponent implements OnInit {
-  displayedColumns: string[] = ['name', 'description', 'groupLeader', 'category', 'qualify'];
-  dataSource = ELEMENT_DATA;
+  displayedColumns: string[] = [];
+  listOfProjects: Array<Projects> = []
+  dataSource = new MatTableDataSource(this.listOfProjects);
 
-  cateogories: string[] = [
-    'Tecnologico',
-    'Quimico',
-    'Artistico',
-    'Social',
-  ];
-
-  constructor() { }
+  constructor(private customPopUpService: CustomPopUpService, private projectservices: ProjectsService) { }
 
   ngOnInit(): void {
+    this.displayedColumns = ['name', 'description', 'qualify'];
+
+    this.projectservices.ShowProjects().subscribe(
+      data => {
+        this.dataSource = new MatTableDataSource(data);
+      } ,
+      err => {
+        if (err.status === 404) {
+          this.openCustomPopUp('No hay proyectos en el sistema');
+        } else {
+          this.openCustomPopUp('Ocurrio un problema interno. Por favor, vuelve a intentarlo más tarde.');
+        }
+      }
+    );
+  }
+
+  applyFilter(event: Event){
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  public openCustomPopUp(message: string): Promise<boolean> {
+    return this.customPopUpService.confirm(
+      'Proyectos', 
+      message,
+      undefined
+      );
   }
 
 }
