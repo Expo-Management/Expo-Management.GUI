@@ -1,29 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ProyectProposals } from 'src/app/shared/interfaces/proyect-proposals';
-
-const ELEMENT_DATA: ProyectProposals[] = [
-  {name: 'Test project name', description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.', date: 'Fair 2020'},
-  {name: 'Test project name', description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.', date: 'Fair 2020'},
-  {name: 'Test project name', description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.', date: 'Fair 2020'},
-  {name: 'Test project name', description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.', date: 'Fair 2020'},
-  {name: 'Test project name', description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.', date: 'Fair 2020'},
-  {name: 'Test project name', description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.', date: 'Fair 2020'},
-  {name: 'Test project name', description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.', date: 'Fair 2020'},
-  {name: 'Test project name', description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.', date: 'Fair 2020'},
-  {name: 'Test project name', description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.', date: 'Fair 2020'},
-  {name: 'Test project name', description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.', date: 'Fair 2020'},
-  {name: 'Test project name', description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.', date: 'Fair 2020'},
-  {name: 'Test project name', description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.', date: 'Fair 2020'},
-  {name: 'Test project name', description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.', date: 'Fair 2020'},
-  {name: 'Test project name', description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.', date: 'Fair 2020'},
-  {name: 'Test project name', description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.', date: 'Fair 2020'},
-  {name: 'Test project name', description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.', date: 'Fair 2020'},
-  {name: 'Test project name', description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.', date: 'Fair 2020'},
-  {name: 'Test project name', description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.', date: 'Fair 2020'},
-  {name: 'Test project name', description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.', date: 'Fair 2020'},
-  {name: 'Test project name', description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.', date: 'Fair 2020'},
-  {name: 'Test project name', description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.', date: 'Fair 2020'},
-];
+import { ProjectsService } from 'src/app/shared/services/projects.service';
+import { MatTableDataSource } from '@angular/material/table';
+import { CustomPopUpService } from 'src/app/shared/services/custom-pop-up.service';
 
 
 @Component({
@@ -31,13 +10,41 @@ const ELEMENT_DATA: ProyectProposals[] = [
   templateUrl: './past-proyect-proposals.component.html',
   styleUrls: ['./past-proyect-proposals.component.css']
 })
-export class PastProyectProposalsComponent implements OnInit {
-  displayedColumns: string[] = ['name', 'description', 'date'];
-  dataSource = ELEMENT_DATA;
 
-  constructor() { }
+export class PastProyectProposalsComponent implements OnInit {
+  displayedColumns: string[] = [];
+  listOfProjects: Array<ProyectProposals> = []
+  dataSource = new MatTableDataSource(this.listOfProjects);
+
+  constructor(private customPopUpService: CustomPopUpService, private projects: ProjectsService) { }
 
   ngOnInit(): void {
+    this.displayedColumns = ['name', 'description', 'fair'];
+
+    this.projects.getOlProjects().subscribe(
+      data => {
+        this.dataSource = new MatTableDataSource(data);
+      } ,
+      err => {
+        if (err.status === 404) {
+          this.openCustomPopUp('No hay proyectos en el sistema');
+        } else {
+          this.openCustomPopUp('Ocurrio un problema interno. Por favor, vuelve a intentarlo más tarde.');
+        }
+      }
+    );
   }
 
+  applyFilter(event: Event){
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  public openCustomPopUp(message: string): Promise<boolean> {
+    return this.customPopUpService.confirm(
+      'Proyectos', 
+      message,
+      undefined
+      );
+  }
 }

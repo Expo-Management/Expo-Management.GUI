@@ -2,6 +2,8 @@ import { ModalDismissReasons, NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-
 import { Component, Injectable, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Subject } from 'rxjs';
+import { FairService } from 'src/app/shared/services/fair.service';
+import { CustomPopUpService } from 'src/app/shared/services/custom-pop-up.service';
 
 @Component({
   selector: 'app-create-appointments',
@@ -10,6 +12,8 @@ import { Subject } from 'rxjs';
 })
 export class CreateAppointmentsComponent {
 
+  httpMessage = ''
+
   refresh: Subject<any> = new Subject();
 
   newAppoitmentForm = new FormGroup({
@@ -17,26 +21,25 @@ export class CreateAppointmentsComponent {
       '', {
       validators: Validators.required
     }),
-    ends: new FormControl(
+    finish: new FormControl(
       '', {
       validators: Validators.required
     }),
     title: new FormControl('', {
       validators: Validators.required
     }),
-    type: new FormControl('1'),
-    allDay: new FormControl(false, {
+    location: new FormControl('', {
       validators: Validators.required
     }),
-    draggable: new FormControl(true),
-    notes: new FormControl(''),
-    location: new FormControl('')
+    allDay: new FormControl(false, {
+      validators: Validators.required
+    })
   });
 
   constructor(
     public activeModal: NgbActiveModal,
-    // private appointmentService: AppointmentService,
-    // private tokenStorage: TokenStorageService
+    private eventService: FairService,
+    private customPopUpService: CustomPopUpService
   ) {
     this.newAppoitmentForm.get('allDay')?.valueChanges.subscribe(
       a => {
@@ -48,6 +51,14 @@ export class CreateAppointmentsComponent {
           this.newAppoitmentForm.get('end')?.enable();
         }
       });
+  }
+
+  openCustomPopUp(message: string) {
+    this.customPopUpService.confirm(
+      'Creacion de evento', 
+      message,
+      'administrator/fair-calendar'
+      );
   }
 
   parseDate(date: string) {
@@ -73,23 +84,39 @@ export class CreateAppointmentsComponent {
   }
 
   createAppointment() {
-    // this.appointmentService.createAppointment(
-    //   this.newAppoitmentForm.get('title')?.value,
-    //   this.newAppoitmentForm.get('location')?.value,
-    //   this.newAppoitmentForm.get('notes')?.value,
-    //   this.newAppoitmentForm.get('start')?.value,
-    //   this.newAppoitmentForm.get('type')?.value,
-    //   this.newAppoitmentForm.get('ends')?.value,
-    //   this.tokenStorage.getUser().username
-    // ).subscribe(
-    //   data => {
-    //     console.log(data);
-    //     window.location.reload();
-    //   },
-    //   err => {
-    //     console.log(err);
-    //   }
-    // );
+    console.log(this.newAppoitmentForm);
+    this.eventService.createEvent(
+      this.newAppoitmentForm.get('title')?.value,
+      this.newAppoitmentForm.get('location')?.value,
+      this.newAppoitmentForm.get('start')?.value,
+      this.newAppoitmentForm.get('finish')?.value,
+      '',
+      3
+    ).subscribe(
+      data => {
+        if (data.status == 200) {
+          this.httpMessage = 'Evento creado de manera exitosa!';
+        } else if (data.status == 400) {
+          this.httpMessage = 'Revise los datos ingresados';
+        } else {
+          this.httpMessage = 'Hubo un error en el servidor, contacte a los desarrolladores.';
+        }
+
+        this.openCustomPopUp(this.httpMessage);
+        window.location.reload();
+      },
+      err => {
+        if (err.status == 200) {
+          this.httpMessage = 'Evento creado de manera exitosa!';
+        } else if (err.status == 400) {
+          this.httpMessage = 'Revise los datos ingresados';
+        } else {
+          this.httpMessage = 'Hubo un error en el servidor, contacte a los desarrolladores.';
+        }
+
+        this.openCustomPopUp(this.httpMessage);
+      }
+    );
   }
 
 }

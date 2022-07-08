@@ -19,6 +19,10 @@ export class ProjectsService {
     return this.httpClient.get('/api/Projects/current-fair-projects', httpOptions);
   }
 
+  getOlProjects(): Observable<any> {
+    return this.httpClient.get('/api/Projects/old-projects', httpOptions);
+  }
+
   getMentions(): Observable<any> {
     return this.httpClient.get('/api/Projects/mentions', httpOptions);
   }

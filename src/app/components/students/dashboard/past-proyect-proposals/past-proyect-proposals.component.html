@@ -1,11 +1,11 @@
 <div class="flex-container">
     <div class="top-options">
-        <h1>Lista de proyectos previamente presentados en la feria</h1>
+        <h1>Lista de proyectos de anteriores expo ingenierias</h1>
         <div class="sub-container">
             <form class="example-form">
                 <mat-form-field class="example-full-width" appearance="outline">
                     <mat-label>Filtrar proyectos</mat-label>
-                    <input type="text" matInput placeholder="Ejemplo: Robot inteligente">
+                    <input type="text" matInput (keyup)="applyFilter($event)" placeholder="Ejemplo: Robot inteligente">
                     <mat-icon matSuffix>search</mat-icon>
                 </mat-form-field>
             </form>
@@ -15,15 +15,15 @@
         <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
             <ng-container matColumnDef="name">
                 <th mat-header-cell *matHeaderCellDef> Nombre del proyecto</th>
-                <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+                <td mat-cell *matCellDef="let element"> {{ element.name }} </td>
             </ng-container>
             <ng-container matColumnDef="description">
-                <th mat-header-cell *matHeaderCellDef> Descripcion </th>
-                <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+                <th mat-header-cell *matHeaderCellDef> Descripción </th>
+                <td mat-cell *matCellDef="let element"> {{ element.description }} </td>
             </ng-container>
-            <ng-container matColumnDef="date">
-                <th mat-header-cell *matHeaderCellDef> Año Presentado</th>
-                <td mat-cell *matCellDef="let element"> {{element.date}} </td>
+            <ng-container matColumnDef="fair">
+                <th mat-header-cell *matHeaderCellDef> Año de la feria </th>
+                <td mat-cell *matCellDef="let element"> {{ element.fair.startDate | date:'yyyy' }} </td>
             </ng-container>
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>

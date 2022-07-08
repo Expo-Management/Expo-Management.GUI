@@ -37,6 +37,7 @@ import { LogsComponent } from './dashboard/logs/logs.component';
 import { CreateAppointmentsComponent } from './dashboard/create-appointments/create-appointments.component';
 import { MatNativeDateModule } from '@angular/material/core';
 
+
 @NgModule({
   declarations: [
     DashboardComponent,
@@ -92,6 +93,10 @@ import { MatNativeDateModule } from '@angular/material/core';
           //edit users
           { path: 'edit-students/:student_email', component: EditStudentsComponent },
           { path: 'edit-judges/:judge_email', component: EditJudgesComponent },
+
+          { path: 'edit-professors', component: EditProfessorsComponent },
+          { path: 'settings', component: SettingsComponent },         
+
           { path: 'edit-professors/:admin_email', component: EditProfessorsComponent },
           { path: 'settings', component: SettingsComponent },
           
