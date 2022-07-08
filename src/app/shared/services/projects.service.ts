@@ -22,4 +22,8 @@ export class ProjectsService {
   getMentions(): Observable<any> {
     return this.httpClient.get('/api/Projects/mentions', httpOptions);
   }
+
+  ShowProjects(): Observable<any>{
+    return this.httpClient.get('/api/Projects/projects', httpOptions)
+  }
 }
