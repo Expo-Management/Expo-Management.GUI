@@ -19,6 +19,11 @@ export class FairService {
     return this.httpClient.get(`/api/Events/news?FairId=${fairId}`, httpOptions);
   }
 
+  getSecurityProtocols(fairId: number): Observable<any> {
+    console.log('Here 1');
+    return this.httpClient.get(`/api/Events/security-protocols?FairId=${fairId}`, httpOptions);
+  }
+
   createEvent(
     description: string,
     location: string,
