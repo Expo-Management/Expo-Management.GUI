@@ -28,10 +28,10 @@
         </div>
         <div class="details-content">
             <div class="space2">
-                <mat-form-field appearance="fill">
+                <mat-form-field appearance="outline">
                     <mat-label>Nombre del juez que califica</mat-label>
                     <mat-select [(ngModel)]="selectedValue" name="judge">
-                        <mat-option *ngFor="let judge of judges" [value]="judge.name">
+                        <mat-option *ngFor="let judge of judgesCalifications" [value]="judge.name">
                             {{judge.name}}
                         </mat-option>
                     </mat-select>

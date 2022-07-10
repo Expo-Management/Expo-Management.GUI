@@ -19,10 +19,11 @@ export class CurrentProyectProposalsComponent implements OnInit {
   constructor(private customPopUpService: CustomPopUpService, private projects: ProjectsService) { }
 
   ngOnInit(): void {
-    this.displayedColumns = ['name', 'description', 'grade'];
+    this.displayedColumns = ['name', 'description'];
 
     this.projects.ShowProjects().subscribe(
       data => {
+        console.log(data)
         this.dataSource = new MatTableDataSource(data);
       } ,
       err => {
