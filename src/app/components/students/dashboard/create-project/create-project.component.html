@@ -5,7 +5,7 @@
     <div class="content">
         <div class="left-side">
             <div class="projects-form">
-                <form class="login-form variable-width" [formGroup]="newProjectForm" (ngSubmit)="onSubmit()">
+                <form class="login-form variable-width" [formGroup]="newProjectForm">
                     <div class="form-flex-container">
                         <mat-form-field class="variable-width" appearance="outline">
                             <mat-label>Nombre del proyecto</mat-label>
@@ -40,7 +40,7 @@
                                 <input type="text" matInput formControlName="IdFair">
                             </mat-form-field>
                         </mat-form-field>
-                        <mat-checkbox formControlName="creatorLeader">Seleccionar el usuario actual como lider del proyecto?</mat-checkbox>
+                        <!-- <mat-checkbox formControlName="creatorLeader">Seleccionar el usuario actual como lider del proyecto?</mat-checkbox> -->
                     </div>
                 </form>
             </div>
@@ -81,7 +81,7 @@
                 </div>
             </div>
             <div class="bottom">
-                <button id="sumbit-button" class="variable-width" mat-raised-button color="primary">Subir propuesta de proyecto</button>
+                <button id="sumbit-button" class="variable-width" mat-raised-button color="primary" (click)="createProject()">Subir propuesta de proyecto</button>
             </div>
         </div>
     </div>

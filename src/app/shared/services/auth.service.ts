@@ -27,8 +27,7 @@ export class AuthService {
   }
 
   ForgetPassword(email: string): Observable<any>{
-    return this.httpClient.post('/api/Authenticate/ForgetPassword', {
-    email}, httpOptions);
+    return this.httpClient.post(`/api/Authenticate/ForgetPassword?email=${email}`, httpOptions);
   }
 
   ResetPassword(token:string, email: string, newPassword:string, password:string): Observable<any>{

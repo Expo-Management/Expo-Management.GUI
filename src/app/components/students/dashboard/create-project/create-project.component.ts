@@ -33,7 +33,8 @@ export class CreateProjectComponent implements OnInit {
     }),
     IdFair: new FormControl(false, {
       validators: Validators.required
-    })
+    }),
+    file: new FormControl('', [Validators.required]),
     //,
     // creatorLeader: new FormControl(false, {
     //   validators: Validators.required
@@ -56,21 +57,24 @@ export class CreateProjectComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onSubmit() 
+  public createProject() 
   {
+    console.log('test')
     this.ProjectsService.CreateProject(
       this.newProjectForm.controls['Name'].value,
       this.newProjectForm.controls['Description'].value,
       this.newProjectForm.controls['Leader'].value,
       this.newProjectForm.controls['Member2'].value,
       this.newProjectForm.controls['Member3'].value,
-      this.newProjectForm.controls['Category'].value,
-      this.newProjectForm.controls['IdFair'].value,
+      this.newProjectForm.controls['file'].value,
+      2,
     ).subscribe(
       data => {
+        console.log(data);
         this.openCustomPopUp('Proyecto creado exitosamente!');
       },
       err => {
+        console.log(err)
         if (err.status === 200) {
           this.openCustomPopUp('Proyecto creado exitosamente!');
         } else {
@@ -92,6 +96,12 @@ export class CreateProjectComponent implements OnInit {
         fileEntry.file((file: File) => {
 
           // Here you can access the real file
+          this.newProjectForm.patchValue({
+            file: file
+          })
+
+          console.log('*******************')
+          console.log(this.newProjectForm);
           console.log(droppedFile.relativePath, file);
 
           /**
@@ -133,5 +143,9 @@ export class CreateProjectComponent implements OnInit {
       message,
       'administrator/manage-judges'
       );
+  }
+
+  subirProyecto() {
+
   }
 }

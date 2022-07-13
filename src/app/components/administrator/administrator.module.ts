@@ -36,6 +36,8 @@ import { LoggedInGuard } from 'src/app/shared/guards/logged-in.guard';
 import { LogsComponent } from './dashboard/logs/logs.component';
 import { CreateAppointmentsComponent } from './dashboard/create-appointments/create-appointments.component';
 import { MatNativeDateModule } from '@angular/material/core';
+import { ForgetPasswordComponent } from './dashboard/settings/forget-password/forget-password.component';
+import { ResetPasswordComponent } from './dashboard/settings/reset-password/reset-password.component';
 
 
 @NgModule({
@@ -100,6 +102,9 @@ import { MatNativeDateModule } from '@angular/material/core';
           { path: 'edit-professors/:admin_email', component: EditProfessorsComponent },
           { path: 'settings', component: SettingsComponent },
           
+          { path: 'forget-password', component: ForgetPasswordComponent},
+          { path: 'reset-password', component: ResetPasswordComponent},
+
           { path: '', redirectTo: 'home', pathMatch: 'full' },
           { path: '**', redirectTo: 'home', pathMatch: 'full' }
         ]
