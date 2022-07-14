@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { CustomPopUpService } from 'src/app/shared/services/custom-pop-up.service';
 import { JudgesService } from 'src/app/shared/services/judges.service';
-import { Judges } from '../../fair-documents/fair-documents.component';
+import { Judges } from 'src/app/shared/interfaces/judges';
 
 
 @Component({

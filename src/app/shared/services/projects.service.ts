@@ -7,6 +7,12 @@ const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
 
+const httpOptionsMultiPart = {
+  headers: new HttpHeaders({
+   "Content-Type": "multipart/form-data" 
+  })
+}; 
+
 
 @Injectable({
   providedIn: 'root'
@@ -51,7 +57,7 @@ export class ProjectsService {
       Files: Files,
       Fair: Fair
     }, 
-    httpOptions)
+    httpOptionsMultiPart)
   }
 
   

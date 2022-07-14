@@ -23,5 +23,11 @@ export class FilesService {
     httpOptions)
   }
 
+  showFiles(): Observable<any>{
+    return this.httpClient.get('/api/Files/files', httpOptions)
+  }
   
+  deleteFiles(name: string): Observable<any>{
+    return this.httpClient.delete(`/api/Files/file?${name}`, httpOptions)
+  }
 }
