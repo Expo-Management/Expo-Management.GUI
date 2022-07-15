@@ -1,0 +1,37 @@
+<div class="flex-container">
+    <div class="top-options">
+        <h1>Lista de estudiantes</h1>
+        <div class="sub-container">
+            <form class="example-form">
+                <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Buscar estudiantes</mat-label>
+                    <input type="text" matInput (keyup)="applyFilter($event)" placeholder="Ingrese nombre del estudiante">
+                    <mat-icon matSuffix>search</mat-icon>
+                </mat-form-field>
+            </form>
+        </div>
+    </div>
+
+    <div class="users-content">
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+            <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef> Nombre </th>
+                <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+            </ng-container>
+            <ng-container matColumnDef="lastname">
+                <th mat-header-cell *matHeaderCellDef> Apellido </th>
+                <td mat-cell *matCellDef="let element"> {{element.lastname}} </td>
+            </ng-container>
+            <ng-container matColumnDef="email">
+                <th mat-header-cell *matHeaderCellDef> Correo </th>
+                <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+            </ng-container>
+            <ng-container matColumnDef="phoneNumber">
+                <th mat-header-cell *matHeaderCellDef> Telefono </th>
+                <td mat-cell *matCellDef="let element"> {{element.phoneNumber}} </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+    </div>
+</div>
