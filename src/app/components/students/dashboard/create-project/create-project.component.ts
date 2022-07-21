@@ -30,16 +30,14 @@ export class CreateProjectComponent implements OnInit {
     }),
     Category: new FormControl('', {
       validators: Validators.required
-    }),
-    IdFair: new FormControl(false, {
-      validators: Validators.required
-    }),
-    file: new FormControl('', [Validators.required]),
+    })
     //,
     // creatorLeader: new FormControl(false, {
     //   validators: Validators.required
     // })
   });
+
+  file!: File;
 
   projectCategory = '';
 
@@ -66,8 +64,8 @@ export class CreateProjectComponent implements OnInit {
       this.newProjectForm.controls['Leader'].value,
       this.newProjectForm.controls['Member2'].value,
       this.newProjectForm.controls['Member3'].value,
-      this.newProjectForm.controls['file'].value,
-      2,
+      this.file,
+      1,
     ).subscribe(
       data => {
         console.log(data);
@@ -90,12 +88,9 @@ export class CreateProjectComponent implements OnInit {
     this.files = files;
     for (const droppedFile of files) {
 
-      // Is it a file?
       if (droppedFile.fileEntry.isFile) {
         const fileEntry = droppedFile.fileEntry as FileSystemFileEntry;
         fileEntry.file((file: File) => {
-
-          // Here you can access the real file
           this.newProjectForm.patchValue({
             file: file
           })
@@ -108,7 +103,6 @@ export class CreateProjectComponent implements OnInit {
 
         });
       } else {
-        // It was a directory (empty directories are added, otherwise only files)
         const fileEntry = droppedFile.fileEntry as FileSystemDirectoryEntry;
         console.log(droppedFile.relativePath, fileEntry);
       }
@@ -125,9 +119,9 @@ export class CreateProjectComponent implements OnInit {
 
   openCustomPopUp(message: string) {
     this.customPopUpService.confirm(
-      'Judge creation', 
+      'Creación de proyecto', 
       message,
-      'administrator/manage-judges'
+      'student/new-project'
       );
   }
 

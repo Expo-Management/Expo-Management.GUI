@@ -3,6 +3,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { CustomPopUpService } from 'src/app/shared/services/custom-pop-up.service';
 import { FilesService } from 'src/app/shared/services/files.service';
 import { Files } from 'src/app/shared/interfaces/files';
+import { FormGroup, FormControl, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-fair-documents',
@@ -13,6 +14,12 @@ export class FairDocumentsComponent implements OnInit {
   displayedColumns: string[] = [];
   listOfProjects: Array<Files> = []
   dataSource = new MatTableDataSource(this.listOfProjects);
+
+  FilesForm = new FormGroup({
+    file: new FormControl('', [Validators.required]),
+    fileSource: new FormControl('', [Validators.required])
+  });
+    
   constructor(
     private customPopUpService: CustomPopUpService,
     private FilesServices: FilesService
@@ -34,6 +41,30 @@ export class FairDocumentsComponent implements OnInit {
       }
     );
   }
+
+  onFileChange(event: { target: { files: string | any[]; }; }) {
+  
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0];
+      this.FilesForm.patchValue({
+        fileSource: file
+      });
+    }
+  }
+     
+  submit(){
+    // const formData = new FormData();
+    // formData.append('file', this.FilesForm.get('fileSource').value);
+   
+    this.FilesServices.addFiles(
+      this.FilesForm.controls['file'].value,
+    ).subscribe(
+      data => {
+        console.log(data);
+        alert('Uploaded Successfully.');
+      })
+  }
+
 
   applyFilter(event: Event){
     const filterValue = (event.target as HTMLInputElement).value;
