@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://expo-managementapi.azurewebsites.net/',
+  apiUrl: 'https://expomanagementapi2.azurewebsites.net/',
 };

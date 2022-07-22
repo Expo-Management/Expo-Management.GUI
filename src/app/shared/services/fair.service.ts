@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 
 const httpOptions = {
@@ -16,12 +17,12 @@ export class FairService {
   constructor(private httpClient: HttpClient) { }
 
   getNews(fairId: number): Observable<any> {
-    return this.httpClient.get(`/api/Events/news?FairId=${fairId}`, httpOptions);
+    return this.httpClient.get(environment.apiUrl + `/api/Events/news?FairId=${fairId}`, httpOptions);
   }
 
   getSecurityProtocols(fairId: number): Observable<any> {
     console.log('Here 1');
-    return this.httpClient.get(`/api/Events/security-protocols?FairId=${fairId}`, httpOptions);
+    return this.httpClient.get(environment.apiUrl + `/api/Events/security-protocols?FairId=${fairId}`, httpOptions);
   }
 
   createEvent(
@@ -33,7 +34,7 @@ export class FairService {
     fairId: number
   ): Observable<any>{
     return this.httpClient.post(
-      '/api/Events/event', 
+      environment.apiUrl + '/api/Events/event', 
       {
         description: description,
         location: location,

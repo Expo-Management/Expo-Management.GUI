@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -23,7 +24,7 @@ export class AdminService {
     password: string
   ) {
     return this.httpClient.post(
-      '/api/Authenticate/register-admin', 
+      environment.apiUrl + '/api/Authenticate/register-admin', 
       {
         id: userId,
         username: username,
@@ -37,11 +38,11 @@ export class AdminService {
   }
 
   getAdmins(): Observable<any> {
-    return this.httpClient.get('/api/Users/admins', httpOptions);
+    return this.httpClient.get(environment.apiUrl + '/api/Users/admins', httpOptions);
   }
 
   getAdmin(email: string): Observable<any> {
-    return this.httpClient.get(`/api/Users/admin?email=${email}`, httpOptions);
+    return this.httpClient.get(environment.apiUrl + `/api/Users/admin?email=${email}`, httpOptions);
   }
 
   updateAdmin(
@@ -53,7 +54,7 @@ export class AdminService {
     phone: string
   ): Observable<any> {
     return this.httpClient.put(
-      '/api/Users/admin', 
+      environment.apiUrl + '/api/Users/admin', 
       {
         id: userId,
         userName: username,
@@ -66,6 +67,6 @@ export class AdminService {
   }
 
   deleteAdmin(email: string): Observable<any> {
-    return this.httpClient.delete(`/api/Users/admin?email=${email}`, httpOptions);
+    return this.httpClient.delete(environment.apiUrl + `/api/Users/admin?email=${email}`, httpOptions);
   }
 }

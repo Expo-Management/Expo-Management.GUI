@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -23,7 +24,7 @@ export class StudentsService {
     password: string
   ) {
     return this.httpClient.post(
-      '/api/Authenticate/register', 
+      environment.apiUrl + '/api/Authenticate/register', 
       {
         id: userId,
         username: username,
@@ -37,11 +38,11 @@ export class StudentsService {
   }
 
   getStudents(): Observable<any> {
-    return this.httpClient.get('/api/Users/students', httpOptions);
+    return this.httpClient.get(environment.apiUrl + '/api/Users/students', httpOptions);
   }
 
   getStudent(email: string): Observable<any> {
-    return this.httpClient.get(`/api/Users/student?email=${email}`, httpOptions);
+    return this.httpClient.get(environment.apiUrl + `/api/Users/student?email=${email}`, httpOptions);
   }
 
   updateStudent(
@@ -53,7 +54,7 @@ export class StudentsService {
     phone: string
   ): Observable<any> {
     return this.httpClient.put(
-      '/api/Users/student', 
+      environment.apiUrl + '/api/Users/student', 
       {
         id: userId,
         userName: username,
@@ -66,7 +67,7 @@ export class StudentsService {
   }
 
   deleteStudent(email: string): Observable<any> {
-    return this.httpClient.delete(`/api/Users/student?email=${email}`, httpOptions);
+    return this.httpClient.delete(environment.apiUrl + `/api/Users/student?email=${email}`, httpOptions);
   }
 
 }
