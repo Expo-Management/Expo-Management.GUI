@@ -12,15 +12,15 @@ import { CustomPopUpService } from 'src/app/shared/services/custom-pop-up.servic
 })
 
 export class PastProyectProposalsComponent implements OnInit {
-  displayedColumns: string[] = [];
+  displayedColumns = ['name', 'description', 'fair'];
   listOfProjects: Array<ProyectProposals> = []
   dataSource = new MatTableDataSource(this.listOfProjects);
 
-  constructor(private customPopUpService: CustomPopUpService, private projects: ProjectsService) { }
+  constructor(
+    private customPopUpService: CustomPopUpService, 
+    private projects: ProjectsService) { }
 
-  ngOnInit(): void {
-    this.displayedColumns = ['name', 'description', 'fair'];
-
+  ngOnInit(): void { 
     this.projects.getOlProjects().subscribe(
       data => {
         this.dataSource = new MatTableDataSource(data);

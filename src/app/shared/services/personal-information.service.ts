@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { UserProfile } from '../interfaces/user-profile';
 
 
@@ -18,7 +19,7 @@ export class PersonalInformationService {
   constructor(private httpClient: HttpClient) {}
 
   public getUSerInfo(user_id: string): Observable<UserProfile> {
-    return this.httpClient.get<UserProfile>(`/api/Auth/user?userId=${user_id}`, httpOptions);
+    return this.httpClient.get<UserProfile>(environment.apiUrl + `/Auth/user?userId=${user_id}`, httpOptions);
   }
 
   public updateProfile(
@@ -31,15 +32,11 @@ export class PersonalInformationService {
     birthDate: string
   ): Observable<any> {
     return this.httpClient.put<any>(
-      '/api/Auth/profile/update', 
+      environment.apiUrl + '/Auth/profile/update', 
       {id, name, last, email, username, password, birthDate},
       httpOptions);
   }
-
-  // public getFullName(): string {
-  //   return localStorage.getItem(USER_FIRST) + ' ' + localStorage.getItem(USER_LAST)
-  // }
-
+  
   public saveRole(role: string): void {
     localStorage.removeItem(USER_ROLE);
     
@@ -49,8 +46,4 @@ export class PersonalInformationService {
   public getRole(): string | null {
     return localStorage.getItem(USER_ROLE);
   }
-
-  // public getId(): string | null {
-  //   return localStorage.getItem(USER_ID);
-  // }
 }
