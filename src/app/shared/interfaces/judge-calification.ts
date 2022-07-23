@@ -1,4 +1,4 @@
 export interface JudgeCalification {
-    name: string, 
-    grade: string
+    judgeName: string, 
+    punctuation: string
 }
