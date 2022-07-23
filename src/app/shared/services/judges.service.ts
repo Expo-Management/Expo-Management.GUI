@@ -25,7 +25,7 @@ export class JudgesService {
     password: string
   ) {
     return this.httpClient.post(
-      environment.apiUrl + '/api/Authenticate/register-judge', 
+      environment.apiUrl + '/Authenticate/register-judge', 
       {
         id: userId,
         username: username,
@@ -39,11 +39,11 @@ export class JudgesService {
   }
 
   getJudges(): Observable<any> {
-    return this.httpClient.get(environment.apiUrl + '/api/Users/judges', httpOptions);
+    return this.httpClient.get(environment.apiUrl + '/Users/judges', httpOptions);
   }
 
   getJudge(email: string): Observable<any> {
-    return this.httpClient.get(environment.apiUrl + `/api/Users/judge?email=${email}`, httpOptions);
+    return this.httpClient.get(environment.apiUrl + `/Users/judge?email=${email}`, httpOptions);
   }
 
   updateJudge(
@@ -55,7 +55,7 @@ export class JudgesService {
     phone: string
   ): Observable<any> {
     return this.httpClient.put(
-      environment.apiUrl + '/api/Users/judge', 
+      environment.apiUrl + '/Users/judge', 
       {
         id: userId,
         userName: username,
@@ -68,6 +68,6 @@ export class JudgesService {
   }
 
   deleteJudge(email: string): Observable<any> {
-    return this.httpClient.delete(environment.apiUrl + `/api/Users/judge?email=${email}`, httpOptions);
+    return this.httpClient.delete(environment.apiUrl + `/Users/judge?email=${email}`, httpOptions);
   }
 }

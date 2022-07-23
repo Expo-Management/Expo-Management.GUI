@@ -18,22 +18,22 @@ export class ProjectsService {
   constructor(private httpClient: HttpClient) { }
 
   getCurrentProjects(): Observable<any> {
-    return this.httpClient.get(environment.apiUrl + '/api/Projects/current-fair-projects', httpOptions);
+    return this.httpClient.get(environment.apiUrl + '/Projects/current-fair-projects', httpOptions);
   }
 
   getOlProjects(): Observable<any> {
-    return this.httpClient.get(environment.apiUrl + '/api/Projects/old-projects', httpOptions);
+    return this.httpClient.get(environment.apiUrl + '/Projects/old-projects', httpOptions);
   }
 
   getMentions(): Observable<any> {
-    return this.httpClient.get(environment.apiUrl + '/api/Projects/mentions', httpOptions);
+    return this.httpClient.get(environment.apiUrl + '/Projects/mentions', httpOptions);
   }
 
   ShowProjects(): Observable<any>{
-    return this.httpClient.get(environment.apiUrl + '/api/Projects/projects', httpOptions)
+    return this.httpClient.get(environment.apiUrl + '/Projects/projects', httpOptions)
   }
 
   getProjectDetails(projectId: string | null): Observable<ProjectQualifications[]>{
-    return this.httpClient.get<ProjectQualifications[]>(environment.apiUrl + `/api/Projects/project?projectId=${projectId}`, httpOptions)
+    return this.httpClient.get<ProjectQualifications[]>(environment.apiUrl + `/Projects/project?projectId=${projectId}`, httpOptions)
   }
 }

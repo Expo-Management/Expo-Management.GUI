@@ -24,7 +24,7 @@ export class StudentsService {
     password: string
   ) {
     return this.httpClient.post(
-      environment.apiUrl + '/api/Authenticate/register', 
+      environment.apiUrl + '/Authenticate/register', 
       {
         id: userId,
         username: username,
@@ -38,11 +38,11 @@ export class StudentsService {
   }
 
   getStudents(): Observable<any> {
-    return this.httpClient.get(environment.apiUrl + '/api/Users/students', httpOptions);
+    return this.httpClient.get(environment.apiUrl + '/Users/students', httpOptions);
   }
 
   getStudent(email: string): Observable<any> {
-    return this.httpClient.get(environment.apiUrl + `/api/Users/student?email=${email}`, httpOptions);
+    return this.httpClient.get(environment.apiUrl + `/Users/student?email=${email}`, httpOptions);
   }
 
   updateStudent(
@@ -54,7 +54,7 @@ export class StudentsService {
     phone: string
   ): Observable<any> {
     return this.httpClient.put(
-      environment.apiUrl + '/api/Users/student', 
+      environment.apiUrl + '/Users/student', 
       {
         id: userId,
         userName: username,
@@ -67,7 +67,7 @@ export class StudentsService {
   }
 
   deleteStudent(email: string): Observable<any> {
-    return this.httpClient.delete(environment.apiUrl + `/api/Users/student?email=${email}`, httpOptions);
+    return this.httpClient.delete(environment.apiUrl + `/Users/student?email=${email}`, httpOptions);
   }
 
 }

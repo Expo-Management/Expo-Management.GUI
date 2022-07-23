@@ -24,7 +24,7 @@ export class AdminService {
     password: string
   ) {
     return this.httpClient.post(
-      environment.apiUrl + '/api/Authenticate/register-admin', 
+      environment.apiUrl + '/Authenticate/register-admin', 
       {
         id: userId,
         username: username,
@@ -38,11 +38,11 @@ export class AdminService {
   }
 
   getAdmins(): Observable<any> {
-    return this.httpClient.get(environment.apiUrl + '/api/Users/admins', httpOptions);
+    return this.httpClient.get(environment.apiUrl + '/Users/admins', httpOptions);
   }
 
   getAdmin(email: string): Observable<any> {
-    return this.httpClient.get(environment.apiUrl + `/api/Users/admin?email=${email}`, httpOptions);
+    return this.httpClient.get(environment.apiUrl + `/Users/admin?email=${email}`, httpOptions);
   }
 
   updateAdmin(
@@ -54,7 +54,7 @@ export class AdminService {
     phone: string
   ): Observable<any> {
     return this.httpClient.put(
-      environment.apiUrl + '/api/Users/admin', 
+      environment.apiUrl + '/Users/admin', 
       {
         id: userId,
         userName: username,
@@ -67,6 +67,6 @@ export class AdminService {
   }
 
   deleteAdmin(email: string): Observable<any> {
-    return this.httpClient.delete(environment.apiUrl + `/api/Users/admin?email=${email}`, httpOptions);
+    return this.httpClient.delete(environment.apiUrl + `/Users/admin?email=${email}`, httpOptions);
   }
 }

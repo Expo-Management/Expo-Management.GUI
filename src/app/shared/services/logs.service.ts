@@ -15,7 +15,7 @@ export class LogsService {
   constructor(private httpClient: HttpClient) { }
 
   getLogs(): Observable<any> {
-    return this.httpClient.get(environment.apiUrl + '/api/Logs/logs', httpOptions);
+    return this.httpClient.get(environment.apiUrl + '/Logs/logs', httpOptions);
   }
 
 }
