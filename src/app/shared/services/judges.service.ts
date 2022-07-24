@@ -22,7 +22,9 @@ export class JudgesService {
     last: string,
     email: string,
     phone: string,
-    password: string
+    password: string,
+    institution: string, 
+    position: string
   ) {
     return this.httpClient.post(
       environment.apiUrl + '/Authenticate/register-judge', 
@@ -33,7 +35,9 @@ export class JudgesService {
         lastname: last,
         email: email,
         phone: phone,
-        password: password
+        password: password,
+        position: position,
+        institution: institution
       }, 
       httpOptions);
   }

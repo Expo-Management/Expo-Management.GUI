@@ -48,6 +48,16 @@ export class AddJudgesComponent implements OnInit {
         Validators.required
       ]
     }),
+    InstitutionFormControl: new FormControl('', {
+      validators: [
+        Validators.required
+      ]
+    }),
+    PositionFormControl: new FormControl('', {
+      validators: [
+        Validators.required
+      ]
+    }),
   })
 
   constructor(
@@ -75,6 +85,8 @@ export class AddJudgesComponent implements OnInit {
       this.createJudgeForm.controls['EmailFormControl'].value,
       this.createJudgeForm.controls['PhoneFormControl'].value,
       this.createJudgeForm.controls['PasswordFormControl'].value,
+      this.createJudgeForm.controls['InstitutionFormControl'].value,
+      this.createJudgeForm.controls['PositionFormControl'].value,
     ).subscribe(
       data => {
         this.openCustomPopUp('Judge created!');
