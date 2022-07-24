@@ -53,7 +53,7 @@ export class ProjectDetailsComponent implements OnInit {
     this.group_members = data[0].members;
 
     this.category = (data[0].category != undefined || data[0].category != null) ? data[0].category : "No se le ha asignado una categoria";
-    this.qualification = (data[0].finalPunctuation != undefined || data[0].finalPunctuation != null) ? data[0].finalPunctuation : "No se le ha asignado una calificacion";
+    this.qualification = ((data[0].finalPunctuation != undefined || data[0].finalPunctuation != null) && data[0].projectQualifications.length > 0)  ? data[0].finalPunctuation : "No se le ha asignado una calificacion";
   }
 
   private fillProjectCalification(data: JudgeCalification[]) {
