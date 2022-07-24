@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 
-export interface Judges {
+export interface Documents {
   name: string;
   date: string;
   type: string;
   size: string;
 }
 
-const ELEMENT_DATA: Judges[] = [
+const ELEMENT_DATA: Documents[] = [
   { name: 'Inscripción de la Feria', date: '3/13/2022', type: 'Documento Word', size: '25 KB'},
   { name: 'Renuncia de la Feria', date: '3/13/2022', type: 'Documento Word', size: '23 KB'},
  

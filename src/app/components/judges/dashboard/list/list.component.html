@@ -5,7 +5,7 @@
             <form class="example-form">
                 <mat-form-field class="example-full-width" appearance="outline">
                     <mat-label>Buscar jueces</mat-label>
-                    <input type="text" matInput placeholder="Buscar">
+                    <input type="text" (keyup)="applyFilter($event)" matInput placeholder="Buscar">
                     <mat-icon matSuffix>search</mat-icon> 
                 </mat-form-field>
             </form>
@@ -17,25 +17,19 @@
     
             <ng-container  matColumnDef="juez">
               <th mat-header-cell *matHeaderCellDef> Juez </th>
-              <td mat-cell *matCellDef="let element"> {{element.juez}} </td>
+              <td mat-cell *matCellDef="let element"> {{element.name}} {{element.lastname}}</td>
             </ng-container>
           
             <ng-container matColumnDef="posicion">
               <th mat-header-cell *matHeaderCellDef> Posicion </th>
-              <td mat-cell *matCellDef="let element"> {{element.posicion}} </td>
+              <td mat-cell *matCellDef="let element"> {{element.position}} </td>
             </ng-container>
             
             <ng-container matColumnDef="institucion">
               <th mat-header-cell *matHeaderCellDef> Institucion </th>
-              <td mat-cell *matCellDef="let element"> {{element.institucion}} 
+              <td mat-cell *matCellDef="let element"> {{element.institution}} 
               </td>
             </ng-container>
-          
-            <ng-container matColumnDef="apuntes">
-              <th mat-header-cell *matHeaderCellDef> Apuntes </th>
-              <td mat-cell *matCellDef="let element"> {{element.apuntes}} 
-              </td>
-            </ng-container> 
 
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
