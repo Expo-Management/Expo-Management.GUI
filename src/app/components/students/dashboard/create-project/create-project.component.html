@@ -5,34 +5,42 @@
     <div class="content">
         <div class="left-side">
             <div class="projects-form">
-                <form class="login-form variable-width" [formGroup]="newProjectForm" (ngSubmit)="onSubmit()">
+                <form class="login-form variable-width" [formGroup]="newProjectForm">
                     <div class="form-flex-container">
                         <mat-form-field class="variable-width" appearance="outline">
                             <mat-label>Nombre del proyecto</mat-label>
-                            <input type="text" matInput formControlName="name">
+                            <input type="text" matInput formControlName="Name">
                         </mat-form-field>
                         <mat-form-field class="variable-width" hintLabel="Max 400 caracteres" appearance="outline">
                             <mat-label>Descripcion del proyecto</mat-label>
-                            <textarea #txtArea matInput [maxlength]="400" formControlName="description"></textarea>
+                            <textarea #txtArea matInput [maxlength]="400" formControlName="Description"></textarea>
                             <mat-hint align="end">{{txtArea.value?.length || 0}}/400</mat-hint>
                         </mat-form-field>
                         <mat-form-field class="variable-width" appearance="outline">
+                            <mat-label>Lider del proyecto</mat-label>
+                            <input type="text" matInput formControlName="Leader">
+                        </mat-form-field>
+                        <mat-form-field class="variable-width" appearance="outline">
                             <mat-label>Integrante del grupo 2</mat-label>
-                            <input type="text" matInput formControlName="teammate1">
+                            <input type="text" matInput formControlName="Member2">
                         </mat-form-field>
                         <mat-form-field class="variable-width" appearance="outline">
                             <mat-label>Integrante del grupo 3</mat-label>
-                            <input type="text" matInput formControlName="teammate2">
+                            <input type="text" matInput formControlName="Member3">
                         </mat-form-field>
                         <mat-form-field class="variable-width" appearance="outline">
                             <mat-label>Categoria del proyecto</mat-label>
-                            <mat-select formControlName="category" name="judge">
+                            <mat-select formControlName="Category" name="category">
                                 <mat-option *ngFor="let category of categories" [value]="category.name">
                                     {{category.name}}
                                 </mat-option>
                             </mat-select>
+                            <mat-form-field class="variable-width" appearance="outline">
+                                <mat-label></mat-label>
+                                <input type="text" matInput formControlName="IdFair">
+                            </mat-form-field>
                         </mat-form-field>
-                        <mat-checkbox formControlName="creatorLeader">Seleccionar el usuario actual como lider del proyecto?</mat-checkbox>
+                        <!-- <mat-checkbox formControlName="creatorLeader">Seleccionar el usuario actual como lider del proyecto?</mat-checkbox> -->
                     </div>
                 </form>
             </div>
@@ -73,7 +81,7 @@
                 </div>
             </div>
             <div class="bottom">
-                <button id="sumbit-button" class="variable-width" mat-raised-button color="primary">Subir propuesta de proyecto</button>
+                <button id="sumbit-button" class="variable-width" mat-raised-button color="primary" (click)="createProject()">Subir propuesta de proyecto</button>
             </div>
         </div>
     </div>

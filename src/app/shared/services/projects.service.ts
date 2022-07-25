@@ -43,4 +43,29 @@ export class ProjectsService {
       {projectId, claimDescription}, 
       httpOptions)
   }
+
+  CreateProject
+  (
+    name: string,
+    description: string,
+    Leader: string,
+    Member2: string,
+    Member3: string,
+    Files: File,
+    Fair: number
+  ){
+    return this.httpClient.post('/api/Projects/projects', 
+    {
+      name: name,
+      description: description,
+      Leader: Leader,
+      Member2: Member2,
+      Member3: Member3,
+      Files: Files,
+      Fair: Fair
+    }, 
+    httpOptions)
+  }
+
+  
 }
