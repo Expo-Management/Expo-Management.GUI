@@ -32,6 +32,7 @@ export class ForgetPasswordComponent implements OnInit {
   }
 
   onSubmit(){
+    console.log('test');
     this.authService.ForgetPassword(
       this.ForgetPasswordForm.controls['EmailFormControl'].value).subscribe(
         data => {

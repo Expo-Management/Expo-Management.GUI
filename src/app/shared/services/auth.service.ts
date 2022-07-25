@@ -22,18 +22,27 @@ export class AuthService {
     }, httpOptions);
   }
 
-  register(id: string, name: string , last: string, username: string, email: string, password: string, birthday: string): Observable<any> {
-    return this.httpClient.post(environment.apiUrl + '/Authenticate/register', { 
-      id, name, last, username, email, password, birthday}, httpOptions);
+  register(
+    id: string, 
+    name: string, 
+    last: string, 
+    username: string, 
+    email: string, 
+    password: string, 
+    birthday: string,
+    institution: string = '',
+    position: string = ''
+    ): Observable<any> {
+    return this.httpClient.post(environment.apiUrl + '/Auth/register', { 
+      id, name, last, username, email, password, birthday, institution, position}, httpOptions);
   }
 
   ForgetPassword(email: string): Observable<any>{
-    return this.httpClient.post(environment.apiUrl + '/Authenticate/ForgetPassword', {
-    email}, httpOptions);
+    return this.httpClient.post(environment.apiUrl + `/Authenticate/ForgetPassword?email=${email}`, httpOptions);
   }
 
-  ResetPassword(token:string, email: string, newPassword:string, password:string): Observable<any>{
+  ResetPassword(token:string, email: string, newPassword:string, confirmPassword:string): Observable<any>{
     return this.httpClient.post(environment.apiUrl + '/Authenticate/ResetPassword', {
-    token, email, newPassword, password}, httpOptions);
+    token, email, newPassword, confirmPassword}, httpOptions);
   }
 }

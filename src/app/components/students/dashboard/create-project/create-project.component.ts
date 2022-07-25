@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { NgxFileDropEntry, FileSystemFileEntry, FileSystemDirectoryEntry } from 'ngx-file-drop';
+import { ProjectsService } from 'src/app/shared/services/projects.service';
+import { CustomPopUpService } from 'src/app/shared/services/custom-pop-up.service';
 
 @Component({
   selector: 'app-create-project',
@@ -9,26 +11,34 @@ import { NgxFileDropEntry, FileSystemFileEntry, FileSystemDirectoryEntry } from 
 })
 export class CreateProjectComponent implements OnInit {
   newProjectForm = new FormGroup({
-    name: new FormControl('', {
+    Name: new FormControl('', {
       validators: [
         Validators.required
       ]
     }),
-    description: new FormControl('', {
+    Description: new FormControl('', {
       validators: Validators.required
     }),
-    teammate1: new FormControl('', {
+    Lider: new FormControl('', {
       validators: Validators.required
     }),
-    teammate2: new FormControl('', {
+    Member2: new FormControl('', {
       validators: Validators.required
     }),
-    category: new FormControl('', {
+    Member3: new FormControl('', {
       validators: Validators.required
     }),
-    creatorLeader: new FormControl(false, {
+    Category: new FormControl('', {
       validators: Validators.required
-    })
+    }),
+    IdFair: new FormControl(false, {
+      validators: Validators.required
+    }),
+    file: new FormControl('', [Validators.required]),
+    //,
+    // creatorLeader: new FormControl(false, {
+    //   validators: Validators.required
+    // })
   });
 
   projectCategory = '';
@@ -39,12 +49,43 @@ export class CreateProjectComponent implements OnInit {
     {name: 'Categoria 3', value: ''},
   ];
 
-  constructor() { }
+  constructor(
+    private ProjectsService: ProjectsService,
+    private customPopUpService: CustomPopUpService
+  ) { }
 
   ngOnInit(): void {
   }
 
-  onSubmit() {}
+  public createProject() 
+  {
+    var formData: FormData = new FormData();
+
+    formData.set('Name', this.newProjectForm.controls['Name'].value)
+    formData.set('Description', this.newProjectForm.controls['Description'].value)
+    formData.set('Lider', this.newProjectForm.controls['Lider'].value)
+    formData.set('Member2', this.newProjectForm.controls['Member2'].value)
+    formData.set('Member3', this.newProjectForm.controls['Member3'].value)
+    formData.set('Files', this.newProjectForm.controls['file'].value)
+    formData.set('Fair', '2')
+
+    this.ProjectsService.CreateProject(
+      formData
+    ).subscribe(
+      data => {
+        console.log(data);
+        this.openCustomPopUp('Proyecto creado exitosamente!');
+      },
+      err => {
+        console.log(err)
+        if (err.status === 200) {
+          this.openCustomPopUp('Proyecto creado exitosamente!');
+        } else {
+          this.openCustomPopUp('Hubo un error, por favor, intenlo más tarde.');
+        }
+      }
+    );
+  }
 
   public files: NgxFileDropEntry[] = [];
 
@@ -58,8 +99,9 @@ export class CreateProjectComponent implements OnInit {
         fileEntry.file((file: File) => {
 
           // Here you can access the real file
-          console.log(droppedFile.relativePath, file);
-
+          this.newProjectForm.patchValue({
+            file: file
+          })
           /**
           // You could upload it like this:
           const formData = new FormData()
@@ -93,4 +135,15 @@ export class CreateProjectComponent implements OnInit {
     console.log(event);
   }
 
+  openCustomPopUp(message: string) {
+    this.customPopUpService.confirm(
+      'Judge creation', 
+      message,
+      'student/new-project'
+      );
+  }
+
+  subirProyecto() {
+
+  }
 }
