@@ -21,6 +21,7 @@ import { CurrentDocumentationComponent } from './dashboard/current-documentation
 import { LoggedInGuard } from 'src/app/shared/guards/logged-in.guard';
 import { MentionsComponent } from './dashboard/mentions/mentions.component';
 import { FairNewsComponent } from './dashboard/fair-news/fair-news.component';
+import { ClaimsComponent } from './dashboard/project-details/claims/claims.component';
 
 
 @NgModule({
@@ -40,6 +41,7 @@ import { FairNewsComponent } from './dashboard/fair-news/fair-news.component';
     CurrentDocumentationComponent,
     MentionsComponent,
     FairNewsComponent,
+    ClaimsComponent,
   ],
   imports: [
     ReactiveFormsModule,
@@ -72,6 +74,7 @@ import { FairNewsComponent } from './dashboard/fair-news/fair-news.component';
         // canActivate: [ LoggedInGuard ]
       },
     ]),
-  ]
+  ],
+  entryComponents: [ ClaimsComponent ]
 })
 export class StudentsModule { }

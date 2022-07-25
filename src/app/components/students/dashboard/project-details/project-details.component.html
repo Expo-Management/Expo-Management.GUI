@@ -30,19 +30,19 @@
             <div class="space2">
                 <mat-form-field appearance="outline">
                     <mat-label>Nombre del juez que califica</mat-label>
-                    <mat-select [(ngModel)]="selectedValue" name="judge">
-                        <mat-option *ngFor="let judge of judgesCalifications" [value]="judge.name">
-                            {{judge.name}}
+                    <mat-select [(ngModel)]="selectedJudge" name="judge">
+                        <mat-option *ngFor="let judge of judgesCalifications" [value]="judge.judgeName" (click)="getJudgeQualification(selectedJudge)">
+                            {{judge.judgeName}}
                         </mat-option>
                     </mat-select>
                 </mat-form-field>
             </div>
             <!-- <h3 class="space2">Nombre del juez: {{ judge_name }}</h3> -->
-            <h3 class="space">Calificacion obtenida: </h3>
+            <h3 class="space">Calificacion obtenida: {{ selectedQualification }}</h3>
             <div class="button-group space">
                 <button class="button" mat-raised-button>Desglose de nota</button>
                 <button class="button" mat-raised-button>Recomendaciones</button>
-                <button class="button" mat-raised-button>Apelar</button>
+                <button class="button" (click)="createClaim()" mat-raised-button>Apelar</button>
             </div>
         </div>
     </div>
