@@ -30,7 +30,6 @@ import { AddStudentsComponent } from './dashboard/add-users/add-students/add-stu
 import { AddProfessorsComponent } from './dashboard/add-users/add-professors/add-professors.component';
 import { EditStudentsComponent } from './dashboard/edit-users/edit-students/edit-students.component';
 import { EditProfessorsComponent } from './dashboard/edit-users/edit-professors/edit-professors.component';
-import { AddEventsDialogComponent } from './dashboard/add-events-dialog/add-events-dialog.component';
 import { EditJudgesComponent } from './dashboard/edit-users/edit-judges/edit-judges.component';
 import { LoggedInGuard } from 'src/app/shared/guards/logged-in.guard';
 import { LogsComponent } from './dashboard/logs/logs.component';
@@ -62,7 +61,6 @@ import { MatNativeDateModule } from '@angular/material/core';
     EditJudgesComponent,
     EditProfessorsComponent,
     DeleteDialogComponent,
-    AddEventsDialogComponent,
     SettingsComponent,
     CreateAppointmentsComponent,
   ],
