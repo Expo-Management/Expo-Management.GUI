@@ -8,15 +8,7 @@
     height: 100%;
     width: 100%;
     padding-left: 2rem;
-}
-
-.admin-users-options {
-    width: 100%;
-}
-
-.admin-fair-options {
-    height: 40%;
-    width: 100%;
+    padding: 2rem auto;
 }
 
 h3 {
