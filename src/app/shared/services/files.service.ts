@@ -25,10 +25,10 @@ export class FilesService {
   }
 
   showFiles(): Observable<any>{
-    return this.httpClient.get('/api/Files/files', httpOptions)
+    return this.httpClient.get(environment.apiUrl + '/Files/files', httpOptions)
   }
   
   deleteFiles(name: string): Observable<any>{
-    return this.httpClient.delete(`/api/Files/file?${name}`, httpOptions)
+    return this.httpClient.delete(environment.apiUrl + `/Files/file?${name}`, httpOptions)
   }
 }
