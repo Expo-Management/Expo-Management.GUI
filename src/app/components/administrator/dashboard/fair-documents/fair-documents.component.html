@@ -2,14 +2,14 @@
     <div class="top-options">
         <h1>Documentos de la Feria</h1>
         <div class="sub-container">
-            <form class="example-form">
+            <form class="example-form" [formGroup]="FilesForm">
                 <mat-form-field class="example-full-width" appearance="outline">
-                    <mat-label>Buscar documentos</mat-label>
-                    <input type="text" matInput placeholder="Ingrese nombre del documento">
-                    <mat-icon matSuffix>search</mat-icon>
+                    <mat-label>Filtrar Documentos</mat-label>
+                    <input type="text" matInput (keyup)="applyFilter($event)">
+                    <mat-icon matSuffix>Buscar</mat-icon>
                 </mat-form-field>
-            </form>
-            <button mat-raised-button class="add-button">Agregar</button>
+            <button mat-raised-button class="add-button" onchange="onFileChange($event)" formControlName="file">Agregar</button>
+        </form>
         </div>
     </div>
     <div class="users-content">
@@ -18,25 +18,21 @@
                 <th mat-header-cell *matHeaderCellDef> Nombre </th>
                 <td mat-cell *matCellDef="let element"> {{element.name}} </td>
             </ng-container>
-            <ng-container matColumnDef="date">
-                <th mat-header-cell *matHeaderCellDef> Fecha </th>
-                <td mat-cell *matCellDef="let element"> {{element.date}} </td>
-            </ng-container>
-            <ng-container matColumnDef="type">
-                <th mat-header-cell *matHeaderCellDef> Tipo </th>
-                <td mat-cell *matCellDef="let element"> {{element.type}} </td>
-            </ng-container>
             <ng-container matColumnDef="size">
                 <th mat-header-cell *matHeaderCellDef> Tamaño </th>
-                <td mat-cell *matCellDef="let element"> {{element.size}} </td>
+                <td mat-cell *matCellDef="let element"> {{element.size}} Kb</td>
+            </ng-container>
+            <ng-container matColumnDef="uploadDateTime">
+                <th mat-header-cell *matHeaderCellDef> Fecha de subida </th>
+                <td mat-cell *matCellDef="let element"> {{element.uploadDateTime | date: 'dd/MM/yyyy'}} </td>
             </ng-container>
              <!--Buttons-->
              <ng-container matColumnDef="actions">
                 <th mat-header-cell *matHeaderCellDef></th>
-                <td mat-cell *matCellDef="let mat-icon" >
-                    <mat-icon onclick="dialogDelete()" class="btn-delete">clear</mat-icon>                 
+                <td mat-cell *matCellDef="let element">
+                    <mat-icon (click)="dialogDelete(element.name)" class="btn-delete">clear</mat-icon>
                 </td>
-              </ng-container>
+            </ng-container>
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         </table>
