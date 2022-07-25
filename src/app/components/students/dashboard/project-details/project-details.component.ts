@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Route, Router } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { JudgeCalification } from 'src/app/shared/interfaces/judge-calification';
 import { ProjectQualifications } from 'src/app/shared/interfaces/project-qualifications';
 import { ProjectsService } from 'src/app/shared/services/projects.service';
+import { ClaimsComponent } from './claims/claims.component';
 
 @Component({
   selector: 'app-project-details',
@@ -24,7 +27,8 @@ export class ProjectDetailsComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private projects: ProjectsService
+    private projects: ProjectsService,
+    public modalService: NgbModal
   ) { }
 
   ngOnInit(): void {
@@ -68,5 +72,10 @@ export class ProjectDetailsComponent implements OnInit {
         this.selectedQualification = judgeQualification.punctuation
       }
     })
+  }
+
+  createClaim() {
+    const modalRef = this.modalService.open(ClaimsComponent, {centered: true});
+    modalRef.componentInstance.project_number = this.group_number;
   }
 }

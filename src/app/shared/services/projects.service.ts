@@ -36,4 +36,11 @@ export class ProjectsService {
   getProjectDetails(projectId: string | null): Observable<ProjectQualifications[]>{
     return this.httpClient.get<ProjectQualifications[]>(environment.apiUrl + `/Projects/project?projectId=${projectId}`, httpOptions)
   }
+
+  createProjectClaim(projectId: string | null, claimDescription: string): Observable<any>{
+    return this.httpClient.post(
+      environment.apiUrl + '/Projects/create-claim', 
+      {projectId, claimDescription}, 
+      httpOptions)
+  }
 }
