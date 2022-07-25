@@ -106,8 +106,7 @@ export class FairCalendarComponent implements OnInit{
   activeDayIsOpen: boolean = true;
 
   constructor(
-    public modalService: NgbModal, 
-    public dialog: MatDialog) {}
+    public modalService: NgbModal) {}
 
 
   dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {
@@ -149,20 +148,6 @@ export class FairCalendarComponent implements OnInit{
 
   createEvent(): void {
     this.modalService.open(CreateAppointmentsComponent, { centered: true });
-    // this.events = [
-    //   ...this.events,
-    //   {
-    //     title: 'New event',
-    //     start: startOfDay(new Date()),
-    //     end: endOfDay(new Date()),
-    //     color: colors.red,
-    //     draggable: true,
-    //     resizable: {
-    //       beforeStart: true,
-    //       afterEnd: true,
-    //     },
-    //   },
-    // ];
   }
 
   deleteEvent(eventToDelete: CalendarEvent) {
