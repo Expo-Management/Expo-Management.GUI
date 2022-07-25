@@ -1,11 +1,35 @@
 <div class="side-bar-menu">
-    <div class="admin-users-options flexbox-container">
+    <div class="jugde-projects-options flexbox-container">
         <h3>Calificar Proyectos</h3>
         <div class="options">
-            <div *ngFor="let user_option of user_options">
-                <div class="option" [routerLink]="[user_option.link]">
-                    <mat-icon class="icon">{{ user_option.icon }}</mat-icon>
-                    <span>{{ user_option.text }}</span>
+            <div *ngFor="let project_option of project_options">
+                <div class="option" [routerLink]="[project_option.link]">
+                    <mat-icon class="icon">{{ project_option.icon }}</mat-icon>
+                    <span>{{ project_option.text }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="jugde-jugdes-options flexbox-container">
+        <h3>Lista de jueces</h3>
+        <div class="options">
+            <div *ngFor="let judges_option of judges_options">
+                <div class="option" [routerLink]="[judges_option.link]">
+                    <mat-icon class="icon">{{ judges_option.icon }}</mat-icon>
+                    <span>{{ judges_option.text }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="judge-student-options flexbox-container">
+        <h3>Estudiantes</h3>
+        <div class="options">
+            <div *ngFor="let student_option of student_options">
+                <div class="option" [routerLink]="[student_option.link]">
+                    <mat-icon class="icon">{{ student_option.icon }}</mat-icon>
+                    <span>{{ student_option.text }}</span>
                 </div>
             </div>
         </div>

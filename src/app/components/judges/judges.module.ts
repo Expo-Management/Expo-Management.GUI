@@ -16,6 +16,7 @@ import { RecomendationsPopupComponent } from './dashboard/recomendations-popup/r
 import { ListComponent } from './dashboard/list/list.component';
 import { SettingsComponent } from './dashboard/settings/settings.component';
 import { LoggedInGuard } from 'src/app/shared/guards/logged-in.guard';
+import { StudentsListComponent } from './dashboard/students-list/students-list.component';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { LoggedInGuard } from 'src/app/shared/guards/logged-in.guard';
     ContactStudentsPopupComponent,
     ListComponent,
     TopMenuComponent,
-    SettingsComponent
+    SettingsComponent,
+    StudentsListComponent
   ],
   imports: [
     ReactiveFormsModule,
@@ -46,6 +48,7 @@ import { LoggedInGuard } from 'src/app/shared/guards/logged-in.guard';
         path: '', 
         component: JudgesComponent,
         children: [
+          { path: 'students', component: StudentsListComponent},
           { path: 'home', component: ProjectsListComponent },
           { path: 'list-project', component: ProjectsListComponent },
           { path: 'project-details/:project_id', component: ProjectToQualifyDetailsComponent },
@@ -53,10 +56,6 @@ import { LoggedInGuard } from 'src/app/shared/guards/logged-in.guard';
           { path: 'list', component: ListComponent },
           { path: 'settings', component: SettingsComponent },
           { path: '**', component: ProjectsListComponent },
-          /*{ path: 'home', component: ContentComponent },
-          { path: 'documentation', component: FairDocumentsComponent },
-          { path: '**', component: ContentComponent }*/
-
           { path: '', redirectTo: 'home', pathMatch: 'full' },
           { path: '**', redirectTo: 'home', pathMatch: 'full' }
         ],
