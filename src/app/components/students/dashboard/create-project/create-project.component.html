@@ -5,7 +5,7 @@
     <div class="content">
         <div class="left-side">
             <div class="projects-form">
-                <form class="login-form variable-width" [formGroup]="newProjectForm">
+                <form class="login-form variable-width" [formGroup]="newProjectForm" enctype="multipart/form-data">
                     <div class="form-flex-container">
                         <mat-form-field class="variable-width" appearance="outline">
                             <mat-label>Nombre del proyecto</mat-label>
@@ -18,7 +18,7 @@
                         </mat-form-field>
                         <mat-form-field class="variable-width" appearance="outline">
                             <mat-label>Lider del proyecto</mat-label>
-                            <input type="text" matInput formControlName="Leader">
+                            <input type="text" matInput formControlName="Lider">
                         </mat-form-field>
                         <mat-form-field class="variable-width" appearance="outline">
                             <mat-label>Integrante del grupo 2</mat-label>

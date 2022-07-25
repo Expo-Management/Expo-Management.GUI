@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 
 const httpOptions = {
@@ -17,7 +18,7 @@ export class FilesService {
 
   addFiles
   (Files: File){
-    return this.httpClient.post('/api/Files/file', {
+    return this.httpClient.post(environment.apiUrl + '/Files/file', {
       Files: Files
     },
     httpOptions)

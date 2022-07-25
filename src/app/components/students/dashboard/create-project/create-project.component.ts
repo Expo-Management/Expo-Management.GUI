@@ -19,7 +19,7 @@ export class CreateProjectComponent implements OnInit {
     Description: new FormControl('', {
       validators: Validators.required
     }),
-    Leader: new FormControl('', {
+    Lider: new FormControl('', {
       validators: Validators.required
     }),
     Member2: new FormControl('', {
@@ -59,15 +59,18 @@ export class CreateProjectComponent implements OnInit {
 
   public createProject() 
   {
-    console.log('test')
+    var formData: FormData = new FormData();
+
+    formData.set('Name', this.newProjectForm.controls['Name'].value)
+    formData.set('Description', this.newProjectForm.controls['Description'].value)
+    formData.set('Lider', this.newProjectForm.controls['Lider'].value)
+    formData.set('Member2', this.newProjectForm.controls['Member2'].value)
+    formData.set('Member3', this.newProjectForm.controls['Member3'].value)
+    formData.set('Files', this.newProjectForm.controls['file'].value)
+    formData.set('Fair', '2')
+
     this.ProjectsService.CreateProject(
-      this.newProjectForm.controls['Name'].value,
-      this.newProjectForm.controls['Description'].value,
-      this.newProjectForm.controls['Leader'].value,
-      this.newProjectForm.controls['Member2'].value,
-      this.newProjectForm.controls['Member3'].value,
-      this.newProjectForm.controls['file'].value,
-      2,
+      formData
     ).subscribe(
       data => {
         console.log(data);
@@ -99,11 +102,6 @@ export class CreateProjectComponent implements OnInit {
           this.newProjectForm.patchValue({
             file: file
           })
-
-          console.log('*******************')
-          console.log(this.newProjectForm);
-          console.log(droppedFile.relativePath, file);
-
           /**
           // You could upload it like this:
           const formData = new FormData()
@@ -141,7 +139,7 @@ export class CreateProjectComponent implements OnInit {
     this.customPopUpService.confirm(
       'Judge creation', 
       message,
-      'administrator/manage-judges'
+      'student/new-project'
       );
   }
 

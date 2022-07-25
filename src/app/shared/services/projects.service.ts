@@ -9,6 +9,12 @@ const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
 
+const httpOptionsMultiPart = {
+  headers: new HttpHeaders({
+   "Content-Type": "multipart/form-data" 
+  })
+}; 
+
 
 @Injectable({
   providedIn: 'root'
@@ -46,26 +52,8 @@ export class ProjectsService {
 
   CreateProject
   (
-    name: string,
-    description: string,
-    Leader: string,
-    Member2: string,
-    Member3: string,
-    Files: File,
-    Fair: number
+    formData: any
   ){
-    return this.httpClient.post('/api/Projects/projects', 
-    {
-      name: name,
-      description: description,
-      Leader: Leader,
-      Member2: Member2,
-      Member3: Member3,
-      Files: Files,
-      Fair: Fair
-    }, 
-    httpOptions)
-  }
-
-  
+    return this.httpClient.post(environment.apiUrl + '/Projects/projects', formData);
+  }  
 }
