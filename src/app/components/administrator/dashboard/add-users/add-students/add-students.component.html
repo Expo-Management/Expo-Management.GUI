@@ -1,44 +1,57 @@
 <div class="flex-container">
-    <div class="top-options">
+    <div class="flex-container top-options">
         <h1>Agregar Estudiante</h1>
         <h3>Crea una cuenta para un nuevo estudiante</h3>
     </div>
     <form class="add-form" [formGroup]="createStudentForm" (ngSubmit)="onSubmit()">
-        <mat-form-field class="flex-container" appearance="fill">
-            <!--for name-->
-            <mat-label>Nombre del estudiante</mat-label>
-            <input type="text" matInput formControlName="NameFormControl">
-        </mat-form-field>
-        <!--for last-->
-        <mat-form-field class="flex-container" appearance="fill">
-            <mat-label>Apellidos del estudiante</mat-label>
-            <input type="text" matInput formControlName="LastFormControl">
-        </mat-form-field>
-        <!--for username-->
-        <mat-form-field class="flex-container" appearance="fill">
-            <mat-label>Nombre de usuario del estudiante</mat-label>
-            <input type="text" matInput formControlName="UsernameFormControl">
-        </mat-form-field>
-        <!--for email-->
-        <mat-form-field class="flex-container" appearance="fill">
-            <mat-label>Correo del estudiante</mat-label>
-            <input type="email" matInput formControlName="EmailFormControl" placeholder="Ej. smith@gmail.com">
-        </mat-form-field>
-        <!--for phone-->
-        <mat-form-field class="flex-container" appearance="fill">
-            <mat-label>Telefono del estudiante</mat-label>
-            <input type="phone" matInput formControlName="PhoneFormControl" placeholder="Ej. smith@gmail.com">
-        </mat-form-field>
-        <!--for password-->
-        <mat-form-field class="flex-container" appearance="fill">
-            <mat-label>Contraseña del estudiante</mat-label>
-            <input type="password" matInput formControlName="PasswordFormControl">
-        </mat-form-field>
-        <!--for id-->
-        <mat-form-field class="flex-container" appearance="fill">
-            <mat-label>Cédula del estudiante</mat-label>
-            <input type="text" matInput formControlName="IdFormControl" placeholder="XX-XXXX-XXXX">
-        </mat-form-field>
-        <button mat-raised-button id="submit-button" class="add-button">Crear estudiante</button>
+        <div class="row">
+            <div class="col-6">
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Nombre del estudiante</mat-label>
+                    <input type="text" matInput formControlName="NameFormControl">
+                </mat-form-field>
+            </div>
+            <div class="col-6">
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Apellidos del estudiante</mat-label>
+                    <input type="text" matInput formControlName="LastFormControl">
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-6">
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Nombre de usuario del estudiante</mat-label>
+                    <input type="text" matInput formControlName="UsernameFormControl">
+                </mat-form-field>
+            </div>
+            <div class="col-6">
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Cédula del estudiante</mat-label>
+                    <input type="text" matInput formControlName="IdFormControl" placeholder="XX-XXXX-XXXX">
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="rows">
+            <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Correo del estudiante</mat-label>
+                <input type="email" matInput formControlName="EmailFormControl" placeholder="Ej. smith@gmail.com">
+            </mat-form-field>
+            <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Telefono del estudiante</mat-label>
+                <input type="phone" matInput formControlName="PhoneFormControl" placeholder="Ej. smith@gmail.com">
+            </mat-form-field>
+            <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Contraseña del estudiante</mat-label>
+                <input type="password" matInput formControlName="PasswordFormControl">
+            </mat-form-field>
+        </div>
+
+        <div class="div-buttons">
+            <button mat-raised-button routerLink="/administrator/manage-students" class="button cancel">Cancelar</button>
+            <button mat-raised-button id="submit-button" class="button">Crear Estudiante</button>
+        </div>
     </form>
 </div>

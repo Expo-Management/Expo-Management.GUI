@@ -1,54 +1,73 @@
 <div class="flex-container">
-    <div class="top-options">
+    <div class="flex-container top-options">
         <h1>Agregar Juez</h1>
         <h3>Crea una cuenta para un nuevo juez</h3>
     </div>
     <form class="add-form" [formGroup]="createJudgeForm" (ngSubmit)="onSubmit()">
-        <mat-form-field class="flex-container" appearance="outline">
-            <!--for name-->
-            <mat-label>Nombre del juez</mat-label>
-            <input type="text" matInput formControlName="NameFormControl">
-        </mat-form-field>
-        <!--for last-->
-        <mat-form-field class="flex-container" appearance="outline">
-            <mat-label>Apellidos del juez</mat-label>
-            <input type="text" matInput formControlName="LastFormControl">
-        </mat-form-field>
-        <!--for username-->
-        <mat-form-field class="flex-container" appearance="outline">
-            <mat-label>Nombre de usuario del juez</mat-label>
-            <input type="text" matInput formControlName="UsernameFormControl">
-        </mat-form-field>
-        <!--for email-->
-        <mat-form-field class="flex-container" appearance="outline">
-            <mat-label>Correo del juez</mat-label>
-            <input type="email" matInput formControlName="EmailFormControl" placeholder="Ej. smith@gmail.com">
-        </mat-form-field>
-        <!--for phone-->
-        <mat-form-field class="flex-container" appearance="outline">
-            <mat-label>Telefono del juez</mat-label>
-            <input type="phone" matInput formControlName="PhoneFormControl" placeholder="Ej. smith@gmail.com">
-        </mat-form-field>
-        <!--for password-->
-        <mat-form-field class="flex-container" appearance="outline">
-            <mat-label>Contraseña del juez</mat-label>
-            <input type="password" matInput formControlName="PasswordFormControl">
-        </mat-form-field>
-        <!--for id-->
-        <mat-form-field class="flex-container" appearance="outline">
-            <mat-label>Cédula del juez</mat-label>
-            <input type="text" matInput formControlName="IdFormControl" placeholder="XX-XXXX-XXXX">
-        </mat-form-field>
+        <div class="row">
+            <div class="col-6">
+                <mat-form-field class="full-width" appearance="outline">
+                    <!--for name-->
+                    <mat-label>Nombre del juez</mat-label>
+                    <input type="text" matInput formControlName="NameFormControl">
+                </mat-form-field>
+            </div>
+            <div class="col-6">
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Apellidos del juez</mat-label>
+                    <input type="text" matInput formControlName="LastFormControl">
+                </mat-form-field>
+            </div>
+        </div>
 
-        <mat-form-field class="flex-container" appearance="outline">
-            <mat-label>Empresa donde pertenece el juez</mat-label>
-            <input type="text" matInput formControlName="InstitutionFormControl" placeholder="XX-XXXX-XXXX">
-        </mat-form-field>
+        <div class="row">
+            <div class="col-6">
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Nombre de usuario del juez</mat-label>
+                    <input type="text" matInput formControlName="UsernameFormControl">
+                </mat-form-field>
+            </div>
+            <div class="col-6">
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Telefono del juez</mat-label>
+                    <input type="phone" matInput formControlName="PhoneFormControl" placeholder="8888-8888">
+                </mat-form-field>
+            </div>
+        </div>
 
-        <mat-form-field class="flex-container" appearance="outline">
-            <mat-label>Posicion del Juez</mat-label>
-            <input type="text" matInput formControlName="PositionFormControl" placeholder="XX-XXXX-XXXX">
-        </mat-form-field>
-        <button mat-raised-button id="submit-button" class="add-button">Crear Juez</button>
+        <div class="row">
+            <div class="col-6">
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Empresa donde pertenece el juez</mat-label>
+                    <input type="text" matInput formControlName="InstitutionFormControl" placeholder="XX-XXXX-XXXX">
+                </mat-form-field>
+            </div>
+            <div class="col-6">
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Posicion del Juez</mat-label>
+                    <input type="text" matInput formControlName="PositionFormControl" placeholder="XX-XXXX-XXXX">
+                </mat-form-field>
+            </div>
+        </div>
+        
+        <div class="row">
+            <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Correo del juez</mat-label>
+                <input type="email" matInput formControlName="EmailFormControl" placeholder="Ej. smith@gmail.com">
+            </mat-form-field>
+            <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Contraseña del juez</mat-label>
+                <input type="password" matInput formControlName="PasswordFormControl">
+            </mat-form-field>
+            <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Cédula del juez</mat-label>
+                <input type="text" matInput formControlName="IdFormControl" placeholder="XX-XXXX-XXXX">
+            </mat-form-field>
+        </div>
+
+        <div class="div-buttons">
+            <button mat-raised-button routerLink="/administrator/manage-judges" class="button cancel">Cancelar</button>
+            <button mat-raised-button id="submit-button" class="button">Crear Juez</button>
+        </div>
     </form>
 </div>
