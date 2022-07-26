@@ -44,12 +44,6 @@
     align-items: center;
 }
 
-.btn-edit{
-    color: #265FC0;
-    font-size: 13pt;
-    cursor: pointer;
-}
-
 .btn-delete{
   
     color: #C01122;
@@ -58,7 +52,7 @@
     cursor: pointer;
 }
 table {
-    width: 92%;
+    width: 90%;
 }
 
 ::-webkit-scrollbar {

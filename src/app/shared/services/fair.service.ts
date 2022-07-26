@@ -17,12 +17,12 @@ export class FairService {
   constructor(private httpClient: HttpClient) { }
 
   getNews(fairId: number): Observable<any> {
-    return this.httpClient.get(environment.apiUrl + `/api/Events/news?FairId=${fairId}`, httpOptions);
+    return this.httpClient.get(environment.apiUrl + `/Events/news?FairId=${fairId}`, httpOptions);
   }
 
   getSecurityProtocols(fairId: number): Observable<any> {
     console.log('Here 1');
-    return this.httpClient.get(environment.apiUrl + `/api/Events/security-protocols?FairId=${fairId}`, httpOptions);
+    return this.httpClient.get(environment.apiUrl + `/Events/security-protocols?FairId=${fairId}`, httpOptions);
   }
 
   createEvent(
@@ -34,7 +34,7 @@ export class FairService {
     fairId: number
   ): Observable<any>{
     return this.httpClient.post(
-      environment.apiUrl + '/api/Events/event', 
+      environment.apiUrl + '/Events/event', 
       {
         description: description,
         location: location,

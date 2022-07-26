@@ -9,6 +9,12 @@ const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
 
+const httpOptionsMultiPart = {
+  headers: new HttpHeaders({
+   "Content-Type": "multipart/form-data" 
+  })
+}; 
+
 
 @Injectable({
   providedIn: 'root'
@@ -31,6 +37,10 @@ export class ProjectsService {
 
   ShowProjects(): Observable<any>{
     return this.httpClient.get(environment.apiUrl + '/Projects/projects', httpOptions)
+  }
+
+  CreateProject(formData: FormData){
+    return this.httpClient.post(environment.apiUrl + '/Projects/projects', formData)
   }
 
   getProjectDetails(projectId: string | null): Observable<ProjectQualifications[]>{
