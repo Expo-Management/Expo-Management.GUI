@@ -3,7 +3,7 @@ import { CustomPopUpService } from 'src/app/shared/services/custom-pop-up.servic
 import { MatTableDataSource } from '@angular/material/table';
 import { Projects } from 'src/app/shared/interfaces/projects';
 import { ProjectsService } from 'src/app/shared/services/projects.service';
-
+import { ActivatedRoute, Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-projects-list',
@@ -17,10 +17,10 @@ export class ProjectsListComponent implements OnInit {
   listOfProjects: Array<Projects> = []
   dataSource = new MatTableDataSource(this.listOfProjects);
 
-  constructor(private customPopUpService: CustomPopUpService, private projectservices: ProjectsService) { }
+  constructor(private customPopUpService: CustomPopUpService, private projectservices: ProjectsService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.displayedColumns = ['name', 'description', 'qualify'];
+    this.displayedColumns = ['name', 'description', 'id'];
 
     this.projectservices.ShowProjects().subscribe(
       data => {

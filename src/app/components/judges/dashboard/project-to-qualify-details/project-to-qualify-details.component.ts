@@ -27,6 +27,9 @@ export class ProjectToQualifyDetailsComponent implements OnInit {
     public modalService: NgbModal
     ) { }
 
+
+
+    
     ngOnInit(): void {
       this.group_number = this.route.snapshot.paramMap.get('project_id');
       this.fillTheProjectInformation();
@@ -49,7 +52,7 @@ export class ProjectToQualifyDetailsComponent implements OnInit {
       this.project_name = data[0].projectName;
       this.project_description = data[0].projectDescription;
       this.group_members = data[0].members;
-  
+     // this.group_number = data[0].projectId;
       this.category = (data[0].category != undefined || data[0].category != null) ? data[0].category : "No se le ha asignado una categoria";
     }
 
