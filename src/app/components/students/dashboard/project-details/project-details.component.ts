@@ -6,6 +6,7 @@ import { JudgeCalification } from 'src/app/shared/interfaces/judge-calification'
 import { ProjectQualifications } from 'src/app/shared/interfaces/project-qualifications';
 import { ProjectsService } from 'src/app/shared/services/projects.service';
 import { ClaimsComponent } from './claims/claims.component';
+import { QualificationComponent } from './qualification/qualification.component';
 
 @Component({
   selector: 'app-project-details',
@@ -63,6 +64,7 @@ export class ProjectDetailsComponent implements OnInit {
   private fillProjectCalification(data: JudgeCalification[]) {
     data.forEach((ProjectQualification)  => {
      this.judgesCalifications.push({judgeName: ProjectQualification.judgeName, punctuation: ProjectQualification.punctuation}) 
+     console.log(this.judgesCalifications)
     });
   }
 
@@ -77,5 +79,10 @@ export class ProjectDetailsComponent implements OnInit {
   createClaim() {
     const modalRef = this.modalService.open(ClaimsComponent, {centered: true});
     modalRef.componentInstance.project_number = this.group_number;
+  }
+
+  viewQualification() {
+    const modalRef = this.modalService.open(QualificationComponent, {centered: true});
+    modalRef.componentInstance.judgesCalifications = this.judgesCalifications;
   }
 }
