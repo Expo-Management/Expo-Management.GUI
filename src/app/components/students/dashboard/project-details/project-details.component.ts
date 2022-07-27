@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { ActivatedRoute, Route, Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { JudgeCalification } from 'src/app/shared/interfaces/judge-calification';
 import { ProjectQualifications } from 'src/app/shared/interfaces/project-qualifications';
@@ -12,6 +11,7 @@ import { ClaimsComponent } from './claims/claims.component';
   templateUrl: './project-details.component.html',
   styleUrls: ['./project-details.component.css']
 })
+
 export class ProjectDetailsComponent implements OnInit {
   project_name =''
   group_number: string | null = '1'
