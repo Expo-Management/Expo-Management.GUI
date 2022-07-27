@@ -12,12 +12,17 @@ import { CustomPopUpService } from 'src/app/shared/services/custom-pop-up.servic
 
 export class CreateProjectComponent implements OnInit {
 
+  public noWhitespaceValidator(control: FormControl) {
+    return control.value.startsWith(" ") || control.value.endsWith(" ") ? {whitespace: true} : null;
+};
+  
   newProjectForm = new FormGroup({
     Name: new FormControl('', [Validators.required, this.noWhitespaceValidator]),
 
     Description: new FormControl('', {
       validators: Validators.required
     }),
+
     Lider: new FormControl('',  [Validators.required, this.noWhitespaceValidator]),
 
     Member2: new FormControl('',  [Validators.required, this.noWhitespaceValidator]),
@@ -49,10 +54,6 @@ export class CreateProjectComponent implements OnInit {
     private ProjectsService: ProjectsService,
     private customPopUpService: CustomPopUpService
   ) { }
-
-  public noWhitespaceValidator(control: FormControl) {
-    return control.value.startsWith(" ") || this.newProjectForm.value.endsWith(" ") ? {whitespace: true} : null;
-  }
 
   ngOnInit(): void {
   }

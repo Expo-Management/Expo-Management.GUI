@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { ActivatedRoute } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { JudgeCalification } from 'src/app/shared/interfaces/judge-calification';
 import { ProjectQualifications } from 'src/app/shared/interfaces/project-qualifications';
@@ -21,7 +22,7 @@ export class ProjectDetailsComponent implements OnInit {
   qualification = ''
 
   selectedJudge = '';
-  selectedQualification = '';
+  selectedQualification = ''; 
 
   judgesCalifications: JudgeCalification[] = [];
 

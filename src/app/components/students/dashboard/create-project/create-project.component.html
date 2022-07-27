@@ -10,7 +10,7 @@
                         <mat-form-field class="variable-width" appearance="outline">
                             <mat-label>Nombre del proyecto</mat-label>
                             <input type="text" matInput formControlName="Name">
-                            <mat-error *ngIf="createEditForm.controls['Name'].hasError('whitespace')">
+                            <mat-error *ngIf="newProjectForm.controls['Name'].hasError('whitespace')">
                                 Por favor elimina los espacios en blanco del form 
                             </mat-error>
                         </mat-form-field>
@@ -22,21 +22,21 @@
                         <mat-form-field class="variable-width" appearance="outline">
                             <mat-label>Lider del proyecto</mat-label>
                             <input type="text" matInput formControlName="Lider">
-                            <mat-error *ngIf="createEditForm.controls['Lider'].hasError('whitespace')">
+                            <mat-error *ngIf="newProjectForm.controls['Lider'].hasError('whitespace')">
                                 Por favor elimina los espacios en blanco del form 
                             </mat-error>
                         </mat-form-field>
                         <mat-form-field class="variable-width" appearance="outline">
                             <mat-label>Integrante del grupo 2</mat-label>
                             <input type="text" matInput formControlName="Member2">
-                            <mat-error *ngIf="createEditForm.controls['Member2'].hasError('whitespace')">
+                            <mat-error *ngIf="newProjectForm.controls['Member2'].hasError('whitespace')">
                                 Por favor elimina los espacios en blanco del form 
                             </mat-error>
                         </mat-form-field>
                         <mat-form-field class="variable-width" appearance="outline">
                             <mat-label>Integrante del grupo 3</mat-label>
                             <input type="text" matInput formControlName="Member3">
-                            <mat-error *ngIf="createEditForm.controls['Member3'].hasError('whitespace')">
+                            <mat-error *ngIf="newProjectForm.controls['Member3'].hasError('whitespace')">
                                 Por favor elimina los espacios en blanco del form 
                             </mat-error>
                         </mat-form-field>
