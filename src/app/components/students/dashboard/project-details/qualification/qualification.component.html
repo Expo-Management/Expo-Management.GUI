@@ -1,0 +1,25 @@
+<div class="modal-header">
+    <h2 class="modal-title" style="margin-bottom: 0;">Crear apelacion para el proyecto</h2>
+    <button type="button" class="btn btn-outline-danger close-btn" (click)="dismiss()">&times;
+    </button>
+</div>
+<div class="modal-body container" ngbAutofocus>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        <!-- About it Column -->
+        <ng-container matColumnDef="judgeName">
+          <th mat-header-cell *matHeaderCellDef> Juez </th>
+          <td mat-cell *matCellDef="let element"> {{element.judgeName}} </td>
+        </ng-container>
+        <!-- Qualification Column -->
+        <ng-container matColumnDef="punctuation">
+          <th mat-header-cell *matHeaderCellDef> Calificación </th>
+          <td mat-cell *matCellDef="let element"> {{element.punctuation}} </td>
+        </ng-container>   
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+
+      <div class="modal-footer ">
+        <button mat-raised-button type="button" class="add-button" (click)="accept()">Aceptar</button>
+    </div>
+</div>

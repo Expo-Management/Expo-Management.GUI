@@ -40,7 +40,7 @@
             <!-- <h3 class="space2">Nombre del juez: {{ judge_name }}</h3> -->
             <h3 class="space">Calificacion obtenida: {{ selectedQualification }}</h3>
             <div class="button-group space">
-                <button class="button" mat-raised-button>Desglose de nota</button>
+                <button class="button" (click)="viewQualification()" mat-raised-button>Desglose de nota</button>
                 <button class="button" mat-raised-button>Recomendaciones</button>
                 <button class="button" (click)="createClaim()" mat-raised-button>Apelar</button>
             </div>
