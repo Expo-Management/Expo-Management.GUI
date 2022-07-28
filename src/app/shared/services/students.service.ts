@@ -21,7 +21,9 @@ export class StudentsService {
     last: string,
     email: string,
     phone: string,
-    password: string
+    password: string,
+    institution: string = '',
+    position: string = ''
   ) {
     return this.httpClient.post(
       environment.apiUrl + '/Authenticate/register', 
@@ -32,7 +34,9 @@ export class StudentsService {
         lastname: last,
         email: email,
         phone: phone,
-        password: password
+        password: password,
+        institution: institution,
+        position: position
       }, 
       httpOptions);
   }

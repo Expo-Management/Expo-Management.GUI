@@ -53,4 +53,8 @@ export class ProjectsService {
       {projectId, claimDescription}, 
       httpOptions)
   }
+
+  /*getProjectQualification(projectId: string | null): Observable<any>{
+    return this.httpClient.get(environment.apiUrl + '/Projects/qualification', httpOptions)
+  }*/
 }
