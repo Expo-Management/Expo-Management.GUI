@@ -28,10 +28,10 @@
             </ng-container>-->
 
             <!--Button-->
-            <ng-container matColumnDef="qualify">
-                <th mat-header-cell *matHeaderCellDef>Calificar</th>
-                <td mat-cell *matCellDef="let mat-icon">
-                    <mat-icon [routerLink]="['/judges/project-details/1']" class="btn_calificar">border_color</mat-icon>
+            <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef>Calificar</th>
+            <td mat-cell *matCellDef="let element">
+                    <mat-icon [routerLink]="['/judges/project-details/', element.id]" class="btn_calificar">border_color</mat-icon>
                 </td>
             </ng-container>
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

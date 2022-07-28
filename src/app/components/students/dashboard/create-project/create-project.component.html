@@ -10,6 +10,9 @@
                         <mat-form-field class="variable-width" appearance="outline">
                             <mat-label>Nombre del proyecto</mat-label>
                             <input type="text" matInput formControlName="Name">
+                            <mat-error *ngIf="newProjectForm.controls['Name'].hasError('whitespace')">
+                                Por favor elimina los espacios en blanco del form 
+                            </mat-error>
                         </mat-form-field>
                         <mat-form-field class="variable-width" hintLabel="Max 400 caracteres" appearance="outline">
                             <mat-label>Descripcion del proyecto</mat-label>
@@ -19,14 +22,23 @@
                         <mat-form-field class="variable-width" appearance="outline">
                             <mat-label>Lider del proyecto</mat-label>
                             <input type="text" matInput formControlName="Lider">
+                            <mat-error *ngIf="newProjectForm.controls['Lider'].hasError('whitespace')">
+                                Por favor elimina los espacios en blanco del form 
+                            </mat-error>
                         </mat-form-field>
                         <mat-form-field class="variable-width" appearance="outline">
                             <mat-label>Integrante del grupo 2</mat-label>
                             <input type="text" matInput formControlName="Member2">
+                            <mat-error *ngIf="newProjectForm.controls['Member2'].hasError('whitespace')">
+                                Por favor elimina los espacios en blanco del form 
+                            </mat-error>
                         </mat-form-field>
                         <mat-form-field class="variable-width" appearance="outline">
                             <mat-label>Integrante del grupo 3</mat-label>
                             <input type="text" matInput formControlName="Member3">
+                            <mat-error *ngIf="newProjectForm.controls['Member3'].hasError('whitespace')">
+                                Por favor elimina los espacios en blanco del form 
+                            </mat-error>
                         </mat-form-field>
                         <mat-form-field class="variable-width" appearance="outline">
                             <mat-label>Categoria del proyecto</mat-label>
@@ -65,14 +77,10 @@
                         <thead>
                             <tr>
                                 <th>Nombre</th>
-                                <th>Tamaño</th>
-                                <th>última fecha de modificación</th>
                             </tr>
                         </thead>
                         <tbody class="upload-name-style">
                             <tr *ngFor="let item of files; let i=index">
-                                <td>{{ item.relativePath }}</td>
-                                <td>{{ item.relativePath }}</td>
                                 <td>{{ item.relativePath }}</td>
                             </tr>
                         </tbody>
