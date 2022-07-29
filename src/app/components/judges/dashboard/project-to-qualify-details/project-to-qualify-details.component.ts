@@ -58,13 +58,8 @@ export class ProjectToQualifyDetailsComponent implements OnInit {
 
 
   openRecomendation() {
-    const dialogRef = this.dialog.open(RecomendationsPopupComponent, {
-      width: '30%'
-    });
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-    });
-    
+    const modalRef = this.modalService.open(RecomendationsPopupComponent, {centered: true});
+    modalRef.componentInstance.project_number = this.group_number;
   }
 
   openEmails() {
