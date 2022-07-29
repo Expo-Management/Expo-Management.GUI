@@ -54,6 +54,13 @@ export class ProjectsService {
       httpOptions)
   }
 
+  createProjectRecommendation(idProject: number, recommendation: string, correoJuez: string): Observable<any>{
+    return this.httpClient.post(
+      environment.apiUrl + '/Projects/recommendation', 
+      {idProject, recommendation, correoJuez}, 
+      httpOptions)
+  }
+
   /*getProjectQualification(projectId: string | null): Observable<any>{
     return this.httpClient.get(environment.apiUrl + '/Projects/qualification', httpOptions)
   }*/

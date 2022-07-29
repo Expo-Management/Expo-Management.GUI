@@ -10,6 +10,7 @@ const httpOptions = {
 };
 
 const USER_ROLE = 'user-role'
+const USER_EMAIL = 'user-email'
 
 @Injectable({
   providedIn: 'root'
@@ -45,5 +46,9 @@ export class PersonalInformationService {
 
   public getRole(): string | null {
     return localStorage.getItem(USER_ROLE);
+  }
+
+  public getEmail(): string {
+    return localStorage.getItem(USER_EMAIL)!;
   }
 }

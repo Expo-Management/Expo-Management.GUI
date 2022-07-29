@@ -79,40 +79,5 @@ export class ClaimsComponent implements OnInit {
           this.openCustomPopUp(this.httpMessage);
         }
       )
-    // console.log(this.newAppoitmentForm);
-    // this.eventService.createEvent(
-    //   this.newAppoitmentForm.get('title')?.value,
-    //   this.newAppoitmentForm.get('location')?.value,
-    //   this.newAppoitmentForm.get('start')?.value,
-    //   this.newAppoitmentForm.get('finish')?.value,
-    //   '',
-    //   3
-    // ).subscribe(
-    //   data => {
-    //     if (data.status == 200) {
-    //       this.httpMessage = 'Evento creado de manera exitosa!';
-    //     } else if (data.status == 400) {
-    //       this.httpMessage = 'Revise los datos ingresados';
-    //     } else {
-    //       this.httpMessage = 'Hubo un error en el servidor, contacte a los desarrolladores.';
-    //     }
-
-    //     this.openCustomPopUp(this.httpMessage);
-    //     window.location.reload();
-    //   },
-    //   err => {
-    //     if (err.status == 200) {
-    //       this.httpMessage = 'Evento creado de manera exitosa!';
-    //     } else if (err.status == 400) {
-    //       this.httpMessage = 'Revise los datos ingresados';
-    //     } else {
-    //       this.httpMessage = 'Hubo un error en el servidor, contacte a los desarrolladores.';
-    //     }
-
-    //     this.openCustomPopUp(this.httpMessage);
-    //   }
-    // );
   }  
-
-
 }
