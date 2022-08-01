@@ -9,11 +9,7 @@ const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
 
-const httpOptionsMultiPart = {
-  headers: new HttpHeaders({
-   "Content-Type": "multipart/form-data" 
-  })
-}; 
+const FAIR_ID = 'id'
 
 
 @Injectable({
@@ -61,7 +57,9 @@ export class ProjectsService {
       httpOptions)
   }
 
-  /*getProjectQualification(projectId: string | null): Observable<any>{
-    return this.httpClient.get(environment.apiUrl + '/Projects/qualification', httpOptions)
-  }*/
+ getCurentFairdId(): Observable<any>{
+  return this.httpClient.get(environment.apiUrl + '/Fairs/current-fair', 
+  httpOptions);
+ }
+
 }

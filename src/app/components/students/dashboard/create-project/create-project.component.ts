@@ -43,6 +43,7 @@ export class CreateProjectComponent implements OnInit {
   });
 
   projectCategory = '';
+  fairId = '';
 
   categories = [
     {name: 'Categoria 1', value: ''},
@@ -56,6 +57,19 @@ export class CreateProjectComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.ProjectsService.getCurentFairdId().subscribe(
+      data => {
+        console.log(data);
+         this.fairId = data;
+      },
+      err => {
+        console.log(err);
+         })
+
+  }
+
+  public getFairId(){
+    
   }
 
   public createProject() 
@@ -68,7 +82,7 @@ export class CreateProjectComponent implements OnInit {
     formData.set('Member2', this.newProjectForm.controls['Member2'].value)
     formData.set('Member3', this.newProjectForm.controls['Member3'].value)
     formData.set('Files', this.newProjectForm.controls['file'].value)
-    formData.set('Fair', '1')
+    formData.set('Fair', this.fairId)
 
     this.ProjectsService.CreateProject(
       formData
