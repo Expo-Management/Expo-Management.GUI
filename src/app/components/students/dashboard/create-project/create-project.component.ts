@@ -65,11 +65,6 @@ export class CreateProjectComponent implements OnInit {
       err => {
         console.log(err);
          })
-
-  }
-
-  public getFairId(){
-    
   }
 
   public createProject() 

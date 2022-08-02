@@ -67,7 +67,7 @@ export class AddJudgesComponent implements OnInit {
 
   openCustomPopUp(message: string) {
     this.customPopUpService.confirm(
-      'Judge creation', 
+      'Configuración de jueces', 
       message,
       'administrator/manage-judges'
       );
@@ -89,13 +89,13 @@ export class AddJudgesComponent implements OnInit {
       this.createJudgeForm.controls['PositionFormControl'].value,
     ).subscribe(
       data => {
-        this.openCustomPopUp('Judge created!');
+        this.openCustomPopUp('Juez creado!');
       },
       err => {
         if (err.status === 200) {
-          this.openCustomPopUp('Judge created!');
+          this.openCustomPopUp('Juez creado!');
         } else {
-          this.openCustomPopUp('There was a problem creating the judge, check the information or try again later.');
+          this.openCustomPopUp('Hubo un problema creando el usuario, intente mas tarde.');
         }
       }
     );

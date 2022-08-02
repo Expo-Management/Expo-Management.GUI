@@ -9,9 +9,6 @@ const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
 
-const FAIR_ID = 'id'
-
-
 @Injectable({
   providedIn: 'root'
 })
