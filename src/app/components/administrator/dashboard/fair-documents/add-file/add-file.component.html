@@ -1,0 +1,35 @@
+<div class="modal-header">
+    <h2 class="modal-title" style="margin-bottom: 0;">Agregar documentos a feria</h2>
+</div>
+<div class="modal-body container" ngbAutofocus>
+    <form [formGroup]="FilesForm" enctype="multipart/form-data">
+        <div class="center">
+            <ngx-file-drop dropZoneLabel="Drop files here" (onFileDrop)="dropped($event)" (onFileOver)="fileOver($event)" (onFileLeave)="fileLeave($event)">
+                <ng-template ngx-file-drop-content-tmp let-openFileSelector="openFileSelector">
+                    <div class="ng-template-content">
+                        <h3>
+                            Arrastre los documentos aquí
+                        </h3>
+                        <button id="sumbit-button" (click)="openFileSelector()" mat-raised-button color="primary">Buscar documento</button>
+                    </div>
+                </ng-template>
+            </ngx-file-drop>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                        </tr>
+                    </thead>
+                    <tbody class="upload-name-style">
+                        <tr *ngFor="let item of files; let i=index">
+                            <td>{{ item.relativePath }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+        </div>
+        <div class="modal-footer ">
+            <button mat-raised-button type="button" id="submit-button" class="cancel-button" (click)="decline()">Cancelar</button>
+            <button mat-raised-button type="button" id="submit-button" class="add-button" (click)="accept()">Subir documento</button>
+        </div>
+    </form>    
+</div>

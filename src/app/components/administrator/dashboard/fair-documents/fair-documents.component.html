@@ -2,13 +2,13 @@
     <div class="top-options">
         <h1>Documentos de la Feria</h1>
         <div class="sub-container">
-            <form class="example-form" [formGroup]="FilesForm">
+            <form class="example-form">
                 <mat-form-field class="example-full-width" appearance="outline">
                     <mat-label>Filtrar Documentos</mat-label>
                     <input type="text" matInput (keyup)="applyFilter($event)">
                     <mat-icon matSuffix>Buscar</mat-icon>
                 </mat-form-field>
-            <button mat-raised-button class="add-button" onchange="onFileChange($event)" formControlName="file">Agregar</button>
+            <button mat-raised-button class="add-button" (click)="addFile()">Agregar</button>
         </form>
         </div>
     </div>
