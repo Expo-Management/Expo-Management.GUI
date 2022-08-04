@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { Categories } from '../interfaces/categories';
 import { ProjectQualifications } from '../interfaces/project-qualifications';
 
 
@@ -59,4 +60,9 @@ export class ProjectsService {
   httpOptions);
  }
 
+ getAllCategories(): Observable<any> {
+  return this.httpClient.get(environment.apiUrl + '/Category/categories', 
+  httpOptions);
+ }
+ 
 }

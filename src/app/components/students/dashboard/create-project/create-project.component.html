@@ -40,17 +40,20 @@
                                 Por favor elimina los espacios en blanco del form 
                             </mat-error>
                         </mat-form-field>
-                        <mat-form-field class="variable-width" appearance="outline">
+                        <mat-form-field class="variable-width" appearance="outline" >
                             <mat-label>Categoria del proyecto</mat-label>
-                            <mat-select formControlName="Category" name="category">
-                                <mat-option *ngFor="let category of categories" [value]="category.name">
-                                    {{category.name}}
+                            <mat-select formControlName="Category" name="Category">
+                                <mat-option *ngFor="let category of this.categories" [value]="category.id" >
+                                    {{category.description}}   
                                 </mat-option>
                             </mat-select>
-                            <mat-form-field class="variable-width" appearance="outline">
-                                <mat-label></mat-label>
-                                <input type="text" matInput formControlName="IdFair">
-                            </mat-form-field>
+                            <mat-error *ngIf="!newProjectForm.controls['Category'].valid && newProjectForm.controls['Category'].touched">
+                                Categoria es requerida
+                              </mat-error>
+                        </mat-form-field>
+                        <mat-form-field class="variable-width invisible" appearance="outline">
+                            <mat-label></mat-label>
+                            <input type="text" matInput formControlName="IdFair">
                         </mat-form-field>
                     </div>
                 </form>
