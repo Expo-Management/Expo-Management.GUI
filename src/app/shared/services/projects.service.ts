@@ -61,7 +61,8 @@ export class ProjectsService {
       httpOptions)
   }
 
-  /*getProjectQualification(projectId: string | null): Observable<any>{
-    return this.httpClient.get(environment.apiUrl + '/Projects/qualification', httpOptions)
-  }*/
+  GetMembers(): Observable<any> {
+    return this.httpClient.get(environment.apiUrl + '/Projects/project-members', httpOptions);
+  }
+
 }
