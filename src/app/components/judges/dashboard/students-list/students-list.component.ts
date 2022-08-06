@@ -19,7 +19,7 @@ export class StudentsListComponent implements OnInit {
   constructor(private customPopUpService: CustomPopUpService, private projectsServices: ProjectsService) { }
 
   ngOnInit(): void {
-    this.displayedColumns = ['name', 'lastName', 'email', 'phoneNumber', 'projectName'];
+    this.displayedColumns = ['name', 'lastName', 'phoneNumber', 'projectName'];
 
     this.projectsServices.GetMembers().subscribe(
       data => {
