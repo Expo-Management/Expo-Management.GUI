@@ -64,5 +64,11 @@ export class ProjectsService {
   return this.httpClient.get(environment.apiUrl + '/Category/categories', 
   httpOptions);
  }
+
+ getProjectFile(id: string | null) {
+  return this.httpClient.get(environment.apiUrl + `/Files/download-project-file?id=${id}`, 
+  {observe:'response', responseType:'blob' as 'json'});
+ }
+
  
 }
