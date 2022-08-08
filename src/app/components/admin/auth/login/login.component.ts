@@ -51,9 +51,8 @@ export class LoginComponent implements OnInit {
 
           if (data.emailConfirmed) {
             this.token.saveToken(data.token);
-            this.user_info.saveRole(
-              data.role
-            )
+            this.user_info.saveRole(data.role)
+            this.user_info.saveEmail(data.email)
             this.isLoginFailed = false;
             this.isLoggedIn = true;
             this.reloadPage();

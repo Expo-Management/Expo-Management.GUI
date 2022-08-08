@@ -9,6 +9,7 @@ const TOKEN_KEY = 'auth-token';
 export class TokenStorageService {
   public signOut(): void {
     localStorage.clear();
+    window.location.reload();
   }
 
   public saveToken(token: string): void {
