@@ -27,10 +27,10 @@
                 <td mat-cell *matCellDef="let element"> {{element.uploadDateTime | date: 'dd/MM/yyyy'}} </td>
             </ng-container>
              <!--Buttons-->
-             <ng-container matColumnDef="actions">
+             <ng-container matColumnDef="id">
                 <th mat-header-cell *matHeaderCellDef></th>
                 <td mat-cell *matCellDef="let element">
-                    <mat-icon (click)="dialogDelete(element.name)" class="btn-delete">clear</mat-icon>
+                    <mat-icon (click)="dialogDelete(element.id)" class="btn-delete">clear</mat-icon>
                 </td>
             </ng-container>
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

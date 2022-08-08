@@ -22,7 +22,12 @@ export class FilesService {
     return this.httpClient.get(environment.apiUrl + '/Files/files', httpOptions)
   }
   
-  deleteFiles(name: string): Observable<any>{
-    return this.httpClient.delete(environment.apiUrl + `/Files/file?${name}`, httpOptions)
-  }
+  deleteFiles(id: string): Observable<any>{
+    return this.httpClient.delete(environment.apiUrl + `/Files/file?${id}`, httpOptions)
+  } 
+  
+  getFile(id: string | null) {
+    return this.httpClient.get(environment.apiUrl + `/Files/download-file?id=${id}`, 
+    {observe:'response', responseType:'blob' as 'json'});
+   }
 }

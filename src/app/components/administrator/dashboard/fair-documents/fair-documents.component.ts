@@ -10,6 +10,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
   templateUrl: './fair-documents.component.html',
   styleUrls: ['./fair-documents.component.css']
 })
+
 export class FairDocumentsComponent implements OnInit {
   displayedColumns: string[] = [];
   listOfProjects: Array<Files> = []
@@ -22,12 +23,12 @@ export class FairDocumentsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.displayedColumns = ['name', 'size', 'uploadDateTime'];
+    this.displayedColumns = ['name', 'size', 'uploadDateTime', 'id'];
 
     this.FilesServices.showFiles().subscribe(
       data => {
         this.dataSource = new MatTableDataSource(data);
-      } ,
+      },
       err => {
         if (err.status === 404) {
           this.openCustomPopUp('No hay documentos en el sistema.');
@@ -43,10 +44,10 @@ export class FairDocumentsComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  dialogDelete(name: string): void{
+  dialogDelete(id: string): void{
     this.openCustomPopUp("¿Estás seguro de borrar el documento?").then(
       (result: boolean) => {
-        this.FilesServices.deleteFiles(name).subscribe(
+        this.FilesServices.deleteFiles(id).subscribe(
           data => {
             console.log(data);
             this.fileDeleted();
@@ -64,7 +65,6 @@ export class FairDocumentsComponent implements OnInit {
 
   private fileDeleted() {
     this.openCustomPopUp('¡Documento eliminado!');
-    window.location.reload();
   }
 
   addFile(): void  {

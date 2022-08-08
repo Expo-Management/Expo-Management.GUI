@@ -50,14 +50,12 @@ export class ProjectToQualifyDetailsComponent implements OnInit {
           a.click();
         },
         err => {
-          console.log("download error: "+err);
+          console.log("download error: " + err);
           this.openCustomPopUp('Hubo un error, por favor, intenlo más tarde.');
         }
       );
     }
 
-    
-  
     private fillTheProjectInformation() {
       this.projects.getProjectDetails(this.group_number).subscribe(
         data => {
@@ -96,7 +94,7 @@ export class ProjectToQualifyDetailsComponent implements OnInit {
     this.customPopUpService.confirm(
       'Detalles de proyecto', 
       message,
-      'judges/project-details/1'
+      `judges/project-details/${this.group_number}`
       );
   }
 }
