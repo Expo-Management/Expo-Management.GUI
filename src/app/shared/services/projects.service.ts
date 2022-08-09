@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { ProjectQualifications } from '../interfaces/project-qualifications';
+import { Recommendation } from '../interfaces/recommendation';
 
 
 const httpOptions = {
@@ -45,6 +46,10 @@ export class ProjectsService {
 
   getProjectDetails(projectId: string | null): Observable<ProjectQualifications[]>{
     return this.httpClient.get<ProjectQualifications[]>(environment.apiUrl + `/Projects/project?projectId=${projectId}`, httpOptions)
+  }
+
+  getProjectRecommendations(projectId: number): Observable<Recommendation[]>{
+    return this.httpClient.get<Recommendation[]>(environment.apiUrl + `/Projects/recommendation-by-project?projectId=${projectId}`, httpOptions)
   }
 
   createProjectClaim(projectId: string | null, claimDescription: string): Observable<any>{
