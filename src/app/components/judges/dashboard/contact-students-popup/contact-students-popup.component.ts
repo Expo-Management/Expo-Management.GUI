@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+
 
 @Component({
   selector: 'app-contact-students-popup',
@@ -13,13 +15,16 @@ export class ContactStudentsPopupComponent implements OnInit {
     'andreslml.ab@gmail.com', 'andreslml.ab@gmail.com','andreslml.ab@gmail.com'
   ]
 
-  constructor(public dialogRef: MatDialogRef<ContactStudentsPopupComponent>) { }
-
-    onNoClick(): void {
-      this.dialogRef.close();
-    }
+  constructor(public activeModal: NgbActiveModal) { }
 
   ngOnInit(): void {
   }
 
+  public dismiss() {
+    this.activeModal.dismiss();
+  }
+
+  public accept() {
+    this.activeModal.close(true);
+  }
 }

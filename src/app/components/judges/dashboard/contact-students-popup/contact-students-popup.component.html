@@ -1,15 +1,19 @@
 <div class="modal-header">
-    <h3 class="modal-title" id="modal-basic-title">Contactar estudiantes</h3>
+    <h2 class="modal-title" style="margin-bottom: 0;">Contactar Estudiantes</h2>
+    <button type="button" class="btn btn-outline-danger close-btn" (click)="dismiss()">&times;
+    </button>
 </div>
-<div class="details-content">
+<div class="modal-body container" ngbAutofocus>
+        
     <h3 class="space">Correos de los estudiantes del grupo {{project_name}} </h3>
     <div class="members">
-        <div class="memers" *ngFor="let group_members_emails of group_members_emails">
+        <div class="members" *ngFor="let group_members_emails of group_members_emails">
             <a class="mails" href="mailto:">{{ group_members_emails }}</a>
         </div>
     </div>
 
-    <br>
+    <div class="modal-footer ">
+        <button mat-raised-button type="button" id="submit-button" class="add-button" (click)="accept()">Cerrar</button>
+    </div>
 
-    <button mat-raised-button class="buttonOk" (click)="onNoClick()">Ok</button>
 </div>

@@ -27,14 +27,10 @@ export class ProjectToQualifyDetailsComponent implements OnInit {
     public modalService: NgbModal
     ) { }
 
-
-
-    
     ngOnInit(): void {
       this.group_number = this.route.snapshot.paramMap.get('project_id');
       this.fillTheProjectInformation();
     }
-  
   
     private fillTheProjectInformation() {
       this.projects.getProjectDetails(this.group_number).subscribe(
@@ -56,19 +52,14 @@ export class ProjectToQualifyDetailsComponent implements OnInit {
       this.category = (data[0].category != undefined || data[0].category != null) ? data[0].category : "No se le ha asignado una categoria";
     }
 
-
   openRecomendation() {
     const modalRef = this.modalService.open(RecomendationsPopupComponent, {centered: true});
     modalRef.componentInstance.project_number = this.group_number;
   }
 
   openEmails() {
-    const dialogRef = this.dialog.open(ContactStudentsPopupComponent, {
-      width: '30%'
-    });
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-    });
+    const modalRef = this.modalService.open(ContactStudentsPopupComponent, {centered: true});
+    modalRef.componentInstance.project_number = this.group_number;
   }
 
 }
