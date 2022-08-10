@@ -59,13 +59,10 @@ export class ProjectsService {
       {idProject, recommendation, correoJuez}, 
       httpOptions)
   }
-
-<<<<<<< HEAD
   GetMembers(): Observable<any> {
     return this.httpClient.get(environment.apiUrl + '/Projects/project-members', httpOptions);
   }
 
-=======
  getCurentFairdId(): Observable<any>{
   return this.httpClient.get(environment.apiUrl + '/Fairs/current-fair', 
   httpOptions);
@@ -81,6 +78,4 @@ export class ProjectsService {
   {observe:'response', responseType:'blob' as 'json'});
  }
 
- 
->>>>>>> af557bb3731d04cc26d980b212c8d69414296d17
 }
