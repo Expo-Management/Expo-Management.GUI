@@ -1,0 +1,84 @@
+.modal-title {
+    margin: 0;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.close-btn {
+    border: none;
+    font-size: 2rem;
+    padding: 0px 5px;
+}
+
+::ng-deep ngb-modal-backdrop {
+    z-index: 999 !important;
+}
+
+::ng-deep ngb-modal-window {
+    z-index: 999 !important;
+}
+
+mat-card {
+    padding: 2rem 1rem;
+    margin: 10px 0;
+}
+
+.dates {
+    padding: 1rem 0;
+}
+
+.btns {
+    margin: 2rem auto 0.5rem;
+}
+
+.color-picker {
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    overflow: hidden;
+}
+
+.color-picker>input[type='color'] {
+    opacity: 1;
+    width: 60px;
+    height: 60px;
+    padding: 0;
+}
+
+.add-button {
+    color: #FFFFFF;
+    background-color: #354F52;
+    height: 2.5rem;
+    margin-left: .5rem;
+}
+
+.cancel-button {
+    color: #AD2121;
+    background-color: transparent;
+    border: #AD2121 1px solid;
+    height: 2.5rem;
+    margin-left: .5rem;
+}
+
+.title {
+    text-align: center;
+    margin-bottom: 5rem;
+}
+
+.center {
+    height: 60%;
+}
+
+.upload-table {
+    margin-top: 5rem;
+}
+
+#sumbit-button {
+    width: 100%;
+    background-color: #354F52;
+    border-radius: 0px;
+    margin-bottom: .5rem;
+}
+

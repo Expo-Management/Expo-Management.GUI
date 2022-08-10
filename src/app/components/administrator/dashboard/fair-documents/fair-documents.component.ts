@@ -3,35 +3,32 @@ import { MatTableDataSource } from '@angular/material/table';
 import { CustomPopUpService } from 'src/app/shared/services/custom-pop-up.service';
 import { FilesService } from 'src/app/shared/services/files.service';
 import { Files } from 'src/app/shared/interfaces/files';
-import { FormGroup, FormControl, Validators} from '@angular/forms';
-
+import { AddFileComponent } from './add-file/add-file.component';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 @Component({
   selector: 'app-fair-documents',
   templateUrl: './fair-documents.component.html',
   styleUrls: ['./fair-documents.component.css']
 })
+
 export class FairDocumentsComponent implements OnInit {
   displayedColumns: string[] = [];
   listOfProjects: Array<Files> = []
   dataSource = new MatTableDataSource(this.listOfProjects);
 
-  FilesForm = new FormGroup({
-    file: new FormControl('', [Validators.required]),
-    fileSource: new FormControl('', [Validators.required])
-  });
-    
   constructor(
     private customPopUpService: CustomPopUpService,
-    private FilesServices: FilesService
+    private FilesServices: FilesService,
+    public modalService: NgbModal
   ) { }
 
   ngOnInit(): void {
-    this.displayedColumns = ['name', 'size', 'uploadDateTime'];
+    this.displayedColumns = ['name', 'size', 'uploadDateTime', 'id'];
 
     this.FilesServices.showFiles().subscribe(
       data => {
         this.dataSource = new MatTableDataSource(data);
-      } ,
+      },
       err => {
         if (err.status === 404) {
           this.openCustomPopUp('No hay documentos en el sistema.');
@@ -42,40 +39,17 @@ export class FairDocumentsComponent implements OnInit {
     );
   }
 
-  onFileChange(event: { target: { files: string | any[]; }; }) {
-  
-    if (event.target.files.length > 0) {
-      const file = event.target.files[0];
-      this.FilesForm.patchValue({
-        fileSource: file
-      });
-    }
-  }
-     
-  submit(){
-    // const formData = new FormData();
-    // formData.append('file', this.FilesForm.get('fileSource').value);
-   
-    this.FilesServices.addFiles(
-      this.FilesForm.controls['file'].value,
-    ).subscribe(
-      data => {
-        console.log(data);
-        alert('Uploaded Successfully.');
-      })
-  }
-
-
   applyFilter(event: Event){
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  dialogDelete(name: string): void{
+  dialogDelete(id: string): void{
     this.openCustomPopUp("¿Estás seguro de borrar el documento?").then(
       (result: boolean) => {
-        this.FilesServices.deleteFiles(name).subscribe(
+        this.FilesServices.deleteFiles(id).subscribe(
           data => {
+            console.log(data);
             this.fileDeleted();
           },
           err => {
@@ -89,17 +63,19 @@ export class FairDocumentsComponent implements OnInit {
       });
   }
 
-
   private fileDeleted() {
     this.openCustomPopUp('¡Documento eliminado!');
-    window.location.reload();
+  }
+
+  addFile(): void  {
+    this.modalService.open(AddFileComponent, {centered: true});
   }
 
   public openCustomPopUp(message: string): Promise<boolean> {
     return this.customPopUpService.confirm(
       'Administración de documentos', 
       message,
-      undefined
+      'administrator/fair-documents'
       );
   }
 }

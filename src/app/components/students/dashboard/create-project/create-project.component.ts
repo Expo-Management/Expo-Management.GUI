@@ -3,6 +3,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { NgxFileDropEntry, FileSystemFileEntry, FileSystemDirectoryEntry } from 'ngx-file-drop';
 import { ProjectsService } from 'src/app/shared/services/projects.service';
 import { CustomPopUpService } from 'src/app/shared/services/custom-pop-up.service';
+import { Categories } from 'src/app/shared/interfaces/categories';
+
 
 @Component({
   selector: 'app-create-project',
@@ -19,9 +21,7 @@ export class CreateProjectComponent implements OnInit {
   newProjectForm = new FormGroup({
     Name: new FormControl('', [Validators.required, this.noWhitespaceValidator]),
 
-    Description: new FormControl('', {
-      validators: Validators.required
-    }),
+    Description: new FormControl('', {validators: Validators.required}),
 
     Lider: new FormControl('',  [Validators.required, this.noWhitespaceValidator]),
 
@@ -29,26 +29,19 @@ export class CreateProjectComponent implements OnInit {
 
     Member3: new FormControl('', [Validators.required, this.noWhitespaceValidator]),
 
-    Category: new FormControl('', {
-      validators: Validators.required
-    }),
-    IdFair: new FormControl(false, {
-      validators: Validators.required
-    }),
     file: new FormControl('', [Validators.required]),
+
+    IdFair: new FormControl(false, {validators: Validators.required}),
+
+    Category: new FormControl('', [Validators.required]),
     //,
     // creatorLeader: new FormControl(false, {
     //   validators: Validators.required
     // })
   });
 
-  projectCategory = '';
-
-  categories = [
-    {name: 'Categoria 1', value: ''},
-    {name: 'Categoria 2', value: ''},
-    {name: 'Categoria 3', value: ''},
-  ];
+  fairId = '';
+  categories!: Categories[];
 
   constructor(
     private ProjectsService: ProjectsService,
@@ -56,6 +49,25 @@ export class CreateProjectComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.ProjectsService.getCurentFairdId().subscribe(
+      data => {
+        console.log(data);
+         this.fairId = data;
+      },
+      err => {
+        console.log('an error occured: ' + err);
+      })
+     
+      this.ProjectsService.getAllCategories().subscribe(
+        data => {
+          console.log(data);
+          this.categories = data;
+        },
+        err => {
+          console.log('an error occured: ' + err);
+        }
+        
+      )
   }
 
   public createProject() 
@@ -68,8 +80,8 @@ export class CreateProjectComponent implements OnInit {
     formData.set('Member2', this.newProjectForm.controls['Member2'].value)
     formData.set('Member3', this.newProjectForm.controls['Member3'].value)
     formData.set('Files', this.newProjectForm.controls['file'].value)
-    formData.set('Fair', '1')
-
+    formData.set('Fair', this.fairId)
+    formData.set('Category', this.newProjectForm.controls['Category'].value)
     this.ProjectsService.CreateProject(
       formData
     ).subscribe(
