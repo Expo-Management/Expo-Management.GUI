@@ -55,7 +55,7 @@ export class AddStudentsComponent implements OnInit {
 
   openCustomPopUp(message: string) {
     this.customPopUpService.confirm(
-      'Judge creation', 
+      'Creación del estudiante', 
       message,
       'administrator/manage-students'
       );
