@@ -30,21 +30,21 @@
                 </mat-form-field>
                 <!--for email-->
                 <mat-form-field class="" appearance="outline">
-                    <mat-label>Correo electronico</mat-label>
+                    <mat-label>Correo electrónico</mat-label>
                     <input type="email" matInput [formControl]="EmailFormControl" [errorStateMatcher]="matcher" placeholder="Ej. smith@gmail.com">
                     <mat-error *ngIf="EmailFormControl.hasError('email') && !EmailFormControl.hasError('required')">
-                        Por favor digita un correo valido
+                        Por favor digita un correo válido
                     </mat-error>
                     <mat-error *ngIf="EmailFormControl.hasError('required')">
-                        <strong>Por favor digita su correo electronico</strong>
+                        <strong>Por favor digita su correo electrónico</strong>
                     </mat-error>
                 </mat-form-field>
                 <!--for password-->
                 <mat-form-field class="" appearance="outline">
-                    <mat-label>Celular</mat-label>
+                    <mat-label>Número de celular</mat-label>
                     <input type="last" matInput [formControl]="PhoneFormControl" [errorStateMatcher]="matcher">
                     <mat-error *ngIf=" PhoneFormControl.hasError('required')">
-                        <strong>Por favor digita su numero celular</strong>
+                        <strong>Por favor digita su número celular</strong>
                     </mat-error>
                 </mat-form-field>
 
@@ -59,10 +59,10 @@
                 </mat-form-field>
 
                 <mat-form-field class="" appearance="outline" *ngIf="isJudge">
-                    <mat-label>Institucion</mat-label>
+                    <mat-label>Institución</mat-label>
                     <input type="id" matInput [formControl]="IdFormControl" [errorStateMatcher]="matcher" placeholder="XX-XXXX-XXXX">
                     <mat-error *ngIf="IdFormControl.hasError('required')">
-                        <strong>Por favor indicar su actual institucion</strong>
+                        <strong>Por favor indicar su actual institución</strong>
                     </mat-error>
                 </mat-form-field>
             </form>
@@ -73,9 +73,9 @@
     </div>
     <mat-divider vertical style="height:85%; margin: 0 5%;"></mat-divider>
     <div class="right-side">
-        <h3 class="space">Mas opciones: </h3>
+        <h3 class="space">Más opciones: </h3>
         <div class="button-group space">
-            <button class="add-button" mat-raised-button>Cambio de contrasena</button>
+            <button class="add-button" mat-raised-button>Cambio de contraseña</button>
             <button class="add-button" mat-raised-button>Otros ajustes</button>
         </div>
     </div>

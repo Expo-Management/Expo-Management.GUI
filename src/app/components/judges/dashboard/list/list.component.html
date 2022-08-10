@@ -4,7 +4,7 @@
         <div class="sub-container">
             <form class="example-form">
                 <mat-form-field class="example-full-width" appearance="outline">
-                    <mat-label>Buscar jueces</mat-label>
+                    <mat-label>Buscar Jueces</mat-label>
                     <input type="text" (keyup)="applyFilter($event)" matInput placeholder="Buscar">
                     <mat-icon matSuffix>search</mat-icon> 
                 </mat-form-field>
@@ -21,12 +21,12 @@
             </ng-container>
           
             <ng-container matColumnDef="posicion">
-              <th mat-header-cell *matHeaderCellDef> Posicion </th>
+              <th mat-header-cell *matHeaderCellDef> Posición </th>
               <td mat-cell *matCellDef="let element"> {{element.position}} </td>
             </ng-container>
             
             <ng-container matColumnDef="institucion">
-              <th mat-header-cell *matHeaderCellDef> Institucion </th>
+              <th mat-header-cell *matHeaderCellDef> Institución </th>
               <td mat-cell *matCellDef="let element"> {{element.institution}} 
               </td>
             </ng-container>
