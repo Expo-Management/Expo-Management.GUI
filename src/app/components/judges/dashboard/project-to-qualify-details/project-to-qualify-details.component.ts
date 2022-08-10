@@ -37,8 +37,6 @@ export class ProjectToQualifyDetailsComponent implements OnInit {
       this.fillTheProjectInformation();
     }
   
-<<<<<<< HEAD
-=======
     downloadFile(): void {
       this.projects.getProjectFile(this.group_number).subscribe(
         response => {
@@ -57,8 +55,7 @@ export class ProjectToQualifyDetailsComponent implements OnInit {
         }
       );
     }
-
->>>>>>> af557bb3731d04cc26d980b212c8d69414296d17
+    
     private fillTheProjectInformation() {
       this.projects.getProjectDetails(this.group_number).subscribe(
         data => {

@@ -63,19 +63,19 @@ export class ProjectsService {
     return this.httpClient.get(environment.apiUrl + '/Projects/project-members', httpOptions);
   }
 
- getCurentFairdId(): Observable<any>{
-  return this.httpClient.get(environment.apiUrl + '/Fairs/current-fair', 
-  httpOptions);
- }
+  getCurentFairdId(): Observable<any>{
+    return this.httpClient.get(environment.apiUrl + '/Fairs/current-fair', 
+    httpOptions);
+  }
 
- getAllCategories(): Observable<any> {
-  return this.httpClient.get(environment.apiUrl + '/Category/categories', 
-  httpOptions);
- }
+  getAllCategories(): Observable<any> {
+    return this.httpClient.get(environment.apiUrl + '/Category/categories', 
+    httpOptions);
+  }
 
  getProjectFile(id: string | null) {
-  return this.httpClient.get(environment.apiUrl + `/Files/download-project-file?id=${id}`, 
-  {observe:'response', responseType:'blob' as 'json'});
+    return this.httpClient.get(environment.apiUrl + `/Files/download-project-file?id=${id}`, 
+    {observe:'response', responseType:'blob' as 'json'});
  }
 
 }
