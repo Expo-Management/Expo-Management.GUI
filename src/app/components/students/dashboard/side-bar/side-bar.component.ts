@@ -15,7 +15,7 @@ export class SideBarComponent implements OnInit {
     { 
       link: 'saved-documents',
       icon: 'insert_drive_file',
-      text: 'Documentacion del proyecto'
+      text: 'Documentación del proyecto'
     },
   ]
 
@@ -34,14 +34,9 @@ export class SideBarComponent implements OnInit {
 
   fair_options = [
     { 
-      link: 'security-protocols',
-      icon: 'more_horiz',
-      text: 'Protocolos de seguridad de la feria'
-    },
-    { 
-      link: 'past-projects',
-      icon: 'arrow_back',
-      text: 'Proyectos anteriores'
+      link: 'current-projects',
+      icon: 'list',
+      text: 'Lista de proyectos actuales'
     },
     { 
       link: 'project-mentions',
@@ -49,19 +44,24 @@ export class SideBarComponent implements OnInit {
       text: 'Menciones de proyecto'
     },
     { 
-      link: 'current-projects',
-      icon: 'list',
-      text: 'Lista de proyectos actuales'
+      link: 'past-projects',
+      icon: 'arrow_back',
+      text: 'Proyectos anteriores'
     },
     { 
       link: 'fair-documents',
       icon: 'folder',
-      text: 'Documentacion necesaria'
+      text: 'Documentación necesaria'
     },
     { 
       link: 'fair-news',
       icon: 'new_releases',
       text: 'Noticias de la feria'
+    },
+    { 
+      link: 'security-protocols',
+      icon: 'more_horiz',
+      text: 'Protocolos de seguridad de la feria'
     },
   ]
   
