@@ -5,6 +5,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { JudgeCalification } from 'src/app/shared/interfaces/judge-calification';
 import { ProjectQualifications } from 'src/app/shared/interfaces/project-qualifications';
 import { ProjectsService } from 'src/app/shared/services/projects.service';
+import { RecommendationsComponent } from '../recommendations/recommendations.component';
 import { ClaimsComponent } from './claims/claims.component';
 import { QualificationComponent } from './qualification/qualification.component';
 
@@ -79,6 +80,11 @@ export class ProjectDetailsComponent implements OnInit {
 
   createClaim() {
     const modalRef = this.modalService.open(ClaimsComponent, {centered: true});
+    modalRef.componentInstance.project_number = this.group_number;
+  }
+
+  checkRecommendations() {
+    const modalRef = this.modalService.open(RecommendationsComponent, {centered: true});
     modalRef.componentInstance.project_number = this.group_number;
   }
 

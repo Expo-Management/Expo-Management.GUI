@@ -23,6 +23,7 @@ import { MentionsComponent } from './dashboard/mentions/mentions.component';
 import { FairNewsComponent } from './dashboard/fair-news/fair-news.component';
 import { ClaimsComponent } from './dashboard/project-details/claims/claims.component';
 import { QualificationComponent } from './dashboard/project-details/qualification/qualification.component';
+import { RecommendationsComponent } from './dashboard/recommendations/recommendations.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { QualificationComponent } from './dashboard/project-details/qualificatio
     FairNewsComponent,
     ClaimsComponent,
     QualificationComponent,
+    RecommendationsComponent,
   ],
   imports: [
     ReactiveFormsModule,
