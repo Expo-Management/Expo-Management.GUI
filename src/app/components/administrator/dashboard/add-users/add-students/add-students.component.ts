@@ -2,13 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import { CustomPopUpService } from 'src/app/shared/services/custom-pop-up.service';
 import { StudentsService } from 'src/app/shared/services/students.service';
-
-
 @Component({
   selector: 'app-add-students',
   templateUrl: './add-students.component.html',
   styleUrls: ['./add-students.component.css']
 })
+
 export class AddStudentsComponent implements OnInit {
   createStudentForm = new FormGroup({
     NameFormControl: new FormControl('', {

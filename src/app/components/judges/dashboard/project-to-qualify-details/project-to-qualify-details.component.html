@@ -15,7 +15,7 @@
                 <h3>{{ group_member }}</h3>
             </div>
             <h3 class="space">Categoria: {{ category }}</h3>
-            <!-- <button class="buttonDescargar" mat-raised-button>Descargar documentación</button> -->
+            <button class="buttonDescargar" (click)="downloadFile()" mat-raised-button>Descargar documentación</button>
         </div>
     </div>
     <mat-divider vertical style="height:85%; margin: 0 5%;"></mat-divider>
