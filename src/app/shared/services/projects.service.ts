@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { ProjectQualifications } from '../interfaces/project-qualifications';
+import { QualifyProject } from '../interfaces/qualify-project';
 import { Recommendation } from '../interfaces/recommendation';
 
 
@@ -66,7 +67,20 @@ export class ProjectsService {
       httpOptions)
   }
 
-  /*getProjectQualification(projectId: string | null): Observable<any>{
-    return this.httpClient.get(environment.apiUrl + '/Projects/qualification', httpOptions)
-  }*/
+  qualifyProject(
+    punctuation: number,
+    comments: string,
+    project_id: number,
+    judge_email: string
+  ): Observable<any>{
+    return this.httpClient.post(
+      environment.apiUrl + '/Projects/qualify-project', 
+      {
+        punctuation: punctuation, 
+        comments: comments,
+        projectId: project_id,
+        judgeEmail: judge_email
+      },
+      httpOptions)
+  }
 }
