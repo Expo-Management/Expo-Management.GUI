@@ -43,3 +43,7 @@ table {
     width: 0;
     background: transparent;
 }
+
+.redirect{
+    cursor: pointer;
+}

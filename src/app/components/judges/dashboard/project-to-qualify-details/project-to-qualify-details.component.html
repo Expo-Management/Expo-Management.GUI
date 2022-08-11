@@ -8,13 +8,13 @@
         </div>
         <div class="details-content">
             <h3 class="space">Nombre del proyecto: {{ project_name }}</h3>
-            <h3 class="space">Numero del grupo: {{ group_number }}</h3>
-            <h3 class="space">Descripcion del proyecto: {{ project_description }}</h3>
+            <h3 class="space">Número del grupo: {{ group_number }}</h3>
+            <h3 class="space">Descripción del proyecto: {{ project_description }}</h3>
             <h3 class="space">Miembros del grupo: </h3>
             <div class="members" *ngFor="let group_member of group_members">
                 <h3>{{ group_member }}</h3>
             </div>
-            <h3 class="space">Categoria: {{ category }}</h3>
+            <h3 class="space">Categoría: {{ category }}</h3>
             <button class="buttonDescargar" (click)="downloadFile()" mat-raised-button>Descargar documentación</button>
         </div>
     </div>

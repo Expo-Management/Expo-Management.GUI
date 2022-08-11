@@ -1,5 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { Component, Input, OnInit } from '@angular/core';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { MembersEmails } from 'src/app/shared/interfaces/members-emails';
+import { CustomPopUpService } from 'src/app/shared/services/custom-pop-up.service';
+import { ProjectsService } from 'src/app/shared/services/projects.service';
+
 
 @Component({
   selector: 'app-contact-students-popup',
@@ -8,18 +12,45 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog
 })
 export class ContactStudentsPopupComponent implements OnInit {
 
-  project_name ='Test project'
-  group_members_emails = [
-    'andreslml.ab@gmail.com', 'andreslml.ab@gmail.com','andreslml.ab@gmail.com'
-  ]
+  displayedColumns: string[] = ['name', 'email'];
+  dataSource: MembersEmails[] = [];
 
-  constructor(public dialogRef: MatDialogRef<ContactStudentsPopupComponent>) { }
-
-    onNoClick(): void {
-      this.dialogRef.close();
-    }
+  @Input() public  group_number: number = 0;
+  
+  constructor(
+    public activeModal: NgbActiveModal,
+    private projects: ProjectsService,
+    private customPopUpService: CustomPopUpService,
+    ) { }
 
   ngOnInit(): void {
+    this.projects.getMembersEmail(this.group_number).subscribe(
+      data => {
+        this.dataSource = data;
+        console.log(this.group_number);
+      },
+      err => {
+        if (err.status === 404) {
+          this.openCustomPopUp('No hay estudiantes registrados.');
+        } else {
+          this.openCustomPopUp('Ocurrio un problema interno. Por favor, vuelve a intentarlo más tarde.');
+        }
+      }
+    );
   }
 
+  public dismiss() {
+    this.activeModal.dismiss();
+  }
+
+  public accept() {
+    this.activeModal.close(true);
+  }
+
+  openCustomPopUp(message: string) {
+    this.customPopUpService.confirm(
+      'Correos de los estudiantes', 
+      message,
+      `/student/project/${this.group_number}`);
+  }
 }

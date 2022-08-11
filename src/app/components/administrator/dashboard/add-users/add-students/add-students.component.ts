@@ -54,7 +54,7 @@ export class AddStudentsComponent implements OnInit {
 
   openCustomPopUp(message: string) {
     this.customPopUpService.confirm(
-      'Configuración de estudiantes', 
+      'Creación del estudiante', 
       message,
       'administrator/manage-students'
       );

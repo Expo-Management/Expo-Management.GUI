@@ -29,12 +29,7 @@
     overflow: scroll;
 }
 
-h1 {
-    width: 75%;
-}
-
 .sub-container {
-    width: 25%;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -50,11 +45,12 @@ table {
     background: transparent;
 }
 
-#sumbit-button {
-    width: 100%;
+.add-button {
+    color: #FFFFFF;
     background-color: #354F52;
-    border-radius: 0px;
-    margin-bottom: 2rem;
+    height: 2.5rem;
+    margin-left: 2rem;
+    margin-bottom: 1rem;
 }
 
 button.mat-focus-indicator.add-button.mat-raised-button.mat-button-base {

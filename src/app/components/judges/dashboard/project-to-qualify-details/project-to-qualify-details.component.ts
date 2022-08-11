@@ -55,7 +55,7 @@ export class ProjectToQualifyDetailsComponent implements OnInit {
         }
       );
     }
-
+    
     private fillTheProjectInformation() {
       this.projects.getProjectDetails(this.group_number).subscribe(
         data => {
@@ -75,19 +75,14 @@ export class ProjectToQualifyDetailsComponent implements OnInit {
       this.category = (data[0].category != undefined || data[0].category != null) ? data[0].category : "No se le ha asignado una categoria";
     }
 
-
   openRecomendation() {
     const modalRef = this.modalService.open(RecomendationsPopupComponent, {centered: true});
     modalRef.componentInstance.project_number = this.group_number;
   }
 
   openEmails() {
-    const dialogRef = this.dialog.open(ContactStudentsPopupComponent, {
-      width: '30%'
-    });
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-    });
+    const modalRef = this.modalService.open(ContactStudentsPopupComponent, {centered: true});
+    modalRef.componentInstance.group_number = this.group_number;
   }
 
   openCustomPopUp(message: string) {

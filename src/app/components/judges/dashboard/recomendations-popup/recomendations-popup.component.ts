@@ -32,6 +32,7 @@ export class RecomendationsPopupComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    console.log(localStorage);
   }
 
   public dismiss() {
@@ -62,7 +63,7 @@ export class RecomendationsPopupComponent implements OnInit {
     console.log(this.project_number);
     this.projectService.createProjectRecommendation(
       this.project_number, 
-      this.createRecommendationForm.get('recommendation')?.value,
+      this.createRecommendationForm.get('recomendation')?.value,
       this.personalInfo.getEmail()).subscribe(
         data => {
           console.log(data)

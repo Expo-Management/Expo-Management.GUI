@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TokenStorageService } from 'src/app/shared/services/token-storage.service';
 
 @Component({
   selector: 'app-top-menu',
@@ -8,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 export class TopMenuComponent implements OnInit {
   user_name = 'Andres Barrantes'
   user_role = 'Juez'
-  constructor() { }
+  
+  constructor(private tokenStorage: TokenStorageService) { }
 
   ngOnInit(): void {
+  }
+
+  logout(){
+    this.tokenStorage.signOut();
   }
 
 }

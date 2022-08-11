@@ -4,7 +4,7 @@
         <div class="sub-container">
             <form class="example-form">
                 <mat-form-field class="example-full-width" appearance="outline">
-                    <mat-label>Filtrar noticias</mat-label>
+                    <mat-label>Buscar Noticias</mat-label>
                     <input type="text" matInput placeholder="Ejemplo: Documentacion">
                     <mat-icon matSuffix>search</mat-icon>
                 </mat-form-field>
@@ -14,19 +14,19 @@
     <div class="news-content">
         <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
             <ng-container matColumnDef="title">
-                <th mat-header-cell *matHeaderCellDef> Nombre de la mencion</th>
+                <th mat-header-cell *matHeaderCellDef> Noticia</th>
                 <td mat-cell *matCellDef="let element"> {{element.title}} </td>
             </ng-container>
             <ng-container matColumnDef="description">
-                <th mat-header-cell *matHeaderCellDef> Descripcion </th>
+                <th mat-header-cell *matHeaderCellDef> Descripción </th>
                 <td mat-cell *matCellDef="let element"> {{element.description}} </td>
             </ng-container>
             <ng-container matColumnDef="date">
-                <th mat-header-cell *matHeaderCellDef> Fecha de publicacion</th>
+                <th mat-header-cell *matHeaderCellDef> Fecha de publicación</th>
                 <td mat-cell *matCellDef="let element"> {{element.date | date}} </td>
             </ng-container>
             <ng-container matColumnDef="publisher">
-                <th mat-header-cell *matHeaderCellDef> Publicado por </th>
+                <th mat-header-cell *matHeaderCellDef> Publicado por: </th>
                 <td mat-cell *matCellDef="let element"> {{element.publisher.name + ' ' + element.publisher.lastname}} </td>
             </ng-container>
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
