@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
+import { TokenStorageService } from 'src/app/shared/services/token-storage.service';
 
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -24,9 +25,12 @@ export class SettingsComponent implements OnInit {
 
   matcher = new MyErrorStateMatcher();
 
-  constructor() { }
+  constructor(private tokenStorage: TokenStorageService) { }
 
   ngOnInit(): void {
   }
 
+  logout(){
+    this.tokenStorage.signOut();
+  }
 }

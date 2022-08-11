@@ -4,32 +4,44 @@
         <h3>Edita los datos del profesor seleccionado</h3>
     </div>
     <form class="add-form" [formGroup]="adminForm" (ngSubmit)="onSubmit()">
+        <div class="row">
+            <div class="col-6">
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Nombre del profesor</mat-label>
+                    <input type="text" matInput formControlName="NameFormControl">
+                </mat-form-field>
+            </div>
+            <div class="col-6">
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Apellidos del profesor</mat-label>
+                    <input type="text" matInput formControlName="LastFormControl">
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Nombre de usuario del profesor</mat-label>
+                    <input type="text" matInput formControlName="UsernameFormControl">
+                </mat-form-field>
+            </div>
+            <div class="col-6">
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Cédula del profesor</mat-label>
+                    <input type="text" matInput formControlName="IdFormControl" placeholder="XX-XXXX-XXXX">
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="rows">
+            <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Correo del profesor</mat-label>
+                <input type="email" matInput formControlName="EmailFormControl" placeholder="abc@gmail.com">
+            </mat-form-field>
+        </div>
 
-        <!--for name-->
-        <mat-form-field class="flex-container" appearance="outline">
-            <mat-label>Nombre del profesor</mat-label>
-            <input type="name" matInput formControlName="NameFormControl">
-        </mat-form-field>
-        <!--for last-->
-        <mat-form-field class="flex-container" appearance="outline">
-            <mat-label>Apellidos del profesor</mat-label>
-            <input type="last" matInput formControlName="LastFormControl">
-        </mat-form-field>
-        <!--for email-->
-        <mat-form-field class="flex-container" appearance="outline">
-            <mat-label>Correo del profesor</mat-label>
-            <input type="email" matInput formControlName="EmailFormControl" placeholder="Ej. smith@gmail.com">
-        </mat-form-field>
-        <!--for username-->
-        <mat-form-field class="flex-container" appearance="outline">
-            <mat-label>Nombre de usuario del profesor</mat-label>
-            <input type="name" matInput formControlName="UsernameFormControl">
-        </mat-form-field>
-        <!--for id-->
-        <mat-form-field class="flex-container" appearance="outline">
-            <mat-label>Cédula del profesor</mat-label>
-            <input type="id" matInput formControlName="IdFormControl" placeholder="XX-XXXX-XXXX">
-        </mat-form-field>
-        <button mat-raised-button id="sumbit-button" class="add-button">Editar Profesor</button>
+        <div class="div-buttons">
+            <button mat-raised-button routerLink="/administrator/manage-professors" class="button cancel">Cancelar</button>
+            <button mat-raised-button id="submit-button" class="button">Editar Profesor</button>
+        </div>
     </form>
 </div>

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { CustomPopUpService } from 'src/app/shared/services/custom-pop-up.service';
-import { User } from 'src/app/shared/interfaces/user';
-import { StudentsService } from 'src/app/shared/services/students.service';
+import { ProjectMembers } from 'src/app/shared/interfaces/project-members';
+import { ProjectsService } from 'src/app/shared/services/projects.service';
 
 @Component({
   selector: 'app-students-list',
@@ -13,15 +13,15 @@ import { StudentsService } from 'src/app/shared/services/students.service';
 
 export class StudentsListComponent implements OnInit {
   displayedColumns: string[] = [];
-  listOfStudents: Array<User> = [];
+  listOfStudents: Array<ProjectMembers> = [];
   dataSource = new MatTableDataSource(this.listOfStudents);
 
-  constructor(private customPopUpService: CustomPopUpService, private studentsServices: StudentsService) { }
+  constructor(private customPopUpService: CustomPopUpService, private projectsServices: ProjectsService) { }
 
   ngOnInit(): void {
-    this.displayedColumns = ['name', 'lastname', 'email', 'phoneNumber'];
+    this.displayedColumns = ['name', 'lastName', 'phoneNumber', 'projectName'];
 
-    this.studentsServices.getStudents().subscribe(
+    this.projectsServices.GetMembers().subscribe(
       data => {
         this.dataSource = new MatTableDataSource(data);
       } ,

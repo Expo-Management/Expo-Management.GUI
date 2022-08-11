@@ -5,13 +5,24 @@
     <div class="menu-list">
         <div class="right-container flexbox-container">
             <mat-icon class="icon">notifications</mat-icon>
-            <mat-icon class="icon">account_circle</mat-icon>
             <div class="display-user-info">
                 <span>{{ user_name }}</span>
                 <mat-divider></mat-divider>
                 <span>{{ user_role }}</span>
             </div>
-            <mat-icon [routerLink]="['settings']" class=" icon ">settings</mat-icon>
+            <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                <mat-icon>more_vert</mat-icon>
+              </button>
+              <mat-menu #menu="matMenu">
+                <button mat-menu-item>
+                  <mat-icon [routerLink]="['settings']">settings</mat-icon>
+                  <span [routerLink]="['settings']" >Configuraciones</span>
+                </button>
+                <button mat-menu-item>
+                  <mat-icon (click)="logout()" >exit_to_app</mat-icon>
+                  <span (click)="logout()" >Cerrar sesión</span>
+                </button>
+              </mat-menu>
         </div>
     </div>
 </div>

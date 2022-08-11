@@ -8,6 +8,7 @@ import { MaterialsModule } from 'src/app/shared/materials/materials.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import { NgxFileDropModule } from 'ngx-file-drop';
 //pages
 import { AdministratorComponent } from './administrator.component';
 import { FairDocumentsComponent } from './dashboard/fair-documents/fair-documents.component';
@@ -37,6 +38,7 @@ import { CreateAppointmentsComponent } from './dashboard/create-appointments/cre
 import { MatNativeDateModule } from '@angular/material/core';
 import { ForgetPasswordComponent } from './dashboard/settings/forget-password/forget-password.component';
 import { ResetPasswordComponent } from './dashboard/settings/reset-password/reset-password.component';
+import { AddFileComponent } from './dashboard/fair-documents/add-file/add-file.component';
 
 
 @NgModule({
@@ -65,9 +67,11 @@ import { ResetPasswordComponent } from './dashboard/settings/reset-password/rese
     DeleteDialogComponent,
     SettingsComponent,
     CreateAppointmentsComponent,
+    AddFileComponent,
   ],
   imports: [
     ReactiveFormsModule,
+    NgxFileDropModule,
     HttpClientModule,
     MaterialsModule,
     CommonModule,

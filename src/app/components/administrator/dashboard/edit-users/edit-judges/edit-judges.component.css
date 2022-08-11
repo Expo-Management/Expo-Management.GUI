@@ -4,35 +4,49 @@
 }
 
 .flex-container {
-    height: 100%;
-    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
 }
 
 .top-options {
-    height: 10%;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
     padding: 0 2rem;
-    margin-top: 2rem;
+    margin-top: 5rem;
 }
 
 .add-form {
     margin-top: 2rem;
     margin-bottom: 2rem;
     min-width: 100px;
-    max-width: 550px;
+    max-width: 40%;
     width: 100%;
     padding: 0 2rem;
 }
 
-.add-button {
+.full-width {
+    width: 95%;
+    margin: 0 auto;
+}
+
+.button {
     color: #FFFFFF;
     background-color: #354F52;
     height: 2.5rem;
-    margin: 1rem 0;
+    margin-left: .5rem;
+    margin-bottom: 1rem;
+}
+
+.cancel {
+    color: #AD2121;
+    background-color: transparent;
+    border: #AD2121 1px solid;
+}
+
+.div-buttons {
+    text-align: right;
+    padding: 1rem;
 }
 
 ::-webkit-scrollbar {

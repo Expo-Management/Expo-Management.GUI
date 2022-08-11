@@ -63,7 +63,7 @@ export class AddProfessorsComponent implements OnInit {
 
   openCustomPopUp(message: string) {
     this.customPopUpService.confirm(
-      'Configuracion de profesor', 
+      'Configuración de profesor', 
       message,
       'administrator/manage-professors'
       );
@@ -86,7 +86,7 @@ export class AddProfessorsComponent implements OnInit {
       },
       err => {
         if (err.status === 200) {
-          this.openCustomPopUp('Estudiante creado!');
+          this.openCustomPopUp('Profesor creado!');
         } else {
           this.openCustomPopUp('Hubo un problema creando el usuario, intente mas tarde!');
         }

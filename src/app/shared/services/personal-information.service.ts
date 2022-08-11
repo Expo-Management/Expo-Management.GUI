@@ -44,6 +44,12 @@ export class PersonalInformationService {
     localStorage.setItem(USER_ROLE, role);
   }
 
+  public saveEmail(email: string): void {
+    localStorage.removeItem(USER_EMAIL);
+    
+    localStorage.setItem(USER_EMAIL, email);
+  }
+
   public getRole(): string | null {
     return localStorage.getItem(USER_ROLE);
   }

@@ -8,14 +8,14 @@
         </div>
         <div class="details-content">
             <h3 class="space">Nombre del proyecto: {{ project_name }}</h3>
-            <h3 class="space">Numero del grupo: {{ group_number }}</h3>
-            <h3 class="space">Descripcion del proyecto: {{ project_description }}</h3>
+            <h3 class="space">Número del grupo: {{ group_number }}</h3>
+            <h3 class="space">Descripción del proyecto: {{ project_description }}</h3>
             <h3 class="space">Miembros del grupo: </h3>
             <div class="members" *ngFor="let group_member of group_members">
                 <h3>{{ group_member }}</h3>
             </div>
-            <h3 class="space">Categoria: {{ category }}</h3>
-            <h3 class="space">Calificacion Final: {{ qualification }}</h3>
+            <h3 class="space">Categoría: {{ category }}</h3>
+            <h3 class="space">Calificación Final: {{ qualification }}</h3>
         </div>
     </div>
     <mat-divider vertical style="height:85%; margin: 0 5%;"></mat-divider>
@@ -23,7 +23,7 @@
         <div class="section-title">
             <mat-icon>group</mat-icon>
             <div class="title">
-                <h2>Detalles de la calificacion</h2>
+                <h2>Detalles de la calificación</h2>
             </div>
         </div>
         <div class="details-content">
@@ -38,7 +38,7 @@
                 </mat-form-field>
             </div>
             <!-- <h3 class="space2">Nombre del juez: {{ judge_name }}</h3> -->
-            <h3 class="space">Calificacion obtenida: {{ selectedQualification }}</h3>
+            <h3 class="space">Calificación obtenida: {{ selectedQualification }}</h3>
             <div class="button-group space">
                 <button class="button" (click)="viewQualification()" mat-raised-button>Desglose de nota</button>
                 <button class="button" (click)="checkRecommendations()" mat-raised-button>Recomendaciones</button>

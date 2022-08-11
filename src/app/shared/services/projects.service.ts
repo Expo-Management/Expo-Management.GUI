@@ -2,21 +2,20 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { Categories } from '../interfaces/categories';
+import { MembersEmails } from '../interfaces/members-emails';
 import { ProjectQualifications } from '../interfaces/project-qualifications';
+<<<<<<< HEAD
 import { QualifyProject } from '../interfaces/qualify-project';
+=======
+import { Projects } from '../interfaces/projects';
+>>>>>>> c0663c21fe95dedf18764a68cb4577fcd7fc37c6
 import { Recommendation } from '../interfaces/recommendation';
 
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
-
-const httpOptionsMultiPart = {
-  headers: new HttpHeaders({
-   "Content-Type": "multipart/form-data" 
-  })
-}; 
-
 
 @Injectable({
   providedIn: 'root'
@@ -66,6 +65,28 @@ export class ProjectsService {
       {idProject, recommendation, correoJuez}, 
       httpOptions)
   }
+  GetMembers(): Observable<any> {
+    return this.httpClient.get(environment.apiUrl + '/Projects/project-members', httpOptions);
+  }
+
+  getCurentFairdId(): Observable<any>{
+    return this.httpClient.get(environment.apiUrl + '/Fairs/current-fair', 
+    httpOptions);
+  }
+
+  getAllCategories(): Observable<any> {
+    return this.httpClient.get(environment.apiUrl + '/Category/categories', 
+    httpOptions);
+  }
+
+ getProjectFile(id: string | null) {
+    return this.httpClient.get(environment.apiUrl + `/Files/download-project-file?id=${id}`, 
+    {observe:'response', responseType:'blob' as 'json'});
+ }
+
+ getMembersEmail(projectId: number): Observable<any>{
+    return this.httpClient.get<any>(environment.apiUrl + `/Projects/members-emails?projectId=${projectId}`, httpOptions);
+ }
 
   qualifyProject(
     punctuation: number,

@@ -3,9 +3,6 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { CustomPopUpService } from 'src/app/shared/services/custom-pop-up.service';
-import { TokenStorageService } from 'src/app/shared/services/token-storage.service';
-
-
 
 @Component({
   selector: 'app-reset-password',
@@ -40,10 +37,15 @@ export class ResetPasswordComponent implements OnInit {
   Message = '';
 
   ngOnInit(): void {
+
     this.route.queryParams.subscribe(params => {
-      this.email = params['email'];
-      this.token = params['token'];
+      this.authService.saveEmail(params['email']);
+      this.authService.saveToken(params['token']);
   });
+
+  this.email = this.authService.getEmail();
+  this.token = this.authService.getToken()!;
+
   // console.log(window.location.search);
   // console.log(this.email);
   // console.log(this.token);
@@ -59,15 +61,17 @@ export class ResetPasswordComponent implements OnInit {
         data => {
           console.log(data)
           this.Message = 'Se ha cambiado la contraseña exitosamente!';
-          this.openCustomPopUp('Se ha cambiado la contraseña exitosamente');
-         // window.location.hostname;
-        },
+          this.homePopUp('Se ha cambiado la contraseña exitosamente');
+        },  
         err => {
           console.log(err)
           if (err.status === 404) {
             this.Message = 'El servidor no pudo ser encontrado!';
-            this.openCustomPopUp('El servidor no pudo ser encontrado');
-          } else {
+            this.homePopUp('El servidor no pudo ser encontrado');
+          }else if(err.status === 400){
+            this.Message = err.error.message;
+            this.openCustomPopUp(this.Message);
+          }else{
             this.Message = err.error.message;
             this.openCustomPopUp(this.Message);
           }
@@ -75,6 +79,13 @@ export class ResetPasswordComponent implements OnInit {
       );
     }
 
+  homePopUp(message: string) {
+    this.customPopUpService.confirm(
+      'Cambio de contraseña', 
+      message,
+      'administrator/home'
+      );
+  }
 
   openCustomPopUp(message: string) {
     this.customPopUpService.confirm(
@@ -83,4 +94,7 @@ export class ResetPasswordComponent implements OnInit {
       'administrator/reset-password'
       );
   }
+
 }
+
+

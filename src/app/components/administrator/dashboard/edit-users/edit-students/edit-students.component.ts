@@ -59,7 +59,7 @@ export class EditStudentsComponent implements OnInit {
 
   openCustomPopUp(message: string) {
     this.customPopUpService.confirm(
-      'Studiante actualizado', 
+      'Editar estudiante', 
       message,
       'administrator/manage-students'
       );
@@ -94,7 +94,7 @@ export class EditStudentsComponent implements OnInit {
       this.temp_phone_number
     ).subscribe(
       data => {
-        this.openCustomPopUp('¡Studiante actualizado exitosamente!');
+        this.openCustomPopUp('¡Estudiante actualizado exitosamente!');
       },
       err => {
         console.log(err);
