@@ -3,7 +3,9 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Categories } from '../interfaces/categories';
+import { MembersEmails } from '../interfaces/members-emails';
 import { ProjectQualifications } from '../interfaces/project-qualifications';
+import { Projects } from '../interfaces/projects';
 import { Recommendation } from '../interfaces/recommendation';
 
 
@@ -76,6 +78,10 @@ export class ProjectsService {
  getProjectFile(id: string | null) {
     return this.httpClient.get(environment.apiUrl + `/Files/download-project-file?id=${id}`, 
     {observe:'response', responseType:'blob' as 'json'});
+ }
+
+ getMembersEmail(projectId: number): Observable<any>{
+    return this.httpClient.get<any>(environment.apiUrl + `/Projects/members-emails?projectId=${projectId}`, httpOptions);
  }
 
 }

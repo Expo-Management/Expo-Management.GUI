@@ -82,7 +82,7 @@ export class ProjectToQualifyDetailsComponent implements OnInit {
 
   openEmails() {
     const modalRef = this.modalService.open(ContactStudentsPopupComponent, {centered: true});
-    modalRef.componentInstance.project_number = this.group_number;
+    modalRef.componentInstance.group_number = this.group_number;
   }
 
   openCustomPopUp(message: string) {

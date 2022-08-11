@@ -1,19 +1,25 @@
 <div class="modal-header">
-    <h2 class="modal-title" style="margin-bottom: 0;">Contactar Estudiantes</h2>
+    <h2 class="modal-title" style="margin-bottom: 0;">Correos de los estudiantes.</h2>
     <button type="button" class="btn btn-outline-danger close-btn" (click)="dismiss()">&times;
     </button>
 </div>
 <div class="modal-body container" ngbAutofocus>
-        
-    <h3 class="space">Correos de los estudiantes del grupo {{project_name}} </h3>
-    <div class="members">
-        <div class="members" *ngFor="let group_members_emails of group_members_emails">
-            <a class="mails" href="mailto:">{{ group_members_emails }}</a>
-        </div>
-    </div>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        <!-- Name column -->
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef> Estudiante </th>
+          <td mat-cell *matCellDef="let element"> {{element.name}}</td>
+        </ng-container>
+        <!-- Email column -->
+        <ng-container matColumnDef="email">
+          <th mat-header-cell *matHeaderCellDef> Correo Electrónico </th>
+          <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+        </ng-container>   
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
 
-    <div class="modal-footer ">
-        <button mat-raised-button type="button" id="submit-button" class="add-button" (click)="accept()">Cerrar</button>
+      <div class="modal-footer ">
+        <button mat-raised-button type="button" class="add-button" (click)="accept()">Aceptar</button>
     </div>
-
 </div>
