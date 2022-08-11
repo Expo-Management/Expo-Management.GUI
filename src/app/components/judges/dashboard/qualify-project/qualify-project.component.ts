@@ -1,4 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { CustomPopUpService } from 'src/app/shared/services/custom-pop-up.service';
+import { PersonalInformationService } from 'src/app/shared/services/personal-information.service';
+import { ProjectsService } from 'src/app/shared/services/projects.service';
+import { TokenStorageService } from 'src/app/shared/services/token-storage.service';
+import { createSolutionBuilderWithWatch } from 'typescript';
 
 /*export interface Form1 {
   name: string;
@@ -472,45 +478,42 @@ export class QualifyProjectComponent implements OnInit {
   displayedColumns: string[] = COLUMNS_SCHEMA.map((col) => col.key);
   dataSource = ELEMENT_DATA;
   columnsSchema: any = COLUMNS_SCHEMA;
-  sub_total_1 = 10
+  sub_total_1 = 0
   //Segundo Form
   displayedColumns2: string[] = FORM_2_SCHEMA.map((col) => col.key);
   dataSource2 = FORM_2;
   columnsSchema2: any = FORM_2_SCHEMA;
-  sub_total_2 = 18
+  sub_total_2 = 0
   //Tercer Form
   displayedColumns3: string[] = FORM_3_SCHEMA.map((col) => col.key);
   dataSource3 = FORM_3;
   columnsSchema3: any = FORM_3_SCHEMA;
-  sub_total_3 = 10
+  sub_total_3 = 0
   //Cuarto Form
   displayedColumns4: string[] = FORM_4_SCHEMA.map((col) => col.key);
   dataSource4 = FORM_4;
   columnsSchema4: any = FORM_4_SCHEMA;
-  sub_total_4 = 12
+  sub_total_4 = 0
   //Quinto Form
   displayedColumns5: string[] = FORM_5_SCHEMA.map((col) => col.key);
   dataSource5 = FORM_5;
   columnsSchema5: any = FORM_5_SCHEMA;
-  sub_total_5 = 18
+  sub_total_5 = 0
   //Sexto Form
   displayedColumns6: string[] = FORM_6_SCHEMA.map((col) => col.key);
   dataSource6 = FORM_6;
   columnsSchema6: any = FORM_6_SCHEMA;
-  sub_total_6 = 16
+  sub_total_6 = 0
   //Septimo Form
   displayedColumns7: string[] = FORM_7_SCHEMA.map((col) => col.key);
   dataSource7 = FORM_7;
   columnsSchema7: any = FORM_7_SCHEMA;
-  sub_total_7 = 12
+  sub_total_7 = 0
   //Octavo Form
   displayedColumns8: string[] = FORM_8_SCHEMA.map((col) => col.key);
   dataSource8 = FORM_8;
   columnsSchema8: any = FORM_8_SCHEMA;
-  sub_total_8 = 4
-
-
-
+  sub_total_8 = 0
 
   displayedColumnsTest: string[] = ['aboutIt'];
   datasourceTest = FIRSTCOLUMN_DATA;
@@ -520,6 +523,8 @@ export class QualifyProjectComponent implements OnInit {
 
 
 
+  judge_email: string = '';
+  project_number: number = 0;
 
   
   judge_name ='Andrés'
@@ -528,9 +533,110 @@ export class QualifyProjectComponent implements OnInit {
   date = '17/04/2022'
   projectName = 'Proyecto'
 
-  constructor() { }
+  constructor(
+    private personalInfo: PersonalInformationService,
+    private _activatedRoute: ActivatedRoute,
+    private projectService: ProjectsService,
+    private customPopUpService: CustomPopUpService
+  ) {
+    this.judge_email = this.personalInfo.getEmail();
+
+    this._activatedRoute.paramMap.subscribe(
+      params => {
+        this.project_number = +params.get('project_id')!;
+      });
+  }
 
   ngOnInit(): void {
+    console.log(localStorage);
+  }
+
+  openCustomPopUp(message: string) {
+    this.customPopUpService.confirm(
+      'Calificacion de proyecto', 
+      message,
+      'judges'
+      );
+  }
+
+  increment_subtotals(position: number, punctuation: number) {
+    switch(position) {
+      case 1: {
+        this.sub_total_1 += +punctuation;
+        break;
+      }
+      case 2: {
+        this.sub_total_2 += +punctuation;
+        break;
+      }
+      case 3: {
+        this.sub_total_3 += +punctuation
+        break;
+      }
+      case 4: {
+        this.sub_total_4 += +punctuation
+        break;
+      }
+      case 5: {
+        this.sub_total_5 += +punctuation
+        break;
+      }
+      case 6: {
+        this.sub_total_6 += +punctuation
+        break;
+      }
+      case 7: {
+        this.sub_total_7 += +punctuation
+        break;
+      }
+      case 8: {
+        this.sub_total_8 += +punctuation
+        break;
+      }
+      default: {
+        alert('There was an error with the values.');
+      }
+    }
+  }
+
+  qualifyProject() {
+    let list_of_subtotals = [
+      this.sub_total_1,
+      this.sub_total_2,
+      this.sub_total_3,
+      this.sub_total_4,
+      this.sub_total_5,
+      this.sub_total_6,
+      this.sub_total_7,
+      this.sub_total_8,
+    ]
+
+    let punctuation = list_of_subtotals.reduce((accumulator, value) => {
+      return accumulator + value;
+    })
+  
+
+    this.projectService.qualifyProject(
+      punctuation,
+      '',
+      this.project_number,
+      this.judge_email
+    ).subscribe(
+      data => {
+        if (data.status === 200) {
+          this.openCustomPopUp('Proyecto calificado correctamente!');
+        } else {
+          this.openCustomPopUp('Hubo un error intentelo mas tarde.');
+        }
+      },
+      err => {
+        if (err.status === 500) {
+          this.openCustomPopUp('Hubo un error en el servidor, contacte administracion.');
+        } else {
+          this.openCustomPopUp('Hubo un error intentelo mas tarde.');
+        }
+      }
+    )
   }
 
 }
