@@ -5,11 +5,8 @@ import { environment } from 'src/environments/environment';
 import { Categories } from '../interfaces/categories';
 import { MembersEmails } from '../interfaces/members-emails';
 import { ProjectQualifications } from '../interfaces/project-qualifications';
-<<<<<<< HEAD
 import { QualifyProject } from '../interfaces/qualify-project';
-=======
 import { Projects } from '../interfaces/projects';
->>>>>>> c0663c21fe95dedf18764a68cb4577fcd7fc37c6
 import { Recommendation } from '../interfaces/recommendation';
 
 

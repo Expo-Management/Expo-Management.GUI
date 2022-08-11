@@ -623,13 +623,15 @@ export class QualifyProjectComponent implements OnInit {
       this.judge_email
     ).subscribe(
       data => {
-        if (data.status === 200) {
+        console.log(data);
+        if (data.status !== 400) {
           this.openCustomPopUp('Proyecto calificado correctamente!');
         } else {
           this.openCustomPopUp('Hubo un error intentelo mas tarde.');
         }
       },
       err => {
+        console.log(err);
         if (err.status === 500) {
           this.openCustomPopUp('Hubo un error en el servidor, contacte administracion.');
         } else {
