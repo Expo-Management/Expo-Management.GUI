@@ -6,13 +6,6 @@ import { ProjectsService } from 'src/app/shared/services/projects.service';
 import { TokenStorageService } from 'src/app/shared/services/token-storage.service';
 import { createSolutionBuilderWithWatch } from 'typescript';
 
-/*export interface Form1 {
-  name: string;
-  pts: number;
-  observations: string;
-}*/
-
-
 export interface firstColumn {
   aboutIt: string;
 }
@@ -527,10 +520,8 @@ export class QualifyProjectComponent implements OnInit {
   project_number: number = 0;
 
   
-  judge_name ='Andrés'
-  judge_last_1 = 'Barrantes'
-  judge_last_2 = 'Sánchez'
-  date = '17/04/2022'
+  judge_name: string = ''
+  date = Date.now()
   projectName = 'Proyecto'
 
   constructor(
@@ -539,12 +530,38 @@ export class QualifyProjectComponent implements OnInit {
     private projectService: ProjectsService,
     private customPopUpService: CustomPopUpService
   ) {
-    this.judge_email = this.personalInfo.getEmail();
-
     this._activatedRoute.paramMap.subscribe(
       params => {
         this.project_number = +params.get('project_id')!;
       });
+
+    this.projectService.getProjectDetails(this.project_number + '').subscribe(
+      data => {
+        this.projectName = data[0].projectName
+      }      
+    )
+
+    this.judge_email = this.personalInfo.getEmail();
+
+    this.personalInfo.getUserFullName(this.judge_email).subscribe(
+      data => {
+        console.log(data);
+        if (data.status === 200) {
+          this.judge_name = data;
+        } else if (data.status === 404){
+          this.openCustomPopUp('Informacion de usuario no encontrada por favor inicie sesion de nuevo.');
+        }
+      },
+      err => {
+        if (err.status === 500) {
+          this.openCustomPopUp('Hubo un error en el servidor, contacte administracion.');
+        } else if(err.status === 200) {
+          this.judge_name = err.error.text;
+        } else {
+          this.openCustomPopUp('Hubo un error por favor inicie sesion de nuevo.');
+        }
+      }
+    )
   }
 
   ngOnInit(): void {

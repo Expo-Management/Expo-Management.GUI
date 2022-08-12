@@ -37,6 +37,13 @@ export class PersonalInformationService {
       {id, name, last, email, username, password, birthDate},
       httpOptions);
   }
+
+  public getUserFullName(email: string): Observable<any>{
+    return this.httpClient.get<any>(
+      environment.apiUrl + `/Users/get-user-fullname?email=${email}`,
+      httpOptions
+    )
+  }
   
   public saveRole(role: string): void {
     localStorage.removeItem(USER_ROLE);

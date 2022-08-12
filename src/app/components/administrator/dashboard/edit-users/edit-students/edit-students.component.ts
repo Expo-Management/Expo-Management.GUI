@@ -23,7 +23,7 @@ export class EditStudentsComponent implements OnInit {
   temp_phone_number = ''
 
   studentForm = new FormGroup({
-    IdFormControl: new FormControl('', {
+    PhoneFormControl: new FormControl('', {
       validators: [
         Validators.required
       ]
@@ -78,8 +78,8 @@ export class EditStudentsComponent implements OnInit {
         this.studentForm.controls['LastFormControl'].setValue(data.lastname);
         this.studentForm.controls['EmailFormControl'].setValue(data.email);
         this.studentForm.controls['UsernameFormControl'].setValue(data.userName);
-        this.studentForm.controls['IdFormControl'].setValue(data.userId);
-        this.temp_phone_number = data.phoneNumber
+        this.studentForm.controls['PhoneFormControl'].setValue(data.phoneNumber);
+
       }
     )
   }
@@ -90,8 +90,8 @@ export class EditStudentsComponent implements OnInit {
       this.studentForm.controls['LastFormControl'].value,
       this.studentForm.controls['EmailFormControl'].value,
       this.studentForm.controls['UsernameFormControl'].value,
-      this.studentForm.controls['IdFormControl'].value,
-      this.temp_phone_number
+      this.studentForm.controls['PhoneFormControl'].value
+
     ).subscribe(
       data => {
         this.openCustomPopUp('¡Estudiante actualizado exitosamente!');

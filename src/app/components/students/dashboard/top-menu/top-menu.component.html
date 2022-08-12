@@ -4,7 +4,6 @@
     </div>
     <div class="menu-list">
         <div class="right-container flexbox-container">
-            <mat-icon class="icon">notifications</mat-icon>
             <div class="display-user-info">
                 <span>{{ user_name }}</span>
                 <mat-divider></mat-divider>
@@ -14,9 +13,9 @@
                 <mat-icon>more_vert</mat-icon>
               </button>
               <mat-menu #menu="matMenu">
-                <button mat-menu-item>
-                  <mat-icon [routerLink]="['settings']">settings</mat-icon>
-                  <span [routerLink]="['settings']" >Configuraciones</span>
+                <button routerLink="/student/settings" mat-menu-item>
+                  <mat-icon>settings</mat-icon>
+                  <span>Configuraciones</span>
                 </button>
                 <button mat-menu-item>
                   <mat-icon (click)="logout()" >exit_to_app</mat-icon>

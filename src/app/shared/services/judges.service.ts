@@ -55,13 +55,11 @@ export class JudgesService {
     last: string,
     email: string,
     username: string,
-    userId: string,
     phone: string
   ): Observable<any> {
     return this.httpClient.put(
       environment.apiUrl + '/Users/judge', 
       {
-        id: userId,
         userName: username,
         name: name,
         lastname: last,

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CustomPopUpService } from 'src/app/shared/services/custom-pop-up.service';
+import { PersonalInformationService } from 'src/app/shared/services/personal-information.service';
 import { TokenStorageService } from 'src/app/shared/services/token-storage.service';
 
 @Component({
@@ -7,16 +9,46 @@ import { TokenStorageService } from 'src/app/shared/services/token-storage.servi
   styleUrls: ['./top-menu.component.css']
 })
 export class TopMenuComponent implements OnInit {
-  user_name = 'Andres Barrantes'
-  user_role = 'Juez'
-  
-  constructor(private tokenStorage: TokenStorageService) { }
+  user_name: string = ''
+  user_role: string = ''
+
+  constructor(
+    private userInfoService: PersonalInformationService,
+    private customPopUpService: CustomPopUpService,
+    private tokenStorage: TokenStorageService) { }
+
+  openCustomPopUp(message: string) {
+    this.customPopUpService.confirm(
+      'Informacion del usuario', 
+      message,
+      undefined
+      );
+  }
 
   ngOnInit(): void {
+    this.user_role = this.userInfoService.getRole()!;
+    this.userInfoService.getUserFullName(this.userInfoService.getEmail()).subscribe(
+      data => {
+        console.log(data);
+        if (data.status === 200) {
+          this.user_name = data;
+        } else if (data.status === 404){
+          this.openCustomPopUp('Informacion de usuario no encontrada por favor inicie sesion de nuevo.');
+        }
+      },
+      err => {
+        if (err.status === 500) {
+          this.openCustomPopUp('Hubo un error en el servidor, contacte administracion.');
+        } else if(err.status === 200) {
+          this.user_name = err.error.text;
+        } else {
+          this.openCustomPopUp('Hubo un error por favor inicie sesion de nuevo.');
+        }
+      }
+    )
   }
 
   logout(){
     this.tokenStorage.signOut();
   }
-
 }

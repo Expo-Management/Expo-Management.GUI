@@ -301,8 +301,7 @@
 
     <div class="judge_info">
         <h3 class="space">Nombre: {{ judge_name }}</h3>
-        <h3 class="space">Apellidos: {{ judge_last_1 }} {{judge_last_2}}</h3>
-        <h3 class="space">Fecha de revision: {{ date }}</h3>
+        <h3 class="space">Fecha de revision: {{ date | date:'short' }}</h3>
         <button mat-raised-button class="add-button" (click)="qualifyProject()">Calificar proyecto</button>
     </div>
 

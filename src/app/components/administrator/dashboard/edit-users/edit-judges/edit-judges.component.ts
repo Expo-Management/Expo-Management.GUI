@@ -42,7 +42,7 @@ export class EditJudgesComponent implements OnInit {
         Validators.required
       ]
     }),
-    IdFormControl: new FormControl('', {
+    PhoneFormControl: new FormControl('', {
       validators: [
         Validators.required
       ]
@@ -77,8 +77,7 @@ export class EditJudgesComponent implements OnInit {
         this.judgeForm.controls['LastFormControl'].setValue(data.lastname);
         this.judgeForm.controls['EmailFormControl'].setValue(data.email);
         this.judgeForm.controls['UsernameFormControl'].setValue(data.userName);
-        this.judgeForm.controls['IdFormControl'].setValue(data.userId);
-        this.temp_phone_number = data.phoneNumber
+        this.judgeForm.controls['PhoneFormControl'].setValue(data.phoneNumber);
       }
     )
   }
@@ -89,8 +88,7 @@ export class EditJudgesComponent implements OnInit {
       this.judgeForm.controls['LastFormControl'].value,
       this.judgeForm.controls['EmailFormControl'].value,
       this.judgeForm.controls['UsernameFormControl'].value,
-      this.judgeForm.controls['IdFormControl'].value,
-      this.temp_phone_number
+      this.judgeForm.controls['PhoneFormControl'].value
     ).subscribe(
       data => {
         this.openCustomPopUp('User updated successfully!');

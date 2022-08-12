@@ -21,7 +21,7 @@ export class EditProfessorsComponent implements OnInit {
   temp_phone_number = ''
 
   adminForm = new FormGroup({
-    IdFormControl: new FormControl('', {
+    PhoneFormControl: new FormControl('', {
       validators: [
         Validators.required
       ]
@@ -46,11 +46,6 @@ export class EditProfessorsComponent implements OnInit {
         Validators.required
       ]
     })
-    /*PhoneNumberFormControl: new FormControl('', {
-      validators: [
-        Validators.required
-      ]
-    })*/
   });
 
   matcher = new MyErrorStateMatcher();
@@ -83,8 +78,7 @@ export class EditProfessorsComponent implements OnInit {
         this.adminForm.controls['LastFormControl'].setValue(data.lastname);
         this.adminForm.controls['EmailFormControl'].setValue(data.email);
         this.adminForm.controls['UsernameFormControl'].setValue(data.userName);
-        this.adminForm.controls['IdFormControl'].setValue(data.userId);
-        this.temp_phone_number = data.phoneNumber
+        this.adminForm.controls['PhoneFormControl'].setValue(data.phoneNumber);
       }
     )
   }
@@ -95,8 +89,7 @@ export class EditProfessorsComponent implements OnInit {
       this.adminForm.controls['LastFormControl'].value,
       this.adminForm.controls['EmailFormControl'].value,
       this.adminForm.controls['UsernameFormControl'].value,
-      this.adminForm.controls['IdFormControl'].value,
-      this.temp_phone_number
+      this.adminForm.controls['PhoneFormControl'].value
     ).subscribe(
       data => {
         this.openCustomPopUp('¡Profesor actualizado exitosamente!');

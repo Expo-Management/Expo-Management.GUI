@@ -8,67 +8,42 @@
                     <span id="links"><a>Cambiar foto de perfil</a></span>
                 </div>
             </div>
-            <span id="links" (click)="logout()"><a>Cerrar sesión</a></span>
         </div>
         <div class="user-info">
-            <form class="add-form">
+            <form class="add-form" [formGroup]="studentForm" (ngSubmit)="onSubmit()">
                 <mat-form-field class="" appearance="outline">
                     <!--for name-->
                     <mat-label>Nombre</mat-label>
-                    <input type="name" matInput [formControl]="NameFormControl" [errorStateMatcher]="matcher">
-                    <mat-error *ngIf=" NameFormControl.hasError('required')">
-                        <strong>Por favor digita su nombre</strong>
-                    </mat-error>
-                </mat-form-field>
-                <!--for last-->
-                <mat-form-field class="" appearance="outline">
-                    <mat-label>Apellidos</mat-label>
-                    <input type="last" matInput [formControl]="LastFormControl" [errorStateMatcher]="matcher">
-                    <mat-error *ngIf=" LastFormControl.hasError('required')">
-                        <strong>Por favor digita sus apellidos</strong>
-                    </mat-error>
-                </mat-form-field>
-                <!--for email-->
-                <mat-form-field class="" appearance="outline">
-                    <mat-label>Correo electrónico</mat-label>
-                    <input type="email" matInput [formControl]="EmailFormControl" [errorStateMatcher]="matcher" placeholder="Ej. smith@gmail.com">
-                    <mat-error *ngIf="EmailFormControl.hasError('email') && !EmailFormControl.hasError('required')">
-                        Por favor digita un correo válido
-                    </mat-error>
-                    <mat-error *ngIf="EmailFormControl.hasError('required')">
-                        <strong>Por favor digita su correo electrónico</strong>
-                    </mat-error>
-                </mat-form-field>
-                <!--for password-->
-                <mat-form-field class="" appearance="outline">
-                    <mat-label>Número de celular</mat-label>
-                    <input type="last" matInput [formControl]="PhoneFormControl" [errorStateMatcher]="matcher">
-                    <mat-error *ngIf=" PhoneFormControl.hasError('required')">
-                        <strong>Por favor digita su número celular</strong>
-                    </mat-error>
+                    <input type="text" matInput formControlName="NameFormControl">
                 </mat-form-field>
 
-
-                <!--for id-->
-                <mat-form-field class="" appearance="outline" *ngIf="!isJudge">
-                    <mat-label>Cédula</mat-label>
-                    <input type="id" matInput [formControl]="IdFormControl" [errorStateMatcher]="matcher" placeholder="XX-XXXX-XXXX">
-                    <mat-error *ngIf="IdFormControl.hasError('required')">
-                        <strong>Por favor digita la cédula</strong>
-                    </mat-error>
+                <mat-form-field class="" appearance="outline">
+                    <!--for name-->
+                    <mat-label>Apellido</mat-label>
+                    <input type="text" matInput formControlName="LastFormControl">
                 </mat-form-field>
 
-                <mat-form-field class="" appearance="outline" *ngIf="isJudge">
-                    <mat-label>Institución</mat-label>
-                    <input type="id" matInput [formControl]="IdFormControl" [errorStateMatcher]="matcher" placeholder="XX-XXXX-XXXX">
-                    <mat-error *ngIf="IdFormControl.hasError('required')">
-                        <strong>Por favor indicar su actual institución</strong>
-                    </mat-error>
+                <mat-form-field class="" appearance="outline">
+                    <!--for name-->
+                    <mat-label>Correo Electronico</mat-label>
+                    <input type="email" matInput formControlName="EmailFormControl">
                 </mat-form-field>
+
+                <mat-form-field class="" appearance="outline">
+                    <!--for name-->
+                    <mat-label>Nombre de usuario</mat-label>
+                    <input type="text" matInput formControlName="UsernameFormControl">
+                </mat-form-field>
+
+                <mat-form-field class="" appearance="outline">
+                    <!--for name-->
+                    <mat-label>Telefono</mat-label>
+                    <input type="phone" matInput formControlName="PhoneFormControl">
+                </mat-form-field>
+                <div class="bottom">
+                    <button mat-raised-button class="add-button" id="submit-button">Actualizar datos</button>
+                </div>
             </form>
-        </div>
-        <div class="bottom">
-            <button mat-raised-button class="add-button">Actualizar datos</button>
         </div>
     </div>
     <mat-divider vertical style="height:85%; margin: 0 5%;"></mat-divider>
