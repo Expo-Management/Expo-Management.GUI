@@ -98,7 +98,7 @@ export class EditStudentsComponent implements OnInit {
       },
       err => {
         console.log(err);
-        this.openCustomPopUp('Ha ocurrido un error. Por favor, verifique el correo electrónico.');
+        this.openCustomPopUp('Error al actualizar el estudiante. Por favor verifíque el correo electrónico');
       }
     )
   }
