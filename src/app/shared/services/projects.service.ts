@@ -2,12 +2,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { Categories } from '../interfaces/categories';
-import { MembersEmails } from '../interfaces/members-emails';
 import { ProjectQualifications } from '../interfaces/project-qualifications';
-import { QualifyProject } from '../interfaces/qualify-project';
-import { Projects } from '../interfaces/projects';
 import { Recommendation } from '../interfaces/recommendation';
+import { JudgeCalification } from '../interfaces/judge-calification';
 
 
 const httpOptions = {
@@ -100,5 +97,9 @@ export class ProjectsService {
         judgeEmail: judge_email
       },
       httpOptions)
+  }
+
+  getProjectQualifications(projectId: number): Observable<JudgeCalification[]>{
+    return this.httpClient.get<JudgeCalification[]>(environment.apiUrl + `/Projects/project-qualifications?projectId=${projectId}`, httpOptions)
   }
 }

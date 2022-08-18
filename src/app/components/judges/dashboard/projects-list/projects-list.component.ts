@@ -3,6 +3,10 @@ import { CustomPopUpService } from 'src/app/shared/services/custom-pop-up.servic
 import { MatTableDataSource } from '@angular/material/table';
 import { Projects } from 'src/app/shared/interfaces/projects';
 import { ProjectsService } from 'src/app/shared/services/projects.service';
+import { OtherQualificationsComponent } from './other-qualifications/other-qualifications.component';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { JudgeCalification } from 'src/app/shared/interfaces/judge-calification';
+
 
 @Component({
   selector: 'app-projects-list',
@@ -15,14 +19,17 @@ export class ProjectsListComponent implements OnInit {
   displayedColumns: string[] = [];
   listOfProjects: Array<Projects> = []
   dataSource = new MatTableDataSource(this.listOfProjects);
+  JudgeCalification: JudgeCalification[] = [];
 
   constructor(
     private customPopUpService: CustomPopUpService, 
-    private projectservices: ProjectsService
+    private projectservices: ProjectsService,
+    public modalService: NgbModal
     ) { }
 
   ngOnInit(): void {
-    this.displayedColumns = ['name', 'description', 'id'];
+
+    this.displayedColumns = ['name', 'description', 'id', 'actions'];
 
     this.projectservices.ShowProjects().subscribe(
       data => {
@@ -41,6 +48,11 @@ export class ProjectsListComponent implements OnInit {
   applyFilter(event: Event){
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  otherQualifications(id: number): void  {
+    const modalRef = this.modalService.open(OtherQualificationsComponent, {centered: true});
+    modalRef.componentInstance.id = id;
   }
 
   public openCustomPopUp(message: string): Promise<boolean> {

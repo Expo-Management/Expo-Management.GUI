@@ -13,8 +13,8 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 export class FairDocumentsComponent implements OnInit {
   displayedColumns: string[] = [];
-  listOfProjects: Array<Files> = []
-  dataSource = new MatTableDataSource(this.listOfProjects);
+  listOfFiles: Array<Files> = []
+  dataSource = new MatTableDataSource(this.listOfFiles);
 
   constructor(
     private customPopUpService: CustomPopUpService,
