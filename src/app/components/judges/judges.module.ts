@@ -17,6 +17,7 @@ import { ListComponent } from './dashboard/list/list.component';
 import { SettingsComponent } from './dashboard/settings/settings.component';
 import { LoggedInGuard } from 'src/app/shared/guards/logged-in.guard';
 import { StudentsListComponent } from './dashboard/students-list/students-list.component';
+import { OtherQualificationsComponent } from './dashboard/projects-list/other-qualifications/other-qualifications.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { StudentsListComponent } from './dashboard/students-list/students-list.c
     ListComponent,
     TopMenuComponent,
     SettingsComponent,
-    StudentsListComponent
+    StudentsListComponent,
+    OtherQualificationsComponent
   ],
   imports: [
     ReactiveFormsModule,

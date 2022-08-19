@@ -20,7 +20,9 @@ export class QualificationComponent implements OnInit {
 
   @Input() public  judgesCalifications: JudgeCalification[] = [];
 
-  constructor(public activeModal: NgbActiveModal, private customPopUpService: CustomPopUpService, private projectService: ProjectsService) { }
+  constructor(public activeModal: NgbActiveModal, 
+    private customPopUpService: CustomPopUpService, 
+    private projectService: ProjectsService) { }
 
   ngOnInit(): void {
     console.log(this.judgesCalifications)
