@@ -59,6 +59,14 @@ table {
     -ms-flex-item-align: center;
 }
 
+.btn_calificaciones{
+    color: #354F52;
+    font-size: 16pt;
+    cursor: pointer;
+    -ms-flex-item-align: center;
+}
+
+
 .example-full-width{
     margin-right: 2dp;
 }
