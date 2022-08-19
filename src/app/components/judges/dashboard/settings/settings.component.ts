@@ -86,7 +86,7 @@ export class SettingsComponent implements OnInit {
         this.judgeForm.controls['PhoneFormControl'].value
       ).subscribe(
         data => {
-          this.openCustomPopUp('Juez actualizado exitosamente!');
+          this.openCustomPopUp('¡Información actualizada exitosamente!');
         },
         err => {
           console.log(err);

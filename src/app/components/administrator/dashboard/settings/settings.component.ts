@@ -83,7 +83,7 @@ export class SettingsComponent implements OnInit {
       this.adminForm.controls['PhoneFormControl'].value
     ).subscribe(
       data => {
-        this.openCustomPopUp('Administrador actualizado exitosamente!');
+        this.openCustomPopUp('¡Información actualizada exitosamente!');
       },
       err => {
         console.log(err);
