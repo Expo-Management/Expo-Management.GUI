@@ -44,11 +44,11 @@ export class AddProfessorsComponent implements OnInit {
         Validators.required
       ]
     }),
-    PasswordFormControl: new FormControl('', {
-      validators: [
-        Validators.required
-      ]
-    }),
+    // PasswordFormControl: new FormControl('', {
+    //   validators: [
+    //     Validators.required
+    //   ]
+    // }),
     IdFormControl: new FormControl('', {
       validators: [
         Validators.required
@@ -79,8 +79,9 @@ export class AddProfessorsComponent implements OnInit {
       this.createProfessorForm.controls['NameFormControl'].value,
       this.createProfessorForm.controls['LastFormControl'].value,
       this.createProfessorForm.controls['EmailFormControl'].value,
-      this.createProfessorForm.controls['PhoneFormControl'].value,
-      this.createProfessorForm.controls['PasswordFormControl'].value).subscribe(
+      this.createProfessorForm.controls['PhoneFormControl'].value
+    //,this.createProfessorForm.controls['PasswordFormControl'].value
+    ).subscribe(
       data => {
         this.openCustomPopUp('Profesor creado!');
       },
