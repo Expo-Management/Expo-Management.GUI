@@ -21,7 +21,7 @@ export class AdminService {
     last: string,
     email: string,
     phone: string,
-    password: string,
+    // password: string,
     institution: string= '',
     position: string = ''
   ) {
@@ -34,7 +34,7 @@ export class AdminService {
         lastname: last,
         email: email,
         phone: phone,
-        password: password,
+        // password: password,
         institution: institution,
         position: position
       }, 

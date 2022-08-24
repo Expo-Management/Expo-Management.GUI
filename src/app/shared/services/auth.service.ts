@@ -31,13 +31,13 @@ export class AuthService {
     last: string, 
     username: string, 
     email: string, 
-    password: string, 
+    // password: string, 
     birthday: string,
     institution: string = '',
     position: string = ''
     ): Observable<any> {
     return this.httpClient.post(environment.apiUrl + '/Auth/register', { 
-      id, name, last, username, email, password, birthday, institution, position}, httpOptions);
+      id, name, last, username, email,/* password,*/ birthday, institution, position}, httpOptions);
   }
 
   ForgetPassword(email: string): Observable<any>{
