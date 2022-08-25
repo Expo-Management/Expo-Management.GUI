@@ -91,11 +91,11 @@ export class EditJudgesComponent implements OnInit {
       this.judgeForm.controls['PhoneFormControl'].value
     ).subscribe(
       data => {
-        this.openCustomPopUp('User updated successfully!');
+        this.openCustomPopUp('¡Juez actualizado exitosamente');
       },
       err => {
         console.log(err);
-        this.openCustomPopUp('Error updating the judge, please check the username!');
+        this.openCustomPopUp('Error al actualizar el juez. Por favor verifíque el correo electrónico');
       }
     )
   }

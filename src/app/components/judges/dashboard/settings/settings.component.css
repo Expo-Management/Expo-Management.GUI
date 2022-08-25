@@ -3,78 +3,63 @@
     padding: 0;
 }
 
+h1{
+    font-size: xx-large;
+    margin-bottom: 15%;
+}
+
+.mat-form-field-appearance-outline .mat-form-field-wrapper {
+    margin: 1.5em 0 ;
+}
+
 .flex-container {
-    height: 100%;
-    width: 100%;
     display: flex;
-    flex-direction: row;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
+    text-align: center;
 }
 
 .top-options {
-    height: 10%;
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
     padding: 0 2rem;
-    margin-top: 2rem;
-}
-
-.profile-edit {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-}
-
-.left-side,
-.right-side {
-    width: 40%;
-    height: 85%;
-    padding-top: 1rem;
+    margin-top: 5rem;
 }
 
 .add-form {
     display: flex;
     flex-direction: column;
-    margin-top: 2rem;
+    margin-top: 3rem;
     margin-bottom: 2rem;
     min-width: 100px;
-    max-width: 550px;
+    max-width: 40%;
     width: 100%;
     height: 100%;
     padding: 0 2rem;
     justify-content: space-around;
 }
 
-.user-info {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 70%;
+.full-width {
+    width: 95%;
+    margin: 0 auto;
 }
 
-.bottom {
-    height: 5%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.add-button {
+.button {
     color: #FFFFFF;
     background-color: #354F52;
     height: 2.5rem;
-    margin: 3rem;
+    margin-left: .5rem;
+    margin-bottom: 1rem;
 }
 
-.space {
-    display: flex;
-    flex-direction: column;
+.cancel {
+    color: #AD2121;
+    background-color: transparent;
+    border: #AD2121 1px solid;
+}
+
+.div-buttons {
+    text-align: center;
+    padding: 1rem;
 }
 
 ::-webkit-scrollbar {
@@ -83,18 +68,11 @@
 }
 
 .mat-icon {
-    font-size: 30pt;
-    margin-right: 3rem;
+    font-size: 40pt;
+    margin-right: 1.5rem;
 }
 
 #links {
     cursor: pointer;
     color: #255BB8;
-}
-
-.right-side {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
 }

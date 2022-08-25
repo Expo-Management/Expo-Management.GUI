@@ -1,57 +1,47 @@
 <div class="flex-container">
-    <div class="left-side">
-        <div class="top-options">
-            <div class="profile-edit">
-                <mat-icon>account_circle</mat-icon>
-                <div>
-                    <h3>Foto de perfil</h3>
-                    <span id="links"><a>Cambiar foto de perfil</a></span>
-                </div>
-            </div>
-        </div>
-        <div class="user-info">
-            <form class="add-form" [formGroup]="adminForm" (ngSubmit)="onSubmit()">
-                <mat-form-field class="" appearance="outline">
-                    <!--for name-->
+    <div class="top-options">
+        <h1>Configuración de la cuenta</h1>
+        <mat-icon>account_circle</mat-icon>
+        <h4 id="links" [routerLink]="['/administrator', 'forget-password']" >Cambiar contraseña</h4>
+    </div>
+    <form class="add-form" [formGroup]="adminForm" (ngSubmit)="onSubmit()">
+        <div class="row">
+            <div class="col-6">
+                <mat-form-field class="full-width" appearance="outline">
                     <mat-label>Nombre</mat-label>
                     <input type="text" matInput formControlName="NameFormControl">
                 </mat-form-field>
-
-                <mat-form-field class="" appearance="outline">
-                    <!--for name-->
-                    <mat-label>Apellido</mat-label>
+            </div>
+            <div class="col-6">
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Apellidos</mat-label>
                     <input type="text" matInput formControlName="LastFormControl">
                 </mat-form-field>
+            </div>
+        </div>
 
-                <mat-form-field class="" appearance="outline">
-                    <!--for name-->
-                    <mat-label>Correo Electronico</mat-label>
-                    <input type="email" matInput formControlName="EmailFormControl">
-                </mat-form-field>
-
-                <mat-form-field class="" appearance="outline">
-                    <!--for name-->
-                    <mat-label>Nombre de usuario</mat-label>
-                    <input type="text" matInput formControlName="UsernameFormControl">
-                </mat-form-field>
-
-                <mat-form-field class="" appearance="outline">
-                    <!--for name-->
-                    <mat-label>Telefono</mat-label>
+        <div class="rows">
+            <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Nombre de usuario</mat-label>
+                <input type="text" matInput formControlName="UsernameFormControl">
+            </mat-form-field>
+    </div>
+        <div class="rows">
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Teléfono</mat-label>
                     <input type="phone" matInput formControlName="PhoneFormControl">
                 </mat-form-field>
-                <div class="bottom">
-                    <button mat-raised-button class="add-button" id="submit-button">Actualizar datos</button>
-                </div>
-            </form>
         </div>
-    </div>
-    <mat-divider vertical style="height:85%; margin: 0 5%;"></mat-divider>
-    <div class="right-side">
-        <h3 class="space">Más opciones: </h3>
-        <div class="button-group space">
-            <button class="add-button" [routerLink]="['/administrator', 'forget-password']" mat-raised-button>Cambio de contraseña</button>
-            <button class="add-button" mat-raised-button>Otros ajustes</button>
+        <div class="rows">
+            <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Correo electrónico</mat-label>
+                <input type="email" matInput formControlName="EmailFormControl" placeholder="abc@gmail.com">
+            </mat-form-field>
         </div>
-    </div>
+
+        <div class="div-buttons">
+            <button mat-raised-button class="button" id="submit-button">Actualizar</button>
+            <button mat-raised-button routerLink="/administrator/home" class="button cancel">Cancelar</button>
+        </div>
+    </form>
 </div>

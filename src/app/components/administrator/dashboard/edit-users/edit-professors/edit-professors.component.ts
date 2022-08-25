@@ -92,11 +92,11 @@ export class EditProfessorsComponent implements OnInit {
       this.adminForm.controls['PhoneFormControl'].value
     ).subscribe(
       data => {
-        this.openCustomPopUp('¡Profesor actualizado exitosamente!');
+        this.openCustomPopUp('¡Profesor actualizado exitsamente!');
       },
       err => {
         console.log(err);
-        this.openCustomPopUp('Erro al actualizar el profesor. ¡Por favor verifique el correo electrónico!');
+        this.openCustomPopUp('Error al actualizar el profesor. Por favor verifíque el correo electrónico');
       }
     )
   }

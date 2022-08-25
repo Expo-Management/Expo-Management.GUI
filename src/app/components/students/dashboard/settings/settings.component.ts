@@ -84,7 +84,7 @@ export class SettingsComponent implements OnInit {
       this.studentForm.controls['PhoneFormControl'].value
     ).subscribe(
       data => {
-        this.openCustomPopUp('¡Estudiante actualizado exitosamente!');
+        this.openCustomPopUp('¡Información actualizada exitosamente!');
       },
       err => {
         console.log(err);
