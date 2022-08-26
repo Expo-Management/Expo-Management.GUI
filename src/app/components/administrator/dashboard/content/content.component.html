@@ -1,1 +1,37 @@
-<h1>Dashboard</h1>
+<div class="flex-content">
+    <div class="content1">
+        <div class="chart1">
+            <h1 class="section-title">Proyectos inscritos por feria</h1>
+            <div class="flex-chart-content">
+                <ngx-charts-bar-vertical [results]="projectsByYear" [xAxis]="true" [yAxis]="true" [showGridLines]="true">
+                </ngx-charts-bar-vertical>
+            </div>
+        </div>
+
+        <div class="chart2">
+            <h1 class="section-title">Proyectos por categoria</h1>
+            <div class="flex-chart-content">
+                <ngx-charts-bar-vertical [results]="projectsByCategory" [xAxis]="true" [yAxis]="true" [showGridLines]="true">
+                </ngx-charts-bar-vertical>
+            </div>
+        </div>
+    </div>
+
+    <div class="content2">
+        <div class="chart1">
+            <h1 class="section-title">Calificaciones realizadas por proyectos</h1>
+            <div class="flex-chart-content">
+                <ngx-charts-bar-vertical [results]="projectsByQualifications" [xAxis]="true" [yAxis]="true" [showGridLines]="true">
+                </ngx-charts-bar-vertical>
+            </div>
+        </div>
+
+        <div class="chart2">
+            <h1 class="section-title">Usuarios por proyecto</h1>
+            <div class="flex-chart-content">
+                <ngx-charts-bar-vertical [results]="usersPerProject" [xAxis]="true" [yAxis]="true" [showGridLines]="true">
+                </ngx-charts-bar-vertical>
+            </div>
+        </div>
+    </div>
+</div>

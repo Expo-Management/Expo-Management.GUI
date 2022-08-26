@@ -1,0 +1,39 @@
+.flex-content {
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.content1,
+.content2 {
+    width: 90%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.chart1,
+.chart2 {
+    width: 90%;
+    height: 40%;
+}
+
+.section-title {
+    height: 10%;
+    color: black;
+    margin-bottom: 2rem;
+}
+
+.flex-chart-content {
+    width: 100%;
+    height: 90%;
+    background-color: #60CB9E;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
