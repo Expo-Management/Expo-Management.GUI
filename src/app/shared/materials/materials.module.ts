@@ -18,6 +18,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+``
 
 
 @NgModule({
@@ -36,6 +38,7 @@ import { NgModule } from '@angular/core';
     MatSidenavModule,
     MatToolbarModule,
     MatButtonModule,
+    NgxChartsModule,
     MatRippleModule,
     MatSelectModule,
     MatInputModule,
