@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { CustomPopUpService } from 'src/app/shared/services/custom-pop-up.service';
 import { PersonalInformationService } from 'src/app/shared/services/personal-information.service';
@@ -11,6 +11,8 @@ import { TokenStorageService } from 'src/app/shared/services/token-storage.servi
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+
+  tokenCaptcha: string | undefined;
 
   loginForm = new FormGroup({
     username: new FormControl('', {
@@ -28,7 +30,9 @@ export class LoginComponent implements OnInit {
     private token: TokenStorageService,
     private user_info: PersonalInformationService,
     private customPopUpService: CustomPopUpService
-  ) {}
+  ) {
+    this.tokenCaptcha = undefined;
+  }
 
   openCustomPopUp(message: string) {
     this.customPopUpService.confirm(
@@ -84,5 +88,16 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     console.log(localStorage);
+  }
+
+  public send(form: NgForm): void {
+    if (form.invalid) {
+      for (const control of Object.keys(form.controls)) {
+        form.controls[control].markAsTouched();
+      }
+      return;
+    }
+
+    console.debug(`Token [${this.token}] generated`);
   }
 }

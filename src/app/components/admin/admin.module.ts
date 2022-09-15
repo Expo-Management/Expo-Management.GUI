@@ -9,6 +9,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { ForgetPasswordComponent } from '../administrator/dashboard/settings/forget-password/forget-password.component';
 import { ResetPasswordComponent } from '../administrator/dashboard/settings/reset-password/reset-password.component';
 
+import { RECAPTCHA_SETTINGS, RecaptchaFormsModule, RecaptchaModule, RecaptchaSettings } from 'ng-recaptcha';
+
+import { environment } from 'src/environments/environment';
+
 @NgModule({
   declarations: [
     AuthComponent,
@@ -17,6 +21,10 @@ import { ResetPasswordComponent } from '../administrator/dashboard/settings/rese
      ResetPasswordComponent
   ],
   imports: [
+    FormsModule,
+    RecaptchaModule,
+    RecaptchaFormsModule,
+
     ReactiveFormsModule,
     HttpClientModule,
     MaterialsModule,
@@ -31,6 +39,14 @@ import { ResetPasswordComponent } from '../administrator/dashboard/settings/rese
         ],
       },
     ]),
+  ],
+  providers: [
+    {
+      provide: RECAPTCHA_SETTINGS,
+      useValue: {
+        siteKey: environment.siteKey
+      } as RecaptchaSettings,
+    }
   ]
 })
 export class AdminModule { }
