@@ -9,8 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ForgetPasswordComponent } from '../administrator/dashboard/settings/forget-password/forget-password.component';
 import { ResetPasswordComponent } from '../administrator/dashboard/settings/reset-password/reset-password.component';
 
-import { RECAPTCHA_SETTINGS, RecaptchaFormsModule, RecaptchaModule, RecaptchaSettings } from 'ng-recaptcha';
-
+import { RecaptchaFormsModule, RecaptchaModule, RecaptchaSettings, RECAPTCHA_SETTINGS } from 'ng-recaptcha';
 import { environment } from 'src/environments/environment';
 
 @NgModule({
@@ -24,7 +23,6 @@ import { environment } from 'src/environments/environment';
     FormsModule,
     RecaptchaModule,
     RecaptchaFormsModule,
-
     ReactiveFormsModule,
     HttpClientModule,
     MaterialsModule,
