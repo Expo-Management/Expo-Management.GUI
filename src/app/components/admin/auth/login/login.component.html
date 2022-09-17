@@ -1,18 +1,33 @@
 <div class="login-form-wrapper">
-    <form class="login-form flex-container" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-        <div class="flex-container">
-            <mat-form-field class="full-width" appearance="outline">
-                <mat-label>Username</mat-label>
-                <input type="text" matInput formControlName="username">
-            </mat-form-field>
-            <div class="password">
-                <mat-form-field class="full-width" appearance="outline">
-                    <mat-label>Password</mat-label>
-                    <input matInput type="password" formControlName="password">
-                </mat-form-field>
-                <br>
-                <a id="forgot-redirect" class="full-width" [routerLink]="['/auth', 'forget-password']">Forgot password?</a> </div>
-        </div>
-        <button id="sumbit-button" class="" mat-raised-button color="primary">Sign In</button>
-    </form>
+  <form class="login-form flex-container" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <div class="flex-container">
+      <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Nombre de usuario</mat-label>
+        <input type="text" matInput formControlName="username">
+      </mat-form-field>
+      <div class="password">
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label>Contraseña</mat-label>
+          <input matInput type="password" formControlName="password">
+        </mat-form-field>
+        <br>
+        <a id="forgot-redirect" class="full-width" [routerLink]="['/auth', 'forget-password']">Forgot password?</a>
+      </div>
+      <div>
+        <form #form="ngForm" class="mb-4">
+          <div class="row mt-3">
+            <div class="col-sm-12 mb-2">
+              <re-captcha id="recaptcha" name="recaptcha" #recaptcha="ngModel" [(ngModel)]="tokenCaptcha" required
+                [class.is-invalid]="recaptcha.invalid && (recaptcha.dirty || recaptcha.touched)"
+                class="d-flex align-items-center justify-content-center"></re-captcha>
+              <div *ngIf="recaptcha.invalid && (recaptcha.dirty || recaptcha.touched)" class="invalid-feedback">
+                <div *ngIf="recaptcha.errors?.['required']">The RECAPTCHA is required.</div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </form>
+  <button (click)="send(form)" class="" mat-raised-button color="primary">Ingresar</button>
 </div>
