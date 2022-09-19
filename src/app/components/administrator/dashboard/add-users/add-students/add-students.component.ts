@@ -12,37 +12,46 @@ export class AddStudentsComponent implements OnInit {
   createStudentForm = new FormGroup({
     NameFormControl: new FormControl('', {
       validators: [
-        Validators.required
+        Validators.required,
+        Validators.maxLength(30),
+        Validators.minLength(3)
       ]
     }),
     LastFormControl: new FormControl('', {
       validators: [
-        Validators.required
+        Validators.required,
+        Validators.maxLength(100),
+        Validators.minLength(10)
       ]
     }),
     UsernameFormControl: new FormControl('', {
       validators: [
-        Validators.required
+        Validators.required,
+        Validators.maxLength(15),
+        Validators.minLength(5)
       ]
     }),
     PhoneFormControl: new FormControl('', {
       validators: [
-        Validators.required
+        Validators.required,
+        Validators.maxLength(8),
+        Validators.minLength(8),
+        Validators.pattern("^((\\+91-?)|0)?[0-9]{8}$")
       ]
     }),
     EmailFormControl: new FormControl('', {
       validators: [
-        Validators.required
+        Validators.required,
+        Validators.email,
+        Validators.maxLength(100),
+        Validators.minLength(5)
       ]
     }),
-    // PasswordFormControl: new FormControl('', {
-    //   validators: [
-    //     Validators.required
-    //   ]
-    // }),
     IdFormControl: new FormControl('', {
       validators: [
-        Validators.required
+        Validators.required,
+        Validators.maxLength(9),
+        Validators.minLength(9),
       ]
     }),
   })
@@ -71,7 +80,6 @@ export class AddStudentsComponent implements OnInit {
       this.createStudentForm.controls['LastFormControl'].value,
       this.createStudentForm.controls['EmailFormControl'].value,
       this.createStudentForm.controls['PhoneFormControl'].value
-      //,this.createStudentForm.controls['PasswordFormControl'].value,
     ).subscribe(
       data => {
         this.openCustomPopUp('Estudiante creado!');
@@ -80,7 +88,7 @@ export class AddStudentsComponent implements OnInit {
         if (err.status === 200) {
           this.openCustomPopUp('Estudiante creado!');
         } else {
-          this.openCustomPopUp('Hubo un problema creando el usuario, intente mas tarde!');
+          this.openCustomPopUp('Ocurrio un error creando el estudiante.');
         }
       }
     );
