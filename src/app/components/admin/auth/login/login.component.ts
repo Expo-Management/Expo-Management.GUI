@@ -49,6 +49,7 @@ export class LoginComponent implements OnInit {
   errorMessage = '';
 
   onSubmit() {
+    console.log('test');
     this.authService.login(
       this.loginForm.controls['username'].value,
       this.loginForm.controls['password'].value).subscribe(
@@ -94,12 +95,12 @@ export class LoginComponent implements OnInit {
 
   public send(form: NgForm): void {
     if (form.invalid) {
+      console.log('test 2');
       for (const control of Object.keys(form.controls)) {
         form.controls[control].markAsTouched();
       }
       return;
     }
-
-    console.debug(`Token [${this.token}] generated`);
+    this.onSubmit()
   }
 }
