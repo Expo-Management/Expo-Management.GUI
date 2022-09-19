@@ -32,14 +32,10 @@ export class AddStudentsComponent implements OnInit {
     }),
     EmailFormControl: new FormControl('', {
       validators: [
-        Validators.required
+        Validators.required,
+        Validators.email
       ]
     }),
-    // PasswordFormControl: new FormControl('', {
-    //   validators: [
-    //     Validators.required
-    //   ]
-    // }),
     IdFormControl: new FormControl('', {
       validators: [
         Validators.required
@@ -71,7 +67,6 @@ export class AddStudentsComponent implements OnInit {
       this.createStudentForm.controls['LastFormControl'].value,
       this.createStudentForm.controls['EmailFormControl'].value,
       this.createStudentForm.controls['PhoneFormControl'].value
-      //,this.createStudentForm.controls['PasswordFormControl'].value,
     ).subscribe(
       data => {
         this.openCustomPopUp('Estudiante creado!');

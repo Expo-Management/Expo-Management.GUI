@@ -44,11 +44,6 @@ export class AddProfessorsComponent implements OnInit {
         Validators.required
       ]
     }),
-    // PasswordFormControl: new FormControl('', {
-    //   validators: [
-    //     Validators.required
-    //   ]
-    // }),
     IdFormControl: new FormControl('', {
       validators: [
         Validators.required
