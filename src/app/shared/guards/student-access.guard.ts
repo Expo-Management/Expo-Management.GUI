@@ -21,7 +21,11 @@ export class StudentAccessGuard implements CanActivate {
 
     if (user_role === 'User') {
       return true;
-    } 
+    } else if (user_role === null || user_role === undefined) {
+      this.route.navigate(['auth/login']);
+      return false;
+    }
+
     const role_route = user_role === 'Admin' ? 'administrator' : 'judges'
 
     this.route.navigate([role_route]);
