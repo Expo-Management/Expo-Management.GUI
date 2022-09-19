@@ -21,8 +21,12 @@ export class JudgeAccessGuard implements CanActivate {
 
     if (user_role === 'Judge') {
       return true;
-    } 
-    const role_route = user_role === 'Admin' ? 'administrator' : 'student'
+    } else if (user_role === null || user_role === undefined) {
+      this.route.navigate(['auth/login']);
+      return false;
+    }
+    
+    const role_route = user_role === 'Admin' ? 'administrator' : 'student';
 
     this.route.navigate([role_route]);
     return false;
