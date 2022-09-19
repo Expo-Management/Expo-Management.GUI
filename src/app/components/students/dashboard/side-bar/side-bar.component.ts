@@ -6,19 +6,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./side-bar.component.css']
 })
 export class SideBarComponent implements OnInit {
-  project_admin_options = [
-    { 
-      link: 'project/1',
-      icon: 'info',
-      text: 'Detalles del proyecto'
-    },
-    { 
-      link: 'saved-documents',
-      icon: 'insert_drive_file',
-      text: 'Documentación del proyecto'
-    },
-  ]
-
   user_options = [
     { 
       link: 'new-project',
@@ -26,9 +13,9 @@ export class SideBarComponent implements OnInit {
       text: 'Crear Proyecto'
     },
     { 
-      link: 'project-group',
-      icon: 'group',
-      text: 'Equipo de proyecto'
+      link: 'project/1',
+      icon: 'info',
+      text: 'Detalles del proyecto'
     },
   ]
 
@@ -49,14 +36,17 @@ export class SideBarComponent implements OnInit {
       text: 'Proyectos anteriores'
     },
     { 
-      link: 'fair-documents',
-      icon: 'folder',
-      text: 'Documentación necesaria'
-    },
-    { 
       link: 'fair-news',
       icon: 'new_releases',
       text: 'Noticias de la feria'
+    },
+  ]
+
+  fair_documents = [
+    { 
+      link: 'fair-documents',
+      icon: 'folder',
+      text: 'Documentación necesaria'
     },
     { 
       link: 'security-protocols',
