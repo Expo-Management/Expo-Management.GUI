@@ -15,7 +15,7 @@ export class LogsComponent implements OnInit {
   constructor(private customPopUpService: CustomPopUpService, private logServices: LogsService) { }
 
   ngOnInit(): void {
-    this.displayedColumns = ['id', 'message', 'level', 'timeStamp'];
+    this.displayedColumns = ['message', 'level', 'timeStamp'];
 
     this.logServices.getLogs().subscribe(
       data => {
