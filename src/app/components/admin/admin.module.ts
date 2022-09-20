@@ -8,16 +8,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ForgetPasswordComponent } from '../administrator/dashboard/settings/forget-password/forget-password.component';
 import { ResetPasswordComponent } from '../administrator/dashboard/settings/reset-password/reset-password.component';
-
 import { RecaptchaFormsModule, RecaptchaModule, RecaptchaSettings, RECAPTCHA_SETTINGS } from 'ng-recaptcha';
 import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
     AuthComponent,
-    LoginComponent,
-     ForgetPasswordComponent,
-     ResetPasswordComponent
+    LoginComponent
   ],
   imports: [
     FormsModule,
@@ -34,6 +31,10 @@ import { environment } from 'src/environments/environment';
         component: AuthComponent,
         children: [
           { path: 'login', component: LoginComponent },
+          { path: 'forget-password', component: ForgetPasswordComponent},
+          { path: 'reset-password', component: ResetPasswordComponent}, 
+          { path: '', redirectTo: 'login', pathMatch: 'full' },
+          { path: '**', redirectTo: 'login', pathMatch: 'full' }    
         ],
       },
     ]),

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { CustomPopUpService } from 'src/app/shared/services/custom-pop-up.service';
-import { TokenStorageService } from 'src/app/shared/services/token-storage.service';
+import { PersonalInformationService } from 'src/app/shared/services/personal-information.service';
 
 @Component({
   selector: 'app-forget-password',
@@ -21,20 +21,23 @@ export class ForgetPasswordComponent implements OnInit {
   
   constructor(
     private authService: AuthService,
-    private token: TokenStorageService,
-    private customPopUpService: CustomPopUpService
+    private customPopUpService: CustomPopUpService,
+    private userInfoService: PersonalInformationService,
   ) { }
 
   Message = '';
 
   ngOnInit(): void {
     console.log(localStorage);
+    console.log('user role: '+localStorage.getItem('user-role'))
   }
 
   onSubmit(){
-    console.log('test');
-    this.authService.ForgetPassword(
-      this.ForgetPasswordForm.controls['EmailFormControl'].value).subscribe(
+    this.authService.ForgetPassword
+      (
+      this.ForgetPasswordForm.controls['EmailFormControl'].value,
+      localStorage.getItem('user-role')!
+      ).subscribe(
         data => {
           console.log(data)
           this.Message = 'Se ha enviado el correo de cambio de contraseña!';

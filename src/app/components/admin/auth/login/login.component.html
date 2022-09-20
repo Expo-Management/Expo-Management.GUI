@@ -11,7 +11,7 @@
           <input matInput type="password" formControlName="password">
         </mat-form-field>
         <br>
-        <a id="forgot-redirect" class="full-width" [routerLink]="['/auth', 'forget-password']">Forgot password?</a>
+        <a id="forgot-redirect" class="full-width" [routerLink]="['/auth', 'forget-password']">¿Perdiste la contraseña?</a>
       </div>
       <div>
         <form #form="ngForm" class="mb-4">
@@ -21,7 +21,7 @@
                 [class.is-invalid]="recaptcha.invalid && (recaptcha.dirty || recaptcha.touched)"
                 class="d-flex align-items-center justify-content-center"></re-captcha>
               <div *ngIf="recaptcha.invalid && (recaptcha.dirty || recaptcha.touched)" class="invalid-feedback">
-                <div *ngIf="recaptcha.errors?.['required']">The RECAPTCHA is required.</div>
+                <div *ngIf="recaptcha.errors?.['required']">El RECAPTCHA es requerido.</div>
               </div>
             </div>
           </div>

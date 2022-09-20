@@ -24,6 +24,8 @@ import { FairNewsComponent } from './dashboard/fair-news/fair-news.component';
 import { ClaimsComponent } from './dashboard/project-details/claims/claims.component';
 import { QualificationComponent } from './dashboard/project-details/qualification/qualification.component';
 import { RecommendationsComponent } from './dashboard/recommendations/recommendations.component';
+import { ForgetPasswordComponent } from '../administrator/dashboard/settings/forget-password/forget-password.component';
+import { ResetPasswordComponent } from '../administrator/dashboard/settings/reset-password/reset-password.component';
 
 @NgModule({
   declarations: [
@@ -70,6 +72,8 @@ import { RecommendationsComponent } from './dashboard/recommendations/recommenda
           { path: 'saved-documents', component: CurrentDocumentationComponent },
           { path: 'project-mentions', component: MentionsComponent },
           { path: 'settings', component: SettingsComponent },
+          { path: 'forget-password', component: ForgetPasswordComponent},
+          { path: 'reset-password', component: ResetPasswordComponent},
           { path: '**', component: ProjectDetailsComponent },
           { path: '', redirectTo: 'home', pathMatch: 'full' },
           { path: '**', redirectTo: 'home', pathMatch: 'full' }

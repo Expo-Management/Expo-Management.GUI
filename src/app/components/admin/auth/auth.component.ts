@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./auth.component.css']
 })
 export class AuthComponent implements OnInit {
-  title: string = 'Welcome to Expo Engineering App';
+  title: string = 'Bienvenido a Expo Ingenieria App';
   tryingLoggin: boolean = true;
   show_register: boolean = false;
   signUpButton: any;
