@@ -18,6 +18,8 @@ import { SettingsComponent } from './dashboard/settings/settings.component';
 import { LoggedInGuard } from 'src/app/shared/guards/logged-in.guard';
 import { StudentsListComponent } from './dashboard/students-list/students-list.component';
 import { OtherQualificationsComponent } from './dashboard/projects-list/other-qualifications/other-qualifications.component';
+import { ResetPasswordComponent } from 'src/app/shared/components/passwords/reset-password/reset-password.component';
+import { ForgetPasswordComponent } from 'src/app/shared/components/passwords/forget-password/forget-password.component';
 
 
 @NgModule({
@@ -57,6 +59,8 @@ import { OtherQualificationsComponent } from './dashboard/projects-list/other-qu
           { path: 'project-qualify/:project_id', component: QualifyProjectComponent },
           { path: 'list', component: ListComponent },
           { path: 'settings', component: SettingsComponent },
+          { path: 'forget-password', component: ForgetPasswordComponent},
+          { path: 'reset-password', component: ResetPasswordComponent},
           { path: '**', component: ProjectsListComponent },
           { path: '', redirectTo: 'home', pathMatch: 'full' },
           { path: '**', redirectTo: 'home', pathMatch: 'full' }

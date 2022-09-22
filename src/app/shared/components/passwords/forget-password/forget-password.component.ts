@@ -29,12 +29,15 @@ export class ForgetPasswordComponent implements OnInit {
 
   ngOnInit(): void {
     console.log(localStorage);
+    console.log('user role: '+localStorage.getItem('user-role'))
   }
 
   onSubmit(){
     console.log('test');
     this.authService.ForgetPassword(
-      this.ForgetPasswordForm.controls['EmailFormControl'].value).subscribe(
+      this.ForgetPasswordForm.controls['EmailFormControl'].value,
+      localStorage.getItem('user-role')!
+      ).subscribe(
         data => {
           console.log(data)
           this.Message = 'Se ha enviado el correo de cambio de contraseña!';

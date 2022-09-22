@@ -6,8 +6,8 @@ import { LoginComponent } from './auth/login/login.component';
 import { MaterialsModule } from 'src/app/shared/materials/materials.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { ForgetPasswordComponent } from '../administrator/dashboard/settings/forget-password/forget-password.component';
-import { ResetPasswordComponent } from '../administrator/dashboard/settings/reset-password/reset-password.component';
+import { ForgetPasswordComponent } from '../../shared/components/passwords/forget-password/forget-password.component';
+import { ResetPasswordComponent } from '../../shared/components/passwords/reset-password/reset-password.component';
 
 import { RecaptchaFormsModule, RecaptchaModule, RecaptchaSettings, RECAPTCHA_SETTINGS } from 'ng-recaptcha';
 import { environment } from 'src/environments/environment';
@@ -34,6 +34,8 @@ import { environment } from 'src/environments/environment';
         component: AuthComponent,
         children: [
           { path: 'login', component: LoginComponent },
+          { path: 'forget-password', component: ForgetPasswordComponent},
+          { path: 'reset-password', component: ResetPasswordComponent},
         ],
       },
     ]),

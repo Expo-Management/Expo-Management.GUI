@@ -12,34 +12,36 @@ import { NgxFileDropModule } from 'ngx-file-drop';
 //pages
 import { AdministratorComponent } from './administrator.component';
 import { FairDocumentsComponent } from './dashboard/fair-documents/fair-documents.component';
-
+import { AddFileComponent } from './dashboard/fair-documents/add-file/add-file.component';
+import { FairCategoriesComponent } from './dashboard/fair-categories/fair-categories.component';
+import { AddCategoryComponent } from './dashboard/fair-categories/add-category/add-category.component';
+import { FairCalendarComponent } from './dashboard/fair-calendar/fair-calendar.component';
+import { CreateAppointmentsComponent } from './dashboard/create-appointments/create-appointments.component';
+//settings
+import { SettingsComponent } from './dashboard/settings/settings.component';
+import { ForgetPasswordComponent } from '../../shared/components/passwords/forget-password/forget-password.component';
+import { ResetPasswordComponent } from '../../shared/components/passwords/reset-password/reset-password.component';
 //calendar imports
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import { FlatpickrModule } from 'angularx-flatpickr';
-//dialogs
-import { DeleteDialogComponent } from './dashboard/delete-dialog/delete-dialog.component';
-import { SettingsComponent } from './dashboard/settings/settings.component';
+//User administration
 import { ManageJudgesComponent } from './dashboard/manage-users/manage-judges/manage-judges.component';
 import { ManageStudentsComponent } from './dashboard/manage-users/manage-students/manage-students.component';
-import { FairCalendarComponent } from './dashboard/fair-calendar/fair-calendar.component';
 import { ManageProfessorsComponent } from './dashboard/manage-users/manage-professors/manage-professors.component';
 import { AddJudgesComponent } from './dashboard/add-users/add-judges/add-judges.component';
 import { AddStudentsComponent } from './dashboard/add-users/add-students/add-students.component';
 import { AddProfessorsComponent } from './dashboard/add-users/add-professors/add-professors.component';
+import { EditJudgesComponent } from './dashboard/edit-users/edit-judges/edit-judges.component';
 import { EditStudentsComponent } from './dashboard/edit-users/edit-students/edit-students.component';
 import { EditProfessorsComponent } from './dashboard/edit-users/edit-professors/edit-professors.component';
-import { EditJudgesComponent } from './dashboard/edit-users/edit-judges/edit-judges.component';
+//dialogs
+import { DeleteDialogComponent } from './dashboard/delete-dialog/delete-dialog.component';
 import { LoggedInGuard } from 'src/app/shared/guards/logged-in.guard';
 import { LogsComponent } from './dashboard/logs/logs.component';
-import { CreateAppointmentsComponent } from './dashboard/create-appointments/create-appointments.component';
 import { MatNativeDateModule } from '@angular/material/core';
-import { ForgetPasswordComponent } from './dashboard/settings/forget-password/forget-password.component';
-import { ResetPasswordComponent } from './dashboard/settings/reset-password/reset-password.component';
-import { AddFileComponent } from './dashboard/fair-documents/add-file/add-file.component';
-
 
 @NgModule({
   declarations: [
@@ -50,7 +52,12 @@ import { AddFileComponent } from './dashboard/fair-documents/add-file/add-file.c
     ContentComponent,
     AdministratorComponent,
     FairDocumentsComponent,
+    AddFileComponent,
+    FairCategoriesComponent,
+    AddCategoryComponent,
     FairCalendarComponent,
+    CreateAppointmentsComponent,
+    SettingsComponent,
     LogsComponent,
     //manage users
     ManageStudentsComponent,
@@ -64,10 +71,9 @@ import { AddFileComponent } from './dashboard/fair-documents/add-file/add-file.c
     EditStudentsComponent,
     EditJudgesComponent,
     EditProfessorsComponent,
+    //dialogs
     DeleteDialogComponent,
-    SettingsComponent,
-    CreateAppointmentsComponent,
-    AddFileComponent,
+    
   ],
   imports: [
     ReactiveFormsModule,
@@ -84,6 +90,7 @@ import { AddFileComponent } from './dashboard/fair-documents/add-file/add-file.c
           //fair stuff
           { path: 'home', component: ContentComponent },
           { path: 'fair-documents', component: FairDocumentsComponent },
+          { path: 'fair-categories', component: FairCategoriesComponent },
           { path: 'fair-calendar', component: FairCalendarComponent },
           { path: 'logs', component: LogsComponent},
           //manage users
