@@ -24,30 +24,46 @@ export class EditJudgesComponent implements OnInit {
   judgeForm = new FormGroup({
     NameFormControl: new FormControl('', {
       validators: [
-        Validators.required
+        Validators.required,
+        Validators.maxLength(30),
+        Validators.minLength(3)
       ]
     }),
     LastFormControl: new FormControl('', {
       validators: [
-        Validators.required
+        Validators.required,
+        Validators.maxLength(100),
+        Validators.minLength(10)
       ]
     }),
     EmailFormControl: new FormControl('', {
       validators: [
-        Validators.required
+        Validators.required,
+        Validators.email,
+        Validators.maxLength(100),
+        Validators.minLength(5)
       ]
     }),
     UsernameFormControl: new FormControl('', {
       validators: [
-        Validators.required
+        Validators.required,
+        Validators.maxLength(15),
+        Validators.minLength(5)
       ]
     }),
     PhoneFormControl: new FormControl('', {
       validators: [
-        Validators.required
+        Validators.required,
+        Validators.maxLength(8),
+        Validators.minLength(8),
+        Validators.pattern("^((\\+91-?)|0)?[0-9]{8}$")
       ]
     })
   });
+
+  public errorValidator = (controlName: string, errorName: string) =>{
+    return this.judgeForm.controls[controlName].hasError(errorName);
+  }
 
   matcher = new MyErrorStateMatcher();
   constructor(
