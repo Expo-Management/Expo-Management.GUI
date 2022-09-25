@@ -42,6 +42,8 @@ import { DeleteDialogComponent } from './dashboard/delete-dialog/delete-dialog.c
 import { LoggedInGuard } from 'src/app/shared/guards/logged-in.guard';
 import { LogsComponent } from './dashboard/logs/logs.component';
 import { MatNativeDateModule } from '@angular/material/core';
+import { FairProtocolsComponent } from './dashboard/fair-protocols/fair-protocols.component';
+import { AddProtocolComponent } from './dashboard/fair-protocols/add-protocol/add-protocol.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +57,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     AddFileComponent,
     FairCategoriesComponent,
     AddCategoryComponent,
+    FairProtocolsComponent,
     FairCalendarComponent,
     CreateAppointmentsComponent,
     SettingsComponent,
@@ -73,6 +76,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     EditProfessorsComponent,
     //dialogs
     DeleteDialogComponent,
+    AddProtocolComponent
     
   ],
   imports: [
@@ -91,6 +95,7 @@ import { MatNativeDateModule } from '@angular/material/core';
           { path: 'home', component: ContentComponent },
           { path: 'fair-documents', component: FairDocumentsComponent },
           { path: 'fair-categories', component: FairCategoriesComponent },
+          { path: 'fair-protocols', component: FairProtocolsComponent },
           { path: 'fair-calendar', component: FairCalendarComponent },
           { path: 'logs', component: LogsComponent},
           //manage users
