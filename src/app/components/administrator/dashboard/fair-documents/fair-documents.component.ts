@@ -44,7 +44,8 @@ export class FairDocumentsComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  dialogDelete(id: string): void{
+  dialogDelete(id: number): void{
+    console.log('id: '+id)
     this.openCustomPopUp("¿Estás seguro de borrar el documento?").then(
       (result: boolean) => {
         this.FilesServices.deleteFiles(id).subscribe(

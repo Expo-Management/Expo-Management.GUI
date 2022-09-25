@@ -32,6 +32,16 @@ export class SideBarComponent implements OnInit {
       link: 'fair-documents',
     },
     { 
+      icon: 'donut_large',
+      text: 'Categorías de la feria',
+      link: 'fair-categories',
+    },
+    { 
+      icon: 'security',
+      text: 'Protocolos de la feria',
+      link: 'fair-protocols',
+    },
+    { 
       icon: 'calendar_today',
       text: 'Calendario de la feria',
       link: 'fair-calendar',

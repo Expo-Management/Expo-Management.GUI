@@ -50,7 +50,7 @@ export class SideBarComponent implements OnInit {
     },
     { 
       link: 'security-protocols',
-      icon: 'more_horiz',
+      icon: 'security',
       text: 'Protocolos de seguridad de la feria'
     },
   ]

@@ -20,11 +20,6 @@ export class FairService {
     return this.httpClient.get(environment.apiUrl + `/Events/news?FairId=${fairId}`, httpOptions);
   }
 
-  getSecurityProtocols(fairId: number): Observable<any> {
-    console.log('Here 1');
-    return this.httpClient.get(environment.apiUrl + `/Events/security-protocols?FairId=${fairId}`, httpOptions);
-  }
-
   createEvent(
     description: string,
     location: string,
@@ -61,7 +56,7 @@ export class FairService {
     httpOptions);
   }
 
-  deleteCategory(id: number): Observable<any> {
+  deleteFair(id: number): Observable<any> {
     return this.httpClient.delete(environment.apiUrl + `/Fairs/fair?id=${id}`,
     httpOptions);
   }
