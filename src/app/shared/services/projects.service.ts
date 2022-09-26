@@ -118,4 +118,8 @@ export class ProjectsService {
   getUsersByProject(): Observable<any>{
     return this.httpClient.get<any>(environment.apiUrl + `/Projects/users-per-project`, httpOptions)
   }
+
+  canJudgeQualifyTheProject(project_id: number, judge_email: string): Observable<any>{
+    return this.httpClient.get<any>(environment.apiUrl + `/Projects/can-judge-qualify-project?ProjectId=${project_id}&JudgeEmail=${judge_email}`, httpOptions);
+  }
 }

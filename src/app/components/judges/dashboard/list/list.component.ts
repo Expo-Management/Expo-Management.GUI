@@ -36,7 +36,10 @@ export class ListComponent implements OnInit {
       err => {
         if (err.status === 404) {
           this.openCustomPopUp('No hay jueces registrados.');
-        } else {
+        } else if (err.status === 403 || err.status === 401) {
+          this.openCustomPopUp('Inicie sesion con una cuenta con rol de Juez o Administrador para acceder a esta seccion.');
+        }
+        else {
           this.openCustomPopUp('Ocurrio un problema interno. Por favor, vuelve a intentarlo más tarde.');
         }
       }
@@ -47,7 +50,7 @@ export class ListComponent implements OnInit {
     return this.customPopUpService.confirm(
       'Lista de jueces', 
       message,
-      undefined
+      'judges'
       );
   }
 

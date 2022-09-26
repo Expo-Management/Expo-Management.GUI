@@ -13,6 +13,7 @@ import { CommonModule } from '@angular/common';
 import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { CustomPopUpComponent } from './shared/components/custom-pop-up/custom-pop-up.component';
 import { HttpClientModule } from '@angular/common/http';
+import { authInterceptorProviders } from './shared/services/jwt.interceptor';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { HttpClientModule } from '@angular/common/http';
       provide: MatDialogRef,
       useValue: {}
     },
+    authInterceptorProviders
   ],
   bootstrap: [AppComponent]
 })
