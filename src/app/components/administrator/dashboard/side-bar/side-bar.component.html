@@ -1,4 +1,4 @@
-<!-- <div class="side-bar-menu">
+<div class="side-bar-menu">
     <div class="admin-general-options flexbox-container">
         <h3>General</h3>
         <div class="options">
@@ -34,69 +34,4 @@
             </div>
         </div>
     </div>
-</div> -->
-
-<mat-toolbar class="mat-elevation-z8">
-    <button
-      mat-icon-button
-      *ngIf="sidenav.mode === 'over'"
-      (click)="sidenav.toggle()"
-    >
-      <mat-icon *ngIf="!sidenav.opened"> menu </mat-icon>
-      <mat-icon *ngIf="sidenav.opened"> close </mat-icon>
-    </button>
-    Prueba
-</mat-toolbar>
-
-<mat-sidenav-container>
-    <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
-        
-        <img class="avatar" src="/assets/images/Escudo.png">
-
-        <h4 class="name">CTP Mario Quiros Sasso</h4>
-        <p class="designation">Expo-Ingeniería</p>
-
-        <mat-divider></mat-divider>
-
-        <button mat-button class="menu-button" [routerLink]="['/administrator/home/']">
-            <mat-icon>home</mat-icon>
-            <span>Principal</span>
-        </button>
-        <button mat-button class="menu-button" [routerLink]="['/administrator/logs/']">
-            <mat-icon>info</mat-icon>
-            <span>Bitacora del sistema</span>
-        </button>
-
-        <mat-divider></mat-divider>
-
-        <button mat-button class="menu-button" [routerLink]="['/administrator/manage-professors/']">
-            <mat-icon>supervised_user_circle</mat-icon>
-            <span>Profesores</span>
-        </button>
-        <button mat-button class="menu-button" [routerLink]="['/administrator/lomanage-judgesgs/']">
-            <mat-icon>assignment_ind</mat-icon>
-            <span>Jueces</span>
-        </button>
-        <button mat-button class="menu-button" [routerLink]="['/administrator/manage-students/']">
-            <mat-icon>school</mat-icon>
-            <span>Estudiantes</span>
-        </button>
-
-        <mat-divider></mat-divider>
-
-        <button  mat-button class="menu-button" [routerLink]="['/administrator/fair-documents/']">
-            <mat-icon>assignment</mat-icon>
-            <span>Documentos de la feria</span>
-        </button>
-        <button mat-button class="menu-button" [routerLink]="['/administrator/fair-calendar/']">
-            <mat-icon>calendar_today</mat-icon>
-            <span>Calendario de la feria'</span>
-        </button>
-
-    </mat-sidenav>
-     <!-- <mat-sidenav-content>
-        <div class="content">
-            Main content
-        </div>
-    </mat-sidenav-content> -->
-</mat-sidenav-container>
+</div>
