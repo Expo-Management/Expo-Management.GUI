@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { ConnectionClosedEvent } from 'mongodb';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
@@ -46,13 +47,13 @@ export class FairService {
     httpOptions);
   }
 
-  addFair(model: Date): Observable<any>{
-    return this.httpClient.post(environment.apiUrl + `/Fairs/fair?model=${model}`,
+  addFair(): Observable<any>{
+    return this.httpClient.post(environment.apiUrl + '/Fairs/fair',
     httpOptions);
   }
 
   getCurrentFairDays(): Observable<any> {
-    return this.httpClient.get(environment.apiUrl + '/Fairs/current-fair-days', 
+    return this.httpClient.get(environment.apiUrl + '/Fairs/left-fair-days', 
     httpOptions);
   }
 

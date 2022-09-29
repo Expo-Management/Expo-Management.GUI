@@ -60,7 +60,7 @@ import { ResetPasswordComponent } from 'src/app/shared/components/passwords/rese
         path: '', 
         component: StudentsComponent,
         children: [
-          { path: 'home', component: ProjectDetailsComponent },
+          { path: 'home', component: FairNewsComponent },
           { path: 'security-protocols', component: ProtocolListComponent },
           { path: 'past-projects', component: PastProyectProposalsComponent },
           { path: 'current-projects', component: CurrentProyectProposalsComponent },
@@ -74,7 +74,6 @@ import { ResetPasswordComponent } from 'src/app/shared/components/passwords/rese
           { path: 'settings', component: SettingsComponent },
           { path: 'forget-password', component: ForgetPasswordComponent},
           { path: 'reset-password', component: ResetPasswordComponent},
-          { path: '**', component: ProjectDetailsComponent },
           { path: '', redirectTo: 'home', pathMatch: 'full' },
           { path: '**', redirectTo: 'home', pathMatch: 'full' }
         ],
