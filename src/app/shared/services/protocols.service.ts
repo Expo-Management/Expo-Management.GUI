@@ -15,7 +15,6 @@ export class ProtocolsService {
   constructor(private httpClient: HttpClient) { }
 
   getSecurityProtocols(fairId: number): Observable<any> {
-    console.log('Here 1');
     return this.httpClient.get(environment.apiUrl + `/Events/security-protocols?FairId=${fairId}`, httpOptions);
   }
 
