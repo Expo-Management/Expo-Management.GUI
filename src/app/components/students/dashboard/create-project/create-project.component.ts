@@ -4,7 +4,8 @@ import { NgxFileDropEntry, FileSystemFileEntry, FileSystemDirectoryEntry } from 
 import { ProjectsService } from 'src/app/shared/services/projects.service';
 import { CustomPopUpService } from 'src/app/shared/services/custom-pop-up.service';
 import { Categories } from 'src/app/shared/interfaces/categories';
-
+import { CategoriesService } from 'src/app/shared/services/categories.service';
+import { FairService } from 'src/app/shared/services/fair.service';
 
 @Component({
   selector: 'app-create-project',
@@ -45,11 +46,13 @@ export class CreateProjectComponent implements OnInit {
 
   constructor(
     private ProjectsService: ProjectsService,
+    private CategoriesService: CategoriesService,
+    private FairService: FairService,
     private customPopUpService: CustomPopUpService
   ) { }
 
   ngOnInit(): void {
-    this.ProjectsService.getCurentFairdId().subscribe(
+    this.FairService.getCurentFairdId().subscribe(
       data => {
         console.log(data);
          this.fairId = data;
@@ -58,7 +61,7 @@ export class CreateProjectComponent implements OnInit {
         console.log('an error occured: ' + err);
       })
      
-      this.ProjectsService.getAllCategories().subscribe(
+      this.CategoriesService.getAllCategories().subscribe(
         data => {
           console.log(data);
           this.categories = data;

@@ -22,8 +22,8 @@ export class FilesService {
     return this.httpClient.get(environment.apiUrl + '/Files/files', httpOptions)
   }
   
-  deleteFiles(id: string): Observable<any>{
-    return this.httpClient.delete(environment.apiUrl + `/Files/file?${id}`, httpOptions)
+  deleteFiles(id: number): Observable<any>{
+    return this.httpClient.delete(environment.apiUrl + `/Files/file?id=${id}`, httpOptions)
   } 
   
   getFile(id: string | null) {

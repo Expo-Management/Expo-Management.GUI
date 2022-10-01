@@ -42,6 +42,10 @@ export class ProjectsService {
     return this.httpClient.get<ProjectQualifications[]>(environment.apiUrl + `/Projects/project?projectId=${projectId}`, httpOptions)
   }
 
+  RemoveStudentFromProject(email: string | null): Observable<any>{
+    return this.httpClient.put(environment.apiUrl + `/Projects/remove-user-project?email=${email}`, httpOptions)
+  }
+
   getProjectRecommendations(projectId: number): Observable<Recommendation[]>{
     return this.httpClient.get<Recommendation[]>(environment.apiUrl + `/Projects/recommendation-by-project?projectId=${projectId}`, httpOptions)
   }
@@ -61,16 +65,6 @@ export class ProjectsService {
   }
   GetMembers(): Observable<any> {
     return this.httpClient.get(environment.apiUrl + '/Projects/project-members', httpOptions);
-  }
-
-  getCurentFairdId(): Observable<any>{
-    return this.httpClient.get(environment.apiUrl + '/Fairs/current-fair', 
-    httpOptions);
-  }
-
-  getAllCategories(): Observable<any> {
-    return this.httpClient.get(environment.apiUrl + '/Category/categories', 
-    httpOptions);
   }
 
  getProjectFile(id: string | null) {
