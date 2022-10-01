@@ -8,6 +8,8 @@ import { ProjectsService } from 'src/app/shared/services/projects.service';
 import { RecommendationsComponent } from '../recommendations/recommendations.component';
 import { ClaimsComponent } from './claims/claims.component';
 import { QualificationComponent } from './qualification/qualification.component';
+import { CustomPopUpService } from 'src/app/shared/services/custom-pop-up.service';
+import { PersonalInformationService } from 'src/app/shared/services/personal-information.service';
 
 @Component({
   selector: 'app-project-details',
@@ -17,7 +19,7 @@ import { QualificationComponent } from './qualification/qualification.component'
 
 export class ProjectDetailsComponent implements OnInit {
   project_name =''
-  group_number: string | null = '1'
+  group_number: string | null = '0'
   project_description = ''
   group_members: string[] = []
   category = ''
@@ -28,14 +30,19 @@ export class ProjectDetailsComponent implements OnInit {
 
   judgesCalifications: JudgeCalification[] = [];
 
+  user_email: string = '';
+
   constructor(
+    private PersonalInformationService: PersonalInformationService,
+    private customPopUpService: CustomPopUpService,
     private route: ActivatedRoute,
     private projects: ProjectsService,
-    public modalService: NgbModal
+    public modalService: NgbModal,
   ) { }
 
   ngOnInit(): void {
     this.group_number = this.route.snapshot.paramMap.get('project_id');
+    console.log('project id: '+this.group_number)
     this.fillTheProjectInformation();
   }
 
@@ -52,6 +59,8 @@ export class ProjectDetailsComponent implements OnInit {
         console.log(err);
       }
     );
+
+    this.user_email = this.PersonalInformationService.getEmail()!;
   }
 
   private fillProjectDetails(data: ProjectQualifications[]) {
@@ -91,5 +100,38 @@ export class ProjectDetailsComponent implements OnInit {
   viewQualification() {
     const modalRef = this.modalService.open(QualificationComponent, {centered: true});
     modalRef.componentInstance.judgesCalifications = this.judgesCalifications;
+  }
+
+  dialogDelete(): void{
+    console.log(this.user_email)
+    this.openCustomPopUp("¿Estás seguro que quieres renunciar de la feria?").then(
+      (result: boolean) => {
+        this.projects.RemoveStudentFromProject(this.user_email).subscribe(
+          data =>{
+            console.log(data)
+            this.userDeleted();
+          },
+          err => {
+            console.log(err)
+            if (err.status === 200) {
+              this.userDeleted();
+            } else {
+              this.openCustomPopUp('Hubo un error, por favor, intenlo más tarde.');
+            }
+          }
+        );
+      });
+  }
+
+  private userDeleted() {
+    this.openCustomPopUp('!Has sido borrado del proyecto exitosamente!');
+  }
+
+  public openCustomPopUp(message: string): Promise<boolean> {
+    return this.customPopUpService.confirm(
+      'Detalles de proyecto', 
+      message,
+      'student/project-details'
+      );
   }
 }
