@@ -58,6 +58,10 @@ export class SettingsComponent implements OnInit {
     })
   });
 
+  public errorValidator = (controlName: string, errorName: string) =>{
+    return this.studentForm.controls[controlName].hasError(errorName);
+  }
+
   constructor(
     private studentService: StudentsService,
     private customPopUpService: CustomPopUpService,

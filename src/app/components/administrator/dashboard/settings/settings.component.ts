@@ -58,6 +58,10 @@ export class SettingsComponent implements OnInit {
     })
   });
 
+  public errorValidator = (controlName: string, errorName: string) =>{
+    return this.adminForm.controls[controlName].hasError(errorName);
+  }
+
   constructor(
     private adminService: AdminService,
     private customPopUpService: CustomPopUpService,

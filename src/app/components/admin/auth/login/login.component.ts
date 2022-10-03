@@ -87,6 +87,10 @@ export class LoginComponent implements OnInit {
       );
   }
 
+  public errorValidator = (controlName: string, errorName: string) =>{
+    return this.loginForm.controls[controlName].hasError(errorName);
+  }
+
   reloadPage() {
     window.location.reload();
   }
