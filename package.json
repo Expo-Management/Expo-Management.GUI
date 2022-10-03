@@ -23,6 +23,7 @@
         "@angular/platform-browser-dynamic": "~12.2.0",
         "@angular/router": "~12.2.0",
         "@ng-bootstrap/ng-bootstrap": "^10.0.0",
+        "@ngneat/until-destroy": "^9.2.2",
         "@swimlane/ngx-charts": "^20.1.0",
         "angular-calendar": "^0.29.0",
         "angularx-flatpickr": "^6.6.0",

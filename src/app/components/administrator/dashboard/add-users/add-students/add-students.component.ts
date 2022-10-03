@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import { CustomPopUpService } from 'src/app/shared/services/custom-pop-up.service';
 import { StudentsService } from 'src/app/shared/services/students.service';
+
 @Component({
   selector: 'app-add-students',
   templateUrl: './add-students.component.html',
@@ -56,6 +57,10 @@ export class AddStudentsComponent implements OnInit {
     }),
   })
   
+  public errorValidator = (controlName: string, errorName: string) =>{
+    return this.createStudentForm.controls[controlName].hasError(errorName);
+  }
+
   constructor(
     private studentService: StudentsService,
     private customPopUpService: CustomPopUpService
