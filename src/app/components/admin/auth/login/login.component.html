@@ -3,15 +3,18 @@
     <div class="flex-container">
       <mat-form-field class="full-width" appearance="outline">
         <mat-label>Nombre de usuario</mat-label>
-        <input type="text" matInput formControlName="username">
+        <input type="text" matInput formControlName="username" required>
+        <mat-error *ngIf="errorValidator('UsernameFormControl', 'required')">El nombre de usuario es obligatorio</mat-error>
+        <mat-error *ngIf="errorValidator('UsernameFormControl', 'maxlength')">Limite máximo de 15 caracteres alcanzado</mat-error>
+        <mat-error *ngIf="errorValidator('UsernameFormControl', 'minlength')">Limite mínimo de 5 caracteres sin completar</mat-error>
       </mat-form-field>
       <div class="password">
         <mat-form-field class="full-width" appearance="outline">
           <mat-label>Contraseña</mat-label>
-          <input matInput type="password" formControlName="password">
+          <input matInput type="password" formControlName="password" required>
         </mat-form-field>
         <br>
-        <a id="forgot-redirect" class="full-width" [routerLink]="['/auth', 'forget-password']">Forgot password?</a>
+        <a id="forgot-redirect" class="full-width" [routerLink]="['/auth', 'forget-password']">¿Olividaste la contraseña?</a>
       </div>
       <div>
         <form #form="ngForm" class="mb-4">
@@ -21,7 +24,7 @@
                 [class.is-invalid]="recaptcha.invalid && (recaptcha.dirty || recaptcha.touched)"
                 class="d-flex align-items-center justify-content-center"></re-captcha>
               <div *ngIf="recaptcha.invalid && (recaptcha.dirty || recaptcha.touched)" class="invalid-feedback">
-                <div *ngIf="recaptcha.errors?.['required']">The RECAPTCHA is required.</div>
+                <div *ngIf="recaptcha.errors?.['required']">El RECAPTCHA es requerido.</div>
               </div>
             </div>
           </div>

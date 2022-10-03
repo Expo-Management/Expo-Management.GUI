@@ -17,7 +17,7 @@
                         <mat-form-field class="variable-width" hintLabel="Max 400 caracteres" appearance="outline">
                             <mat-label>Descripción del proyecto</mat-label>
                             <textarea #txtArea matInput [maxlength]="400" formControlName="Description"></textarea>
-                            <mat-hint align="end">{{txtArea.value?.length || 0}}/400</mat-hint>
+                            <mat-hint align="end">{{txtArea.value.length || 0}}/400</mat-hint>
                         </mat-form-field>
                         <mat-form-field class="variable-width" appearance="outline">
                             <mat-label>Líder del proyecto</mat-label>

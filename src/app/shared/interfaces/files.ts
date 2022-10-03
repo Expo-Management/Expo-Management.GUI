@@ -1,5 +1,5 @@
 export interface Files {
-    id: string;
+    id: number;
     name: string;
     size: string;
     url: string;

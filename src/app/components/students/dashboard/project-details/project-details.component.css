@@ -51,6 +51,14 @@ h2 {
     height: 100%;
 }
 
+.button-group1 {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-around;
+    min-height: 1px;
+}
+
 .button-group {
     display: flex;
     flex-direction: column;

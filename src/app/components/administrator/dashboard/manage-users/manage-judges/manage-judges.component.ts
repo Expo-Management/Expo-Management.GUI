@@ -14,8 +14,8 @@ import { JudgesService } from 'src/app/shared/services/judges.service';
 
 
 export class ManageJudgesComponent implements OnInit {
-  displayedColumns : string[] = ['name', 'lastname', 'email', 'phoneNumber', 'institution', 'actions'];
-  listOfJudges: Array<Judges> = [];
+  displayedColumns : string[] = ['userId', 'name', 'lastname', 'email', 'phoneNumber', 'institution', 'actions'];
+  listOfJudges: Array<Judges> = []
   dataSource = new MatTableDataSource(this.listOfJudges);
 
   constructor(

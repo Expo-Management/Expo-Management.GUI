@@ -1,0 +1,23 @@
+<div class="modal-header">
+    <h2 class="modal-title" style="margin-bottom: 0;">Agregar categorías de la feria</h2>
+    <button type="button" class="btn btn-outline-danger close-btn" (click)="dismiss()">&times;
+    </button>
+</div>
+<div class="modal-body container" ngbAutofocus>
+    <form [formGroup]="categoryForm" (ngSubmit)="onSubmit()" novalidate>
+        
+            <div class="row">
+                <div class="col-12">
+                    <mat-form-field class="full-width" appearance="legacy">
+                        <mat-label>Categoría</mat-label>
+                        <input class="full-width" matInput formControlName="descriptionForm">
+                    </mat-form-field>
+                </div>
+            </div>
+        
+        <div class="modal-footer ">
+            <button mat-raised-button type="button" id="submit-button" class="cancel-button" (click)="decline()">Cancelar</button>
+            <button mat-raised-button type="button" id="submit-button" class="add-button" (click)="accept()">Crear Categoría</button>
+        </div>
+    </form>    
+</div>

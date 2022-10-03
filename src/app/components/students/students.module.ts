@@ -24,6 +24,8 @@ import { FairNewsComponent } from './dashboard/fair-news/fair-news.component';
 import { ClaimsComponent } from './dashboard/project-details/claims/claims.component';
 import { QualificationComponent } from './dashboard/project-details/qualification/qualification.component';
 import { RecommendationsComponent } from './dashboard/recommendations/recommendations.component';
+import { ForgetPasswordComponent } from 'src/app/shared/components/passwords/forget-password/forget-password.component';
+import { ResetPasswordComponent } from 'src/app/shared/components/passwords/reset-password/reset-password.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +60,7 @@ import { RecommendationsComponent } from './dashboard/recommendations/recommenda
         path: '', 
         component: StudentsComponent,
         children: [
-          { path: 'home', component: ProjectDetailsComponent },
+          { path: 'home', component: FairNewsComponent },
           { path: 'security-protocols', component: ProtocolListComponent },
           { path: 'past-projects', component: PastProyectProposalsComponent },
           { path: 'current-projects', component: CurrentProyectProposalsComponent },
@@ -70,7 +72,8 @@ import { RecommendationsComponent } from './dashboard/recommendations/recommenda
           { path: 'saved-documents', component: CurrentDocumentationComponent },
           { path: 'project-mentions', component: MentionsComponent },
           { path: 'settings', component: SettingsComponent },
-          { path: '**', component: ProjectDetailsComponent },
+          { path: 'forget-password', component: ForgetPasswordComponent},
+          { path: 'reset-password', component: ResetPasswordComponent},
           { path: '', redirectTo: 'home', pathMatch: 'full' },
           { path: '**', redirectTo: 'home', pathMatch: 'full' }
         ],
