@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
+import { isThisSecond } from 'date-fns';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { CustomPopUpService } from 'src/app/shared/services/custom-pop-up.service';
 import { PersonalInformationService } from 'src/app/shared/services/personal-information.service';
@@ -57,7 +58,8 @@ export class LoginComponent implements OnInit {
           console.log(data)
 
           if (data.emailConfirmed) {
-            this.token.saveToken(data.token);
+            this.token.saveAccessToken(data.token);
+            this.token.saveRefreshToken(data.refreshToken)
             this.user_info.saveRole(data.role)
             this.user_info.saveEmail(data.email)
             this.isLoginFailed = false;

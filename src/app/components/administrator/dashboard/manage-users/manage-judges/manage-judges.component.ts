@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { Judges } from 'src/app/shared/interfaces/judges';
+import { AuthService } from 'src/app/shared/services/auth.service';
 import { CustomPopUpService } from 'src/app/shared/services/custom-pop-up.service';
 import { JudgesService } from 'src/app/shared/services/judges.service';
 
@@ -14,7 +15,7 @@ import { JudgesService } from 'src/app/shared/services/judges.service';
 
 export class ManageJudgesComponent implements OnInit {
   displayedColumns : string[] = ['name', 'lastname', 'email', 'phoneNumber', 'institution', 'actions'];
-  listOfJudges: Array<Judges> = []
+  listOfJudges: Array<Judges> = [];
   dataSource = new MatTableDataSource(this.listOfJudges);
 
   constructor(

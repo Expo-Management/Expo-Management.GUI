@@ -25,6 +25,13 @@ export class AuthService {
     }, httpOptions);
   }
 
+  refresh_token(accessToken: string, refreshToken: string): Observable<any> {
+    return this.httpClient.post(
+      environment.apiUrl + '/Authenticate/refresh-token', 
+      {accessToken: accessToken, refreshToken: refreshToken}, 
+      httpOptions);
+  }
+
   register(
     id: string, 
     name: string, 
