@@ -29,7 +29,7 @@
         <div class="details-content">
             <h3 class="space">Seleccione alguna de las 3 opciones a continuación: </h3>
             <div class="button-group space">
-                <button class="button" mat-raised-button [routerLink]="['/judges/project-qualify/', group_number ]">Calificar proyecto</button>
+                <button class="button" mat-raised-button [disabled]="canJudgeQualifyTheProject" [routerLink]="['/judges/project-qualify/', group_number ]">Calificar proyecto</button>
                 <button class="button" mat-raised-button (click)="openRecomendation()">Dar recomendación</button>
                 <button class="button" mat-raised-button (click)="openEmails()">Contactar estudiantes</button>
             </div>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
+import { isThisSecond } from 'date-fns';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { CustomPopUpService } from 'src/app/shared/services/custom-pop-up.service';
 import { PersonalInformationService } from 'src/app/shared/services/personal-information.service';
@@ -19,7 +20,9 @@ export class LoginComponent implements OnInit {
   loginForm = new FormGroup({
     username: new FormControl('', {
       validators: [
-        Validators.required
+        Validators.required,
+        Validators.maxLength(15),
+        Validators.minLength(5)
       ]
     }),
     password: new FormControl('', {
@@ -57,32 +60,37 @@ export class LoginComponent implements OnInit {
           console.log(data)
 
           if (data.emailConfirmed) {
-            this.token.saveToken(data.token);
+            this.token.saveAccessToken(data.token);
+            this.token.saveRefreshToken(data.refreshToken)
             this.user_info.saveRole(data.role)
             this.user_info.saveEmail(data.email)
             this.isLoginFailed = false;
             this.isLoggedIn = true;
             this.reloadPage();
           } else {
-            this.errorMessage = 'Please confirm the account, check the email or contact the administrator.';
+            this.errorMessage = 'Por favor confirma la cuenta, revisa el nombre de usuario o contacta con algún administrador.';
             this.openCustomPopUp(this.errorMessage);
           }
         },
         err => {
           console.log(err)
           if (err.status == 401) {
-            this.errorMessage = 'User does not exists, contact the administrator to create an account!';
+            this.errorMessage = 'El usuario no existe. Contacta a algún administrador para crear tu cuenta!';
             this.isLoginFailed = true;
           } else if (err.status === 404) {
-            this.errorMessage = 'No server found!';
+            this.errorMessage = 'Error de servidor';
             this.isLoginFailed = true;
           } else {
-            this.errorMessage = 'There is a problem with the credentials provided, contact administration';
+            this.errorMessage = 'Hay un error con las credenciales, revisa el correo de confirmación o contacta a algún administrador.';
             this.isLoginFailed = true;
           }
           this.openCustomPopUp(this.errorMessage);
         }
       );
+  }
+
+  public errorValidator = (controlName: string, errorName: string) =>{
+    return this.loginForm.controls[controlName].hasError(errorName);
   }
 
   reloadPage() {
@@ -95,7 +103,6 @@ export class LoginComponent implements OnInit {
 
   public send(form: NgForm): void {
     if (form.invalid) {
-      console.log('test 2');
       for (const control of Object.keys(form.controls)) {
         form.controls[control].markAsTouched();
       }

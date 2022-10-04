@@ -7,6 +7,7 @@ import { ProjectsService } from 'src/app/shared/services/projects.service';
 import { ActivatedRoute, Route, Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CustomPopUpService } from 'src/app/shared/services/custom-pop-up.service';
+import { PersonalInformationService } from 'src/app/shared/services/personal-information.service';
 
 
 
@@ -17,22 +18,45 @@ import { CustomPopUpService } from 'src/app/shared/services/custom-pop-up.servic
 })
 
 export class ProjectToQualifyDetailsComponent implements OnInit {
-  project_name =''
-  group_number: string | null = '1'
-  project_description = ''
-  group_members: string[] = []
-  category = ''
+  project_name ='';
+  group_number: string | null = '1';
+  project_description = '';
+  group_members: string[] = [];
+  category = '';
+  canJudgeQualifyTheProject = true;
 
   constructor(
     private dialog: MatDialog,
     private route: ActivatedRoute,
     private projects: ProjectsService,
     public modalService: NgbModal,
-    private customPopUpService: CustomPopUpService
+    private customPopUpService: CustomPopUpService,
+    private personalInformation: PersonalInformationService
     ) { }
 
     ngOnInit(): void {
-      this.group_number = this.route.snapshot.paramMap.get('project_id');
+      this.group_number = this.route.snapshot.paramMap.get('project_id')!;
+
+      this.projects.canJudgeQualifyTheProject(+this.group_number, this.personalInformation.getEmail()).subscribe(
+        data => {
+          if (data.status_code === 200 || data) 
+          {
+            this.canJudgeQualifyTheProject = false;
+          } else if (data.status === 400 && data.statusText === 'Bad Request'){
+            this.openCustomPopUp('Usted ya ha calificado el actual proyecto');
+            this.canJudgeQualifyTheProject = true;
+          }
+        },
+        err => {
+          if (err.status === 400 && err.statusText === 'Bad Request') 
+          {
+            this.canJudgeQualifyTheProject = true;
+          } else if (err.status === 200 || err) 
+          {
+            this.canJudgeQualifyTheProject = false;
+          }
+        }
+      );
 
       this.fillTheProjectInformation();
     }

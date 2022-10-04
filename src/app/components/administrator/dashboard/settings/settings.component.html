@@ -9,13 +9,19 @@
             <div class="col-6">
                 <mat-form-field class="full-width" appearance="outline">
                     <mat-label>Nombre</mat-label>
-                    <input type="text" matInput formControlName="NameFormControl">
+                    <input type="text" matInput formControlName="NameFormControl" required>
+                    <mat-error *ngIf="errorValidator('NameFormControl', 'required')">El nombre es obligatorio</mat-error>
+                    <mat-error *ngIf="errorValidator('NameFormControl', 'minlength')">Limite mínimo de 3 caracteres sin completar</mat-error>
+                    <mat-error *ngIf="errorValidator('NameFormControl', 'maxlength')">Limite máximo de 30 caracteres alcanzado</mat-error>
                 </mat-form-field>
             </div>
             <div class="col-6">
                 <mat-form-field class="full-width" appearance="outline">
                     <mat-label>Apellidos</mat-label>
-                    <input type="text" matInput formControlName="LastFormControl">
+                    <input type="text" matInput formControlName="LastFormControl" required>
+                    <mat-error *ngIf="errorValidator('LastFormControl', 'required')">Los apellidos son obligatorios</mat-error>
+                    <mat-error *ngIf="errorValidator('LastFormControl', 'maxlength')">Limite máximo de 100 caracteres alcanzado</mat-error>
+                    <mat-error *ngIf="errorValidator('LastFormControl', 'minlength')">Limite mínimo de 10 caracteres sin completar</mat-error>
                 </mat-form-field>
             </div>
         </div>
@@ -23,24 +29,31 @@
         <div class="rows">
             <mat-form-field class="full-width" appearance="outline">
                 <mat-label>Nombre de usuario</mat-label>
-                <input type="text" matInput formControlName="UsernameFormControl">
+                <input type="text" matInput formControlName="UsernameFormControl" required>
+                <mat-error *ngIf="errorValidator('UsernameFormControl', 'required')">El nombre de usuario es obligatorio</mat-error>
+                <mat-error *ngIf="errorValidator('UsernameFormControl', 'maxlength')">Limite máximo de 15 caracteres alcanzado</mat-error>
+                <mat-error *ngIf="errorValidator('UsernameFormControl', 'minlength')">Limite mínimo de 5 caracteres sin completar</mat-error>
             </mat-form-field>
     </div>
         <div class="rows">
                 <mat-form-field class="full-width" appearance="outline">
                     <mat-label>Teléfono</mat-label>
-                    <input type="phone" matInput formControlName="PhoneFormControl">
+                    <input type="phone" matInput formControlName="PhoneFormControl" placeholder="88888888" maxlength="8" required autocomplete="off" onkeypress="return (event.charCode >= 48 && event.charCode <= 57)" min="1" required>
+                    <mat-error *ngIf="errorValidator('PhoneFormControl', 'required')">El número de teléfono es obligatorio</mat-error>
+                    <mat-error *ngIf="errorValidator('PhoneFormControl', 'pattern')">El campo solo acepta números de teléfono validos</mat-error>
+                    <mat-error *ngIf="errorValidator('PhoneFormControl', 'maxlength')">Limite máximo de 8 caracteres alcanzado</mat-error>
+                    <mat-error *ngIf="errorValidator('PhoneFormControl', 'minlength')">Limite mínimo de 8 caracteres sin completar</mat-error>
                 </mat-form-field>
         </div>
         <div class="rows">
             <mat-form-field class="full-width" appearance="outline">
                 <mat-label>Correo electrónico</mat-label>
-                <input type="email" matInput formControlName="EmailFormControl" placeholder="abc@gmail.com">
+                <input type="email" matInput formControlName="EmailFormControl" placeholder="abc@gmail.com" readonly>
             </mat-form-field>
         </div>
 
         <div class="div-buttons">
-            <button mat-raised-button class="button" id="submit-button">Actualizar</button>
+            <button mat-raised-button class="button" id="submit-button">Actualizar información</button>
             <button mat-raised-button routerLink="/administrator/home" class="button cancel">Cancelar</button>
         </div>
     </form>

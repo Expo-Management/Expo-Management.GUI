@@ -8,13 +8,19 @@
             <div class="col-6">
                 <mat-form-field class="full-width" appearance="outline">
                     <mat-label>Nombre del profesor</mat-label>
-                    <input type="text" matInput formControlName="NameFormControl">
+                    <input type="text" matInput formControlName="NameFormControl" required>
+                    <mat-error *ngIf="errorValidator('NameFormControl', 'required')">El nombre del profesor es obligatorio</mat-error>
+                    <mat-error *ngIf="errorValidator('NameFormControl', 'minlength')">Limite mínimo de 3 caracteres sin completar</mat-error>
+                    <mat-error *ngIf="errorValidator('NameFormControl', 'maxlength')">Limite máximo de 30 caracteres alcanzado</mat-error>
                 </mat-form-field>
             </div>
             <div class="col-6">
                 <mat-form-field class="full-width" appearance="outline">
                     <mat-label>Apellidos del profesor</mat-label>
-                    <input type="text" matInput formControlName="LastFormControl">
+                    <input type="text" matInput formControlName="LastFormControl" required>
+                    <mat-error *ngIf="errorValidator('LastFormControl', 'required')">Los apellidos del profesor son obligatorios</mat-error>
+                    <mat-error *ngIf="errorValidator('LastFormControl', 'maxlength')">Limite máximo de 100 caracteres alcanzado</mat-error>
+                    <mat-error *ngIf="errorValidator('LastFormControl', 'minlength')">Limite mínimo de 10 caracteres sin completar</mat-error>
                 </mat-form-field>
             </div>
         </div>
@@ -23,13 +29,19 @@
             <div class="col-6">
                 <mat-form-field class="full-width" appearance="outline">
                     <mat-label>Nombre de usuario del profesor</mat-label>
-                    <input type="text" matInput formControlName="UsernameFormControl">
+                    <input type="text" matInput formControlName="UsernameFormControl" required>
+                    <mat-error *ngIf="errorValidator('UsernameFormControl', 'required')">El nombre de usuario es obligatorio</mat-error>
+                    <mat-error *ngIf="errorValidator('UsernameFormControl', 'maxlength')">Limite máximo de 15 caracteres alcanzado</mat-error>
+                    <mat-error *ngIf="errorValidator('UsernameFormControl', 'minlength')">Limite mínimo de 5 caracteres sin completar</mat-error>
                 </mat-form-field>
             </div>
             <div class="col-6">
                 <mat-form-field class="full-width" appearance="outline">
                     <mat-label>Cédula del profesor</mat-label>
-                    <input type="text" matInput formControlName="IdFormControl" placeholder="XX-XXXX-XXXX">
+                    <input type="text" matInput formControlName="IdFormControl" placeholder="XX-XXXX-XXXX" maxlength="9" required>
+                    <mat-error *ngIf="errorValidator('IdFormControl', 'required')">El número de cédula es obligatorio</mat-error>
+                    <mat-error *ngIf="errorValidator('IdFormControl', 'maxlength')">Limite máximo de 9 caracteres alcanzado</mat-error>
+                    <mat-error *ngIf="errorValidator('IdFormControl', 'minlength')">Limite mínimo de 9 caracteres sin completar</mat-error>
                 </mat-form-field>
             </div>
         </div>
@@ -37,17 +49,26 @@
         <div class="rows">
             <mat-form-field class="full-width" appearance="outline">
                 <mat-label>Correo del profesor</mat-label>
-                <input type="email" matInput formControlName="EmailFormControl" placeholder="abc@gmail.com">
+                <input type="email" matInput formControlName="EmailFormControl" placeholder="abc@gmail.com" required>
+                <mat-error *ngIf="errorValidator('EmailFormControl', 'required')">El correo electrónico del profesor es obligatorio</mat-error>
+                <mat-error *ngIf="errorValidator('EmailFormControl', 'email')">Se necesita una dirección de correo electrónico válida</mat-error>
+                <mat-error *ngIf="errorValidator('EmailFormControl', 'maxlength')">Limite máximo de 100 caracteres alcanzado</mat-error>
+                <mat-error *ngIf="errorValidator('EmailFormControl', 'minlength')">Limite mínimo de 5 caracteres sin completar</mat-error>
             </mat-form-field>
+
             <mat-form-field class="full-width" appearance="outline">
                 <mat-label>Teléfono del profesor</mat-label>
-                <input type="phone" matInput formControlName="PhoneFormControl" placeholder="8888-8888">
+                <input type="phone" matInput formControlName="PhoneFormControl" placeholder="88888888" maxlength="8" required autocomplete="off" onkeypress="return (event.charCode >= 48 && event.charCode <= 57)" min="1" required>
+                <mat-error *ngIf="errorValidator('PhoneFormControl', 'required')">El número de teléfono es obligatorio</mat-error>
+                <mat-error *ngIf="errorValidator('PhoneFormControl', 'pattern')">El campo solo acepta números de teléfono validos</mat-error>
+                <mat-error *ngIf="errorValidator('PhoneFormControl', 'maxlength')">Limite máximo de 8 caracteres alcanzado</mat-error>
+                <mat-error *ngIf="errorValidator('PhoneFormControl', 'minlength')">Limite mínimo de 8 caracteres sin completar</mat-error>
             </mat-form-field>
         </div>
 
         <div class="div-buttons">
             <button mat-raised-button routerLink="/administrator/manage-professors" class="button cancel">Cancelar</button>
-            <button mat-raised-button id="submit-button" class="button">Crear Profesor</button>
+            <button mat-raised-button id="submit-button" class="button">Registrar Profesor</button>
         </div>
     </form>
 </div>

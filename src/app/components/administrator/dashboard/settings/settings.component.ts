@@ -24,17 +24,24 @@ export class SettingsComponent implements OnInit {
   adminForm = new FormGroup({
     PhoneFormControl: new FormControl('', {
       validators: [
-        Validators.required
+        Validators.required,
+        Validators.maxLength(8),
+        Validators.minLength(8),
+        Validators.pattern("^((\\+91-?)|0)?[0-9]{8}$")
       ]
     }),
     NameFormControl: new FormControl('', {
       validators: [
-        Validators.required
+        Validators.required,
+        Validators.maxLength(30),
+        Validators.minLength(3)
       ]
     }),
     LastFormControl: new FormControl('', {
       validators: [
-        Validators.required
+        Validators.required,
+        Validators.maxLength(100),
+        Validators.minLength(10)
       ]
     }),
     EmailFormControl: new FormControl('', {
@@ -44,10 +51,16 @@ export class SettingsComponent implements OnInit {
     }),
     UsernameFormControl: new FormControl('', {
       validators: [
-        Validators.required
+        Validators.required,
+        Validators.maxLength(15),
+        Validators.minLength(5)
       ]
     })
   });
+
+  public errorValidator = (controlName: string, errorName: string) =>{
+    return this.adminForm.controls[controlName].hasError(errorName);
+  }
 
   constructor(
     private adminService: AdminService,
@@ -87,7 +100,7 @@ export class SettingsComponent implements OnInit {
       },
       err => {
         console.log(err);
-        this.openCustomPopUp('Ha ocurrido un error. Por favor, verifique el correo electrónico.');
+        this.openCustomPopUp('Ha ocurrido un error.');
       }
     )
   }
