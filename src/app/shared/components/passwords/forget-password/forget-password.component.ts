@@ -14,8 +14,10 @@ export class ForgetPasswordComponent implements OnInit {
   ForgetPasswordForm = new FormGroup({
     EmailFormControl: new FormControl('', {
       validators: [
-        Validators.required
-      ]
+        Validators.required,
+        Validators.email,
+        Validators.maxLength(100),
+        Validators.minLength(5)      ]
     })
  });
   
@@ -33,7 +35,6 @@ export class ForgetPasswordComponent implements OnInit {
   }
 
   onSubmit(){
-    console.log('test');
     this.authService.ForgetPassword(
       this.ForgetPasswordForm.controls['EmailFormControl'].value,
       localStorage.getItem('user-role')!
@@ -47,8 +48,8 @@ export class ForgetPasswordComponent implements OnInit {
         err => {
           console.log(err)
           if (err.status === 404) {
-            this.Message = 'El servidor no pudo ser encontrado!';
-            this.openCustomPopUp('El servidor no pudo ser encontrado');
+            this.Message = 'Correo no existe en el sistema!';
+            this.openCustomPopUp('Correo no existe en el sistema');
           } else {
             this.Message = err.error.message;
             this.openCustomPopUp(this.Message);

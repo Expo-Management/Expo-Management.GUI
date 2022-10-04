@@ -15,8 +15,8 @@ export class ResetPasswordComponent implements OnInit {
 
     NewPasswordFormControl: new FormControl('', {
       validators: [
-        Validators.required
-      ]
+        Validators.required,
+        Validators.pattern("^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,15}$")      ]
     }),
     ConfirmPasswordFormControl: new FormControl('', {
       validators: [
