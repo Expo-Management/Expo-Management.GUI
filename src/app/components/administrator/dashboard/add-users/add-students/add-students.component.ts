@@ -15,14 +15,14 @@ export class AddStudentsComponent implements OnInit {
       validators: [
         Validators.required,
         Validators.maxLength(30),
-        Validators.minLength(3)
+        Validators.minLength(3),
       ]
     }),
     LastFormControl: new FormControl('', {
       validators: [
         Validators.required,
         Validators.maxLength(100),
-        Validators.minLength(10)
+        Validators.minLength(10),
       ]
     }),
     UsernameFormControl: new FormControl('', {
@@ -45,7 +45,7 @@ export class AddStudentsComponent implements OnInit {
         Validators.required,
         Validators.email,
         Validators.maxLength(100),
-        Validators.minLength(5)
+        Validators.minLength(10)
       ]
     }),
     IdFormControl: new FormControl('', {
@@ -68,7 +68,7 @@ export class AddStudentsComponent implements OnInit {
 
   openCustomPopUp(message: string) {
     this.customPopUpService.confirm(
-      'Creación del estudiante', 
+      'Registro de estudiantes', 
       message,
       'administrator/manage-students'
       );
@@ -87,13 +87,15 @@ export class AddStudentsComponent implements OnInit {
       this.createStudentForm.controls['PhoneFormControl'].value
     ).subscribe(
       data => {
-        this.openCustomPopUp('Estudiante creado!');
+        this.openCustomPopUp('¡Estudiante creado!');
       },
       err => {
         if (err.status === 200) {
-          this.openCustomPopUp('Estudiante creado!');
+          this.openCustomPopUp('¡Estudiante creado!');
+        } else if (err.status === 403) {
+          this.openCustomPopUp('Inicie sesión con una cuenta de Administrador para acceder a esta sección.');
         } else {
-          this.openCustomPopUp('Ocurrio un error creando el estudiante.');
+          this.openCustomPopUp('Ocurrió un problema registrando al estudiante.');
         }
       }
     );

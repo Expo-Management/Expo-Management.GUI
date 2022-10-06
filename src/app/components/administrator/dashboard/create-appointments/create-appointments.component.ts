@@ -55,7 +55,7 @@ export class CreateAppointmentsComponent {
 
   openCustomPopUp(message: string) {
     this.customPopUpService.confirm(
-      'Creacion de evento', 
+      'Creación de evento', 
       message,
       'administrator/fair-calendar'
       );
@@ -95,11 +95,9 @@ export class CreateAppointmentsComponent {
     ).subscribe(
       data => {
         if (data.status == 200) {
-          this.httpMessage = 'Evento creado de manera exitosa!';
+          this.httpMessage = '¡Evento creado de manera exitosa!';
         } else if (data.status == 400) {
-          this.httpMessage = 'Revise los datos ingresados';
-        } else {
-          this.httpMessage = 'Hubo un error en el servidor, contacte a los desarrolladores.';
+          this.httpMessage = 'Revise los datos ingresados.';
         }
 
         this.openCustomPopUp(this.httpMessage);
@@ -107,11 +105,13 @@ export class CreateAppointmentsComponent {
       },
       err => {
         if (err.status == 200) {
-          this.httpMessage = 'Evento creado de manera exitosa!';
+          this.httpMessage = '¡Evento creado de manera exitosa!';
         } else if (err.status == 400) {
-          this.httpMessage = 'Revise los datos ingresados';
+          this.httpMessage = 'Revise los datos ingresados.';
+        } else if (err.status === 403) {
+          this.openCustomPopUp('Inicie sesión con una cuenta de Administrador para acceder a esta sección.');
         } else {
-          this.httpMessage = 'Hubo un error en el servidor, contacte a los desarrolladores.';
+          this.openCustomPopUp('Ocurrió un problema interno. Por favor, vuelve a intentarlo más tarde.');
         }
 
         this.openCustomPopUp(this.httpMessage);

@@ -47,7 +47,7 @@ export class AddJudgesComponent implements OnInit {
         Validators.required,
         Validators.email,
         Validators.maxLength(100),
-        Validators.minLength(5)
+        Validators.minLength(10)
       ]
     }),
     IdFormControl: new FormControl('', {
@@ -59,12 +59,14 @@ export class AddJudgesComponent implements OnInit {
     }),
     InstitutionFormControl: new FormControl('', {
       validators: [
-        Validators.required
+        Validators.required,
+        Validators.maxLength(50),
       ]
     }),
     PositionFormControl: new FormControl('', {
       validators: [
-        Validators.required
+        Validators.required,
+        Validators.maxLength(30),
       ]
     }),
   })
@@ -80,7 +82,7 @@ export class AddJudgesComponent implements OnInit {
 
   openCustomPopUp(message: string) {
     this.customPopUpService.confirm(
-      'Configuración de jueces', 
+      'Registro de jueces', 
       message,
       'administrator/manage-judges'
       );
@@ -97,18 +99,19 @@ export class AddJudgesComponent implements OnInit {
       this.createJudgeForm.controls['LastFormControl'].value,
       this.createJudgeForm.controls['EmailFormControl'].value,
       this.createJudgeForm.controls['PhoneFormControl'].value,
-      // this.createJudgeForm.controls['PasswordFormControl'].value,
       this.createJudgeForm.controls['InstitutionFormControl'].value,
       this.createJudgeForm.controls['PositionFormControl'].value,
     ).subscribe(
       data => {
-        this.openCustomPopUp('Juez creado!');
+        this.openCustomPopUp('¡Juez creado!');
       },
       err => {
         if (err.status === 200) {
-          this.openCustomPopUp('Juez creado!');
+          this.openCustomPopUp('¡Juez creado!');
+        } else if (err.status === 403) {
+          this.openCustomPopUp('Inicie sesión con una cuenta de Administrador para acceder a esta sección.');
         } else {
-          this.openCustomPopUp('Hubo un problema creando el usuario, intente mas tarde.');
+          this.openCustomPopUp('Ocurrió un problema registrando al juez.');
         }
       }
     );

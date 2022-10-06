@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CustomPopUpService } from 'src/app/shared/services/custom-pop-up.service';
 import { ProjectsService } from 'src/app/shared/services/projects.service';
 
 @Component({
@@ -13,13 +14,31 @@ export class ContentComponent implements OnInit {
   usersPerProject = []
 
   constructor(
-    private projectServices: ProjectsService
+    private projectServices: ProjectsService,
+    private customPopUpService: CustomPopUpService
   ) { }
+
+  public openCustomPopUp(message: string): Promise<boolean> {
+    return this.customPopUpService.confirm(
+      'Gráficos del sistema', 
+      message,
+      undefined
+      );
+  }
 
   ngOnInit(): void {
     this.projectServices.getProjectsByYear().subscribe(
       data => {
         this.projectsByYear = data
+      },
+      err => {
+        if (err.status === 404) {
+          this.openCustomPopUp('Aún no hay datos para mostrar en los gráficos.');
+        } else if (err.status === 403) {
+          this.openCustomPopUp('Inicie sesión con una cuenta de Administrador para acceder a esta sección.');
+        } else {
+          this.openCustomPopUp('Ocurrió un problema interno. Por favor, vuelve a intentarlo más tarde.');
+        }
       }
     )
 

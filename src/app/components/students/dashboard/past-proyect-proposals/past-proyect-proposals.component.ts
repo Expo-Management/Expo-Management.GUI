@@ -27,9 +27,11 @@ export class PastProyectProposalsComponent implements OnInit {
       } ,
       err => {
         if (err.status === 404) {
-          this.openCustomPopUp('No hay proyectos en el sistema');
+          this.openCustomPopUp('No hay proyectos antiguos en el sistema');
+        } else if (err.status === 403) {
+          this.openCustomPopUp('Inicie sesión con una cuenta de Estudiante para acceder a esta sección.');
         } else {
-          this.openCustomPopUp('Ocurrio un problema interno. Por favor, vuelve a intentarlo más tarde.');
+          this.openCustomPopUp('Ocurrió un problema interno. Por favor, vuelve a intentarlo más tarde.');
         }
       }
     );

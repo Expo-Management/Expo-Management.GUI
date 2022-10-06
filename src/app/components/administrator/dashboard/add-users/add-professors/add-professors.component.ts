@@ -53,7 +53,7 @@ export class AddProfessorsComponent implements OnInit {
         Validators.required,
         Validators.email,
         Validators.maxLength(100),
-        Validators.minLength(5)
+        Validators.minLength(10)
       ]
     }),
     IdFormControl: new FormControl('', {
@@ -76,7 +76,7 @@ export class AddProfessorsComponent implements OnInit {
 
   openCustomPopUp(message: string) {
     this.customPopUpService.confirm(
-      'Configuración de profesor', 
+      'Registro de profesores', 
       message,
       'administrator/manage-professors'
       );
@@ -93,16 +93,17 @@ export class AddProfessorsComponent implements OnInit {
       this.createProfessorForm.controls['LastFormControl'].value,
       this.createProfessorForm.controls['EmailFormControl'].value,
       this.createProfessorForm.controls['PhoneFormControl'].value
-    //,this.createProfessorForm.controls['PasswordFormControl'].value
     ).subscribe(
       data => {
-        this.openCustomPopUp('Profesor creado!');
+        this.openCustomPopUp('¡Profesor creado!');
       },
       err => {
         if (err.status === 200) {
-          this.openCustomPopUp('Profesor creado!');
+          this.openCustomPopUp('¡Profesor creado!');
+        } else if (err.status === 403) {
+          this.openCustomPopUp('Inicie sesión con una cuenta de Administrador para acceder a esta sección.');
         } else {
-          this.openCustomPopUp('Hubo un problema creando el usuario, intente mas tarde!');
+          this.openCustomPopUp('Ocurrió un problema registrando al profesor.');
         }
       }
     );

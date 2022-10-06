@@ -30,8 +30,10 @@ export class DocumentationComponent implements OnInit {
       err => {
         if (err.status === 404) {
           this.openCustomPopUp('No hay documentos en el sistema');
+        } else if (err.status === 403) {
+          this.openCustomPopUp('Inicie sesión con una cuenta de Administrador o Estudiante para acceder a esta sección.');
         } else {
-          this.openCustomPopUp('Ocurrio un problema interno. Por favor, vuelv e a intentarlo más tarde.');
+          this.openCustomPopUp('Ocurrió un problema interno. Por favor, vuelve a intentarlo más tarde.');
         }
       }
     );
