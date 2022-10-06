@@ -8,19 +8,19 @@
             <div class="col-6">
                 <mat-form-field class="full-width" appearance="outline">
                     <mat-label>Nombre del profesor</mat-label>
-                    <input type="text" matInput formControlName="NameFormControl" required>
+                    <input type="text" matInput formControlName="NameFormControl" required onkeypress="return /[a-zA-ZñÑá-úÁ-Ú]/i.test(event.key)">
                     <mat-error *ngIf="errorValidator('NameFormControl', 'required')">El nombre del profesor es obligatorio</mat-error>
-                    <mat-error *ngIf="errorValidator('NameFormControl', 'minlength')">Limite mínimo de 3 caracteres sin completar</mat-error>
-                    <mat-error *ngIf="errorValidator('NameFormControl', 'maxlength')">Limite máximo de 30 caracteres alcanzado</mat-error>
+                    <mat-error *ngIf="errorValidator('NameFormControl', 'minlength')">Límite mínimo de 3 caracteres sin completar</mat-error>
+                    <mat-error *ngIf="errorValidator('NameFormControl', 'maxlength')">Límite máximo de 30 caracteres alcanzado</mat-error>
                 </mat-form-field>
             </div>
             <div class="col-6">
                 <mat-form-field class="full-width" appearance="outline">
                     <mat-label>Apellidos del profesor</mat-label>
-                    <input type="text" matInput formControlName="LastFormControl" required>
+                    <input type="text" matInput formControlName="LastFormControl" required onkeypress="return /[a-zA-ZñÑá-úÁ-Ú ]/i.test(event.key)">
                     <mat-error *ngIf="errorValidator('LastFormControl', 'required')">Los apellidos del profesor son obligatorios</mat-error>
-                    <mat-error *ngIf="errorValidator('LastFormControl', 'maxlength')">Limite máximo de 100 caracteres alcanzado</mat-error>
-                    <mat-error *ngIf="errorValidator('LastFormControl', 'minlength')">Limite mínimo de 10 caracteres sin completar</mat-error>
+                    <mat-error *ngIf="errorValidator('LastFormControl', 'maxlength')">Límite máximo de 100 caracteres alcanzado</mat-error>
+                    <mat-error *ngIf="errorValidator('LastFormControl', 'minlength')">Límite mínimo de 10 caracteres sin completar</mat-error>
                 </mat-form-field>
             </div>
         </div>
@@ -30,8 +30,8 @@
                     <mat-label>Nombre de usuario del profesor</mat-label>
                     <input type="text" matInput formControlName="UsernameFormControl" required>
                     <mat-error *ngIf="errorValidator('UsernameFormControl', 'required')">El nombre de usuario es obligatorio</mat-error>
-                    <mat-error *ngIf="errorValidator('UsernameFormControl', 'maxlength')">Limite máximo de 15 caracteres alcanzado</mat-error>
-                    <mat-error *ngIf="errorValidator('UsernameFormControl', 'minlength')">Limite mínimo de 5 caracteres sin completar</mat-error>
+                    <mat-error *ngIf="errorValidator('UsernameFormControl', 'maxlength')">Límite máximo de 15 caracteres alcanzado</mat-error>
+                    <mat-error *ngIf="errorValidator('UsernameFormControl', 'minlength')">Límite mínimo de 5 caracteres sin completar</mat-error>
                 </mat-form-field>
             </div>
             <div class="col-6">
@@ -40,8 +40,8 @@
                     <input type="text" matInput formControlName="PhoneFormControl" placeholder="88888888" maxlength="8" required autocomplete="off" onkeypress="return (event.charCode >= 48 && event.charCode <= 57)" min="1" required>
                     <mat-error *ngIf="errorValidator('PhoneFormControl', 'required')">El número de teléfono es obligatorio</mat-error>
                     <mat-error *ngIf="errorValidator('PhoneFormControl', 'pattern')">El campo solo acepta números de teléfono validos</mat-error>
-                    <mat-error *ngIf="errorValidator('PhoneFormControl', 'maxlength')">Limite máximo de 8 caracteres alcanzado</mat-error>
-                    <mat-error *ngIf="errorValidator('PhoneFormControl', 'minlength')">Limite mínimo de 8 caracteres sin completar</mat-error>
+                    <mat-error *ngIf="errorValidator('PhoneFormControl', 'maxlength')">Límite máximo de 8 caracteres alcanzado</mat-error>
+                    <mat-error *ngIf="errorValidator('PhoneFormControl', 'minlength')">Límite mínimo de 8 caracteres sin completar</mat-error>
                 </mat-form-field>
             </div>
         </div>

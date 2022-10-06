@@ -3,7 +3,7 @@
         <h1>Protocolos de la Feria</h1>
         <div class="sub-container">
             <form class="example-form">
-            <button mat-raised-button class="add-button" (click)="AddProtocol()">Agregar</button>
+            <button mat-raised-button class="add-button" (click)="AddProtocol()">Agregar protocolo</button>
         </form>
         </div>
     </div>
@@ -19,7 +19,7 @@
             </ng-container>
              <!--Buttons-->
              <ng-container matColumnDef="id">
-                <th mat-header-cell *matHeaderCellDef></th>
+                <th mat-header-cell *matHeaderCellDef>Eliminar protocolo</th>
                 <td mat-cell *matCellDef="let element">
                     <mat-icon (click)="dialogDelete(element.id)" class="btn-delete">clear</mat-icon>
                 </td>

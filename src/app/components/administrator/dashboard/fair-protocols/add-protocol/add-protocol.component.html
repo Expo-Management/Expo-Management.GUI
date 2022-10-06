@@ -1,5 +1,5 @@
 <div class="modal-header">
-    <h2 class="modal-title" style="margin-bottom: 0;">Agregar protocolos de seguridad de la feria</h2>
+    <h2 class="modal-title" style="margin-bottom: 0;">Agregar protocolos de seguridad a la feria</h2>
     <button type="button" class="btn btn-outline-danger close-btn" (click)="dismiss()">&times;
     </button>
 </div>
@@ -9,15 +9,17 @@
             <div class="row">
                 <div class="col-12">
                     <mat-form-field class="full-width" appearance="legacy">
-                        <mat-label>Protolo de seguridad</mat-label>
-                        <input class="full-width" matInput formControlName="descriptionForm">
+                        <mat-label>Protocolo de seguridad</mat-label>
+                        <input class="full-width" matInput formControlName="descriptionForm" required onkeypress="return /[a-zA-ZñÑá-úÁ-Ú]/i.test(event.key)">
+                        <mat-error *ngIf="errorValidator('descriptionForm', 'required')">La descripción del protocolo es obligatoria</mat-error>
+                        <mat-error *ngIf="errorValidator('descriptionForm', 'maxlength')">Limite máximo de 250 caracteres alcanzado</mat-error>
                     </mat-form-field>
                 </div>
             </div>
         
         <div class="modal-footer ">
             <button mat-raised-button type="button" id="submit-button" class="cancel-button" (click)="decline()">Cancelar</button>
-            <button mat-raised-button type="button" id="submit-button" class="add-button" (click)="accept()">Crear Protocol</button>
+            <button mat-raised-button type="button" id="submit-button" class="add-button" (click)="accept()">Crear Protocolo</button>
         </div>
     </form>    
 </div>

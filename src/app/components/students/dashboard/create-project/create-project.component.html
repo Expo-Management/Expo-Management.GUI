@@ -7,39 +7,51 @@
             <div class="projects-form">
                 <form class="login-form variable-width" [formGroup]="newProjectForm" enctype="multipart/form-data">
                     <div class="form-flex-container">
+
                         <mat-form-field class="variable-width" appearance="outline">
                             <mat-label>Nombre del proyecto</mat-label>
-                            <input type="text" matInput formControlName="Name">
-                            <mat-error *ngIf="newProjectForm.controls['Name'].hasError('whitespace')">
-                                Por favor elimina los espacios en blanco del formulario 
-                            </mat-error>
+                            <input type="text" matInput formControlName="Name" required onkeypress="return /[a-zA-ZñÑá-úÁ-Ú]/i.test(event.key)">
+                            <mat-error *ngIf="newProjectForm.controls['Name'].hasError('whitespace')">Por favor elimina los espacios en blanco del formulario</mat-error>
+                            <mat-error *ngIf="errorValidator('Name', 'required')">El nombre del proyecto es obligatorio</mat-error>
+                            <mat-error *ngIf="errorValidator('Name', 'maxlength')">Límite máximo de 70 caracteres alcanzado</mat-error>
+                            <mat-error *ngIf="errorValidator('Name', 'minlength')">Límite mínimo de 3 caracteres sin completar</mat-error>
                         </mat-form-field>
-                        <mat-form-field class="variable-width" hintLabel="Max 400 caracteres" appearance="outline">
+
+                        <mat-form-field class="variable-width" appearance="outline">
                             <mat-label>Descripción del proyecto</mat-label>
-                            <textarea #txtArea matInput [maxlength]="400" formControlName="Description"></textarea>
-                            <mat-hint align="end">{{txtArea.value.length || 0}}/400</mat-hint>
+                            <textarea #txtArea matInput [maxlength]="400" formControlName="Description" required></textarea>
+                            <mat-error *ngIf="errorValidator('Description', 'required')">La descripción del proyecto es obligatoria</mat-error>
+                            <mat-error *ngIf="errorValidator('Description', 'maxlength')">Límite máximo de 400 caracteres alcanzado</mat-error>
+                            <mat-error *ngIf="errorValidator('Description', 'minlength')">Límite mínimo de 10 caracteres sin completar</mat-error>
+                            <!-- <mat-hint align="end">{{txtArea.value.length || 0}}/400</mat-hint> -->
                         </mat-form-field>
+
                         <mat-form-field class="variable-width" appearance="outline">
                             <mat-label>Líder del proyecto</mat-label>
-                            <input type="text" matInput formControlName="Lider">
-                            <mat-error *ngIf="newProjectForm.controls['Lider'].hasError('whitespace')">
-                                Por favor elimina los espacios en blanco del formulario 
-                            </mat-error>
+                            <input type="email" matInput formControlName="Lider" required>
+                            <mat-error *ngIf="newProjectForm.controls['Lider'].hasError('whitespace')">Por favor elimina los espacios en blanco del formulario</mat-error>
+                            <mat-error *ngIf="errorValidator('Lider', 'required')">El correo electrónico del líder es obligatorio</mat-error>
+                            <mat-error *ngIf="errorValidator('Lider', 'email')">Se necesita una dirección de correo electrónico válida</mat-error>
+                            <mat-error *ngIf="errorValidator('Lider', 'maxlength')">Límite máximo de 100 caracteres alcanzado</mat-error>
+                            <mat-error *ngIf="errorValidator('Lider', 'minlength')">Límite mínimo de 10 caracteres sin completar</mat-error>
                         </mat-form-field>
+
                         <mat-form-field class="variable-width" appearance="outline">
                             <mat-label>Segundo integrante del grupo</mat-label>
-                            <input type="text" matInput formControlName="Member2">
-                            <mat-error *ngIf="newProjectForm.controls['Member2'].hasError('whitespace')">
-                                Por favor elimina los espacios en blanco del formulario 
-                            </mat-error>
+                            <input type="email" matInput formControlName="Member2">
+                            <mat-error *ngIf="errorValidator('Member2', 'email')">Se necesita una dirección de correo electrónico válida</mat-error>
+                            <mat-error *ngIf="errorValidator('Member2', 'maxlength')">Límite máximo de 100 caracteres alcanzado</mat-error>
+                            <mat-error *ngIf="errorValidator('Member2', 'minlength')">Límite mínimo de 10 caracteres sin completar</mat-error>
                         </mat-form-field>
+
                         <mat-form-field class="variable-width" appearance="outline">
                             <mat-label>Tercer integrante del grupo</mat-label>
-                            <input type="text" matInput formControlName="Member3">
-                            <mat-error *ngIf="newProjectForm.controls['Member3'].hasError('whitespace')">
-                                Por favor elimina los espacios en blanco del formulario 
-                            </mat-error>
+                            <input type="email" matInput formControlName="Member3">
+                            <mat-error *ngIf="errorValidator('Member3', 'email')">Se necesita una dirección de correo electrónico válida</mat-error>
+                            <mat-error *ngIf="errorValidator('Member3', 'maxlength')">Límite máximo de 100 caracteres alcanzado</mat-error>
+                            <mat-error *ngIf="errorValidator('Member3', 'minlength')">Límite mínimo de 10 caracteres sin completar</mat-error>
                         </mat-form-field>
+
                         <mat-form-field class="variable-width" appearance="outline" >
                             <mat-label>Categoría del proyecto</mat-label>
                             <mat-select formControlName="Category" name="Category">
@@ -47,10 +59,9 @@
                                     {{category.description}}   
                                 </mat-option>
                             </mat-select>
-                            <mat-error *ngIf="!newProjectForm.controls['Category'].valid && newProjectForm.controls['Category'].touched">
-                                La categoría es requerida
-                              </mat-error>
+                            <mat-error *ngIf="!newProjectForm.controls['Category'].valid && newProjectForm.controls['Category'].touched">La categoría es requerida</mat-error>
                         </mat-form-field>
+
                         <mat-form-field class="variable-width invisible" appearance="outline">
                             <mat-label></mat-label>
                             <input type="text" matInput formControlName="IdFair">
