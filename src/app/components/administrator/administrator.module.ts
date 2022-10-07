@@ -19,8 +19,8 @@ import { FairCalendarComponent } from './dashboard/fair-calendar/fair-calendar.c
 import { CreateAppointmentsComponent } from './dashboard/create-appointments/create-appointments.component';
 //settings
 import { SettingsComponent } from './dashboard/settings/settings.component';
-import { ForgetPasswordComponent } from '../../shared/components/passwords/forget-password/forget-password.component';
-import { ResetPasswordComponent } from '../../shared/components/passwords/reset-password/reset-password.component';
+import { ForgetPasswordComponent } from './dashboard/settings/forget-password/forget-password.component';
+import { ResetPasswordComponent } from './dashboard/settings/reset-password/reset-password.component';
 //calendar imports
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
@@ -44,6 +44,7 @@ import { LogsComponent } from './dashboard/logs/logs.component';
 import { MatNativeDateModule } from '@angular/material/core';
 import { FairProtocolsComponent } from './dashboard/fair-protocols/fair-protocols.component';
 import { AddProtocolComponent } from './dashboard/fair-protocols/add-protocol/add-protocol.component';
+
 
 @NgModule({
   declarations: [
@@ -76,7 +77,9 @@ import { AddProtocolComponent } from './dashboard/fair-protocols/add-protocol/ad
     EditProfessorsComponent,
     //dialogs
     DeleteDialogComponent,
-    AddProtocolComponent
+    AddProtocolComponent,
+    ForgetPasswordComponent,
+    ResetPasswordComponent
     
   ],
   imports: [
