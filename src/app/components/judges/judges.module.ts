@@ -18,8 +18,8 @@ import { SettingsComponent } from './dashboard/settings/settings.component';
 import { LoggedInGuard } from 'src/app/shared/guards/logged-in.guard';
 import { StudentsListComponent } from './dashboard/students-list/students-list.component';
 import { OtherQualificationsComponent } from './dashboard/projects-list/other-qualifications/other-qualifications.component';
-import { ResetPasswordComponent } from 'src/app/shared/components/passwords/reset-password/reset-password.component';
-import { ForgetPasswordComponent } from 'src/app/shared/components/passwords/forget-password/forget-password.component';
+import { ForgetPasswordComponent } from './dashboard/settings/forget-password/forget-password.component';
+import { ResetPasswordComponent } from './dashboard/settings/reset-password/reset-password.component';
 
 
 @NgModule({
@@ -38,7 +38,9 @@ import { ForgetPasswordComponent } from 'src/app/shared/components/passwords/for
     TopMenuComponent,
     SettingsComponent,
     StudentsListComponent,
-    OtherQualificationsComponent
+    OtherQualificationsComponent,
+    ForgetPasswordComponent,
+    ResetPasswordComponent
   ],
   imports: [
     ReactiveFormsModule,
