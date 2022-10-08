@@ -53,7 +53,7 @@ export class AddStudentsComponent implements OnInit {
         Validators.required,
         Validators.maxLength(9),
         Validators.minLength(9),
-        Validators.pattern("^((\\+91-?)|0)?[0-9]{8}$")
+        Validators.pattern("^((\\+91-?)|0)?[0-9]{9}$")
       ]
     }),
   })
