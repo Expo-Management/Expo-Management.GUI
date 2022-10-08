@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
-import { isThisSecond } from 'date-fns';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { CustomPopUpService } from 'src/app/shared/services/custom-pop-up.service';
 import { PersonalInformationService } from 'src/app/shared/services/personal-information.service';
 import { TokenStorageService } from 'src/app/shared/services/token-storage.service';
-import { environment } from 'src/environments/environment';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -34,7 +33,8 @@ export class LoginComponent implements OnInit {
     private authService: AuthService,
     private token: TokenStorageService,
     private user_info: PersonalInformationService,
-    private customPopUpService: CustomPopUpService
+    private customPopUpService: CustomPopUpService,
+    private router: Router
   ) {
     this.tokenCaptcha = undefined;
   }
@@ -50,6 +50,7 @@ export class LoginComponent implements OnInit {
   isLoggedIn = false;
   isLoginFailed = false;
   errorMessage = '';
+  route = '';
 
   onSubmit() {
     console.log('test');
@@ -99,6 +100,9 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     console.log(localStorage);
+
+    this.route = this.router.url
+    console.log('current route'+this.route)
   }
 
   public send(form: NgForm): void {

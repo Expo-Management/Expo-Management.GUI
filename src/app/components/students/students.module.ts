@@ -24,8 +24,8 @@ import { FairNewsComponent } from './dashboard/fair-news/fair-news.component';
 import { ClaimsComponent } from './dashboard/project-details/claims/claims.component';
 import { QualificationComponent } from './dashboard/project-details/qualification/qualification.component';
 import { RecommendationsComponent } from './dashboard/recommendations/recommendations.component';
-import { ForgetPasswordComponent } from 'src/app/shared/components/passwords/forget-password/forget-password.component';
-import { ResetPasswordComponent } from 'src/app/shared/components/passwords/reset-password/reset-password.component';
+import { ResetPasswordComponent } from './dashboard/settings/reset-password/reset-password.component';
+import { ForgetPasswordComponent } from './dashboard/settings/forget-password/forget-password.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +47,8 @@ import { ResetPasswordComponent } from 'src/app/shared/components/passwords/rese
     ClaimsComponent,
     QualificationComponent,
     RecommendationsComponent,
+    ResetPasswordComponent,
+    ForgetPasswordComponent,
   ],
   imports: [
     ReactiveFormsModule,

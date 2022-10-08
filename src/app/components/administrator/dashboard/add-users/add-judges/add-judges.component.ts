@@ -45,7 +45,7 @@ export class AddJudgesComponent implements OnInit {
     EmailFormControl: new FormControl('', {
       validators: [
         Validators.required,
-        Validators.email,
+        Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$"),
         Validators.maxLength(100),
         Validators.minLength(10)
       ]

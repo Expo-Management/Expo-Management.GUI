@@ -1,13 +1,20 @@
+
 <div class="container-auth container-flex" id="container">
     <div class="image-container">
     </div>
     <div class="form-container">
         <div class="form-header">
-            <h1>{{ title }}</h1>
+            <ng-container *ngIf="route === '/auth/login'; then trueCondition else elseTemplate"></ng-container>
+            <ng-template #trueCondition>
+                <h1>{{ title }}</h1>
+            </ng-template>
+            <ng-template #elseTemplate>
+                <h1>Cambio de contraseña</h1>
+            </ng-template>
         </div>
         <div class="container-flex ">
             <div class="sign-in-container " *ngIf="!show_register ">
-                <app-login></app-login>
+                <router-outlet></router-outlet>
             </div>
         </div>
     </div>
