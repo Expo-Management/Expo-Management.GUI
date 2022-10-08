@@ -26,11 +26,14 @@ form.login-form {
 }
 
 #sumbit-button {
-    width: 83%;
+    width: 25%;
     height: 3rem;
     background-color: #354F52;
     margin: 2rem auto;
     border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .password {
