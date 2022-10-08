@@ -184,7 +184,7 @@ export class CreateProjectComponent implements OnInit {
     this.customPopUpService.confirm(
       'Creación de proyectos', 
       message,
-      'student/new-project'
+      'student/current-projects'
       );
   }
 }
