@@ -10,7 +10,7 @@
 
                         <mat-form-field class="variable-width" appearance="outline">
                             <mat-label>Nombre del proyecto</mat-label>
-                            <input type="text" matInput formControlName="Name" required onkeypress="return /[a-zA-ZñÑá-úÁ-Ú]/i.test(event.key)">
+                            <input type="text" matInput formControlName="Name" required onkeypress="return /[a-zA-ZñÑá-úÁ-Ú ]/i.test(event.key)">
                             <mat-error *ngIf="newProjectForm.controls['Name'].hasError('whitespace')">Por favor elimina los espacios en blanco del formulario</mat-error>
                             <mat-error *ngIf="errorValidator('Name', 'required')">El nombre del proyecto es obligatorio</mat-error>
                             <mat-error *ngIf="errorValidator('Name', 'maxlength')">Límite máximo de 70 caracteres alcanzado</mat-error>
@@ -38,7 +38,9 @@
 
                         <mat-form-field class="variable-width" appearance="outline">
                             <mat-label>Segundo integrante del grupo</mat-label>
-                            <input type="email" matInput formControlName="Member2">
+                            <input type="email" matInput formControlName="Member2" required>
+                            <mat-error *ngIf="newProjectForm.controls['Lider'].hasError('whitespace')">Por favor elimina los espacios en blanco del formulario</mat-error>
+                            <mat-error *ngIf="errorValidator('Lider', 'required')">El correo electrónico del segundo integrante es obligatorio</mat-error>
                             <mat-error *ngIf="errorValidator('Member2', 'email')">Se necesita una dirección de correo electrónico válida</mat-error>
                             <mat-error *ngIf="errorValidator('Member2', 'maxlength')">Límite máximo de 100 caracteres alcanzado</mat-error>
                             <mat-error *ngIf="errorValidator('Member2', 'minlength')">Límite mínimo de 10 caracteres sin completar</mat-error>
@@ -46,7 +48,9 @@
 
                         <mat-form-field class="variable-width" appearance="outline">
                             <mat-label>Tercer integrante del grupo</mat-label>
-                            <input type="email" matInput formControlName="Member3">
+                            <input type="email" matInput formControlName="Member3" required>
+                            <mat-error *ngIf="newProjectForm.controls['Lider'].hasError('whitespace')">Por favor elimina los espacios en blanco del formulario</mat-error>
+                            <mat-error *ngIf="errorValidator('Lider', 'required')">El correo electrónico del tercer integrante es obligatorio</mat-error>
                             <mat-error *ngIf="errorValidator('Member3', 'email')">Se necesita una dirección de correo electrónico válida</mat-error>
                             <mat-error *ngIf="errorValidator('Member3', 'maxlength')">Límite máximo de 100 caracteres alcanzado</mat-error>
                             <mat-error *ngIf="errorValidator('Member3', 'minlength')">Límite mínimo de 10 caracteres sin completar</mat-error>

@@ -44,6 +44,7 @@ export class CreateProjectComponent implements OnInit {
     }),
     Member2: new FormControl('', {
       validators: [
+        Validators.required, this.noWhitespaceValidator,
         Validators.email,
         Validators.maxLength(100),
         Validators.minLength(10)
@@ -51,6 +52,7 @@ export class CreateProjectComponent implements OnInit {
     }),
     Member3: new FormControl('', {
       validators: [
+        Validators.required, this.noWhitespaceValidator,
         Validators.email,
         Validators.maxLength(100),
         Validators.minLength(10)
