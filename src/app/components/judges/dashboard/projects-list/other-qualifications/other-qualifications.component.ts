@@ -38,10 +38,16 @@ export class OtherQualificationsComponent implements OnInit {
         this.dataSource = new MatTableDataSource(data);
          console.log(this.dataSource)
     },
-  err => {
-  console.log(err);
+    err => {
+      if (err.status === 404) {
+          this.openCustomPopUp('No hay calificaciones');
+        } else if (err.status === 403) {
+          this.openCustomPopUp('Inicie sesión con una cuenta de Juez para acceder a esta sección.');
+        } else {
+          this.openCustomPopUp('Ocurrió un problema interno. Por favor, vuelve a intentarlo más tarde.');
+        }
       }
-      );
+    );
   }
 
   public dismiss() {
@@ -62,7 +68,7 @@ export class OtherQualificationsComponent implements OnInit {
   
  public openCustomPopUp(message: string): Promise<boolean> {
     return this.customPopUpService.confirm(
-      'Proyectos a calificar', 
+      'Calificaciones de otros jueces', 
       message,
       'judges/projects-list'
       );

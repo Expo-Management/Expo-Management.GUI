@@ -18,9 +18,11 @@ export class RecomendationsPopupComponent implements OnInit {
   httpMessage: string = '';
 
   createRecommendationForm = new FormGroup({
-    recommendation: new FormControl(
-      '', {
-      validators: Validators.required
+    recommendation: new FormControl('', {
+      validators: [
+        Validators.required,
+        Validators.maxLength(400)
+      ]
     })
   });
 
