@@ -37,7 +37,7 @@ export class FairNewsComponent implements OnInit {
 
   openCustomPopUp(message: string) {
     this.customPopUpService.confirm(
-      'Creación de proyectos', 
+      'Noticias de la feria', 
       message,
       'student/fair-news'
       );
