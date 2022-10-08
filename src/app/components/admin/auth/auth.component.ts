@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./auth.component.css']
 })
 export class AuthComponent implements OnInit {
-  title: string = 'Bienvenido a Expo Ingenieria App';
+  title: string = 'Bienvenido a Expo Management';
   tryingLoggin: boolean = true;
   show_register: boolean = false;
   signUpButton: any;
