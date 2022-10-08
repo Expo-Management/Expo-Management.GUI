@@ -26,6 +26,7 @@ import { QualificationComponent } from './dashboard/project-details/qualificatio
 import { RecommendationsComponent } from './dashboard/recommendations/recommendations.component';
 import { ResetPasswordComponent } from './dashboard/settings/reset-password/reset-password.component';
 import { ForgetPasswordComponent } from './dashboard/settings/forget-password/forget-password.component';
+import { ProjectsComponent } from './dashboard/projects/projects.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { ForgetPasswordComponent } from './dashboard/settings/forget-password/fo
     RecommendationsComponent,
     ResetPasswordComponent,
     ForgetPasswordComponent,
+    ProjectsComponent
   ],
   imports: [
     ReactiveFormsModule,
@@ -74,8 +76,9 @@ import { ForgetPasswordComponent } from './dashboard/settings/forget-password/fo
           { path: 'saved-documents', component: CurrentDocumentationComponent },
           { path: 'project-mentions', component: MentionsComponent },
           { path: 'settings', component: SettingsComponent },
-          { path: 'forget-password', component: ForgetPasswordComponent},
-          { path: 'reset-password', component: ResetPasswordComponent},
+          { path: 'forget-password', component: ForgetPasswordComponent },
+          { path: 'reset-password', component: ResetPasswordComponent },
+          { path: 'projects/:project_id', component: ProjectsComponent },
           { path: '', redirectTo: 'home', pathMatch: 'full' },
           { path: '**', redirectTo: 'home', pathMatch: 'full' }
         ],
