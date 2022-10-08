@@ -40,8 +40,10 @@ export class FairProtocolsComponent implements OnInit {
           err => {
             if (err.status === 404) {
               this.openCustomPopUp('No hay categorías en el sistema.');
+            } else if (err.status === 403) {
+              this.openCustomPopUp('Inicie sesión con una cuenta de Administrador o Estudiante para acceder a esta sección.');
             } else {
-              this.openCustomPopUp('Ocurrio un problema interno. Por favor, vuelve a intentarlo más tarde.');
+              this.openCustomPopUp('Ocurrió un problema interno. Por favor, vuelve a intentarlo más tarde.');
             }
           }
         );
@@ -62,8 +64,10 @@ export class FairProtocolsComponent implements OnInit {
           err => {
             if (err.status === 200) {
               this.protocolDeleted();
+            } else if (err.status === 403) {
+              this.openCustomPopUp('Inicie sesión con una cuenta de Administrador para acceder a esta sección.');
             } else {
-              this.openCustomPopUp('Ocurrio un problema interno. Por favor, vuelve a intentarlo más tarde.');
+              this.openCustomPopUp('Ocurrió un problema interno. Por favor, vuelve a intentarlo más tarde.');
             }
           }
         );
@@ -71,7 +75,7 @@ export class FairProtocolsComponent implements OnInit {
   }
 
   private protocolDeleted() {
-    this.openCustomPopUp('!Protocolos eliminada!');
+    this.openCustomPopUp('!Protocolo eliminado!');
   }
 
   AddProtocol(): void  {

@@ -28,17 +28,17 @@ export class SideBarComponent implements OnInit {
   fair_options = [
     { 
       icon: 'assignment',
-      text: 'Documentos de la feria',
+      text: 'Documentación de la feria',
       link: 'fair-documents',
     },
     { 
       icon: 'donut_large',
-      text: 'Categorías de la feria',
+      text: 'Categorías en la feria',
       link: 'fair-categories',
     },
     { 
       icon: 'security',
-      text: 'Protocolos de la feria',
+      text: 'Protocolos de seguridad',
       link: 'fair-protocols',
     },
     { 
@@ -56,7 +56,7 @@ export class SideBarComponent implements OnInit {
     },
     { 
       icon: 'info',
-      text: 'Bitacora del sistema',
+      text: 'Bitacora de errores',
       link: 'logs',
     }
   ]

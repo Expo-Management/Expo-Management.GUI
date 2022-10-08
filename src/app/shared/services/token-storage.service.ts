@@ -10,6 +10,7 @@ const REFRESH_TOKEN_KEY = 'refresh-token'
 export class TokenStorageService {
   public signOut(): void {
     localStorage.clear();
+    window.location.reload();
   }
 
   public saveAccessToken(token: string): void {
@@ -28,5 +29,10 @@ export class TokenStorageService {
 
   public getRefreshToken(): string | null {
     return localStorage.getItem(REFRESH_TOKEN_KEY);
+  }
+
+  public refreshTokens(): void {
+    localStorage.removeItem(TOKEN_KEY);
+    localStorage.removeItem(REFRESH_TOKEN_KEY);
   }
 }

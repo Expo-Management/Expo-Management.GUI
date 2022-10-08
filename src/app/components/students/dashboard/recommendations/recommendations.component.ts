@@ -31,8 +31,10 @@ export class RecommendationsComponent implements OnInit {
       err => {
         if (err.status === 500){
           this.openCustomPopUp('Hubo un problema contactando los servidores, contacte a administracion.');
+        } else if (err.status === 403) {
+          this.openCustomPopUp('Inicie sesión con una cuenta de Juez o Estudiante para acceder a esta sección.');
         } else {
-          this.openCustomPopUp('No hay recommendaciones para este proyecto');
+          this.openCustomPopUp('Ocurrió un problema interno. Por favor, vuelve a intentarlo más tarde.');
         }
       }
     )
@@ -56,7 +58,7 @@ export class RecommendationsComponent implements OnInit {
 
   openCustomPopUp(message: string) {
     this.customPopUpService.confirm(
-      'Detalles de las recomendaciones', 
+      'Desglose de recomendaciones', 
       message,
       `/student/project/${this.project_number}`);
   }

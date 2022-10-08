@@ -79,7 +79,7 @@ export class JWTInterceptor implements HttpInterceptor {
           catchError((err) => {
             if (err.status === 401) {
               this.isRefreshing = false;
-              this.tokenService.signOut();
+              this.tokenService.refreshTokens();
             }
             return throwError(err);
           })

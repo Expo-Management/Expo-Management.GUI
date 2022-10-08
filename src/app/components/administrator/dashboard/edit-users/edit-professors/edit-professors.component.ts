@@ -48,7 +48,7 @@ export class EditProfessorsComponent implements OnInit {
         Validators.required,
         Validators.email,
         Validators.maxLength(100),
-        Validators.minLength(5)
+        Validators.minLength(10)
       ]
     }),
     UsernameFormControl: new FormControl('', {
@@ -95,6 +95,13 @@ export class EditProfessorsComponent implements OnInit {
         this.adminForm.controls['EmailFormControl'].setValue(data.email);
         this.adminForm.controls['UsernameFormControl'].setValue(data.userName);
         this.adminForm.controls['PhoneFormControl'].setValue(data.phoneNumber);
+      },
+      err => {
+        if (err.status === 403) {
+          this.openCustomPopUp('Inicie sesión con una cuenta de Administrador para acceder a esta sección.');
+        } else {
+          this.openCustomPopUp('Ocurrió un problema interno. Por favor, vuelve a intentarlo más tarde.');
+        }
       }
     )
   }
@@ -108,11 +115,11 @@ export class EditProfessorsComponent implements OnInit {
       this.adminForm.controls['PhoneFormControl'].value
     ).subscribe(
       data => {
-        this.openCustomPopUp('¡Profesor actualizado exitsamente!');
+        this.openCustomPopUp('¡Profesor actualizado exitosamente!');
       },
       err => {
         console.log(err);
-        this.openCustomPopUp('Error al actualizar el profesor. Por favor verifíque el correo electrónico');
+        this.openCustomPopUp('Error al actualizar el profesor. Verifíque las credenciales');
       }
     )
   }

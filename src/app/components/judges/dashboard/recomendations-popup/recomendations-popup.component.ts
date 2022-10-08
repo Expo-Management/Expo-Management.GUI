@@ -18,9 +18,11 @@ export class RecomendationsPopupComponent implements OnInit {
   httpMessage: string = '';
 
   createRecommendationForm = new FormGroup({
-    recommendation: new FormControl(
-      '', {
-      validators: Validators.required
+    recommendation: new FormControl('', {
+      validators: [
+        Validators.required,
+        Validators.maxLength(400)
+      ]
     })
   });
 
@@ -80,8 +82,10 @@ export class RecomendationsPopupComponent implements OnInit {
           console.log(err)
           if (err.status == 400) {
             this.httpMessage = 'Revise los datos ingresados';
+          } else if (err.status === 403) {
+            this.openCustomPopUp('Inicie sesión con una cuenta de Juez para acceder a esta sección.');
           } else {
-            this.httpMessage = 'Hubo un error en el servidor, contacte a los desarrolladores.';
+            this.openCustomPopUp('Ocurrió un problema interno. Por favor, vuelve a intentarlo más tarde.');
           }
           this.openCustomPopUp(this.httpMessage);
         }

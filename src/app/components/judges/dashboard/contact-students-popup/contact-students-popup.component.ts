@@ -32,8 +32,10 @@ export class ContactStudentsPopupComponent implements OnInit {
       err => {
         if (err.status === 404) {
           this.openCustomPopUp('No hay estudiantes registrados.');
+        } else if (err.status === 403) {
+          this.openCustomPopUp('Inicie sesión con una cuenta de Juez para acceder a esta sección.');
         } else {
-          this.openCustomPopUp('Ocurrio un problema interno. Por favor, vuelve a intentarlo más tarde.');
+          this.openCustomPopUp('Ocurrió un problema interno. Por favor, vuelve a intentarlo más tarde.');
         }
       }
     );

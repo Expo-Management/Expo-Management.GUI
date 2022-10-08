@@ -41,7 +41,7 @@ export class EditJudgesComponent implements OnInit {
         Validators.required,
         Validators.email,
         Validators.maxLength(100),
-        Validators.minLength(5)
+        Validators.minLength(10)
       ]
     }),
     UsernameFormControl: new FormControl('', {
@@ -94,6 +94,13 @@ export class EditJudgesComponent implements OnInit {
         this.judgeForm.controls['EmailFormControl'].setValue(data.email);
         this.judgeForm.controls['UsernameFormControl'].setValue(data.userName);
         this.judgeForm.controls['PhoneFormControl'].setValue(data.phoneNumber);
+      },
+      err => {
+        if (err.status === 403) {
+          this.openCustomPopUp('Inicie sesión con una cuenta de Administrador para acceder a esta sección.');
+        } else {
+          this.openCustomPopUp('Ocurrió un problema interno. Por favor, vuelve a intentarlo más tarde.');
+        }
       }
     )
   }
@@ -111,7 +118,7 @@ export class EditJudgesComponent implements OnInit {
       },
       err => {
         console.log(err);
-        this.openCustomPopUp('Error al actualizar el juez. Por favor verifíque el correo electrónico');
+        this.openCustomPopUp('Error al actualizar el juez. Verifíque las credenciales');
       }
     )
   }

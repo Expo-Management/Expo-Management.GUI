@@ -60,7 +60,9 @@ export class ClaimsComponent implements OnInit {
       this.createClaimForm.get('claim')?.value).subscribe(
         data => {
           console.log(data)
-          if (data.status == 500) {
+          if (data.status === 403) {
+            this.openCustomPopUp('Inicie sesión con una cuenta de Estudiante para acceder a esta sección.');
+          } else if (data.status == 500) {
             this.httpMessage = 'Hubo un error en el servidor, contacte a los desarrolladores.';
           } else if (data.status == 400) {
             this.httpMessage = 'Revise los datos ingresados';
@@ -73,8 +75,10 @@ export class ClaimsComponent implements OnInit {
           console.log(err)
           if (err.status == 400) {
             this.httpMessage = 'Revise los datos ingresados';
+          } else if (err.status === 403) {
+            this.openCustomPopUp('Inicie sesión con una cuenta de Estudiante para acceder a esta sección.');
           } else {
-            this.httpMessage = 'Hubo un error en el servidor, contacte a los desarrolladores.';
+            this.openCustomPopUp('Ocurrió un problema interno. Por favor, vuelve a intentarlo más tarde.');
           }
           this.openCustomPopUp(this.httpMessage);
         }

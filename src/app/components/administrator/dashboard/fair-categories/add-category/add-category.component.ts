@@ -13,9 +13,12 @@ export class AddCategoryComponent implements OnInit {
   httpMessage: string = '';
 
   categoryForm = new FormGroup({
-    descriptionForm: new FormControl(
-      '', {
-      validators: Validators.required
+    descriptionForm: new FormControl('', {
+      validators: [
+        Validators.required,
+        Validators.maxLength(20),
+        Validators.minLength(2),
+      ]
     })
   });
 
@@ -43,6 +46,7 @@ export class AddCategoryComponent implements OnInit {
   public accept() {
     this.createCategory()
     this.activeModal.close(true);
+    window.location.reload();
   }
 
   openCustomPopUp(message: string) {
@@ -50,6 +54,10 @@ export class AddCategoryComponent implements OnInit {
       'Creación de categorías', 
       message,
       'administrator/fair-categories');
+  }
+
+  public errorValidator = (controlName: string, errorName: string) =>{
+    return this.categoryForm.controls[controlName].hasError(errorName);
   }
 
   createCategory() {
@@ -70,8 +78,10 @@ export class AddCategoryComponent implements OnInit {
           console.log(err)
           if (err.status == 400) {
             this.httpMessage = 'Revise los datos ingresados';
+          } else if (err.status === 403) {
+            this.openCustomPopUp('Inicie sesión con una cuenta de Administrador para acceder a esta sección.');
           } else {
-            this.httpMessage = 'Hubo un error en el servidor, contacte a los desarrolladores.';
+            this.openCustomPopUp('Ocurrió un problema interno. Por favor, vuelve a intentarlo más tarde.');
           }
           this.openCustomPopUp(this.httpMessage);
         }

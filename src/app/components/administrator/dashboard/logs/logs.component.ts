@@ -24,8 +24,10 @@ export class LogsComponent implements OnInit {
       err => {
         if (err.status === 404) {
           this.openCustomPopUp('No hay errores registrados.');
+        } else if (err.status === 403) {
+          this.openCustomPopUp('Inicie sesión con una cuenta de Administrador para acceder a esta sección.');
         } else {
-          this.openCustomPopUp('Hubo un problema interno, por favor vuelve a intentarlo mas tarde.');
+          this.openCustomPopUp('Ocurrió un problema interno. Por favor, vuelve a intentarlo más tarde.');
         }
       }
     );
@@ -33,7 +35,7 @@ export class LogsComponent implements OnInit {
 
   public openCustomPopUp(message: string): Promise<boolean> {
     return this.customPopUpService.confirm(
-      'Bitacora del sistema', 
+      'Bitacora del erroes', 
       message,
       undefined
       );

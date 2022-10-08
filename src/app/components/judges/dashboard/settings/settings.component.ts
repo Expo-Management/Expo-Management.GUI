@@ -85,7 +85,11 @@ export class SettingsComponent implements OnInit {
           this.judgeForm.controls['UsernameFormControl'].setValue(data.userName);
         },
         err => {
-          console.log(err);
+          if (err.status === 403) {
+            this.openCustomPopUp('Inicie sesión con una cuenta de Juez para acceder a esta sección.');
+          } else {
+            this.openCustomPopUp('Ocurrió un problema interno. Por favor, vuelve a intentarlo más tarde.');
+          }
         },
       )
     }
