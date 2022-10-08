@@ -39,7 +39,7 @@
             <div class="col-6">
                 <mat-form-field class="full-width" appearance="outline">
                     <mat-label>Cédula del estudiante</mat-label>
-                    <input type="text" matInput formControlName="IdFormControl" placeholder="XX-XXXX-XXXX" maxlength="9" required pattern="[A-Za-z0-9_-]{1,15}">
+                    <input type="text" matInput formControlName="IdFormControl" placeholder="101110111" maxlength="9" required autocomplete="off" onkeypress="return (event.charCode >= 48 && event.charCode <= 57)">
                     <mat-error *ngIf="errorValidator('IdFormControl', 'required')">El número de cédula es obligatorio</mat-error>
                     <mat-error *ngIf="errorValidator('IdFormControl', 'maxlength')">Límite máximo de 9 caracteres alcanzado</mat-error>
                     <mat-error *ngIf="errorValidator('IdFormControl', 'minlength')">Límite mínimo de 9 caracteres sin completar</mat-error>
