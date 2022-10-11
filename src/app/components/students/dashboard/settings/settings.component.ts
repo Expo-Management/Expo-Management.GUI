@@ -79,6 +79,11 @@ export class SettingsComponent implements OnInit {
         },
         err => {
           console.log(err);
+          if (err.status === 403) {
+            this.openCustomPopUp('Inicie sesión con una cuenta de Estudiante para acceder a esta sección.');
+          } else {
+            this.openCustomPopUp('Ocurrió un problema interno. Por favor, vuelve a intentarlo más tarde.');
+          }
         },
       )
     }
@@ -102,6 +107,11 @@ export class SettingsComponent implements OnInit {
       err => {
         console.log(err);
         this.openCustomPopUp('Ha ocurrido un error.');
+        if (err.status === 403) {
+          this.openCustomPopUp('Inicie sesión con una cuenta de Estudiante para acceder a esta sección.');
+        } else {
+          this.openCustomPopUp('Ocurrió un problema interno. Por favor, vuelve a intentarlo más tarde.');
+        }
       }
     )
   }

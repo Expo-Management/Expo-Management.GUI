@@ -24,8 +24,9 @@ import { FairNewsComponent } from './dashboard/fair-news/fair-news.component';
 import { ClaimsComponent } from './dashboard/project-details/claims/claims.component';
 import { QualificationComponent } from './dashboard/project-details/qualification/qualification.component';
 import { RecommendationsComponent } from './dashboard/recommendations/recommendations.component';
-import { ForgetPasswordComponent } from 'src/app/shared/components/passwords/forget-password/forget-password.component';
-import { ResetPasswordComponent } from 'src/app/shared/components/passwords/reset-password/reset-password.component';
+import { ResetPasswordComponent } from './dashboard/settings/reset-password/reset-password.component';
+import { ForgetPasswordComponent } from './dashboard/settings/forget-password/forget-password.component';
+import { ProjectsComponent } from './dashboard/projects/projects.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,9 @@ import { ResetPasswordComponent } from 'src/app/shared/components/passwords/rese
     ClaimsComponent,
     QualificationComponent,
     RecommendationsComponent,
+    ResetPasswordComponent,
+    ForgetPasswordComponent,
+    ProjectsComponent
   ],
   imports: [
     ReactiveFormsModule,
@@ -72,8 +76,9 @@ import { ResetPasswordComponent } from 'src/app/shared/components/passwords/rese
           { path: 'saved-documents', component: CurrentDocumentationComponent },
           { path: 'project-mentions', component: MentionsComponent },
           { path: 'settings', component: SettingsComponent },
-          { path: 'forget-password', component: ForgetPasswordComponent},
-          { path: 'reset-password', component: ResetPasswordComponent},
+          { path: 'forget-password', component: ForgetPasswordComponent },
+          { path: 'reset-password', component: ResetPasswordComponent },
+          { path: 'projects/:project_id', component: ProjectsComponent },
           { path: '', redirectTo: 'home', pathMatch: 'full' },
           { path: '**', redirectTo: 'home', pathMatch: 'full' }
         ],

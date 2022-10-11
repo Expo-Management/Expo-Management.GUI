@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-auth',
@@ -6,14 +7,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./auth.component.css']
 })
 export class AuthComponent implements OnInit {
-  title: string = 'Bienvenido a Expo Ingenieria App';
+  title: string = 'Bienvenido a Expo Management';
   tryingLoggin: boolean = true;
   show_register: boolean = false;
   signUpButton: any;
   signInButton: any;
-
-  constructor() { }
+  route = '';
+  
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
-    
+
+    this.route = this.router.url
+    console.log('current route'+this.route)
   }}

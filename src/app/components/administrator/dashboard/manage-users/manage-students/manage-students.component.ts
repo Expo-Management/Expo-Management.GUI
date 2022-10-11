@@ -30,8 +30,10 @@ export class ManageStudentsComponent implements OnInit {
       err => {
         if (err.status === 404) {
           this.openCustomPopUp('No hay estudiantes registrados.');
+        } else if (err.status === 403) {
+          this.openCustomPopUp('Inicie sesión con una cuenta de Administrador para acceder a esta sección.');
         } else {
-          this.openCustomPopUp('Ocurrio un problema interno. Por favor, vuelve a intentarlo más tarde.');
+          this.openCustomPopUp('Ocurrió un problema interno. Por favor, vuelve a intentarlo más tarde.');
         }
       }
     );
@@ -52,8 +54,10 @@ export class ManageStudentsComponent implements OnInit {
           err => {
             if (err.status === 200) {
               this.studentDeleted();
+            } else if (err.status === 403) {
+              this.openCustomPopUp('Inicie sesión con una cuenta de Administrador para acceder a esta sección.');
             } else {
-              this.openCustomPopUp('Ocurrio un problema interno. Por favor, vuelve a intentarlo más tarde.');
+              this.openCustomPopUp('Ocurrió un problema interno. Por favor, vuelve a intentarlo más tarde.');
             }
           }
         );

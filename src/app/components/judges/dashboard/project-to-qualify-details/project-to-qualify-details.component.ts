@@ -66,7 +66,7 @@ export class ProjectToQualifyDetailsComponent implements OnInit {
         response => {
           console.log(response);
           let fileName = response.headers.get('content-disposition')
-          ?.split(';')[1].split('=')[1].split('"')[1];
+          ?.split(';')[1].split('=')[1];
           let blob:Blob = response.body as Blob;
           let a = document.createElement('a');
           a.download = fileName!;
@@ -75,7 +75,11 @@ export class ProjectToQualifyDetailsComponent implements OnInit {
         },
         err => {
           console.log("download error: " + err);
-          this.openCustomPopUp('Hubo un error, por favor, intenlo más tarde.');
+          if (err.status === 403) {
+            this.openCustomPopUp('Inicie sesión con una cuenta de Juez para acceder a esta sección.');
+          } else {
+            this.openCustomPopUp('Ocurrió un problema interno. Por favor, vuelve a intentarlo más tarde.');
+          }
         }
       );
     }

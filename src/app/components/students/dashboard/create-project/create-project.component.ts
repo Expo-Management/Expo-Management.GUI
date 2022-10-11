@@ -20,29 +20,68 @@ export class CreateProjectComponent implements OnInit {
 };
   
   newProjectForm = new FormGroup({
-    Name: new FormControl('', [Validators.required, this.noWhitespaceValidator]),
+    Name: new FormControl('', {
+      validators: [
+        Validators.required, this.noWhitespaceValidator,
+        Validators.maxLength(70),
+        Validators.minLength(3)
+      ]
+    }),
+    Description: new FormControl('', {
+      validators: [
+        Validators.required,
+        Validators.maxLength(400),
+        Validators.minLength(10)
+      ]
+    }),
+    Lider: new FormControl('', {
+      validators: [
+        Validators.required, this.noWhitespaceValidator,
+        Validators.email,
+        Validators.maxLength(100),
+        Validators.minLength(10)
+      ]
+    }),
+    Member2: new FormControl('', {
+      validators: [
+        Validators.required, this.noWhitespaceValidator,
+        Validators.email,
+        Validators.maxLength(100),
+        Validators.minLength(10)
+      ]
+    }),
+    Member3: new FormControl('', {
+      validators: [
+        Validators.required, this.noWhitespaceValidator,
+        Validators.email,
+        Validators.maxLength(100),
+        Validators.minLength(10)
+      ]
+    }),
+    file: new FormControl('', {
+      validators: [
+        Validators.required
+      ]
+    }),
+    IdFair: new FormControl(false, {
+      validators: [
+        Validators.required
+      ]
+    }),
 
-    Description: new FormControl('', {validators: Validators.required}),
-
-    Lider: new FormControl('',  [Validators.required, this.noWhitespaceValidator]),
-
-    Member2: new FormControl('',  [Validators.required, this.noWhitespaceValidator]),
-
-    Member3: new FormControl('', [Validators.required, this.noWhitespaceValidator]),
-
-    file: new FormControl('', [Validators.required]),
-
-    IdFair: new FormControl(false, {validators: Validators.required}),
-
-    Category: new FormControl('', [Validators.required]),
-    //,
-    // creatorLeader: new FormControl(false, {
-    //   validators: Validators.required
-    // })
+    Category: new FormControl('', {
+      validators: [
+        Validators.required
+      ]
+    }),
   });
 
   fairId = '';
   categories!: Categories[];
+
+  public errorValidator = (controlName: string, errorName: string) =>{
+    return this.newProjectForm.controls[controlName].hasError(errorName);
+  }
 
   constructor(
     private ProjectsService: ProjectsService,
@@ -59,6 +98,11 @@ export class CreateProjectComponent implements OnInit {
       },
       err => {
         console.log('an error occured: ' + err);
+        if (err.status === 403) {
+          this.openCustomPopUp('Inicie sesión con una cuenta de Estudiante para acceder a esta sección.');
+        } else {
+          this.openCustomPopUp('Ocurrió un problema interno. Por favor, vuelve a intentarlo más tarde.');
+        }
       })
      
       this.CategoriesService.getAllCategories().subscribe(
@@ -67,7 +111,11 @@ export class CreateProjectComponent implements OnInit {
           this.categories = data;
         },
         err => {
-          console.log('an error occured: ' + err);
+          if (err.status === 403) {
+            this.openCustomPopUp('Inicie sesión con una cuenta de Estudiante para acceder a esta sección.');
+          } else {
+            this.openCustomPopUp('Ocurrió un problema interno. Por favor, vuelve a intentarlo más tarde.');
+          }
         }
         
       )
@@ -96,8 +144,10 @@ export class CreateProjectComponent implements OnInit {
         console.log(err)
         if (err.status === 200) {
           this.openCustomPopUp('Proyecto creado exitosamente!');
+        } else if (err.status === 403) {
+          this.openCustomPopUp('Inicie sesión con una cuenta de Estudiante para acceder a esta sección.');
         } else {
-          this.openCustomPopUp('Hubo un error, por favor, intenlo más tarde.');
+          this.openCustomPopUp('Ocurrió un problema interno. Por favor, vuelve a intentarlo más tarde.');
         }
       }
     );
@@ -136,7 +186,7 @@ export class CreateProjectComponent implements OnInit {
     this.customPopUpService.confirm(
       'Creación de proyectos', 
       message,
-      'student/new-project'
+      'student/current-projects'
       );
   }
 }
