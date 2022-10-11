@@ -60,5 +60,11 @@ export class FairService {
     return this.httpClient.delete(environment.apiUrl + `/Fairs/fair?id=${id}`,
     httpOptions);
   }
+
+  getEvents(): Observable<any> {
+    return this.httpClient.get(
+      environment.apiUrl + '/Events/events',
+      httpOptions);
+  }
   
 }

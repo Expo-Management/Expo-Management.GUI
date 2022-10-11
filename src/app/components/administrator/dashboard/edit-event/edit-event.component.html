@@ -1,0 +1,87 @@
+<div class="modal-header">
+    <h2 class="modal-title" style="margin-bottom: 0;">Edit modal</h2>
+    <button type="button" class="btn btn-outline-danger close-btn" (click)="dismiss()">&times;
+    </button>
+  </div>
+  <div class="modal-body container" ngbAutofocus>
+    <mat-card>
+      <div class="row">
+        <div class="col-10">
+          <mat-form-field class="full-width" appearance="legacy">
+            <mat-label>Title</mat-label>
+            <input class="full-width" matInput [(ngModel)]="appointment.title">
+          </mat-form-field>
+        </div>
+        <!-- <div class="col-2">
+          <div class="color-picker">
+            <input type="color" [(ngModel)]="appointment.color">
+          </div>
+        </div> -->
+      </div>
+    </mat-card>
+  
+    <mat-card>
+      <div class="row justify-content-evenly dates">
+        <div class="col-6">
+          <mat-form-field class="datetime-picker">
+            <input matInput [matDatepicker]="start"
+              placeholder="Choose the start of the appoitment" [(ngModel)]="appointment.start">
+            <mat-datepicker-toggle matSuffix [for]="$any(start)">
+                <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+            </mat-datepicker-toggle>
+            <mat-date-range-picker #start></mat-date-range-picker>
+            <!-- <ngx-mat-datetime-picker #start [showSpinners]="false">
+              <ng-template>
+                <span>OK</span>
+              </ng-template>
+            </ngx-mat-datetime-picker> -->
+          </mat-form-field>
+        </div>
+        <div class="col-6">
+          <mat-form-field class="datetime-picker">
+            <input matInput [disabled]="appointment.allDay" [matDatepicker]="ends"
+              placeholder="Choose the end of the appoitment" [(ngModel)]="appointment.ends">
+            <mat-datepicker-toggle matSuffix [for]="$any(ends)"></mat-datepicker-toggle>
+            <mat-datepicker #ends></mat-datepicker>
+            <!-- <ngx-mat-datetime-picker #ends [showSpinners]="false"> -->
+              <!-- <ng-template>
+                <span>OK</span>
+              </ng-template>
+            </ngx-mat-datetime-picker> -->
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="dates">
+        <mat-slide-toggle [(ngModel)]="appointment.allDay" style="float: right;">All day</mat-slide-toggle>
+      </div>
+    </mat-card>
+  
+    <mat-expansion-panel class="full-width">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Add details
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <mat-panel-description>
+  
+      </mat-panel-description>
+      <div>
+        <mat-form-field appearance="legacy" class="full-width">
+          <mat-label>Notes</mat-label>
+          <input matInput [(ngModel)]="appointment.notes">
+        </mat-form-field>
+      </div>
+  
+      <div>
+        <mat-form-field appearance="legacy" class="full-width">
+          <mat-label>Location</mat-label>
+          <input matInput [(ngModel)]="appointment.location">
+        </mat-form-field>
+      </div>
+    </mat-expansion-panel>
+  
+    <div class="modal-footer">
+      <button mat-raised-button type="button" class="btn btn-danger" (click)="decline()">Cancel</button>
+      <button mat-raised-button type="button" class="btn btn-primary" (click)="accept()">Save</button>
+    </div>
+  </div>

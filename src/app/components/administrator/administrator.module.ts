@@ -44,6 +44,7 @@ import { LogsComponent } from './dashboard/logs/logs.component';
 import { MatNativeDateModule } from '@angular/material/core';
 import { FairProtocolsComponent } from './dashboard/fair-protocols/fair-protocols.component';
 import { AddProtocolComponent } from './dashboard/fair-protocols/add-protocol/add-protocol.component';
+import { EditEventComponent } from './dashboard/edit-event/edit-event.component';
 
 @NgModule({
   declarations: [
@@ -76,7 +77,8 @@ import { AddProtocolComponent } from './dashboard/fair-protocols/add-protocol/ad
     EditProfessorsComponent,
     //dialogs
     DeleteDialogComponent,
-    AddProtocolComponent
+    AddProtocolComponent,
+    EditEventComponent
     
   ],
   imports: [
@@ -131,6 +133,9 @@ import { AddProtocolComponent } from './dashboard/fair-protocols/add-protocol/ad
       provide: DateAdapter,
       useFactory: adapterFactory,
     }),
+  ],
+  providers: [
+    
   ]
 })
 export class AdministratorModule { }

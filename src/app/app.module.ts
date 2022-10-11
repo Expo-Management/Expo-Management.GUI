@@ -13,18 +13,19 @@ import { CustomPopUpComponent } from './shared/components/custom-pop-up/custom-p
 import { HttpClientModule } from '@angular/common/http';
 import { authInterceptorProviders } from './shared/services/jwt.interceptor';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { ConfirmationPopUpComponent } from './shared/components/confirmation-pop-up/confirmation-pop-up.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CustomPopUpComponent
+    CustomPopUpComponent,
+    ConfirmationPopUpComponent
   ],
   imports: [
     MatToolbarModule,
     BrowserModule,
     MatDialogModule,
     CommonModule,
-    MaterialsModule,
     HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,

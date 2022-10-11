@@ -22,6 +22,8 @@ import {
 } from 'angular-calendar';
 import {MatDialog} from '@angular/material/dialog';
 import { CreateAppointmentsComponent } from '../create-appointments/create-appointments.component';
+import { FairService } from 'src/app/shared/services/fair.service';
+import { EditEventComponent } from '../edit-event/edit-event.component';
 
 const colors: any = {
   red: {
@@ -48,7 +50,17 @@ export class FairCalendarComponent implements OnInit{
 
   @ViewChild('modalContent', { static: true }) modalContent: TemplateRef<any> | undefined;
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.fairService.getEvents().subscribe(
+      data => {
+        console.log(data);
+        // this.events = data;
+      },
+      err => {
+        console.log(err);
+      }
+    )
+  }
 
   view: CalendarView = CalendarView.Month;
   CalendarView = CalendarView;
@@ -84,11 +96,6 @@ export class FairCalendarComponent implements OnInit{
       color: colors.green,
       actions: this.actions,
       allDay: true,
-      resizable: {
-        beforeStart: true,
-        afterEnd: true,
-      },
-      draggable: true,
     },
     {
       start: startOfDay(new Date()),
@@ -99,14 +106,14 @@ export class FairCalendarComponent implements OnInit{
     {
       start: startOfDay(new Date()),
       title: 'Primer avance',
-      color: colors.red,
       actions: this.actions,
     },
   ];
   activeDayIsOpen: boolean = true;
 
   constructor(
-    public modalService: NgbModal) {}
+    public modalService: NgbModal,
+    private fairService: FairService) {}
 
 
   dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {
@@ -121,6 +128,11 @@ export class FairCalendarComponent implements OnInit{
       }
       this.viewDate = date;
     }
+  }
+
+  eventClicked(appointment: any) {
+    const modalRef = this.modalService.open(EditEventComponent, { centered: true })
+
   }
 
   eventTimesChanged({
