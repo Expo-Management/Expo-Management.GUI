@@ -21,21 +21,25 @@ export class FairService {
   }
 
   createEvent(
-    description: string,
+    title: string,
     location: string,
     startDate: Date,
     endDate: Date,
     details: string,
+    allDay: boolean,
+    kindEventId: number,
     fairId: number
   ): Observable<any>{
-    return this.httpClient.post(
+    return this.httpClient.post<any>(
       environment.apiUrl + '/Events/event', 
       {
-        description: description,
+        title: title,
         location: location,
-        startDate: startDate,
-        endDate: endDate,
+        start: startDate,
+        end: endDate,
         details: details,
+        allDay: allDay,
+        kindEvent: kindEventId,
         fairId: fairId
       },
       httpOptions);
@@ -64,6 +68,12 @@ export class FairService {
   getEvents(): Observable<any> {
     return this.httpClient.get(
       environment.apiUrl + '/Events/events',
+      httpOptions);
+  }
+
+  getKindEvents(): Observable<any> {
+    return this.httpClient.get(
+      environment.apiUrl + '/Events/kind-events',
       httpOptions);
   }
   
