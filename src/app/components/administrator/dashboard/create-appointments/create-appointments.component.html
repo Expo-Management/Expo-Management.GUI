@@ -18,16 +18,27 @@
             <div class="row dates">
                 <mat-form-field appearance="fill">
                     <mat-label>Escoja un rango de fechas</mat-label>
-                    <mat-date-range-input [rangePicker]="picker">
-                        <input matStartDate formControlName="start" placeholder="Start date">
-                        <input matEndDate formControlName="finish" placeholder="End date">
+                    <mat-date-range-input [rangePicker]="picker" [disabled]="allDayChose">
+                        <input matStartDate formControlName="start" placeholder="Start date" [disabled]="allDayChose">
+                        <input matEndDate formControlName="finish" placeholder="End date" [disabled]="allDayChose">
                     </mat-date-range-input>
                     <mat-hint>MM/DD/AAAA – MM/DD/AAAA</mat-hint>
-                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker-toggle matSuffix [for]="picker" [disabled]="allDayChose"></mat-datepicker-toggle>
                     <mat-date-range-picker #picker></mat-date-range-picker>
 
                     <mat-error *ngIf="newAppoitmentForm.controls.start.hasError('matStartDateInvalid')">Fecha invalida</mat-error>
                     <mat-error *ngIf="newAppoitmentForm.controls.finish.hasError('matEndDateInvalid')">Fecha invalida</mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="row">
+                <mat-form-field appearance="fill">
+                    <mat-label>Seleccione el tipo de evento a crear</mat-label>
+                    <mat-select [(ngModel)]="selectedKindOfEvent" name="kind" formControlName="kindEvent">
+                      <mat-option *ngFor="let kind of kindOfEvents" [value]="kind.id">
+                        {{kind.name}}
+                      </mat-option>
+                    </mat-select>
                 </mat-form-field>
             </div>
 

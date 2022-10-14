@@ -4,16 +4,30 @@ import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { FairService } from 'src/app/shared/services/fair.service';
 import { CustomPopUpService } from 'src/app/shared/services/custom-pop-up.service';
+import { KindEvents } from 'src/app/shared/interfaces/kind-events';
+
+export interface Response {
+  status: number,
+  message: string,
+  error: string[],
+  data: object
+}
+
 
 @Component({
   selector: 'app-create-appointments',
   templateUrl: './create-appointments.component.html',
   styleUrls: ['./create-appointments.component.css']
 })
-export class CreateAppointmentsComponent {
-
-  httpMessage = ''
-
+export class CreateAppointmentsComponent implements OnInit{
+  kindOfEvents: KindEvents[] = [
+//     {id: 1, name: 'Importante', primary: '#AD2121', secondary: '#FAE3E3'}
+// ,{id: 2, name: 'Informacion', primary: '#1E90FF', secondary: '#D1E8FF'} 
+// ,{id: 3, name: 'Noticia', primary: '#E3BC08', secondary: '#FDF1BA'}
+  ];
+  httpMessage = '';
+  allDayChose: boolean = false;
+  selectedKindOfEvent: KindEvents | undefined = undefined;
   refresh: Subject<any> = new Subject();
 
   newAppoitmentForm = new FormGroup({
@@ -23,6 +37,10 @@ export class CreateAppointmentsComponent {
     }),
     finish: new FormControl(
       '', {
+      validators: Validators.required
+    }),
+    kindEvent: new FormControl(
+      0, {
       validators: Validators.required
     }),
     title: new FormControl('', {
@@ -43,14 +61,21 @@ export class CreateAppointmentsComponent {
   ) {
     this.newAppoitmentForm.get('allDay')?.valueChanges.subscribe(
       a => {
-        if (a) {
-          this.newAppoitmentForm.get('start')?.disable();
-          this.newAppoitmentForm.get('end')?.disable();
-        } else {
-          this.newAppoitmentForm.get('start')?.enable();
-          this.newAppoitmentForm.get('end')?.enable();
-        }
+          this.allDayChose = !this.allDayChose;
       });
+  }
+
+  ngOnInit(): void {
+      this.eventService.getKindEvents().subscribe(
+        data => {
+          if (data.status === 200){
+            this.kindOfEvents = data.data;
+          }
+          else if (data.status === 204) {
+            this.openCustomPopUp('No hay tipos de eventos registrados en el sistema, contacte administracion')
+          }
+        }
+      )
   }
 
   openCustomPopUp(message: string) {
@@ -84,37 +109,32 @@ export class CreateAppointmentsComponent {
   }
 
   createAppointment() {
-    console.log(this.newAppoitmentForm);
+    console.log(this.newAppoitmentForm)
     this.eventService.createEvent(
       this.newAppoitmentForm.get('title')?.value,
       this.newAppoitmentForm.get('location')?.value,
       this.newAppoitmentForm.get('start')?.value,
       this.newAppoitmentForm.get('finish')?.value,
       '',
-      3
-    ).subscribe(
+      true,
+      this.newAppoitmentForm.get('kindEvent')?.value,
+      1).subscribe(
       data => {
-        if (data.status == 200) {
-          this.httpMessage = '¡Evento creado de manera exitosa!';
-        } else if (data.status == 400) {
-          this.httpMessage = 'Revise los datos ingresados.';
+        if (data.status === 200) {
+          this.openCustomPopUp(data.message);
+          window.location.reload();
         }
-
-        this.openCustomPopUp(this.httpMessage);
-        window.location.reload();
-      },
+      }, 
       err => {
-        if (err.status == 200) {
-          this.httpMessage = '¡Evento creado de manera exitosa!';
-        } else if (err.status == 400) {
-          this.httpMessage = 'Revise los datos ingresados.';
-        } else if (err.status === 403) {
-          this.openCustomPopUp('Inicie sesión con una cuenta de Administrador para acceder a esta sección.');
-        } else {
-          this.openCustomPopUp('Ocurrió un problema interno. Por favor, vuelve a intentarlo más tarde.');
-        }
-
-        this.openCustomPopUp(this.httpMessage);
+        // console.log('Here 2')
+        // console.log(err)
+        // if (err.status === 400) {
+        //   this.openCustomPopUp(err.message);
+        // } else if (err.status === 403) {
+        //   this.openCustomPopUp(err.message);
+        // } else {
+        //   this.openCustomPopUp(err.message);
+        // }
       }
     );
   }
