@@ -15,6 +15,7 @@ import { catchError, filter, switchMap, take } from 'rxjs/operators';
 import { TokenStorageService } from './token-storage.service';
 import { AuthService } from './auth.service';
 import { local } from 'd3-selection';
+import { CustomPopUpService } from './custom-pop-up.service';
 
 const TOKEN_HEADER_KEY = 'Authorization';
 
@@ -27,8 +28,13 @@ export class JWTInterceptor implements HttpInterceptor {
 
   constructor(
     private tokenService: TokenStorageService,
-    private authService: AuthService
+    private authService: AuthService,
+    private customPopUpService: CustomPopUpService
   ) {}
+
+  openCustomPopUp(title: string, message: string) {
+    this.customPopUpService.confirm(title, message, undefined);
+  }
 
   intercept(
     request: HttpRequest<any>,
@@ -48,6 +54,21 @@ export class JWTInterceptor implements HttpInterceptor {
           error.status === 401
         ) {
           return this.handle401Error(accessToken!, authReq, next);
+        } else if (error.status === 400) {
+          this.openCustomPopUp(
+            'Error en la solicitud',
+            'La solicitud fue rechazada, revise los datos enviados.'
+          );
+        } else if (error.status === 403) {
+          this.openCustomPopUp(
+            'No autorizado',
+            'Esta solicitud no esta permitida para su rol actual, por favor contacte administracion o cree una cuenta con el rol especifico'
+          );
+        } else if (error.status === 500) {
+          this.openCustomPopUp(
+            'Error en el servidor',
+            'Error en el servidor al procesar la solicitud, por favor contacte administracion.'
+          );
         }
 
         return throwError(error);
