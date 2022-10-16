@@ -6,10 +6,20 @@
     width: 100%;    
 }
 
-.close-btn {
-    border: none;
-    font-size: 2rem;
-    padding: 0px 5px;
+
+.add-button {
+    color: #FFFFFF;
+    background-color: #354F52;
+    height: 2.5rem;
+    margin-left: .5rem;
+}
+
+.cancel-button {
+    color: #AD2121;
+    background-color: transparent;
+    border: #AD2121 1px solid;
+    height: 2.5rem;
+    margin-left: .5rem;
 }
 
 ::ng-deep ngb-modal-backdrop {
@@ -28,21 +38,7 @@ mat-card {
 .dates {
     padding: 1rem 0;
 }
-
+/* 
 .btns {
     margin: 2rem auto 0.5rem;
-}
-
-.color-picker {
-    width: 20px;
-    height: 20px;
-    border-radius: 100%;
-    overflow: hidden;
-}
-
-.color-picker > input[type='color'] {
-    opacity: 1;
-    width: 60px;
-    height: 60px;
-    padding: 0;
-}
+} */

@@ -122,33 +122,31 @@ export class FairCalendarComponent implements OnInit{
   eventClicked(event: any) {
     console.log('Clicked')
     console.log(event)
-    const modalRef = this.modalService.open(EditEventComponent, { centered: true })
-    modalRef.componentInstance.event = event
-
-
-  }
-
-  eventTimesChanged({
-    event,
-    newStart,
-    newEnd,
-  }: CalendarEventTimesChangedEvent): void {
-    this.list_events = this.list_events.map((iEvent) => {
-      if (iEvent === event) {
-        return {
-          ...event,
-          start: newStart,
-          end: newEnd,
-        };
+    const modalRef = this.modalService.open(EditEventComponent, { centered: true });
+    modalRef.componentInstance.event = event;
+    modalRef.result.then((result) => {
+      if (result) {
+        this.fairService.updateEvent(
+          event.id,
+          event.title,
+          event.location,
+          event.start,
+          event.end,
+          event.details,
+          event.allDay
+        ).subscribe(
+          async data => {
+            if (data.status === 200) {
+              this.openCustomPopUp(data.message);
+    
+              await new Promise(f => setTimeout(f, 3000));
+    
+              window.location.reload();
+            }
+          }
+        )
       }
-      return iEvent;
-    });
-    this.handleEvent('Dropped or resized', event);
-  }
-
-  handleEvent(action: string, event: CalendarEvent): void {
-    this.modalData = { event, action };
-    this.modalService.open(this.modalContent, { size: 'lg' });
+    })
   }
 
   createEvent(): void {
