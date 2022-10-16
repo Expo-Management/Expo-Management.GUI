@@ -44,6 +44,11 @@ export class SideBarComponent implements OnInit {
       icon: 'new_releases',
       text: 'Noticias de la feria'
     },
+    { 
+      icon: 'calendar_today',
+      text: 'Calendario de la feria',
+      link: 'fair-calendar',
+    },
   ]
 
   fair_documents = [
