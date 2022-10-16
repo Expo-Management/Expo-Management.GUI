@@ -20,6 +20,12 @@ import { StudentsListComponent } from './dashboard/students-list/students-list.c
 import { OtherQualificationsComponent } from './dashboard/projects-list/other-qualifications/other-qualifications.component';
 import { ForgetPasswordComponent } from './dashboard/settings/forget-password/forget-password.component';
 import { ResetPasswordComponent } from './dashboard/settings/reset-password/reset-password.component';
+import { FairCalendarComponent } from './dashboard/fair-calendar/fair-calendar.component';
+import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
+import { FlatpickrModule } from 'angularx-flatpickr';
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { EditEventComponent } from './dashboard/edit-event/edit-event.component';
 
 
 @NgModule({
@@ -40,10 +46,18 @@ import { ResetPasswordComponent } from './dashboard/settings/reset-password/rese
     StudentsListComponent,
     OtherQualificationsComponent,
     ForgetPasswordComponent,
-    ResetPasswordComponent
+    ResetPasswordComponent,
+    FairCalendarComponent,
+    EditEventComponent
   ],
   imports: [
     ReactiveFormsModule,
+    NgbModalModule,
+    FlatpickrModule.forRoot(),
+    CalendarModule.forRoot({
+      provide: DateAdapter,
+      useFactory: adapterFactory,
+    }),
     HttpClientModule,
     MaterialsModule,
     CommonModule,
@@ -56,6 +70,7 @@ import { ResetPasswordComponent } from './dashboard/settings/reset-password/rese
         children: [
           { path: 'students', component: StudentsListComponent},
           { path: 'home', component: ProjectsListComponent },
+          { path: 'fair-calendar', component: FairCalendarComponent },
           { path: 'list-project', component: ProjectsListComponent },
           { path: 'project-details/:project_id', component: ProjectToQualifyDetailsComponent },
           { path: 'project-qualify/:project_id', component: QualifyProjectComponent },
