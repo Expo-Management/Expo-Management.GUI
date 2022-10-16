@@ -5,6 +5,7 @@ import { Subject } from 'rxjs';
 import { FairService } from 'src/app/shared/services/fair.service';
 import { CustomPopUpService } from 'src/app/shared/services/custom-pop-up.service';
 import { KindEvents } from 'src/app/shared/interfaces/kind-events';
+import { endOfDay, startOfDay } from 'date-fns';
 
 export interface Response {
   status: number,
@@ -47,6 +48,9 @@ export class CreateAppointmentsComponent implements OnInit{
       validators: Validators.required
     }),
     location: new FormControl('', {
+      validators: Validators.required
+    }),
+    details: new FormControl('', {
       validators: Validators.required
     }),
     allDay: new FormControl(false, {
@@ -109,33 +113,37 @@ export class CreateAppointmentsComponent implements OnInit{
   }
 
   createAppointment() {
-    console.log(this.newAppoitmentForm)
+    var start = this.newAppoitmentForm.get('start')?.value;
+    var end = this.newAppoitmentForm.get('finish')?.value;
+    
+    if (this.newAppoitmentForm.get('allDay')?.value) {
+      if (new Date(start).getDay() !== new Date(end).getDay()){
+        alert("Debe elegir el mismo dia si el evento es todo el dia!");
+        this.newAppoitmentForm.get('allDay')?.setValue(false);
+      } else {
+        start = startOfDay(new Date(start));
+        end = endOfDay(new Date(end));
+      }
+    } 
+
     this.eventService.createEvent(
       this.newAppoitmentForm.get('title')?.value,
       this.newAppoitmentForm.get('location')?.value,
-      this.newAppoitmentForm.get('start')?.value,
-      this.newAppoitmentForm.get('finish')?.value,
-      '',
-      true,
+      start,
+      end,
+      this.newAppoitmentForm.get('details')?.value,
+      this.newAppoitmentForm.get('allDay')?.value,
       this.newAppoitmentForm.get('kindEvent')?.value,
       1).subscribe(
-      data => {
+      async data => {
         if (data.status === 200) {
           this.openCustomPopUp(data.message);
+
+          await new Promise(f => setTimeout(f, 3000));
+
           window.location.reload();
         }
       }, 
-      err => {
-        // console.log('Here 2')
-        // console.log(err)
-        // if (err.status === 400) {
-        //   this.openCustomPopUp(err.message);
-        // } else if (err.status === 403) {
-        //   this.openCustomPopUp(err.message);
-        // } else {
-        //   this.openCustomPopUp(err.message);
-        // }
-      }
     );
   }
 

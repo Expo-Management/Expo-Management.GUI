@@ -1,25 +1,34 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { ConfirmationPopUpService } from 'src/app/shared/services/confirmation-pop-up.service';
+import { PersonalInformationService } from 'src/app/shared/services/personal-information.service';
+import { TokenStorageService } from 'src/app/shared/services/token-storage.service';
 
 @Component({
   selector: 'app-edit-event',
   templateUrl: './edit-event.component.html',
   styleUrls: ['./edit-event.component.css']
 })
-export class EditEventComponent {
+export class EditEventComponent implements OnInit {
 
-  @Input() public appointment: any;
+  @Input() public event: any;
   @Output() passEntry: EventEmitter<any> = new EventEmitter();
+
+  user_role: string = '';
 
   constructor(
     public activeModal: NgbActiveModal,
-    private confirmationPopUpService: ConfirmationPopUpService
+    private confirmationPopUpService: ConfirmationPopUpService,
+    private infoService: PersonalInformationService
   ) { }
 
+  ngOnInit(): void {
+    this.user_role = this.infoService.getRole()!;
+  }
+
   passBack() {
-    this.passEntry.emit(this.appointment);
-    this.activeModal.close(this.appointment);
+    this.passEntry.emit(this.event);
+    this.activeModal.close(this.event);
   }
 
   public openConfirmationPopUp() {
