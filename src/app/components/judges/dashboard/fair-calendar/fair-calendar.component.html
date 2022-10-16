@@ -1,0 +1,15 @@
+<div class="flex-container">
+    <div class="top-navigation">
+        <div class="date-title">
+            <h1>{{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}</h1>
+        </div>
+        <div class="btn-group">
+            <mat-icon mwlCalendarPreviousView [view]="view" [(viewDate)]="viewDate" (viewDateChange)="closeOpenMonthViewDay()">keyboard_arrow_left</mat-icon>
+            <mat-icon mwlCalendarNextView [view]="view" [(viewDate)]="viewDate" (viewDateChange)="closeOpenMonthViewDay()">keyboard_arrow_right</mat-icon>
+        </div>
+    </div>
+    <div class="calendar-content" [ngSwitch]="view">
+        <mwl-calendar-month-view [viewDate]="viewDate" [events]="list_events" [refresh]="refresh" [activeDayIsOpen]="activeDayIsOpen" (dayClicked)="dayClicked($event.day)" (eventClicked)="eventClicked($event.event)">
+        </mwl-calendar-month-view>
+    </div>
+</div>
