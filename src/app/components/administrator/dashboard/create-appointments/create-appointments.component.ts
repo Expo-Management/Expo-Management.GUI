@@ -32,31 +32,52 @@ export class CreateAppointmentsComponent implements OnInit{
   refresh: Subject<any> = new Subject();
 
   newAppoitmentForm = new FormGroup({
-    start: new FormControl(
-      '', {
-      validators: Validators.required
+    start: new FormControl('', {
+      validators: [
+        Validators.required,
+      ] 
     }),
-    finish: new FormControl(
-      '', {
-      validators: Validators.required
+    finish: new FormControl('', {
+      validators: [
+        Validators.required,
+      ]
     }),
-    kindEvent: new FormControl(
-      0, {
-      validators: Validators.required
+    kindEvent: new FormControl(0, {
+      validators: [
+        Validators.required
+      ]
     }),
     title: new FormControl('', {
-      validators: Validators.required
+      validators: [
+        Validators.required,
+        Validators.maxLength(30),
+        Validators.minLength(2)
+      ]
     }),
     location: new FormControl('', {
-      validators: Validators.required
+      validators: [
+        Validators.required,
+        Validators.maxLength(50),
+        Validators.minLength(2)
+      ]
     }),
     details: new FormControl('', {
-      validators: Validators.required
+      validators: [
+        Validators.required,
+        Validators.maxLength(250),
+        Validators.minLength(5)
+      ]
     }),
     allDay: new FormControl(false, {
-      validators: Validators.required
+      validators: [
+        Validators.required
+      ]
     })
   });
+
+  public errorValidator = (controlName: string, errorName: string) =>{
+    return this.newAppoitmentForm.controls[controlName].hasError(errorName);
+  }
 
   constructor(
     public activeModal: NgbActiveModal,
