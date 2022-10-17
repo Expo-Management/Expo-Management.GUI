@@ -18,7 +18,6 @@ import { ProjectGroupComponent } from './dashboard/project-group/project-group.c
 import { SettingsComponent } from './dashboard/settings/settings.component';
 import { DocumentationComponent } from './dashboard/documentation/documentation.component';
 import { CurrentDocumentationComponent } from './dashboard/current-documentation/current-documentation.component';
-import { LoggedInGuard } from 'src/app/shared/guards/logged-in.guard';
 import { MentionsComponent } from './dashboard/mentions/mentions.component';
 import { FairNewsComponent } from './dashboard/fair-news/fair-news.component';
 import { ClaimsComponent } from './dashboard/project-details/claims/claims.component';
@@ -27,6 +26,12 @@ import { RecommendationsComponent } from './dashboard/recommendations/recommenda
 import { ResetPasswordComponent } from './dashboard/settings/reset-password/reset-password.component';
 import { ForgetPasswordComponent } from './dashboard/settings/forget-password/forget-password.component';
 import { ProjectsComponent } from './dashboard/projects/projects.component';
+import { EditEventComponent } from './dashboard/edit-event/edit-event.component';
+import { FairCalendarComponent } from './dashboard/fair-calendar/fair-calendar.component';
+import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
+import { FlatpickrModule } from 'angularx-flatpickr';
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 
 @NgModule({
   declarations: [
@@ -50,7 +55,9 @@ import { ProjectsComponent } from './dashboard/projects/projects.component';
     RecommendationsComponent,
     ResetPasswordComponent,
     ForgetPasswordComponent,
-    ProjectsComponent
+    ProjectsComponent,
+    EditEventComponent,
+    FairCalendarComponent
   ],
   imports: [
     ReactiveFormsModule,
@@ -59,6 +66,12 @@ import { ProjectsComponent } from './dashboard/projects/projects.component';
     MaterialsModule,
     CommonModule,
     FormsModule,
+    NgbModalModule,
+    FlatpickrModule.forRoot(),
+    CalendarModule.forRoot({
+      provide: DateAdapter,
+      useFactory: adapterFactory,
+    }),
     RouterModule.forChild([
       { 
         path: '', 
@@ -66,6 +79,7 @@ import { ProjectsComponent } from './dashboard/projects/projects.component';
         children: [
           { path: 'home', component: FairNewsComponent },
           { path: 'security-protocols', component: ProtocolListComponent },
+          { path: 'fair-calendar', component: FairCalendarComponent },
           { path: 'past-projects', component: PastProyectProposalsComponent },
           { path: 'current-projects', component: CurrentProyectProposalsComponent },
           { path: 'project-group', component: ProjectGroupComponent },

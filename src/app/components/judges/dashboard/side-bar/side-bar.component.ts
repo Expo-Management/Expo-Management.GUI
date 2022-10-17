@@ -30,6 +30,14 @@ export class SideBarComponent implements OnInit {
       text: 'Estudiantes'
     },
   ]
+
+  fair_options = [
+    { 
+      icon: 'calendar_today',
+      text: 'Calendario de la feria',
+      link: 'fair-calendar',
+    },
+  ]
   
   constructor() { }
 

@@ -1,0 +1,51 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.flex-container {
+    overflow: scroll;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.top-navigation {
+    height: 10%;
+    margin-top: 4rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.calendar-content {
+    height: 90%;
+}
+
+.top-navigation,
+.calendar-content {
+    width: 90%;
+}
+
+.add-button {
+    color: #FFFFFF;
+    background-color: #354F52;
+    height: 2.5rem;
+    margin-left: 2rem;
+    margin-bottom: 1rem;
+ 
+}
+
+
+mat-icon {
+    margin: 0 .5rem;
+    font-size: 40px;
+}
+
+::-webkit-scrollbar {
+    width: 0;
+    background: transparent;
+}

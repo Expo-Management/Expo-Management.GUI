@@ -6,12 +6,6 @@
     width: 100%;
 }
 
-.close-btn {
-    border: none;
-    font-size: 2rem;
-    padding: 0px 5px;
-}
-
 ::ng-deep ngb-modal-backdrop {
     z-index: 999 !important;
 }

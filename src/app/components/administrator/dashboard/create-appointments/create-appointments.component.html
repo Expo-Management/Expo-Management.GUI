@@ -1,7 +1,6 @@
 <div class="modal-header">
-    <h2 class="modal-title" style="margin-bottom: 0;">Crear un nuevo evento</h2>
-    <button type="button" class="btn btn-outline-danger close-btn" (click)="dismiss()">&times;
-    </button>
+    <h2 class="modal-title" style="margin-bottom: 0;">Crear nuevo evento</h2>
+    <button type="button" class="btn btn-outline-danger close-btn" (click)="dismiss()">&times;</button>
 </div>
 <div class="modal-body container" ngbAutofocus>
     <form [formGroup]="newAppoitmentForm" (ngSubmit)="onSubmit()" novalidate>
@@ -71,9 +70,9 @@
                 <mat-slide-toggle style="float: right;" formControlName="allDay">Todo el dia</mat-slide-toggle>
             </div>
         </mat-card>
-        <div class="modal-footer ">
+        <div class="modal-footer">
             <button mat-raised-button type="button" id="submit-button" class="cancel-button" (click)="decline()">Cancelar</button>
-            <button mat-raised-button type="button" id="submit-button" class="add-button" (click)="accept()">Añadir</button>
+            <button mat-raised-button type="button" id="submit-button" class="add-button" (click)="accept()">Crear evento</button>
         </div>
     </form>
 </div>
