@@ -50,14 +50,14 @@ export class CreateAppointmentsComponent implements OnInit{
     title: new FormControl('', {
       validators: [
         Validators.required,
-        Validators.maxLength(30),
+        Validators.maxLength(50),
         Validators.minLength(2)
       ]
     }),
     location: new FormControl('', {
       validators: [
         Validators.required,
-        Validators.maxLength(50),
+        Validators.maxLength(150),
         Validators.minLength(2)
       ]
     }),
