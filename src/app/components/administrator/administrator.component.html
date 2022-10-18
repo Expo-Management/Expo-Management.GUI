@@ -1,15 +1,105 @@
-<div class="dashboard-container flexbox-container">
-    <div class="top-menu">
-        <app-top-menu></app-top-menu>
+<mat-toolbar class="mat-elevation-z8">
+  <div class="container-fluid h-100 d-flex align-items-center p-0">
+    <button mat-icon-button *ngIf="sidenav.mode === 'over'" (click)="sidenav.toggle()">
+      <mat-icon *ngIf="!sidenav.opened"> menu </mat-icon>
+      <mat-icon *ngIf="sidenav.opened"> close </mat-icon>
+    </button>
+    <div class="navbar-brand h-100 w-100 d-flex align-items-center justify-content-between">
+      <div *ngIf="!short_view" class="h-100 d-flex align-items-center justify-content-center ng-star-inserted"
+        style="width: 15%">
+        <img src="/assets/images/Escudo.png">
+      </div>
+
+      <div *ngIf="!short_view" class="d-flex align-items-center justify-content-between" style="width: 85%;">
+        <div class="w-50 d-flex align-items-center">
+          <ng-container *ngIf="
+              currentDays == 'Crear Feria';
+              then trueCondition;
+              else elseTemplate
+            "></ng-container>
+          <ng-template #trueCondition>
+            <button class="button" (click)="addFair()">
+              {{ currentDays }}
+            </button>
+          </ng-template>
+          <ng-template #elseTemplate>
+            <span>Días restantes de la feria: {{ currentDays }} días</span>
+          </ng-template>
+        </div>
+
+        <div class="display-user-info me-5">
+          <span>{{ user_name }}</span>
+          <mat-divider></mat-divider>
+          <span>{{ user_role }}</span>
+        </div>
+      </div>
     </div>
+  </div>
+</mat-toolbar>
+
+<mat-sidenav-container>
+  <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
+    <div class="side-bar-menu">
+      <div class="admin-general-options flexbox-container">
+        <h3>General</h3>
+        <div class="options">
+          <div *ngFor="let general_option of general_options">
+            <div class="option" [routerLink]="[general_option.link]" (click)="sidenav.close()">
+              <mat-icon *ngIf="!short_view" class="icon">{{
+                general_option.icon
+                }}</mat-icon>
+              <span>{{ general_option.text }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="admin-users-options flexbox-container">
+        <h3>Administración de usuarios</h3>
+        <div class="options">
+          <div *ngFor="let user_option of user_options">
+            <div class="option" [routerLink]="[user_option.link]" (click)="sidenav.close()">
+              <mat-icon *ngIf="!short_view" class="icon">{{
+                user_option.icon
+                }}</mat-icon>
+              <span>{{ user_option.text }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="admin-fair-options flexbox-container">
+        <h3>Administración de feria</h3>
+        <div class="options">
+          <div *ngFor="let fair_option of fair_options">
+            <div class="option" [routerLink]="[fair_option.link]" (click)="sidenav.close()">
+              <mat-icon *ngIf="!short_view" class="icon">{{
+                fair_option.icon
+                }}</mat-icon>
+              <span>{{ fair_option.text }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="admin-fair-options flexbox-container mt-5 mb-0">
+        <h3>Opciones de la cuenta</h3>
+        <div class="options">
+          <div class="option" [routerLink]="['/administrator/settings']" (click)="sidenav.close()">
+            <mat-icon *ngIf="!short_view" class="icon">settings</mat-icon>
+            <span>Configuracion</span>
+          </div>
+          <div class="option">
+            <mat-icon *ngIf="!short_view" (click)="logout()" class="icon">exit_to_app</mat-icon>
+            <span (click)="logout()">Cerrar Sesion</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-sidenav>
+  <mat-sidenav-content>
     <div class="content">
-        <mat-drawer-container class="example-container">
-            <mat-drawer mode="side" opened>
-                <app-side-bar></app-side-bar>
-            </mat-drawer>
-            <mat-drawer-content>
-                <router-outlet></router-outlet>
-            </mat-drawer-content>
-        </mat-drawer-container>
+      <router-outlet></router-outlet>
     </div>
-</div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

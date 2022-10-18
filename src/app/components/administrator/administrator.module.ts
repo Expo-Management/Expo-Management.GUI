@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ContentComponent } from './dashboard/content/content.component';
 import { TopMenuComponent } from './dashboard/top-menu/top-menu.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { SideBarComponent } from './dashboard/side-bar/side-bar.component';
 import { MaterialsModule } from 'src/app/shared/materials/materials.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -49,7 +48,6 @@ import { EditEventComponent } from './dashboard/edit-event/edit-event.component'
 
 @NgModule({
   declarations: [
-    DashboardComponent,
     TopMenuComponent,
     SideBarComponent,
     //fair stuff

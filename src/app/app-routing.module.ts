@@ -22,7 +22,7 @@ const routes: Routes = [
   { 
     path: 'judges', 
     loadChildren: () => import('./components/judges/judges.module').then(m => m.JudgesModule), 
-    canActivate: [ AuthGuard, JudgeAccessGuard ],
+    canActivate: [ AuthGuard,  ],
   },
 
   { path: '', redirectTo: 'administrator', pathMatch: 'full' },
