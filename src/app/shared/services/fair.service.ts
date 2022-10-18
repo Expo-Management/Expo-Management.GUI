@@ -45,6 +45,29 @@ export class FairService {
       httpOptions);
   }
 
+  updateEvent(
+    id: number,
+    title: string,
+    location: string,
+    startDate: Date,
+    endDate: Date,
+    details: string,
+    allDay: boolean,
+  ): Observable<any>{
+    return this.httpClient.put<any>(
+      environment.apiUrl + '/Events/event', 
+      {
+        id : id,
+        title: title,
+        location: location,
+        start: startDate,
+        end: endDate,
+        details: details,
+        allDay: allDay,
+      },
+      httpOptions);
+  }
+
   getCurentFairdId(): Observable<any>{
     return this.httpClient.get(environment.apiUrl + '/Fairs/current-fair', 
     httpOptions);

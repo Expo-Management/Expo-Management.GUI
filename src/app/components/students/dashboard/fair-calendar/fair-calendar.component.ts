@@ -1,32 +1,18 @@
-import { Component, Input, OnInit} from '@angular/core';
-import {
-  ChangeDetectionStrategy,
-  ViewChild,
-  TemplateRef,
-} from '@angular/core';
-import {
-  isSameDay,
-  isSameMonth,
-} from 'date-fns';
-import { Subject } from 'rxjs';
+import { Component, Input, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import {
-  CalendarEvent,
-  CalendarEventTimesChangedEvent,
-  CalendarView,
-} from 'angular-calendar';
-import { CreateAppointmentsComponent } from '../create-appointments/create-appointments.component';
+import { CalendarEvent, CalendarView } from 'angular-calendar';
+import { isSameDay, isSameMonth } from 'date-fns';
+import { Subject } from 'rxjs';
+import { CustomPopUpService } from 'src/app/shared/services/custom-pop-up.service';
 import { FairService } from 'src/app/shared/services/fair.service';
 import { EditEventComponent } from '../edit-event/edit-event.component';
-import { CustomPopUpService } from 'src/app/shared/services/custom-pop-up.service';
 
 @Component({
   selector: 'app-fair-calendar',
-  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './fair-calendar.component.html',
   styleUrls: ['./fair-calendar.component.css']
 })
-export class FairCalendarComponent implements OnInit{
+export class FairCalendarComponent implements OnInit {
   @Input() list_events: CalendarEvent[] = [];
   @ViewChild('modalContent', { static: true }) modalContent: TemplateRef<any> | undefined;
 
@@ -120,37 +106,8 @@ export class FairCalendarComponent implements OnInit{
   }
 
   eventClicked(event: any) {
-    console.log('Clicked')
-    console.log(event)
     const modalRef = this.modalService.open(EditEventComponent, { centered: true });
     modalRef.componentInstance.event = event;
-    modalRef.result.then((result) => {
-      if (result) {
-        this.fairService.updateEvent(
-          event.id,
-          event.title,
-          event.location,
-          event.start,
-          event.end,
-          event.details,
-          event.allDay
-        ).subscribe(
-          async data => {
-            if (data.status === 200) {
-              this.openCustomPopUp(data.message);
-    
-              await new Promise(f => setTimeout(f, 3000));
-    
-              window.location.reload();
-            }
-          }
-        )
-      }
-    })
-  }
-
-  createEvent(): void {
-    this.modalService.open(CreateAppointmentsComponent, { centered: true });
   }
 
   closeOpenMonthViewDay() {

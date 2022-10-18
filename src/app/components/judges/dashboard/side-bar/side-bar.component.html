@@ -34,4 +34,16 @@
             </div>
         </div>
     </div>
+
+    <div class="admin-fair-options flexbox-container">
+        <h3>Opciones de la feria</h3>
+        <div class="options">
+            <div *ngFor="let fair_option of fair_options">
+                <div class="option " [routerLink]="[fair_option.link]">
+                    <mat-icon class="icon">{{ fair_option.icon }}</mat-icon>
+                    <span>{{ fair_option.text }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
