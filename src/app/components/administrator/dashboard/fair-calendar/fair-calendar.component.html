@@ -3,7 +3,7 @@
         <div class="date-title">
             <h1>{{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}</h1>
         </div>
-        <div class="btn-group">
+        <div class="btn-group" style="cursor: pointer;">
             <mat-icon (click)="createEvent()">add</mat-icon>
             <mat-icon mwlCalendarPreviousView [view]="view" [(viewDate)]="viewDate" (viewDateChange)="closeOpenMonthViewDay()">keyboard_arrow_left</mat-icon>
             <mat-icon mwlCalendarNextView [view]="view" [(viewDate)]="viewDate" (viewDateChange)="closeOpenMonthViewDay()">keyboard_arrow_right</mat-icon>
