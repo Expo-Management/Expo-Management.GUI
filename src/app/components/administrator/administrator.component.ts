@@ -160,6 +160,12 @@ export class AdministratorComponent implements OnInit {
     );
   }
 
+  closeSideBar() {
+    if (this.short_view) {
+      this.sidenav.close()
+    }
+  }
+
   logout() {
     this.tokenStorage.signOut();
   }

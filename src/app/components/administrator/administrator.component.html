@@ -44,7 +44,7 @@
         <h3>General</h3>
         <div class="options">
           <div *ngFor="let general_option of general_options">
-            <div class="option" [routerLink]="[general_option.link]" (click)="sidenav.close()">
+            <div class="option" [routerLink]="[general_option.link]" (click)="closeSideBar()">
               <mat-icon *ngIf="!short_view" class="icon">{{
                 general_option.icon
                 }}</mat-icon>
@@ -58,7 +58,7 @@
         <h3>Administración de usuarios</h3>
         <div class="options">
           <div *ngFor="let user_option of user_options">
-            <div class="option" [routerLink]="[user_option.link]" (click)="sidenav.close()">
+            <div class="option" [routerLink]="[user_option.link]" (click)="closeSideBar()">
               <mat-icon *ngIf="!short_view" class="icon">{{
                 user_option.icon
                 }}</mat-icon>
@@ -72,7 +72,7 @@
         <h3>Administración de feria</h3>
         <div class="options">
           <div *ngFor="let fair_option of fair_options">
-            <div class="option" [routerLink]="[fair_option.link]" (click)="sidenav.close()">
+            <div class="option" [routerLink]="[fair_option.link]" (click)="closeSideBar()">
               <mat-icon *ngIf="!short_view" class="icon">{{
                 fair_option.icon
                 }}</mat-icon>
@@ -85,7 +85,7 @@
       <div class="admin-fair-options flexbox-container mt-5 mb-0">
         <h3>Opciones de la cuenta</h3>
         <div class="options">
-          <div class="option" [routerLink]="['/administrator/settings']" (click)="sidenav.close()">
+          <div class="option" [routerLink]="['/administrator/settings']" (click)="closeSideBar()">
             <mat-icon *ngIf="!short_view" class="icon">settings</mat-icon>
             <span>Configuracion</span>
           </div>
