@@ -76,5 +76,47 @@ export class FairService {
       environment.apiUrl + '/Events/kind-events',
       httpOptions);
   }
-  
+
+  getColours(): Observable<any> {
+    return this.httpClient.get(
+      environment.apiUrl + '/Events/colours',
+      httpOptions);
+  }
+
+  createKindEvent(
+    name: string,
+    primary: string,
+    secondary: Date,
+  ): Observable<any>{
+    return this.httpClient.post<any>(
+      environment.apiUrl + '/Events/kind-event', 
+      {
+        name: name,
+        primary: primary,
+        secondary: secondary,
+      },
+      httpOptions);
+  }
+
+  updateKindEvent(
+    id: number,
+    name: string,
+    primary: string,
+    secondary: Date,
+  ): Observable<any>{
+    return this.httpClient.put<any>(
+      environment.apiUrl + '/Events/kind-event', 
+      {
+        id: id,
+        name: name,
+        primary: primary,
+        secondary: secondary,
+      },
+      httpOptions);
+  }
+
+  deleteKindEvent(KindEventId: number): Observable<any> {
+    return this.httpClient.delete(environment.apiUrl + `/Events/kind-event?KindEventId=${KindEventId}`,
+    httpOptions);
+  }
 }

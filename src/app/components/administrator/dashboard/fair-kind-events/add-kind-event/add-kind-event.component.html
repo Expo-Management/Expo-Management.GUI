@@ -1,0 +1,46 @@
+<div class="modal-header">
+    <h2 class="modal-title" style="margin-bottom: 0;">Agregar tipo de evento de la feria</h2>
+    <button type="button" class="btn btn-outline-danger close-btn" (click)="dismiss()">&times;
+    </button>
+</div>
+<div class="modal-body container" ngbAutofocus>
+    <form [formGroup]="KindEventForm" (ngSubmit)="onSubmit()" novalidate>
+        
+            <div class="row">
+                <div class="col-12">
+                    <mat-form-field class="full-width" appearance="legacy">
+                        <mat-label>Nombre del tipo de evento</mat-label>
+                        <input class="full-width" matInput formControlName="nameForm" required onkeypress="return /[a-zA-ZñÑá-úÁ-Ú]/i.test(event.key)">
+                        <mat-error *ngIf="errorValidator('nameForm', 'required')">El nombre del tipo de evento es obligatorio</mat-error>
+                        <mat-error *ngIf="errorValidator('nameForm', 'maxlength')">Limite máximo de 20 caracteres alcanzado</mat-error>
+                        <mat-error *ngIf="errorValidator('nameForm', 'minlength')">Limite mínimo de 2 caracteres sin completar</mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field class="variable-width" appearance="outline" >
+                        <mat-label>Color primario del nuevo evento</mat-label>
+                        <mat-select formControlName="primaryForm" name="primary">
+                            <mat-option *ngFor="let primary of this.colours" [value]="primary.name" >
+                                {{primary.name}}   
+                            </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="!KindEventForm.controls['primaryForm'].valid && KindEventForm.controls['primaryForm'].touched">El color primario del nuevo evento es requerido</mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field class="variable-width" appearance="outline" >
+                        <mat-label>Color secundario del nuevo evento</mat-label>
+                        <mat-select formControlName="secondaryForm" name="primary">
+                            <mat-option *ngFor="let primary of this.colours" [value]="primary.name" >
+                                {{primary.name}}   
+                            </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="!KindEventForm.controls['secondaryForm'].valid && KindEventForm.controls['secondaryForm'].touched">El color secundario del nuevo evento es requerido</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+        
+        <div class="modal-footer ">
+            <button mat-raised-button type="button" id="submit-button" class="cancel-button" (click)="decline()">Cancelar</button>
+            <button mat-raised-button type="button" id="submit-button" class="add-button" (click)="accept()">Crear</button>
+        </div>
+    </form>    
+</div>
