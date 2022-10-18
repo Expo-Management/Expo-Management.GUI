@@ -1,12 +1,6 @@
 <div class="modal-header">
     <h2 class="modal-title" style="margin-bottom: 0;">Crear nuevo evento</h2>
-    <button
-    type="button"
-    class="btn btn-outline-danger close-btn"
-    (click)="dismiss()"
-  >
-    &times;
-  </button>
+    <button type="button" class="btn btn-outline-danger close-btn" (click)="dismiss()">&times;</button>
 </div>
 <div class="modal-body container" ngbAutofocus>
     <form [formGroup]="newAppoitmentForm" (ngSubmit)="onSubmit()" novalidate>
@@ -14,8 +8,11 @@
             <div class="row">
                 <div class="col-12">
                     <mat-form-field class="full-width" appearance="legacy">
-                        <mat-label>Title</mat-label>
-                        <input class="full-width" matInput formControlName="title">
+                        <mat-label>Nombre</mat-label>
+                        <input class="full-width" matInput formControlName="title" required>
+                        <mat-error *ngIf="errorValidator('title', 'required')">El nombre del evento es obligatorio</mat-error>
+                        <mat-error *ngIf="errorValidator('title', 'minlength')">Límite mínimo de 2 caracteres sin completar</mat-error>
+                        <mat-error *ngIf="errorValidator('title', 'maxlength')">Límite máximo de 50 caracteres alcanzado</mat-error>
                     </mat-form-field>
                 </div>
             </div>
@@ -24,8 +21,8 @@
                 <mat-form-field appearance="fill">
                     <mat-label>Escoja un rango de fechas</mat-label>
                     <mat-date-range-input [rangePicker]="picker" [disabled]="allDayChose">
-                        <input matStartDate formControlName="start" placeholder="Start date" [disabled]="allDayChose">
-                        <input matEndDate formControlName="finish" placeholder="End date" [disabled]="allDayChose">
+                        <input matStartDate formControlName="start" placeholder="Fecha de inicio" [disabled]="allDayChose" required>
+                        <input matEndDate formControlName="finish" placeholder="Fecha final" [disabled]="allDayChose" required>
                     </mat-date-range-input>
                     <mat-hint>MM/DD/AAAA – MM/DD/AAAA</mat-hint>
                     <mat-datepicker-toggle matSuffix [for]="picker" [disabled]="allDayChose"></mat-datepicker-toggle>
@@ -33,13 +30,15 @@
 
                     <mat-error *ngIf="newAppoitmentForm.controls.start.hasError('matStartDateInvalid')">Fecha invalida</mat-error>
                     <mat-error *ngIf="newAppoitmentForm.controls.finish.hasError('matEndDateInvalid')">Fecha invalida</mat-error>
+                    <mat-error *ngIf="errorValidator('start', 'required')">La fecha de inicio del evento es obligatoria</mat-error>
+                    <mat-error *ngIf="errorValidator('finish', 'required')">La fecha final evento es obligatoria</mat-error>
                 </mat-form-field>
             </div>
 
             <div class="row">
                 <mat-form-field appearance="fill">
                     <mat-label>Seleccione el tipo de evento a crear</mat-label>
-                    <mat-select [(ngModel)]="selectedKindOfEvent" name="kind" formControlName="kindEvent">
+                    <mat-select [(ngModel)]="selectedKindOfEvent" name="kind" formControlName="kindEvent" required>
                       <mat-option *ngFor="let kind of kindOfEvents" [value]="kind.id">
                         {{kind.name}}
                       </mat-option>
@@ -50,14 +49,20 @@
             <div class="row">
                 <mat-form-field class="full-width" appearance="legacy">
                     <mat-label>Lugar del evento</mat-label>
-                    <input class="full-width" matInput formControlName="location">
+                    <input class="full-width" matInput formControlName="location" required>
+                    <mat-error *ngIf="errorValidator('location', 'required')">El lugar del evento es obligatorio</mat-error>
+                    <mat-error *ngIf="errorValidator('location', 'minlength')">Límite mínimo de 2 caracteres sin completar</mat-error>
+                    <mat-error *ngIf="errorValidator('location', 'maxlength')">Límite máximo de 150 caracteres alcanzado</mat-error>
                 </mat-form-field>
             </div>
 
             <div class="row">
                 <mat-form-field class="full-width" appearance="legacy">
                     <mat-label>Detalles/notas del evento</mat-label>
-                    <input class="full-width" matInput formControlName="details">
+                    <input class="full-width" matInput formControlName="details" required>
+                    <mat-error *ngIf="errorValidator('details', 'required')">Los detalles del evento son obligatorios</mat-error>
+                    <mat-error *ngIf="errorValidator('details', 'minlength')">Límite mínimo de 5 caracteres sin completar</mat-error>
+                    <mat-error *ngIf="errorValidator('details', 'maxlength')">Límite máximo de 250 caracteres alcanzado</mat-error>
                 </mat-form-field>
             </div>
 
@@ -67,7 +72,7 @@
         </mat-card>
         <div class="modal-footer">
             <button mat-raised-button type="button" id="submit-button" class="cancel-button" (click)="decline()">Cancelar</button>
-            <button mat-raised-button type="button" id="submit-button" class="add-button" (click)="accept()">Crear</button>
+            <button mat-raised-button type="button" id="submit-button" class="add-button" (click)="accept()">Crear evento</button>
         </div>
     </form>
 </div>
