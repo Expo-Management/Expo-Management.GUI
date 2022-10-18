@@ -39,11 +39,6 @@ export class SideBarComponent implements OnInit {
       icon: 'arrow_back',
       text: 'Proyectos anteriores'
     },
-    {
-      link: 'fair-news',
-      icon: 'new_releases',
-      text: 'Noticias de la feria'
-    },
     { 
       icon: 'calendar_today',
       text: 'Calendario de la feria',

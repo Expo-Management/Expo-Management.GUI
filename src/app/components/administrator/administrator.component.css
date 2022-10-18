@@ -1,39 +1,174 @@
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+span {
+  font-size: medium;
 }
 
-.flexbox-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+/* NAVBAR */
+
+mat-toolbar {
+  padding: 0;
+  background-color: #84a98c;
+  color: white;
+  height: 10%;
 }
 
-.dashboard-container {
+
+/* * {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+} */
+
+mat-toolbar .flexbox-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.button {
+  height: 3rem;
+  padding: 0 1rem;
+  color: #FFFFFF;
+  border-color: rgb(168, 56, 93);
+  background-color: rgb(168, 56, 93);
+  border-radius: 4px;
+}
+
+mat-toolbar .menu-list {
+  height: 100%;
+  width: 85%;
+  background-color: #84A98C;
+  color: #FFFFFF;
+  display: flex;
+  justify-content: center;
+}
+
+mat-toolbar .left-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  width: 70%;
+}
+
+mat-toolbar .icon {
+  font-size: 25pt;
+  cursor: pointer;
+}
+
+.display-user-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: smaller;
+}
+
+mat-toolbar span {
+  text-align: center;
+}
+
+mat-divider {
+  margin: .3rem;
+  border-top-color: #FFFFFF;
+}
+
+img {
+  height: 70%;
+  width: 25%;
+}
+
+
+/* END NAVBAR */
+
+mat-sidenav-container {
+  width: 100%;
+  height: 90%;
+}
+
+/* SIDENAV */
+
+mat-sidenav {
+  width: 15%;
+  border-right: none;
+  background-color: #354f52;
+  color: white;
+  padding-left: 2rem;
+  padding: 2rem auto;
+  text-align: left;
+}
+
+mat-sidenav h3 {
+  margin-top: 2rem;
+  color: #bdbbb6; 
+}
+
+mat-sidenav .option {
+  color: #ffffff;
+  margin: 2rem auto;
+  display: flex;
+  flex-direction: row;
+}
+
+mat-sidenav .flexbox-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+mat-sidenav span {
+  margin-left: 1rem;
+  margin-right: 1.5rem;
+  font-size: 12pt;
+  font-weight: 250;
+  cursor: pointer;
+}
+
+mat-sidenav mat-icon {
+  font-size: 25pt;
+  cursor: pointer;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+mat-sidenav {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+/* mat-sidenav::-webkit-scrollbar {
+    display: none; */
+/* } */
+
+/* END SIDENAV */
+
+mat-sidenav-content {
+  width: 85%;
+  height: 100%;
+  padding: 3rem;
+}
+
+mat-sidenav-content .content {
+  height: 100%;
+  overflow: scroll;
+}
+
+/* OTHER DETAILS */
+
+@media screen and (max-width: 800px) {
+  mat-sidenav {
     width: 100%;
-    height: 100%;
-}
+  }
 
-.top-menu {
-    height: 10%;
+  mat-sidenav-content {
     width: 100%;
+  }
+
+  mat-icon {
+    margin-left: 1rem;
+  }
 }
 
-.content {
-    height: 90%;
-    width: 100%;
-}
-
-mat-drawer-container {
-    height: 100%;
-}
-
-mat-drawer-container mat-drawer {
-    width: 15%;
-}
-
-mat-drawer-container mat-drawer-content {
-    width: 85%;
+::-webkit-scrollbar {
+  display: none;
 }
