@@ -53,6 +53,11 @@ export class AdministratorComponent implements OnInit {
       link: 'fair-protocols',
     },
     { 
+      icon: 'book',
+      text: 'Tipos de eventos',
+      link: 'fair-kind-events',
+    },
+    { 
       icon: 'calendar_today',
       text: 'Calendario de la feria',
       link: 'fair-calendar',
