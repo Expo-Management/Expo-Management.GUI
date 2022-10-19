@@ -19,7 +19,6 @@ import { SettingsComponent } from './dashboard/settings/settings.component';
 import { DocumentationComponent } from './dashboard/documentation/documentation.component';
 import { CurrentDocumentationComponent } from './dashboard/current-documentation/current-documentation.component';
 import { MentionsComponent } from './dashboard/mentions/mentions.component';
-import { FairNewsComponent } from './dashboard/fair-news/fair-news.component';
 import { ClaimsComponent } from './dashboard/project-details/claims/claims.component';
 import { QualificationComponent } from './dashboard/project-details/qualification/qualification.component';
 import { RecommendationsComponent } from './dashboard/recommendations/recommendations.component';
@@ -49,7 +48,6 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
     DocumentationComponent,
     CurrentDocumentationComponent,
     MentionsComponent,
-    FairNewsComponent,
     ClaimsComponent,
     QualificationComponent,
     RecommendationsComponent,
@@ -77,7 +75,7 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
         path: '', 
         component: StudentsComponent,
         children: [
-          { path: 'home', component: FairNewsComponent },
+          { path: 'home', component: CurrentProyectProposalsComponent },
           { path: 'security-protocols', component: ProtocolListComponent },
           { path: 'fair-calendar', component: FairCalendarComponent },
           { path: 'past-projects', component: PastProyectProposalsComponent },
@@ -86,7 +84,6 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
           { path: 'project/:project_id', component: ProjectDetailsComponent },
           { path: 'new-project', component: CreateProjectComponent },
           { path: 'fair-documents', component: DocumentationComponent },
-          { path: 'fair-news', component: FairNewsComponent },
           { path: 'saved-documents', component: CurrentDocumentationComponent },
           { path: 'project-mentions', component: MentionsComponent },
           { path: 'settings', component: SettingsComponent },
