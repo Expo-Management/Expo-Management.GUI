@@ -44,6 +44,8 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { FairProtocolsComponent } from './dashboard/fair-protocols/fair-protocols.component';
 import { AddProtocolComponent } from './dashboard/fair-protocols/add-protocol/add-protocol.component';
 import { EditEventComponent } from './dashboard/edit-event/edit-event.component';
+import { FairKindEventsComponent } from './dashboard/fair-kind-events/fair-kind-events.component';
+import { AddKindEventComponent } from './dashboard/fair-kind-events/add-kind-event/add-kind-event.component';
 
 
 @NgModule({
@@ -79,7 +81,9 @@ import { EditEventComponent } from './dashboard/edit-event/edit-event.component'
     AddProtocolComponent,
     EditEventComponent,
     ForgetPasswordComponent,
-    ResetPasswordComponent
+    ResetPasswordComponent,
+    FairKindEventsComponent,
+    AddKindEventComponent
     
   ],
   imports: [
@@ -98,6 +102,7 @@ import { EditEventComponent } from './dashboard/edit-event/edit-event.component'
           { path: 'home', component: ContentComponent },
           { path: 'fair-documents', component: FairDocumentsComponent },
           { path: 'fair-categories', component: FairCategoriesComponent },
+          { path: 'fair-kind-events', component: FairKindEventsComponent },
           { path: 'fair-protocols', component: FairProtocolsComponent },
           { path: 'fair-calendar', component: FairCalendarComponent },
           { path: 'logs', component: LogsComponent},
