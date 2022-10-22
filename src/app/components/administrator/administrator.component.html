@@ -87,11 +87,11 @@
         <div class="options">
           <div class="option" [routerLink]="['/administrator/settings']" (click)="closeSideBar()">
             <mat-icon *ngIf="!short_view" class="icon">settings</mat-icon>
-            <span>Configuracion</span>
+            <span>Configuraciones</span>
           </div>
           <div class="option">
             <mat-icon *ngIf="!short_view" (click)="logout()" class="icon">exit_to_app</mat-icon>
-            <span (click)="logout()">Cerrar Sesion</span>
+            <span (click)="logout()">Cerrar sesión</span>
           </div>
         </div>
       </div>
