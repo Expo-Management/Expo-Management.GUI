@@ -21,7 +21,10 @@ export class ResetPasswordComponent implements OnInit {
     }),
     ConfirmPasswordFormControl: new FormControl('', {
       validators: [
-        Validators.required
+        Validators.required,
+        Validators.max(15),
+        Validators.min(8),
+        Validators.pattern("(?=^.{8,}$)(?=.*[0-9])(?=.*[A-Z])(?=.*[a-z])(?=.*[^A-Za-z0-9]).*")    
       ]
     }),
  });
@@ -64,18 +67,21 @@ export class ResetPasswordComponent implements OnInit {
           this.Message = 'Se ha cambiado la contraseña exitosamente!';
           this.homePopUp('Se ha cambiado la contraseña exitosamente');
         },  
-        err => {
-          console.log(err)
-          if (err.status === 404) {
-            this.Message = 'El servidor no pudo ser encontrado!';
-            this.homePopUp('El servidor no pudo ser encontrado');
-          }else if(err.status === 400){
-            this.Message = err.error.message;
-            this.openCustomPopUp(this.Message);
-          }else{
-            this.Message = err.error.message;
-            this.openCustomPopUp(this.Message);
-          }
+          err => {
+            console.log(err)
+            if (err.status === 404) {
+              this.Message = 'El servidor no pudo ser encontrado!';
+              this.homePopUp('El servidor no pudo ser encontrado');
+            }else if(err.status === 400){
+              this.Message = err.error.message;
+              this.openCustomPopUp(this.Message);
+            }else if(err.status === 200){
+              this.Message = 'Se ha cambiado la contraseña exitosamente!';
+              this.homePopUp('Se ha cambiado la contraseña exitosamente');
+            }else{
+              this.Message = err.error.message;
+              this.openCustomPopUp(this.Message);
+            }
         }
       );
     }

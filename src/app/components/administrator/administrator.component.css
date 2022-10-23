@@ -58,6 +58,7 @@ mat-toolbar .icon {
   flex-direction: column;
   justify-content: center;
   font-size: smaller;
+  width: 250px;
 }
 
 mat-toolbar span {
