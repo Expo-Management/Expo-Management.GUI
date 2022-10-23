@@ -60,7 +60,11 @@ export class ProjectsService {
   createProjectRecommendation(idProject: number, recommendation: string, correoJuez: string): Observable<any>{
     return this.httpClient.post(
       environment.apiUrl + '/Projects/recommendation', 
-      {idProject, recommendation, correoJuez}, 
+      {
+       idProject: idProject,
+       recommendation: recommendation,
+       correoJuez: correoJuez
+      }, 
       httpOptions)
   }
   GetMembers(): Observable<any> {
