@@ -50,6 +50,9 @@ export class ForgetPasswordComponent implements OnInit {
           if (err.status === 404) {
             this.Message = 'Correo no existe en el sistema!';
             this.openCustomPopUp('Correo no existe en el sistema');
+          }else if (err.status === 200){
+            this.Message = 'Se ha enviado el correo de cambio de contraseña!';
+            this.openCustomPopUp('Se ha enviado el correo de cambio de contraseña');
           } else {
             this.Message = err.error.message;
             this.openCustomPopUp(this.Message);
