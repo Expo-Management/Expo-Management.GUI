@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
 
   openCustomPopUp(message: string) {
     this.customPopUpService.confirm(
-      'User login', 
+      'Ingreso al sistema', 
       message,
       'auth/login'
       );
