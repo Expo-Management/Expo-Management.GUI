@@ -28,7 +28,7 @@ export class StudentsService {
     return this.httpClient.post(
       environment.apiUrl + '/Authenticate/register', 
       {
-        id: userId,
+        userId: userId,
         username: username,
         name: name,
         lastname: last,

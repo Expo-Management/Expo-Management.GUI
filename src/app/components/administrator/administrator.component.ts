@@ -78,12 +78,12 @@ export class AdministratorComponent implements OnInit {
   account_options = [
     { 
       icon: 'settings',
-      text: 'Configuracion',
+      text: 'Configuraciones',
       link: '/administrator/settings',
     },
     { 
       icon: 'exit_to_app',
-      text: 'Cerrar sesion',
+      text: 'Cerrar sesión',
       link: '/auth/login',
     }
   ]
