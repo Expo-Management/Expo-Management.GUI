@@ -29,11 +29,11 @@ export class SideBarComponent implements OnInit {
       icon: 'list',
       text: 'Lista de proyectos actuales'
     },
-    {
+    /*{
       link: 'project-mentions',
       icon: 'stars',
       text: 'Menciones de proyecto'
-    },
+    },*/
     {
       link: 'past-projects',
       icon: 'arrow_back',
