@@ -29,7 +29,7 @@ export class JudgesService {
     return this.httpClient.post(
       environment.apiUrl + '/Authenticate/register-judge', 
       {
-        id: userId,
+        userId: userId,
         username: username,
         name: name,
         lastname: last,

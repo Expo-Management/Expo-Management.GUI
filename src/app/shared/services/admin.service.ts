@@ -28,7 +28,7 @@ export class AdminService {
     return this.httpClient.post(
       environment.apiUrl + '/Authenticate/register-admin', 
       {
-        id: userId,
+        userId: userId,
         username: username,
         name: name,
         lastname: last,
