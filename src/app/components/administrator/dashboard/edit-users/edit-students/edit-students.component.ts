@@ -90,17 +90,19 @@ export class EditStudentsComponent implements OnInit {
     this.studentService.getStudent(this.student_email).subscribe(
       data => {
         console.log(data);
-        this.studentForm.controls['NameFormControl'].setValue(data.name);
-        this.studentForm.controls['LastFormControl'].setValue(data.lastname);
-        this.studentForm.controls['EmailFormControl'].setValue(data.email);
-        this.studentForm.controls['UsernameFormControl'].setValue(data.userName);
-        this.studentForm.controls['PhoneFormControl'].setValue(data.phoneNumber);
+          this.studentForm.controls['NameFormControl'].setValue(data.data.name);
+          this.studentForm.controls['LastFormControl'].setValue(data.data.lastname);
+          this.studentForm.controls['EmailFormControl'].setValue(data.data.email);
+          this.studentForm.controls['UsernameFormControl'].setValue(data.data.userName);
+          this.studentForm.controls['PhoneFormControl'].setValue(data.data.phoneNumber);        
       },
       err => {
         if (err.status === 403) {
           this.openCustomPopUp('Inicie sesión con una cuenta de Administrador para acceder a esta sección.');
-        } else {
-          this.openCustomPopUp('Ocurrió un problema interno. Por favor, vuelve a intentarlo más tarde.');
+        }else if(err.status === 204){
+            this.openCustomPopUp(err.message);
+        }else{
+            this.openCustomPopUp('Ocurrió un problema interno. Por favor, vuelve a intentarlo más tarde.');
         }
       }
     )
@@ -116,12 +118,18 @@ export class EditStudentsComponent implements OnInit {
 
     ).subscribe(
       data => {
-        this.openCustomPopUp('¡Estudiante actualizado exitosamente!');
+          this.openCustomPopUp('¡Estudiante actualizado exitosamente');
       },
       err => {
         console.log(err);
-        this.openCustomPopUp('Error al actualizar el estudiante. Verifíque las credenciales.');
-      }
+      if(err.status === 204){
+        this.openCustomPopUp(err.message);
+      } else if(err.status === 400){
+        this.openCustomPopUp(err.message);
+      }else{
+        this.openCustomPopUp('Ocurrió un problema interno. Por favor, vuelve a intentarlo más tarde.');
+    }
+     }
     )
   }
 

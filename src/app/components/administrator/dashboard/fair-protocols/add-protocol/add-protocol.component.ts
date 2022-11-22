@@ -64,25 +64,24 @@ export class AddProtocolComponent implements OnInit {
       this.categoryForm.get('descriptionForm')?.value).subscribe(
         data => {
           console.log(data)
-          if (data.status == 500) {
-            this.httpMessage = 'Hubo un error en el servidor, contacte a los desarrolladores.';
+          if (data.status == 200) {
+            this.httpMessage = data.message;
           } else if (data.status == 400) {
-            this.httpMessage = 'Revise los datos ingresados';
+            this.httpMessage = data.message;
           } else {
-            this.httpMessage = 'Protocolo creado exitosamente!';
+            this.httpMessage = data.message;
           }
           this.openCustomPopUp(this.httpMessage);
         }, 
         err => {
           console.log(err)
           if (err.status == 400) {
-            this.httpMessage = 'Revise los datos ingresados';
+            this.openCustomPopUp(err.message);
           } else if (err.status === 403) {
             this.openCustomPopUp('Inicie sesión con una cuenta de Administrador para acceder a esta sección.');
           } else {
-            this.openCustomPopUp('Ocurrió un problema interno. Por favor, vuelve a intentarlo más tarde.');
+            this.openCustomPopUp(err.message);
           }
-          this.openCustomPopUp(this.httpMessage);
         }
       )
   }  

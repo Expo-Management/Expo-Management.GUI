@@ -28,7 +28,7 @@ export class DocumentationComponent implements OnInit {
         this.dataSource = new MatTableDataSource(data);
       },
       err => {
-        if (err.status === 404) {
+        if (err.status === 400) {
           this.openCustomPopUp('No hay documentos en el sistema');
         } else if (err.status === 403) {
           this.openCustomPopUp('Inicie sesión con una cuenta de Administrador o Estudiante para acceder a esta sección.');

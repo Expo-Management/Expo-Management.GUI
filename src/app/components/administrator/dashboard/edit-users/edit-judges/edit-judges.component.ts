@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup, FormGroupDirective, NgForm, Validators} from '@angular/forms';
-import {ErrorStateMatcher} from '@angular/material/core';
+import { FormControl, FormGroup, FormGroupDirective, NgForm, Validators } from '@angular/forms';
+import { ErrorStateMatcher } from '@angular/material/core';
 import { ActivatedRoute } from '@angular/router';
 import { CustomPopUpService } from 'src/app/shared/services/custom-pop-up.service';
 import { JudgesService } from 'src/app/shared/services/judges.service';
@@ -61,7 +61,7 @@ export class EditJudgesComponent implements OnInit {
     })
   });
 
-  public errorValidator = (controlName: string, errorName: string) =>{
+  public errorValidator = (controlName: string, errorName: string) => {
     return this.judgeForm.controls[controlName].hasError(errorName);
   }
 
@@ -74,10 +74,10 @@ export class EditJudgesComponent implements OnInit {
 
   openCustomPopUp(message: string) {
     this.customPopUpService.confirm(
-      'Judge update', 
+      'Judge update',
       message,
       'administrator/manage-judges'
-      );
+    );
   }
 
   ngOnInit(): void {
@@ -89,15 +89,17 @@ export class EditJudgesComponent implements OnInit {
     this.judgeService.getJudge(this.judge_email).subscribe(
       data => {
         console.log(data);
-        this.judgeForm.controls['NameFormControl'].setValue(data.name);
-        this.judgeForm.controls['LastFormControl'].setValue(data.lastname);
-        this.judgeForm.controls['EmailFormControl'].setValue(data.email);
-        this.judgeForm.controls['UsernameFormControl'].setValue(data.userName);
-        this.judgeForm.controls['PhoneFormControl'].setValue(data.phoneNumber);
+        this.judgeForm.controls['NameFormControl'].setValue(data.data.name);
+        this.judgeForm.controls['LastFormControl'].setValue(data.data.lastname);
+        this.judgeForm.controls['EmailFormControl'].setValue(data.data.email);
+        this.judgeForm.controls['UsernameFormControl'].setValue(data.data.userName);
+        this.judgeForm.controls['PhoneFormControl'].setValue(data.data.phoneNumber);
       },
       err => {
         if (err.status === 403) {
           this.openCustomPopUp('Inicie sesión con una cuenta de Administrador para acceder a esta sección.');
+        } else if (err.status === 204) {
+          this.openCustomPopUp(err.message);
         } else {
           this.openCustomPopUp('Ocurrió un problema interno. Por favor, vuelve a intentarlo más tarde.');
         }
@@ -114,13 +116,19 @@ export class EditJudgesComponent implements OnInit {
       this.judgeForm.controls['PhoneFormControl'].value
     ).subscribe(
       data => {
+
         this.openCustomPopUp('¡Juez actualizado exitosamente');
       },
       err => {
         console.log(err);
-        this.openCustomPopUp('Error al actualizar el juez. Verifíque las credenciales');
+        if (err.status === 204) {
+          this.openCustomPopUp(err.message);
+        } else if (err.status === 400) {
+          this.openCustomPopUp(err.message);
+        } else {
+          this.openCustomPopUp('Ocurrió un problema interno. Por favor, vuelve a intentarlo más tarde.');
+        }
       }
     )
   }
-
 }

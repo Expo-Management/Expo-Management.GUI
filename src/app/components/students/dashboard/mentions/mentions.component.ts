@@ -28,10 +28,11 @@ export class MentionsComponent implements OnInit {
   ngOnInit(): void {
     this.projects.getMentions().subscribe(
       data => {
-        this.dataSource = data;
+        console.log(data.data);
+        this.dataSource = data.data;
       },
       err => {
-        if (err.status === 404) {
+        if (err.status === 204) {
           this.openCustomPopUp('Aún no hay menciones.');
         } else if (err.status === 403) {
           this.openCustomPopUp('Inicie sesión con una cuenta de Juez o de Estudiante para acceder a esta sección.');
