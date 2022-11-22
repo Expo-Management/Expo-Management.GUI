@@ -8,43 +8,65 @@
         <div class="row">
             <div class="col-6">
                 <mat-form-field class="full-width" appearance="outline">
-                    <mat-label>Nombre</mat-label>
+                    <mat-label>Nombre del juez</mat-label>
                     <input type="text" matInput formControlName="NameFormControl" required onkeypress="return /[a-zA-ZñÑá-úÁ-Ú]/i.test(event.key)">
-                    <mat-error *ngIf="errorValidator('NameFormControl', 'required')">El nombre es obligatorio</mat-error>
+                    <mat-error *ngIf="errorValidator('NameFormControl', 'required')">El nombre del juez es obligatorio</mat-error>
                     <mat-error *ngIf="errorValidator('NameFormControl', 'minlength')">Límite mínimo de 3 caracteres sin completar</mat-error>
                     <mat-error *ngIf="errorValidator('NameFormControl', 'maxlength')">Límite máximo de 30 caracteres alcanzado</mat-error>
                 </mat-form-field>
             </div>
             <div class="col-6">
                 <mat-form-field class="full-width" appearance="outline">
-                    <mat-label>Apellidos</mat-label>
+                    <mat-label>Apellidos del juez</mat-label>
                     <input type="text" matInput formControlName="LastFormControl" required onkeypress="return /[a-zA-ZñÑá-úÁ-Ú ]/i.test(event.key)">
-                    <mat-error *ngIf="errorValidator('LastFormControl', 'required')">Los apellidos son obligatorios</mat-error>
+                    <mat-error *ngIf="errorValidator('LastFormControl', 'required')">Los apellidos del juez son obligatorios</mat-error>
                     <mat-error *ngIf="errorValidator('LastFormControl', 'maxlength')">Límite máximo de 100 caracteres alcanzado</mat-error>
                     <mat-error *ngIf="errorValidator('LastFormControl', 'minlength')">Límite mínimo de 10 caracteres sin completar</mat-error>
                 </mat-form-field>
             </div>
         </div>
 
-        <div class="rows">
-            <mat-form-field class="full-width" appearance="outline">
-                <mat-label>Nombre de usuario</mat-label>
-                <input type="text" matInput formControlName="UsernameFormControl" required>
-                <mat-error *ngIf="errorValidator('UsernameFormControl', 'required')">El nombre de usuario es obligatorio</mat-error>
-                <mat-error *ngIf="errorValidator('UsernameFormControl', 'maxlength')">Límite máximo de 15 caracteres alcanzado</mat-error>
-                <mat-error *ngIf="errorValidator('UsernameFormControl', 'minlength')">Límite mínimo de 5 caracteres sin completar</mat-error>
-            </mat-form-field>
-    </div>
-        <div class="rows">
+        <div class="row">
+            <div class="col-6">
                 <mat-form-field class="full-width" appearance="outline">
-                    <mat-label>Teléfono</mat-label>
-                    <input type="phone" matInput formControlName="PhoneFormControl" placeholder="88888888" maxlength="8" required autocomplete="off" onkeypress="return (event.charCode >= 48 && event.charCode <= 57)" min="1" required>
+                    <mat-label>Nombre de usuario del juez</mat-label>
+                    <input type="text" matInput formControlName="UsernameFormControl" required>
+                    <mat-error *ngIf="errorValidator('UsernameFormControl', 'required')">El nombre de usuario es obligatorio</mat-error>
+                    <mat-error *ngIf="errorValidator('UsernameFormControl', 'maxlength')">Límite máximo de 15 caracteres alcanzado</mat-error>
+                    <mat-error *ngIf="errorValidator('UsernameFormControl', 'minlength')">Límite mínimo de 5 caracteres sin completar</mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-6">
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Telefono del Juez</mat-label>
+                    <input type="text" matInput formControlName="PhoneFormControl" placeholder="88888888" maxlength="8" required autocomplete="off" onkeypress="return (event.charCode >= 48 && event.charCode <= 57)" min="1" required>
                     <mat-error *ngIf="errorValidator('PhoneFormControl', 'required')">El número de teléfono es obligatorio</mat-error>
                     <mat-error *ngIf="errorValidator('PhoneFormControl', 'pattern')">El campo solo acepta números de teléfono validos</mat-error>
                     <mat-error *ngIf="errorValidator('PhoneFormControl', 'maxlength')">Límite máximo de 8 caracteres alcanzado</mat-error>
                     <mat-error *ngIf="errorValidator('PhoneFormControl', 'minlength')">Límite mínimo de 8 caracteres sin completar</mat-error>
                 </mat-form-field>
+            </div>
         </div>
+
+        <div class="row">
+            <div class="col-6">
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Institución del juez</mat-label>
+                    <input type="text" matInput formControlName="InstitutionFormControl" required onkeypress="return /[a-zA-ZñÑá-úÁ-Ú ]/i.test(event.key)">
+                    <mat-error *ngIf="errorValidator('InstitutionFormControl', 'required')">La institución es obligatorio</mat-error>
+                    <mat-error *ngIf="errorValidator('InstitutionFormControl', 'maxlength')">Límite máximo de 50 caracteres alcanzado</mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-6">
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Posición del Juez</mat-label>
+                    <input type="text" matInput formControlName="PositionFormControl" required onkeypress="return /[a-zA-ZñÑá-úÁ-Ú ]/i.test(event.key)">
+                    <mat-error *ngIf="errorValidator('PositionFormControl', 'required')">La posición es obligatorio</mat-error>
+                    <mat-error *ngIf="errorValidator('PositionFormControl', 'maxlength')">Límite máximo de 30 caracteres alcanzado</mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+
         <div class="rows">
             <mat-form-field class="full-width" appearance="outline">
                 <mat-label>Correo electrónico</mat-label>
