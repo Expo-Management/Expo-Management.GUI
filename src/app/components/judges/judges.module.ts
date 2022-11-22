@@ -26,6 +26,7 @@ import { FlatpickrModule } from 'angularx-flatpickr';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { EditEventComponent } from './dashboard/edit-event/edit-event.component';
+import { QualifyComponent } from './dashboard/qualify/qualify.component';
 
 
 @NgModule({
@@ -48,7 +49,8 @@ import { EditEventComponent } from './dashboard/edit-event/edit-event.component'
     ForgetPasswordComponent,
     ResetPasswordComponent,
     FairCalendarComponent,
-    EditEventComponent
+    EditEventComponent,
+    QualifyComponent
   ],
   imports: [
     ReactiveFormsModule,
