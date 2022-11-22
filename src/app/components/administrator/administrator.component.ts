@@ -159,7 +159,7 @@ export class AdministratorComponent implements OnInit {
 
   openCustomPopUp(message: string) {
     this.customPopUpService.confirm(
-      'Informacion del usuario',
+      'Mensaje informativo',
       message,
       undefined
     );
