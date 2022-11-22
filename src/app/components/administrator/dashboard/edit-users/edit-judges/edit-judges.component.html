@@ -48,6 +48,25 @@
         </div>
 
         <div class="row">
+            <div class="col-6">
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Institución del juez</mat-label>
+                    <input type="text" matInput formControlName="InstitutionFormControl" required onkeypress="return /[a-zA-ZñÑá-úÁ-Ú ]/i.test(event.key)">
+                    <mat-error *ngIf="errorValidator('InstitutionFormControl', 'required')">La institución es obligatorio</mat-error>
+                    <mat-error *ngIf="errorValidator('InstitutionFormControl', 'maxlength')">Límite máximo de 50 caracteres alcanzado</mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-6">
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Posición del Juez</mat-label>
+                    <input type="text" matInput formControlName="PositionFormControl" required onkeypress="return /[a-zA-ZñÑá-úÁ-Ú ]/i.test(event.key)">
+                    <mat-error *ngIf="errorValidator('PositionFormControl', 'required')">La posición es obligatorio</mat-error>
+                    <mat-error *ngIf="errorValidator('PositionFormControl', 'maxlength')">Límite máximo de 30 caracteres alcanzado</mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="row">
             <mat-form-field class="full-width" appearance="outline">
                 <mat-label>Correo del juez</mat-label>
                 <input type="email" matInput formControlName="EmailFormControl" placeholder="abc@gmail.com" readonly>

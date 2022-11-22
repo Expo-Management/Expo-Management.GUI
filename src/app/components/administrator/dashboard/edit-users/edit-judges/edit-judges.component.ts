@@ -58,6 +58,18 @@ export class EditJudgesComponent implements OnInit {
         Validators.minLength(8),
         Validators.pattern("^((\\+91-?)|0)?[0-9]{8}$")
       ]
+    }),
+    InstitutionFormControl: new FormControl('', {
+      validators: [
+        Validators.required,
+        Validators.maxLength(50),
+      ]
+    }),
+    PositionFormControl: new FormControl('', {
+      validators: [
+        Validators.required,
+        Validators.maxLength(30),
+      ]
     })
   });
 
@@ -94,6 +106,8 @@ export class EditJudgesComponent implements OnInit {
         this.judgeForm.controls['EmailFormControl'].setValue(data.email);
         this.judgeForm.controls['UsernameFormControl'].setValue(data.userName);
         this.judgeForm.controls['PhoneFormControl'].setValue(data.phoneNumber);
+        this.judgeForm.controls['InstitutionFormControl'].setValue(data.institution);
+        this.judgeForm.controls['PositionFormControl'].setValue(data.position)
       },
       err => {
         if (err.status === 403) {
@@ -111,7 +125,9 @@ export class EditJudgesComponent implements OnInit {
       this.judgeForm.controls['LastFormControl'].value,
       this.judgeForm.controls['EmailFormControl'].value,
       this.judgeForm.controls['UsernameFormControl'].value,
-      this.judgeForm.controls['PhoneFormControl'].value
+      this.judgeForm.controls['PhoneFormControl'].value,
+      this.judgeForm.controls['InstitutionFormControl'].value,
+      this.judgeForm.controls['PositionFormControl'].value
     ).subscribe(
       data => {
         this.openCustomPopUp('¡Juez actualizado exitosamente');
