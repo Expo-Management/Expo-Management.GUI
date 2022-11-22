@@ -18,8 +18,7 @@ export class ProjectsComponent implements OnInit {
   project_description = '';
   group_members: string[] = [];
   category = '';
-  canJudgeQualifyTheProject = true;
-
+  
   constructor(
     private dialog: MatDialog,
     private route: ActivatedRoute,
@@ -31,28 +30,6 @@ export class ProjectsComponent implements OnInit {
 
   ngOnInit(): void {
     this.group_number = this.route.snapshot.paramMap.get('project_id')!;
-
-      this.projects.canJudgeQualifyTheProject(+this.group_number, this.personalInformation.getEmail()).subscribe(
-        data => {
-          if (data.status_code === 200 || data) 
-          {
-            this.canJudgeQualifyTheProject = false;
-          } else if (data.status === 400 && data.statusText === 'Bad Request'){
-            this.openCustomPopUp('Usted ya ha calificado el actual proyecto');
-            this.canJudgeQualifyTheProject = true;
-          }
-        },
-        err => {
-          if (err.status === 400 && err.statusText === 'Bad Request') 
-          {
-            this.canJudgeQualifyTheProject = true;
-          } else if (err.status === 200 || err) 
-          {
-            this.canJudgeQualifyTheProject = false;
-          }
-        }
-      );
-
       this.fillTheProjectInformation();
   }
 

@@ -15,7 +15,21 @@
                 <h3>{{ group_member }}</h3>
             </div>
             <h3 class="space">Categoría: {{ category }}</h3>
-            <button class="buttonDescargar" (click)="downloadFile()" mat-raised-button>Descargar documentación</button>
+        </div>
+    </div>
+    <mat-divider vertical style="height:85%; margin: 0 5%;"></mat-divider>
+    <div class="right-side">
+        <div class="section-title">
+            <mat-icon>save_alt</mat-icon>
+            <div class="title">
+                <h2>Opciones</h2>
+            </div>
+        </div>
+        <div class="details-content">
+            <h3 class="space">Para descargar la documentación del proyecto presione el siguiente botón: </h3>
+            <div class="button-group space">
+                <button class="button" (click)="downloadFile()" mat-raised-button>Descargar documentación</button>
+            </div>
         </div>
     </div>
 </div>
