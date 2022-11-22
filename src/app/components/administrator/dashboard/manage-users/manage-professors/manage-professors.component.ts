@@ -20,7 +20,7 @@ export class ManageProfessorsComponent implements OnInit {
   constructor(private customPopUpService: CustomPopUpService, private adminServices: AdminService) {}
 
   ngOnInit(): void {
-    this.displayedColumns = ['userId', 'name', 'lastname', 'email', 'phoneNumber', 'actions'];
+    this.displayedColumns = [/*'userId', */'name', 'lastname', 'email', 'phoneNumber', 'actions'];
 
     this.adminServices.getAdmins().subscribe(
       data => {
