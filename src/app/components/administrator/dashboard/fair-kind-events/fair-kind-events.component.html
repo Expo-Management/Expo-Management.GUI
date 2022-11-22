@@ -1,6 +1,6 @@
 <div class="flex-container">
     <div class="top-options">
-        <h1>Tipos de eventos de la Feria</h1>
+        <h1>Tipos de eventos en la feria</h1>
         <div class="sub-container">
             <form class="example-form">
             <button mat-raised-button class="add-button" (click)="addKindEvents()">Agregar tipo de evento</button>
@@ -14,11 +14,11 @@
                 <td mat-cell *matCellDef="let element"> {{element.name}} </td>
             </ng-container>
             <ng-container matColumnDef="primary">
-                <th mat-header-cell *matHeaderCellDef> Primario </th>
+                <th mat-header-cell *matHeaderCellDef> Color Primario </th>
                 <td mat-cell *matCellDef="let element"> {{element.primary}} </td>
             </ng-container>
             <ng-container matColumnDef="secondary">
-                <th mat-header-cell *matHeaderCellDef> Secundario </th>
+                <th mat-header-cell *matHeaderCellDef> Color Secundario </th>
                 <td mat-cell *matCellDef="let element"> {{element.secondary}} </td>
             </ng-container>
              <!--Buttons-->
