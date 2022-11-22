@@ -10,7 +10,9 @@
                 <div class="col-12">
                     <mat-form-field class="full-width" appearance="legacy">
                         <mat-label>Recomendación</mat-label>
-                        <input class="full-width" matInput formControlName="recommendation">
+                        <input class="full-width" matInput formControlName="recommendation" required>
+                        <mat-error *ngIf="errorValidator('recommendation', 'required')">La recomendación es requerida</mat-error>
+                        <mat-error *ngIf="errorValidator('recommendation', 'maxlength')">Límite máximo de 400 caracteres alcanzado</mat-error>
                     </mat-form-field>
                 </div>
             </div>

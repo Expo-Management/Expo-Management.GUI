@@ -58,7 +58,7 @@ export class RecomendationsPopupComponent implements OnInit {
 
   openCustomPopUp(message: string) {
     this.customPopUpService.confirm(
-      'Creacion de recomendacion', 
+      'Recomendación', 
       message,
       `/judges/project-details/${this.project_number}`);
   }
@@ -75,7 +75,7 @@ export class RecomendationsPopupComponent implements OnInit {
           } else if (data.status == 400) {
             this.httpMessage = 'Revise los datos ingresados';
           } else {
-            this.httpMessage = 'Recommendacion creada correctamente';
+            this.httpMessage = 'Recommendación creada correctamente';
           }
           this.openCustomPopUp(this.httpMessage);
         }, 
@@ -91,6 +91,10 @@ export class RecomendationsPopupComponent implements OnInit {
           this.openCustomPopUp(this.httpMessage);
         }
       )
+  }
+
+  public errorValidator = (controlName: string, errorName: string) =>{
+    return this.createRecommendationForm.controls[controlName].hasError(errorName);
   }
 
 }
