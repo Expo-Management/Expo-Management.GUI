@@ -57,7 +57,7 @@
             </div>
             <div class="col-6">
                 <mat-form-field class="full-width" appearance="outline">
-                    <mat-label>Posición del Juez</mat-label>
+                    <mat-label>Posición que posee el Juez</mat-label>
                     <input type="text" matInput formControlName="PositionFormControl" required onkeypress="return /[a-zA-ZñÑá-úÁ-Ú ]/i.test(event.key)">
                     <mat-error *ngIf="errorValidator('PositionFormControl', 'required')">La posición del juez es obligatoria</mat-error>
                     <mat-error *ngIf="errorValidator('PositionFormControl', 'maxlength')">Límite máximo de 30 caracteres alcanzado</mat-error>
