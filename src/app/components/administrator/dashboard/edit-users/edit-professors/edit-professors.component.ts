@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup, FormGroupDirective, NgForm, Validators} from '@angular/forms';
-import {ErrorStateMatcher} from '@angular/material/core';import { ActivatedRoute } from '@angular/router';
+import { FormControl, FormGroup, FormGroupDirective, NgForm, Validators } from '@angular/forms';
+import { ErrorStateMatcher } from '@angular/material/core'; import { ActivatedRoute } from '@angular/router';
 import { CustomPopUpService } from 'src/app/shared/services/custom-pop-up.service';
 import { AdminService } from 'src/app/shared/services/admin.service';
 
@@ -60,7 +60,7 @@ export class EditProfessorsComponent implements OnInit {
     })
   });
 
-  public errorValidator = (controlName: string, errorName: string) =>{
+  public errorValidator = (controlName: string, errorName: string) => {
     return this.adminForm.controls[controlName].hasError(errorName);
   }
 
@@ -69,16 +69,16 @@ export class EditProfessorsComponent implements OnInit {
     private _activatedRoute: ActivatedRoute,
     private adminService: AdminService,
     private customPopUpService: CustomPopUpService
-    ) { }
+  ) { }
 
 
 
   openCustomPopUp(message: string) {
     this.customPopUpService.confirm(
-      'Actualizar profesor', 
+      'Actualizar profesor',
       message,
       'administrator/manage-professors'
-      );
+    );
   }
 
   ngOnInit(): void {
@@ -90,15 +90,17 @@ export class EditProfessorsComponent implements OnInit {
     this.adminService.getAdmin(this.admin_email).subscribe(
       data => {
         console.log(data);
-        this.adminForm.controls['NameFormControl'].setValue(data.name);
-        this.adminForm.controls['LastFormControl'].setValue(data.lastname);
-        this.adminForm.controls['EmailFormControl'].setValue(data.email);
-        this.adminForm.controls['UsernameFormControl'].setValue(data.userName);
-        this.adminForm.controls['PhoneFormControl'].setValue(data.phoneNumber);
+        this.adminForm.controls['NameFormControl'].setValue(data.data.name);
+        this.adminForm.controls['LastFormControl'].setValue(data.data.lastname);
+        this.adminForm.controls['EmailFormControl'].setValue(data.data.email);
+        this.adminForm.controls['UsernameFormControl'].setValue(data.data.userName);
+        this.adminForm.controls['PhoneFormControl'].setValue(data.data.phoneNumber);
       },
       err => {
         if (err.status === 403) {
           this.openCustomPopUp('Inicie sesión con una cuenta de Administrador para acceder a esta sección.');
+        } else if (err.status === 204) {
+          this.openCustomPopUp(err.message);
         } else {
           this.openCustomPopUp('Ocurrió un problema interno. Por favor, vuelve a intentarlo más tarde.');
         }
@@ -116,10 +118,17 @@ export class EditProfessorsComponent implements OnInit {
     ).subscribe(
       data => {
         this.openCustomPopUp('¡Profesor actualizado exitosamente!');
-      },
+      }
+      ,
       err => {
         console.log(err);
-        this.openCustomPopUp('Error al actualizar el profesor. Verifíque las credenciales');
+        if (err.status === 204) {
+          this.openCustomPopUp(err.message);
+        } else if (err.status === 400) {
+          this.openCustomPopUp(err.message);
+        } else {
+          this.openCustomPopUp('Ocurrió un problema interno. Por favor, vuelve a intentarlo más tarde.');
+        }
       }
     )
   }

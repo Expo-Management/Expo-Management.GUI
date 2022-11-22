@@ -23,19 +23,13 @@ export class PastProyectProposalsComponent implements OnInit {
   ngOnInit(): void { 
     this.projects.getOlProjects().subscribe(
       data => {
-        this.dataSource = new MatTableDataSource(data);
-        if (data == 204){
-          console.log("test")
-          this.openCustomPopUp('No hay datos en el sistema.');
-        }
+        this.dataSource = new MatTableDataSource(data.data);
       } ,
       err => {
-        if (err.status === 404) {
+        if (err.status === 204) {
           this.openCustomPopUp('No hay proyectos antiguos en el sistema');
         } else if (err.status === 403) {
-          this.openCustomPopUp('Inicie sesión con una cuenta de Estudiante para acceder a esta sección.');
-        } else if (err.status === 204){
-          this.openCustomPopUp('No hay datos en el sistema.');
+          this.openCustomPopUp('Inicie sesión con una cuenta de Estudiante para acceder a esta sección.');;
         } else {
           this.openCustomPopUp('Ocurrió un problema interno. Por favor, vuelve a intentarlo más tarde.');
         }

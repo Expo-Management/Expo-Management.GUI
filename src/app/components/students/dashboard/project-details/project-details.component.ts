@@ -18,7 +18,7 @@ import { PersonalInformationService } from 'src/app/shared/services/personal-inf
 })
 
 export class ProjectDetailsComponent implements OnInit {
-  project_name =''
+  project_name = ''
   group_number: string | null = '0'
   project_description = ''
   group_members: string[] = []
@@ -26,7 +26,7 @@ export class ProjectDetailsComponent implements OnInit {
   qualification = ''
 
   selectedJudge = '';
-  selectedQualification = ''; 
+  selectedQualification = '';
 
   judgesCalifications: JudgeCalification[] = [];
 
@@ -42,7 +42,7 @@ export class ProjectDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.group_number = this.route.snapshot.paramMap.get('project_id');
-    console.log('project id: '+this.group_number)
+    console.log('project id: ' + this.group_number)
     this.fillTheProjectInformation();
   }
 
@@ -50,13 +50,18 @@ export class ProjectDetailsComponent implements OnInit {
   private fillTheProjectInformation() {
     this.projects.getProjectDetails(this.group_number).subscribe(
       data => {
-        console.log(data);
-        
-          this.fillProjectCalification(data[0].projectQualifications);
-          this.fillProjectDetails(data);
+        console.log(data.data);
+
+        this.fillProjectCalification(data.data[0].projectQualifications);
+        this.fillProjectDetails(data.data);
       },
       err => {
         console.log(err);
+        if (err.status === 204) {
+          this.openCustomPopUp("Proyecto no encontrado");
+        } else {
+          this.openCustomPopUp('Hubo un problema procesando su solicitud, contacte administración.');
+        }
       }
     );
 
@@ -69,13 +74,13 @@ export class ProjectDetailsComponent implements OnInit {
     this.group_members = data[0].members;
 
     this.category = (data[0].category != undefined || data[0].category != null) ? data[0].category : "No se le ha asignado una categoria";
-    this.qualification = ((data[0].finalPunctuation != undefined || data[0].finalPunctuation != null) && data[0].projectQualifications.length > 0)  ? data[0].finalPunctuation : "No se le ha asignado una calificacion";
+    this.qualification = ((data[0].finalPunctuation != undefined || data[0].finalPunctuation != null) && data[0].projectQualifications.length > 0) ? data[0].finalPunctuation : "No se le ha asignado una calificacion";
   }
 
   private fillProjectCalification(data: JudgeCalification[]) {
-    data.forEach((ProjectQualification)  => {
-     this.judgesCalifications.push({judgeName: ProjectQualification.judgeName, punctuation: ProjectQualification.punctuation}) 
-     console.log(this.judgesCalifications)
+    data.forEach((ProjectQualification) => {
+      this.judgesCalifications.push({ judgeName: ProjectQualification.judgeName, punctuation: ProjectQualification.punctuation })
+      console.log(this.judgesCalifications)
     });
   }
 
@@ -88,35 +93,37 @@ export class ProjectDetailsComponent implements OnInit {
   }
 
   createClaim() {
-    const modalRef = this.modalService.open(ClaimsComponent, {centered: true});
+    const modalRef = this.modalService.open(ClaimsComponent, { centered: true });
     modalRef.componentInstance.project_number = this.group_number;
   }
 
   checkRecommendations() {
-    const modalRef = this.modalService.open(RecommendationsComponent, {centered: true});
+    const modalRef = this.modalService.open(RecommendationsComponent, { centered: true });
     modalRef.componentInstance.project_number = this.group_number;
   }
 
   viewQualification() {
-    const modalRef = this.modalService.open(QualificationComponent, {centered: true});
+    const modalRef = this.modalService.open(QualificationComponent, { centered: true });
     modalRef.componentInstance.judgesCalifications = this.judgesCalifications;
   }
 
-  dialogDelete(): void{
+  dialogDelete(): void {
     console.log(this.user_email)
     this.openCustomPopUp("¿Estás seguro que quieres renunciar de la feria?").then(
       (result: boolean) => {
         this.projects.RemoveStudentFromProject(this.user_email).subscribe(
-          data =>{
-            console.log(data)
+          data => {
+            console.log(data.data)
             this.userDeleted();
           },
           err => {
             console.log(err)
             if (err.status === 200) {
               this.userDeleted();
+            } else if (err.status === 204) {
+              this.openCustomPopUp("estudiante no encontrado");
             } else {
-              this.openCustomPopUp('Hubo un error, por favor, intenlo más tarde.');
+              this.openCustomPopUp('Hubo un problema procesando su solicitud, contacte administración.');
             }
           }
         );
@@ -124,14 +131,14 @@ export class ProjectDetailsComponent implements OnInit {
   }
 
   private userDeleted() {
-    this.openCustomPopUp('!Has sido borrado del proyecto exitosamente!');
+    this.openCustomPopUp('!Has sido removido del proyecto exitosamente!');
   }
 
   public openCustomPopUp(message: string): Promise<boolean> {
     return this.customPopUpService.confirm(
-      'Detalles de proyecto', 
+      'Detalles de proyecto',
       message,
       'student/project-details'
-      );
+    );
   }
 }

@@ -20,7 +20,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 })
 export class SettingsComponent implements OnInit {
   isJudge = true
-  
+
   studentForm = new FormGroup({
     PhoneFormControl: new FormControl('', {
       validators: [
@@ -58,7 +58,7 @@ export class SettingsComponent implements OnInit {
     })
   });
 
-  public errorValidator = (controlName: string, errorName: string) =>{
+  public errorValidator = (controlName: string, errorName: string) => {
     return this.studentForm.controls[controlName].hasError(errorName);
   }
 
@@ -68,28 +68,30 @@ export class SettingsComponent implements OnInit {
     private personalInfo: PersonalInformationService,
     private tokenStorage: TokenStorageService) { }
 
-    ngOnInit(): void {
-      this.studentService.getStudent(this.personalInfo.getEmail()).subscribe(
-        data => {
-          this.studentForm.controls['PhoneFormControl'].setValue(data.phoneNumber);
-          this.studentForm.controls['NameFormControl'].setValue(data.name);
-          this.studentForm.controls['LastFormControl'].setValue(data.lastname);
-          this.studentForm.controls['EmailFormControl'].setValue(data.email);
-          this.studentForm.controls['UsernameFormControl'].setValue(data.userName);
-        },
-        err => {
-          console.log(err);
-          if (err.status === 403) {
-            this.openCustomPopUp('Inicie sesión con una cuenta de Estudiante para acceder a esta sección.');
-          } else {
-            this.openCustomPopUp('Ocurrió un problema interno. Por favor, vuelve a intentarlo más tarde.');
-          }
-        },
-      )
-    }
+  ngOnInit(): void {
+    this.studentService.getStudent(this.personalInfo.getEmail()).subscribe(
+      data => {
+        this.studentForm.controls['PhoneFormControl'].setValue(data.phoneNumber);
+        this.studentForm.controls['NameFormControl'].setValue(data.name);
+        this.studentForm.controls['LastFormControl'].setValue(data.lastname);
+        this.studentForm.controls['EmailFormControl'].setValue(data.email);
+        this.studentForm.controls['UsernameFormControl'].setValue(data.userName);
+      },
+      err => {
+        console.log(err);
+        if (err.status === 403) {
+          this.openCustomPopUp('Inicie sesión con una cuenta de Administrador para acceder a esta sección.');
+        } else if (err.status === 204) {
+          this.openCustomPopUp(err.message);
+        } else {
+          this.openCustomPopUp('Ocurrió un problema interno. Por favor, vuelve a intentarlo más tarde.');
+        }
+      },
+    )
+  }
 
 
-  logout(){
+  logout() {
     this.tokenStorage.signOut();
   }
 
@@ -106,9 +108,10 @@ export class SettingsComponent implements OnInit {
       },
       err => {
         console.log(err);
-        this.openCustomPopUp('Ha ocurrido un error.');
         if (err.status === 403) {
-          this.openCustomPopUp('Inicie sesión con una cuenta de Estudiante para acceder a esta sección.');
+          this.openCustomPopUp('Inicie sesión con una cuenta de Administrador para acceder a esta sección.');
+        } else if (err.status === 204) {
+          this.openCustomPopUp(err.message);
         } else {
           this.openCustomPopUp('Ocurrió un problema interno. Por favor, vuelve a intentarlo más tarde.');
         }
@@ -118,10 +121,10 @@ export class SettingsComponent implements OnInit {
 
   openCustomPopUp(message: string) {
     this.customPopUpService.confirm(
-      'Ajustes', 
+      'Ajustes',
       message,
       'student'
-      );
+    );
   }
 
 }

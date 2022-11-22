@@ -29,35 +29,34 @@ export class ContentComponent implements OnInit {
   ngOnInit(): void {
     this.projectServices.getProjectsByYear().subscribe(
       data => {
-        this.projectsByYear = data
-      },
-      err => {
-        if (err.status === 404) {
-          this.openCustomPopUp('Aún no hay datos para mostrar en los gráficos.');
-        } else if (err.status === 403) {
-          this.openCustomPopUp('Inicie sesión con una cuenta de Administrador para acceder a esta sección.');
-        } else {
-          this.openCustomPopUp('Ocurrió un problema interno. Por favor, vuelve a intentarlo más tarde.');
-        }
+        this.projectsByYear = data.data
       }
+      // err => {
+      //   if (err.status === 404) {
+      //     this.openCustomPopUp('Aún no hay datos para mostrar en los gráficos.');
+      //   } else if (err.status === 403) {
+      //     this.openCustomPopUp('Inicie sesión con una cuenta de Administrador para acceder a esta sección.');
+      //   } else {
+      //     this.openCustomPopUp('Ocurrió un problema interno. Por favor, vuelve a intentarlo más tarde.');
+      //   }
+      // }
     )
 
     this.projectServices.getProjectsByCategory().subscribe(
       data => {
-        this.projectsByCategory = data
+        this.projectsByCategory = data.data
       }
     )
 
     this.projectServices.getUsersByProject().subscribe(
       data => {
-        this.usersPerProject = data
-        console.log(this.usersPerProject)
+        this.usersPerProject = data.data
       }
     )
 
     this.projectServices.getProjectsByQualifications().subscribe(
       data => {
-        this.projectsByQualifications = data
+        this.projectsByQualifications = data.data
       }
     )
   }
