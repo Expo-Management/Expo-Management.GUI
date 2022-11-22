@@ -633,9 +633,8 @@ export class QualifyProjectComponent implements OnInit {
     })
   
 
-    this.projectService.qualifyProject(
+    this.projectService.qualify(
       punctuation,
-      '',
       this.project_number,
       this.judge_email
     ).subscribe(
