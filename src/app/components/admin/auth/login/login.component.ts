@@ -94,6 +94,12 @@ export class LoginComponent implements OnInit {
     return this.loginForm.controls[controlName].hasError(errorName);
   }
 
+  public showPassword: boolean = false;
+
+  public togglePasswordVisibility(): void {
+    this.showPassword = !this.showPassword;
+  }
+
   reloadPage() {
     window.location.reload();
   }
