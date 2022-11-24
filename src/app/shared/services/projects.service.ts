@@ -94,8 +94,8 @@ export class ProjectsService {
   )
  }
 
-  getProjectQualifications(projectId: number): Observable<JudgeCalification[]>{
-    return this.httpClient.get<JudgeCalification[]>(environment.apiUrl + `/Projects/project-qualifications?projectId=${projectId}`, httpOptions)
+  getProjectQualifications(projectId: number): Observable<any>{
+    return this.httpClient.get<any>(environment.apiUrl + `/Projects/project-qualifications?projectId=${projectId}`, httpOptions)
   }
 
   getProjectsByYear(): Observable<any>{
