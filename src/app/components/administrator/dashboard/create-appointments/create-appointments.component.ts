@@ -97,7 +97,7 @@ export class CreateAppointmentsComponent implements OnInit{
             this.kindOfEvents = data.data;
           }
           else if (data.status === 204) {
-            this.openCustomPopUp('No hay tipos de eventos registrados en el sistema, contacte administracion')
+            this.openCustomPopUp('No hay tipos de eventos registrados en el sistema.')
           }
         }
       )

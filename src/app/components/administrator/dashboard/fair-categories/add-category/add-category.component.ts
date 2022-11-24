@@ -65,6 +65,7 @@ export class AddCategoryComponent implements OnInit {
         data => {
           console.log(data)
           this.openCustomPopUp('Categoría creada exitosamente!');
+          window.location.reload();
         },
         err => {
           console.log(err)

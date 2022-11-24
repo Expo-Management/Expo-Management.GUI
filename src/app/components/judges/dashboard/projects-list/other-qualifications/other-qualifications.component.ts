@@ -29,14 +29,7 @@ export class OtherQualificationsComponent implements OnInit {
 
     this.ProjectsService.getProjectQualifications(this.id).subscribe(
       data => {
-        // data.forEach((qualifications)  => {
-        //   this.dataSource.push({
-        //     judgeName: qualifications.judgeName,
-        //     punctuation: qualifications.punctuation
-        //   }) 
-        //  });
-        this.dataSource = new MatTableDataSource(data);
-         console.log(this.dataSource)
+        this.dataSource = new MatTableDataSource(data.data);
     },
     err => {
       if (err.status === 404) {

@@ -28,7 +28,7 @@ export class FairCategoriesComponent implements OnInit {
 
     this.CategoriesService.getAllCategories().subscribe(
       data => {
-        this.dataSource = new MatTableDataSource(data);
+        this.dataSource = new MatTableDataSource(data.data);
       },
       err => {
         if (err.status === 404) {

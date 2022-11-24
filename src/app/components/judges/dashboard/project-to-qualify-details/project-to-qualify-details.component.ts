@@ -89,7 +89,7 @@ export class ProjectToQualifyDetailsComponent implements OnInit {
       this.projects.getProjectDetails(this.group_number).subscribe(
         data => {
           console.log(data);          
-            this.fillProjectDetails(data);
+            this.fillProjectDetails(data.data);
         },
         err => {
           console.log(err);

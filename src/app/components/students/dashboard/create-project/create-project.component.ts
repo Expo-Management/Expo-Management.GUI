@@ -108,7 +108,7 @@ export class CreateProjectComponent implements OnInit {
       this.CategoriesService.getAllCategories().subscribe(
         data => {
           console.log(data);
-          this.categories = data;
+          this.categories = data.data;
         },
         err => {
           if (err.status === 403) {
