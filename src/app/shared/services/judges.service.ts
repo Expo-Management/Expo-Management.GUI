@@ -49,10 +49,10 @@ export class JudgesService {
   }
 
   updateJudge(
+    username: string,
     name: string,
     last: string,
     email: string,
-    username: string,
     phone: string,
     institution: string, 
     position: string
