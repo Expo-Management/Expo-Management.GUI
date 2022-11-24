@@ -91,13 +91,13 @@ export class SettingsComponent implements OnInit {
   ngOnInit(): void {
     this.judgeService.getJudge(this.personalInfo.getEmail()).subscribe(
       data => {
-        this.judgeForm.controls['PhoneFormControl'].setValue(data.phoneNumber);
-        this.judgeForm.controls['NameFormControl'].setValue(data.name);
-        this.judgeForm.controls['LastFormControl'].setValue(data.lastname);
-        this.judgeForm.controls['EmailFormControl'].setValue(data.email);
-        this.judgeForm.controls['UsernameFormControl'].setValue(data.userName);
-        this.judgeForm.controls['InstitutionFormControl'].setValue(data.institution);
-        this.judgeForm.controls['PositionFormControl'].setValue(data.position)
+        this.judgeForm.controls['PhoneFormControl'].setValue(data.data.phoneNumber);
+        this.judgeForm.controls['NameFormControl'].setValue(data.data.name);
+        this.judgeForm.controls['LastFormControl'].setValue(data.data.lastname);
+        this.judgeForm.controls['EmailFormControl'].setValue(data.data.email);
+        this.judgeForm.controls['UsernameFormControl'].setValue(data.data.userName);
+        this.judgeForm.controls['InstitutionFormControl'].setValue(data.data.institution);
+        this.judgeForm.controls['PositionFormControl'].setValue(data.data.position)
       },
       err => {
         if (err.status === 403) {
@@ -113,13 +113,13 @@ export class SettingsComponent implements OnInit {
 
   onSubmit() {
     this.judgeService.updateJudge(
-    this.judgeForm.controls['NameFormControl'].value,
-    this.judgeForm.controls['LastFormControl'].value,
-    this.judgeForm.controls['EmailFormControl'].value,
-    this.judgeForm.controls['UsernameFormControl'].value,
-    this.judgeForm.controls['PhoneFormControl'].value,
-    this.judgeForm.controls['InstitutionFormControl'].value,
-    this.judgeForm.controls['PositionFormControl'].value
+      this.judgeForm.controls['UsernameFormControl'].value,
+      this.judgeForm.controls['NameFormControl'].value,
+      this.judgeForm.controls['LastFormControl'].value,
+      this.judgeForm.controls['EmailFormControl'].value,
+      this.judgeForm.controls['PhoneFormControl'].value,
+      this.judgeForm.controls['InstitutionFormControl'].value,
+      this.judgeForm.controls['PositionFormControl'].value
     ).subscribe(
       data => {
         this.openCustomPopUp('¡Información actualizada exitosamente!');
