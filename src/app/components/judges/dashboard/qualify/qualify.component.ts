@@ -1,27 +1,28 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog'
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { CustomPopUpService } from 'src/app/shared/services/custom-pop-up.service';
 import { PersonalInformationService } from 'src/app/shared/services/personal-information.service';
 import { ProjectsService } from 'src/app/shared/services/projects.service';
 
 @Component({
-  selector: 'app-recomendations-popup',
-  templateUrl: './recomendations-popup.component.html',
-  styleUrls: ['./recomendations-popup.component.css']
+  selector: 'app-qualify',
+  templateUrl: './qualify.component.html',
+  styleUrls: ['./qualify.component.css']
 })
-export class RecomendationsPopupComponent implements OnInit {
+export class QualifyComponent implements OnInit {
 
   @Input() public project_number : number = 0;
 
   httpMessage: string = '';
 
-  createRecommendationForm = new FormGroup({
-    recommendation: new FormControl('', {
+  qualifyProjectForm = new FormGroup({
+    qualificationFromControl: new FormControl('', {
       validators: [
         Validators.required,
-        Validators.maxLength(400)
+        Validators.pattern("^[1-9][0-9]?$|^100$"),
+        Validators.maxLength(3),
+        Validators.minLength(1)
       ]
     })
   });
@@ -39,10 +40,6 @@ export class RecomendationsPopupComponent implements OnInit {
     console.log(localStorage);
   }
 
-  public errorValidator = (controlName: string, errorName: string) =>{
-    return this.createRecommendationForm.controls[controlName].hasError(errorName);
-  }
-
   public dismiss() {
     this.activeModal.dismiss();
   }
@@ -56,43 +53,51 @@ export class RecomendationsPopupComponent implements OnInit {
   }
 
   public accept() {
-    this.createRecommendation()
+    this.createQualification()
     this.activeModal.close(true);
   }
 
   openCustomPopUp(message: string) {
     this.customPopUpService.confirm(
-      'Recomendación', 
+      'Calificación', 
       message,
       `/judges/project-details/${this.project_number}`);
   }
 
-  createRecommendation() {
-    this.projectService.createProjectRecommendation(
-      this.project_number, 
-      this.createRecommendationForm.controls['recommendation'].value,
-      this.personalInfo.getEmail()).subscribe(
+  createQualification() {
+    this.projectService.qualify(
+      this.qualifyProjectForm.controls['qualificationFromControl'].value,
+      this.project_number,
+      this.personalInfo.getEmail(),
+      ).subscribe(
         data => {
-          console.log(data.data)
-          // if (data.status == 500) {
-          //   this.httpMessage = 'Hubo un error en el servidor, contacte a los desarrolladores.';
-          // } else if (data.status == 400) {
-          //   this.httpMessage = 'Revise los datos ingresados';
-          // } else {
-          //   this.httpMessage = 'Recommendacion creada correctamente';
-          // }
-          this.openCustomPopUp('Recommendación creada correctamente');
+          console.log(data)
+          if (data.status == 500) {
+            this.httpMessage = 'Hubo un error en el servidor, contacte a los desarrolladores.';
+            console.log('test')
+          } else if (data.status == 400) {
+            this.httpMessage = 'Revise los datos ingresados';
+          } else {
+            this.httpMessage = 'Calificación subida correctamente';
+          }
+          this.openCustomPopUp(this.httpMessage);
         }, 
         err => {
           console.log(err)
           if (err.status == 400) {
-            this.openCustomPopUp('Revise los datos ingresados');
+            this.httpMessage = 'Revise los datos ingresados';
           } else if (err.status === 403) {
             this.openCustomPopUp('Inicie sesión con una cuenta de Juez para acceder a esta sección.');
           } else {
             this.openCustomPopUp('Ocurrió un problema interno. Por favor, vuelve a intentarlo más tarde.');
           }
+          this.openCustomPopUp(this.httpMessage);
         }
       )
   }
+
+  public errorValidator = (controlName: string, errorName: string) =>{
+    return this.qualifyProjectForm.controls[controlName].hasError(errorName);
+  }
+
 }

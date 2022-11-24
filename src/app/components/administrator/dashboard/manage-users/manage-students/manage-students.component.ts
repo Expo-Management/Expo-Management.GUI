@@ -21,7 +21,7 @@ export class ManageStudentsComponent implements OnInit {
     private customPopUpService: CustomPopUpService, private studentsServices: StudentsService) {}
 
   ngOnInit(): void {
-    this.displayedColumns = ['userId', 'name', 'lastname', 'email', 'phoneNumber', 'actions'];
+    this.displayedColumns = [/*'userId', */'name', 'lastname', 'email', 'phoneNumber', 'actions'];
 
     this.studentsServices.getStudents().subscribe(
       data => {

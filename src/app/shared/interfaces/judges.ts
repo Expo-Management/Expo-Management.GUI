@@ -5,4 +5,5 @@ export interface Judges {
     email: string;
     phone: string;
     institution: string;
+    position: string;
   }

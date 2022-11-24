@@ -67,6 +67,7 @@ export class ProjectsService {
       }, 
       httpOptions)
   }
+
   GetMembers(): Observable<any> {
     return this.httpClient.get(environment.apiUrl + '/Projects/project-members', httpOptions);
   }
@@ -80,25 +81,21 @@ export class ProjectsService {
     return this.httpClient.get<any>(environment.apiUrl + `/Projects/members-emails?projectId=${projectId}`, httpOptions);
  }
 
-  qualifyProject(
-    punctuation: number,
-    comments: string,
-    project_id: number,
-    judge_email: string
-  ): Observable<any>{
-    return this.httpClient.post(
-      environment.apiUrl + '/Projects/qualify-project', 
-      {
-        punctuation: punctuation, 
-        comments: comments,
-        projectId: project_id,
-        judgeEmail: judge_email
-      },
-      httpOptions)
-  }
+ qualify(punctuation: number, projectId: number, judgeEmail: string): Observable<any>{
+  console.log('testService')
+  return this.httpClient.post(
+    environment.apiUrl + '/Projects/qualify-project',
+    {
+      punctuation: punctuation,
+      projectId: projectId,
+      judgeEmail: judgeEmail,
+    },
+    httpOptions
+  )
+ }
 
-  getProjectQualifications(projectId: number): Observable<JudgeCalification[]>{
-    return this.httpClient.get<JudgeCalification[]>(environment.apiUrl + `/Projects/project-qualifications?projectId=${projectId}`, httpOptions)
+  getProjectQualifications(projectId: number): Observable<any>{
+    return this.httpClient.get<any>(environment.apiUrl + `/Projects/project-qualifications?projectId=${projectId}`, httpOptions)
   }
 
   getProjectsByYear(): Observable<any>{

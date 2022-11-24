@@ -29,13 +29,6 @@
     overflow: scroll;
 }
 
-.add-button {
-    color: #FFFFFF;
-    background-color: #354F52;
-    height: 2.5rem;
-    margin-left: 2rem;
-    margin-bottom: 1rem;
-}
 .projects-content {
     padding-top: 25%;
     padding-bottom: 1rem;

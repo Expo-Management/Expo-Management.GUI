@@ -49,11 +49,13 @@ export class JudgesService {
   }
 
   updateJudge(
+    username: string,
     name: string,
     last: string,
     email: string,
-    username: string,
-    phone: string
+    phone: string,
+    institution: string, 
+    position: string
   ): Observable<any> {
     return this.httpClient.put(
       environment.apiUrl + '/Users/judge', 
@@ -62,7 +64,9 @@ export class JudgesService {
         name: name,
         lastname: last,
         email: email,
-        phone: phone
+        phone: phone,
+        institution: institution,
+        position: position
       }, 
       httpOptions)
   }

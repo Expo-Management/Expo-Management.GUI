@@ -101,7 +101,7 @@ export class AdministratorComponent implements OnInit {
       data => {
         console.log(data);
         if (data.status === 200) {
-          this.user_name = data;
+          this.user_name = data.data;
         } else if (data.status === 404) {
           this.openCustomPopUp('Informacion de usuario no encontrada por favor inicie sesion de nuevo.');
         }
@@ -159,7 +159,7 @@ export class AdministratorComponent implements OnInit {
 
   openCustomPopUp(message: string) {
     this.customPopUpService.confirm(
-      'Informacion del usuario',
+      'Mensaje informativo',
       message,
       undefined
     );
@@ -178,12 +178,12 @@ export class AdministratorComponent implements OnInit {
   public addFair() {
     this.fairService.addFair().subscribe(
       data => {
-        this.openCustomPopUp('La feria ha iniciado exitosamente!.');
+        this.openCustomPopUp('¡La feria ha iniciado exitosamente!');
         console.log(data);
       },
       err => {
         if (err.status === 500) {
-          this.openCustomPopUp('Hubo un error en el servidor, contacte administracion.');
+          this.openCustomPopUp('Hubo un error en el servidor, contacte administración.');
         } else if (err.status === 200) {
           console.log('err: ' + err)
         }

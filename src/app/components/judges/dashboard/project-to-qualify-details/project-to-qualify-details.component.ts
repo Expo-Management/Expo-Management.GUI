@@ -8,6 +8,7 @@ import { ActivatedRoute, Route, Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CustomPopUpService } from 'src/app/shared/services/custom-pop-up.service';
 import { PersonalInformationService } from 'src/app/shared/services/personal-information.service';
+import { QualifyComponent } from '../qualify/qualify.component';
 
 
 
@@ -88,7 +89,7 @@ export class ProjectToQualifyDetailsComponent implements OnInit {
       this.projects.getProjectDetails(this.group_number).subscribe(
         data => {
           console.log(data);          
-            this.fillProjectDetails(data);
+            this.fillProjectDetails(data.data);
         },
         err => {
           console.log(err);
@@ -102,6 +103,12 @@ export class ProjectToQualifyDetailsComponent implements OnInit {
       this.group_members = data[0].members;
       this.category = (data[0].category != undefined || data[0].category != null) ? data[0].category : "No se le ha asignado una categoria";
     }
+
+
+  openQualify() {
+    const modalRef = this.modalService.open(QualifyComponent, {centered: true});
+    modalRef.componentInstance.project_number = this.group_number;
+  }
 
   openRecomendation() {
     const modalRef = this.modalService.open(RecomendationsPopupComponent, {centered: true});

@@ -1,6 +1,6 @@
 export interface QualifyProject {
     punctuation: number, 
-    comments: string,
+    //comments: string,
     projectId: number,
     judgeEmail: string,
     judgeName: string

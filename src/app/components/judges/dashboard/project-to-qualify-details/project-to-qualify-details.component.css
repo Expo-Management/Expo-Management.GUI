@@ -82,6 +82,7 @@ h2 {
     color: #FFFFFF;
     background-color: #354F52;
     border-radius: 0px;
+    width: 20%;
 }
 
 mat-form-field {

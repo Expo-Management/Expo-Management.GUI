@@ -23,7 +23,7 @@ export class StudentsListComponent implements OnInit {
 
     this.projectsServices.GetMembers().subscribe(
       data => {
-        this.dataSource = new MatTableDataSource(data);
+        this.dataSource = new MatTableDataSource(data.data);
       } ,
       err => {
         if (err.status === 404) {

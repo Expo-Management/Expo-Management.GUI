@@ -19,10 +19,9 @@ export interface Jueces {
 })
 
 export class ListComponent implements OnInit {
-  displayedColumns: string[] = ['juez', 'posicion', 'institucion' ];
+  displayedColumns: string[] = ['juez', 'email', 'phoneNumber', 'institucion', 'posicion'];
   listOfJudges: Array<JudgesDetails> = []
   dataSource = new MatTableDataSource(this.listOfJudges);
-  // dataSource = ELEMENT_DATA;
                             
   constructor(
     private customPopUpService: CustomPopUpService,
@@ -33,7 +32,7 @@ export class ListComponent implements OnInit {
     this.judgesServices.getJudges().subscribe(
       data => {
         console.log(data)
-        this.dataSource = new MatTableDataSource(data);
+        this.dataSource = new MatTableDataSource(data.data);
       } ,
       err => {
         if (err.status === 404) {

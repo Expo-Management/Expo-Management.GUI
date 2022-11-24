@@ -11,7 +11,11 @@
       <div class="password">
         <mat-form-field class="full-width" appearance="outline">
           <mat-label>Contraseña</mat-label>
-          <input matInput type="password" formControlName="password" required>
+          <input matInput [type]="showPassword ? 'text' : 'password'" formControlName="password" id="password" required>
+          <mat-icon class="showPassword" matSuffix (click)="togglePasswordVisibility()">
+            {{showPassword?'visibility_off':'visibility'}}
+          </mat-icon>
+          <mat-error *ngIf="errorValidator('username', 'required')">La contraseña es obligatoria para ingresar</mat-error>
         </mat-form-field>
         <br>
         <a id="forgot-redirect" class="full-width" [routerLink]="['/auth', 'forget-password']">¿Olvidaste la contraseña?</a>

@@ -53,3 +53,13 @@ re-captcha.is-invalid > div {
 	border: 1px solid #dc3545 !important;
 	border-radius: 0.2rem;
   }
+
+.showPassword{
+    opacity: 0.3;
+    cursor: pointer;
+    margin-right: 8px;
+}
+
+.showPassword:hover{
+    opacity: 0.8;
+}
