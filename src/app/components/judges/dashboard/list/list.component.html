@@ -16,19 +16,29 @@
         <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
     
             <ng-container  matColumnDef="juez">
-              <th mat-header-cell *matHeaderCellDef> Juez </th>
+              <th mat-header-cell *matHeaderCellDef> Nombre y apellidos </th>
               <td mat-cell *matCellDef="let element"> {{element.name}} {{element.lastname}}</td>
             </ng-container>
-          
-            <ng-container matColumnDef="posicion">
-              <th mat-header-cell *matHeaderCellDef> Posición </th>
-              <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+
+            <ng-container matColumnDef="email">
+              <th mat-header-cell *matHeaderCellDef> Correo Electrónico</th>
+              <td mat-cell *matCellDef="let element"> {{element.email}} </td>
             </ng-container>
-            
+
+            <ng-container matColumnDef="phoneNumber">
+              <th mat-header-cell *matHeaderCellDef> Télefono </th>
+              <td mat-cell *matCellDef="let element"> {{element.phoneNumber}} </td>
+            </ng-container>
+          
             <ng-container matColumnDef="institucion">
               <th mat-header-cell *matHeaderCellDef> Institución </th>
               <td mat-cell *matCellDef="let element"> {{element.institution}} 
               </td>
+            </ng-container>
+
+            <ng-container matColumnDef="posicion">
+              <th mat-header-cell *matHeaderCellDef> Posición </th>
+              <td mat-cell *matCellDef="let element"> {{element.position}} </td>
             </ng-container>
 
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
