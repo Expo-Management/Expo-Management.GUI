@@ -39,6 +39,10 @@ export class RecomendationsPopupComponent implements OnInit {
     console.log(localStorage);
   }
 
+  public errorValidator = (controlName: string, errorName: string) =>{
+    return this.createRecommendationForm.controls[controlName].hasError(errorName);
+  }
+
   public dismiss() {
     this.activeModal.dismiss();
   }
@@ -69,32 +73,26 @@ export class RecomendationsPopupComponent implements OnInit {
       this.createRecommendationForm.controls['recommendation'].value,
       this.personalInfo.getEmail()).subscribe(
         data => {
-          console.log(data)
-          if (data.status == 500) {
-            this.httpMessage = 'Hubo un error en el servidor, contacte a los desarrolladores.';
-          } else if (data.status == 400) {
-            this.httpMessage = 'Revise los datos ingresados';
-          } else {
-            this.httpMessage = 'Recommendación creada correctamente';
-          }
-          this.openCustomPopUp(this.httpMessage);
+          console.log(data.data)
+          // if (data.status == 500) {
+          //   this.httpMessage = 'Hubo un error en el servidor, contacte a los desarrolladores.';
+          // } else if (data.status == 400) {
+          //   this.httpMessage = 'Revise los datos ingresados';
+          // } else {
+          //   this.httpMessage = 'Recommendacion creada correctamente';
+          // }
+          this.openCustomPopUp('Recommendación creada correctamente');
         }, 
         err => {
           console.log(err)
           if (err.status == 400) {
-            this.httpMessage = 'Revise los datos ingresados';
+            this.openCustomPopUp('Revise los datos ingresados');
           } else if (err.status === 403) {
             this.openCustomPopUp('Inicie sesión con una cuenta de Juez para acceder a esta sección.');
           } else {
             this.openCustomPopUp('Ocurrió un problema interno. Por favor, vuelve a intentarlo más tarde.');
           }
-          this.openCustomPopUp(this.httpMessage);
         }
       )
   }
-
-  public errorValidator = (controlName: string, errorName: string) =>{
-    return this.createRecommendationForm.controls[controlName].hasError(errorName);
-  }
-
 }

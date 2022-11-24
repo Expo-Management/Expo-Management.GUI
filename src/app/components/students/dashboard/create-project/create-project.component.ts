@@ -144,6 +144,10 @@ export class CreateProjectComponent implements OnInit {
         console.log(err)
         if (err.status === 200) {
           this.openCustomPopUp('Proyecto creado exitosamente!');
+        } else if (err.status === 204) {
+          this.openCustomPopUp(err.message);
+        } else if (err.status === 400) {
+          this.openCustomPopUp(err.message);
         } else if (err.status === 403) {
           this.openCustomPopUp('Inicie sesión con una cuenta de Estudiante para acceder a esta sección.');
         } else {

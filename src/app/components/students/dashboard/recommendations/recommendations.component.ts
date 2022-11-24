@@ -13,7 +13,8 @@ import { ProjectsService } from 'src/app/shared/services/projects.service';
 export class RecommendationsComponent implements OnInit {
 
   displayedColumns: string[] = ['judgeName', 'recommendation'];
-  dataSource: Recommendation[] = [];
+  dataSource: Array<Recommendation>  = [];
+  
   sub_total = 10
 
   @Input() public  project_number: number = 0;
@@ -26,15 +27,15 @@ export class RecommendationsComponent implements OnInit {
   ngOnInit(): void {
     this.projectService.getProjectRecommendations(this.project_number).subscribe(
       data => {
-        this.dataSource = data;
+        this.dataSource = data.data;
       },
       err => {
         if (err.status === 500){
-          this.openCustomPopUp('Hubo un problema contactando los servidores, contacte a administracion.');
+          this.openCustomPopUp('Ocurrió un problema interno. Por favor, vuelve a intentarlo más tarde.');
         } else if (err.status === 403) {
           this.openCustomPopUp('Inicie sesión con una cuenta de Juez o Estudiante para acceder a esta sección.');
-        } else {
-          this.openCustomPopUp('Ocurrió un problema interno. Por favor, vuelve a intentarlo más tarde.');
+        } else if(err.status === 204) {
+          this.openCustomPopUp('Recomendaciones no encontradas');
         }
       }
     )

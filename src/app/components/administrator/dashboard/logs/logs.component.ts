@@ -19,10 +19,10 @@ export class LogsComponent implements OnInit {
 
     this.logServices.getLogs().subscribe(
       data => {
-        this.dataSource = data;
+        this.dataSource = data.data;
       } ,
       err => {
-        if (err.status === 404) {
+        if (err.status === 204) {
           this.openCustomPopUp('No hay errores registrados.');
         } else if (err.status === 403) {
           this.openCustomPopUp('Inicie sesión con una cuenta de Administrador para acceder a esta sección.');

@@ -24,16 +24,16 @@ export class ManageProfessorsComponent implements OnInit {
 
     this.adminServices.getAdmins().subscribe(
       data => {
-        this.dataSource = new MatTableDataSource(data);
+        this.dataSource = new MatTableDataSource(data.data);
       } ,
       err => {
-        if (err.status === 404) {
-          this.openCustomPopUp('No hay profesores registrados.');
+        if (err.status === 204) {
+          this.openCustomPopUp(err.message);
         } else if (err.status === 403) {
           this.openCustomPopUp('Inicie sesión con una cuenta de Administrador para acceder a esta sección.');
-        } else {
+        }else{
           this.openCustomPopUp('Ocurrió un problema interno. Por favor, vuelve a intentarlo más tarde.');
-        }
+      }
       }
     );
   }
@@ -53,11 +53,13 @@ export class ManageProfessorsComponent implements OnInit {
           err => {
             if (err.status === 200) {
               this.adminDeleted();
+            }else if (err.status === 204) {
+              this.openCustomPopUp(err.message);
             } else if (err.status === 403) {
               this.openCustomPopUp('Inicie sesión con una cuenta de Administrador para acceder a esta sección.');
-            } else {
+            }else{
               this.openCustomPopUp('Ocurrió un problema interno. Por favor, vuelve a intentarlo más tarde.');
-            }
+          }
           }
         );
       });

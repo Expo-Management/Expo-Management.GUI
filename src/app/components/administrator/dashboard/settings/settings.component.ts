@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormGroupDirective, NgForm, Validators } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
+import { th } from 'date-fns/locale';
 import { AdminService } from 'src/app/shared/services/admin.service';
 import { CustomPopUpService } from 'src/app/shared/services/custom-pop-up.service';
 import { PersonalInformationService } from 'src/app/shared/services/personal-information.service';
@@ -71,18 +72,22 @@ export class SettingsComponent implements OnInit {
   ngOnInit(): void {
     this.adminService.getAdmin(this.personalInfo.getEmail()).subscribe(
       data => {
-        this.adminForm.controls['PhoneFormControl'].setValue(data.phoneNumber);
-        this.adminForm.controls['NameFormControl'].setValue(data.name);
-        this.adminForm.controls['LastFormControl'].setValue(data.lastname);
-        this.adminForm.controls['EmailFormControl'].setValue(data.email);
-        this.adminForm.controls['UsernameFormControl'].setValue(data.userName);
+
+          this.adminForm.controls['PhoneFormControl'].setValue(data.data.phoneNumber);
+          this.adminForm.controls['NameFormControl'].setValue(data.data.name);
+          this.adminForm.controls['LastFormControl'].setValue(data.data.lastname);
+          this.adminForm.controls['EmailFormControl'].setValue(data.data.email);
+          this.adminForm.controls['UsernameFormControl'].setValue(data.data.userName);
+  
       },
       err => {
         if (err.status === 403) {
           this.openCustomPopUp('Inicie sesión con una cuenta de Administrador para acceder a esta sección.');
-        } else {
+        }else if(err.status === 204){
+          this.openCustomPopUp(err.message);
+        }else{
           this.openCustomPopUp('Ocurrió un problema interno. Por favor, vuelve a intentarlo más tarde.');
-        }
+      }
       },
     )
   }
@@ -100,11 +105,18 @@ export class SettingsComponent implements OnInit {
       this.adminForm.controls['PhoneFormControl'].value
     ).subscribe(
       data => {
-        this.openCustomPopUp('¡Información actualizada exitosamente!');
+          this.openCustomPopUp('¡Profesor actualizado exitosamente!');
+ 
       },
       err => {
         console.log(err);
-        this.openCustomPopUp('Ha ocurrido un error.');
+        if(err.status === 204){
+          this.openCustomPopUp(err.message);
+        } else if(err.status === 400){
+          this.openCustomPopUp(err.message);
+        }else{
+          this.openCustomPopUp('Ocurrió un problema interno. Por favor, vuelve a intentarlo más tarde.');
+      }     
       }
     )
   }

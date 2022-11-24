@@ -23,16 +23,16 @@ export class CurrentProyectProposalsComponent implements OnInit {
 
     this.projects.ShowProjects().subscribe(
       data => {
-        console.log(data)
-        this.dataSource = new MatTableDataSource(data);
+        console.log(data.data)
+        this.dataSource = new MatTableDataSource(data.data);
       } ,
       err => {
-        if (err.status === 404) {
+        if (err.status === 204) {
           this.openCustomPopUp('No hay proyectos en el sistema');
         } else if (err.status === 403) {
-          this.openCustomPopUp('Inicie sesión con una cuenta de Estudiante para acceder a esta sección.');
-        } else {
-          this.openCustomPopUp('Ocurrió un problema interno. Por favor, vuelve a intentarlo más tarde.');
+          this.openCustomPopUp('Inicie sesión con una cuenta de Juez o Estudiante para acceder a esta sección.');
+        }else {
+            this.openCustomPopUp('Ocurrió un problema interno. Por favor, vuelve a intentarlo más tarde.');
         }
       }
     );

@@ -38,16 +38,16 @@ export class ProjectsService {
     return this.httpClient.post(environment.apiUrl + '/Projects/projects', formData)
   }
 
-  getProjectDetails(projectId: string | null): Observable<ProjectQualifications[]>{
-    return this.httpClient.get<ProjectQualifications[]>(environment.apiUrl + `/Projects/project?projectId=${projectId}`, httpOptions)
+  getProjectDetails(projectId: string | null): Observable<any>{
+    return this.httpClient.get<any>(environment.apiUrl + `/Projects/project?projectId=${projectId}`, httpOptions)
   }
 
   RemoveStudentFromProject(email: string | null): Observable<any>{
     return this.httpClient.put(environment.apiUrl + `/Projects/remove-user-project?email=${email}`, httpOptions)
   }
 
-  getProjectRecommendations(projectId: number): Observable<Recommendation[]>{
-    return this.httpClient.get<Recommendation[]>(environment.apiUrl + `/Projects/recommendation-by-project?projectId=${projectId}`, httpOptions)
+  getProjectRecommendations(projectId: number): Observable<any>{
+    return this.httpClient.get<any>(environment.apiUrl + `/Projects/recommendation-by-project?projectId=${projectId}`, httpOptions)
   }
 
   createProjectClaim(projectId: string | null, claimDescription: string): Observable<any>{

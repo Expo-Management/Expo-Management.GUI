@@ -59,11 +59,16 @@ export class ProjectsComponent implements OnInit {
   private fillTheProjectInformation() {
     this.projects.getProjectDetails(this.group_number).subscribe(
       data => {
-        console.log(data);          
-          this.fillProjectDetails(data);
+        console.log(data.data);          
+          this.fillProjectDetails(data.data);
       },
       err => {
         console.log(err);
+        if (err.status === 204) {
+          this.openCustomPopUp("Proyecto no encontrado");
+        } else {
+          this.openCustomPopUp('Hubo un problema procesando su solicitud, contacte administración.');
+        }
       }
     );
   }

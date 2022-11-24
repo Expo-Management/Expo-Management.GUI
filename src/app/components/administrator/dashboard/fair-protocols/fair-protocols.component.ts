@@ -6,6 +6,7 @@ import { ProtocolsService } from 'src/app/shared/services/protocols.service';
 import { SecurityProtocols } from 'src/app/shared/interfaces/security-protocols';
 import { AddProtocolComponent } from './add-protocol/add-protocol.component';
 import { FairService } from 'src/app/shared/services/fair.service';
+import { isFakeMousedownFromScreenReader } from '@angular/cdk/a11y';
 
 @Component({
   selector: 'app-fair-protocols',
@@ -35,11 +36,12 @@ export class FairProtocolsComponent implements OnInit {
 
          this.ProtocolsService.getSecurityProtocols(this.fairId).subscribe(
           data => {
+            console.log("data",data);
             this.dataSource = new MatTableDataSource(data);
           },
           err => {
-            if (err.status === 404) {
-              this.openCustomPopUp('No hay categorías en el sistema.');
+            if (err.status === 400) {
+              this.openCustomPopUp('No hay protocolos en el sistema.');
             } else if (err.status === 403) {
               this.openCustomPopUp('Inicie sesión con una cuenta de Administrador o Estudiante para acceder a esta sección.');
             } else {
@@ -58,16 +60,17 @@ export class FairProtocolsComponent implements OnInit {
       (result: boolean) => {
         this.ProtocolsService.deleteProtocols(id).subscribe(
           data => {
-            console.log(data);
-            this.protocolDeleted();
+              this.protocolDeleted();
           },
           err => {
             if (err.status === 200) {
               this.protocolDeleted();
             } else if (err.status === 403) {
               this.openCustomPopUp('Inicie sesión con una cuenta de Administrador para acceder a esta sección.');
-            } else {
-              this.openCustomPopUp('Ocurrió un problema interno. Por favor, vuelve a intentarlo más tarde.');
+            } else if(err.status === 204){
+              this.openCustomPopUp(err.message);
+            } else if(err.status === 500){
+            this.openCustomPopUp(err.message);
             }
           }
         );

@@ -26,11 +26,11 @@ export class ContactStudentsPopupComponent implements OnInit {
   ngOnInit(): void {
     this.projects.getMembersEmail(this.group_number).subscribe(
       data => {
-        this.dataSource = data;
+        this.dataSource = data.data;
         console.log(this.group_number);
       },
       err => {
-        if (err.status === 404) {
+        if (err.status === 204) {
           this.openCustomPopUp('No hay estudiantes registrados.');
         } else if (err.status === 403) {
           this.openCustomPopUp('Inicie sesión con una cuenta de Juez para acceder a esta sección.');

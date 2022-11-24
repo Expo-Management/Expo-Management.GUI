@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup, FormGroupDirective, NgForm, Validators} from '@angular/forms';
-import {ErrorStateMatcher} from '@angular/material/core';
+import { FormControl, FormGroup, FormGroupDirective, NgForm, Validators } from '@angular/forms';
+import { ErrorStateMatcher } from '@angular/material/core';
 import { ActivatedRoute } from '@angular/router';
 import { CustomPopUpService } from 'src/app/shared/services/custom-pop-up.service';
 import { JudgesService } from 'src/app/shared/services/judges.service';
@@ -73,7 +73,7 @@ export class EditJudgesComponent implements OnInit {
     })
   });
 
-  public errorValidator = (controlName: string, errorName: string) =>{
+  public errorValidator = (controlName: string, errorName: string) => {
     return this.judgeForm.controls[controlName].hasError(errorName);
   }
 
@@ -86,10 +86,10 @@ export class EditJudgesComponent implements OnInit {
 
   openCustomPopUp(message: string) {
     this.customPopUpService.confirm(
-      'Judge update', 
+      'Actualización de juez',
       message,
       'administrator/manage-judges'
-      );
+    );
   }
 
   ngOnInit(): void {
@@ -112,6 +112,8 @@ export class EditJudgesComponent implements OnInit {
       err => {
         if (err.status === 403) {
           this.openCustomPopUp('Inicie sesión con una cuenta de Administrador para acceder a esta sección.');
+        } else if (err.status === 204) {
+          this.openCustomPopUp(err.message);
         } else {
           this.openCustomPopUp('Ocurrió un problema interno. Por favor, vuelve a intentarlo más tarde.');
         }
@@ -130,13 +132,19 @@ export class EditJudgesComponent implements OnInit {
       this.judgeForm.controls['PositionFormControl'].value
     ).subscribe(
       data => {
+
         this.openCustomPopUp('¡Juez actualizado exitosamente');
       },
       err => {
         console.log(err);
-        this.openCustomPopUp('Error al actualizar el juez. Verifíque las credenciales');
+        if (err.status === 204) {
+          this.openCustomPopUp(err.message);
+        } else if (err.status === 400) {
+          this.openCustomPopUp(err.message);
+        } else {
+          this.openCustomPopUp('Ocurrió un problema interno. Por favor, vuelve a intentarlo más tarde.');
+        }
       }
     )
   }
-
 }

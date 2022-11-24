@@ -32,9 +32,9 @@ export class TopMenuComponent implements OnInit {
     this.user_role = this.userInfoService.getRole()!;
     this.userInfoService.getUserFullName(this.userInfoService.getEmail()).subscribe(
       data => {
-        console.log(data);
+        console.log("user info",data.data);
         if (data.status === 200) {
-          this.user_name = data;
+          this.user_name = data.data;
         } else if (data.status === 404) {
           this.openCustomPopUp('Informacion de usuario no encontrada por favor inicie sesion de nuevo.');
         }
@@ -43,7 +43,8 @@ export class TopMenuComponent implements OnInit {
         if (err.status === 500) {
           this.openCustomPopUp('Hubo un error en el servidor, contacte administracion.');
         } else if (err.status === 200) {
-          this.user_name = err.error.text;
+          console.log("user info", err)
+          this.user_name = err.data;
         } else {
           this.openCustomPopUp('Hubo un error por favor inicie sesion de nuevo.');
         }
