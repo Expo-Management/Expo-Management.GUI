@@ -132,5 +132,4 @@ export class EditProfessorsComponent implements OnInit {
       }
     )
   }
-
 }

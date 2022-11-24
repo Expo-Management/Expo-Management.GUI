@@ -99,9 +99,9 @@ export class EditStudentsComponent implements OnInit {
       err => {
         if (err.status === 403) {
           this.openCustomPopUp('Inicie sesión con una cuenta de Administrador para acceder a esta sección.');
-        }else if(err.status === 204){
+        } else if (err.status === 204) {
             this.openCustomPopUp(err.message);
-        }else{
+        } else {
             this.openCustomPopUp('Ocurrió un problema interno. Por favor, vuelve a intentarlo más tarde.');
         }
       }
@@ -122,15 +122,14 @@ export class EditStudentsComponent implements OnInit {
       },
       err => {
         console.log(err);
-      if(err.status === 204){
-        this.openCustomPopUp(err.message);
-      } else if(err.status === 400){
-        this.openCustomPopUp(err.message);
-      }else{
-        this.openCustomPopUp('Ocurrió un problema interno. Por favor, vuelve a intentarlo más tarde.');
-    }
+        if (err.status === 204) {
+          this.openCustomPopUp(err.message);
+        } else if (err.status === 400) {
+          this.openCustomPopUp(err.message);
+        } else {
+          this.openCustomPopUp('Ocurrió un problema interno. Por favor, vuelve a intentarlo más tarde.');
+      }
      }
     )
   }
-
 }
