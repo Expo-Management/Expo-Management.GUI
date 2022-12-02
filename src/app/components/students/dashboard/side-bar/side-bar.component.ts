@@ -68,8 +68,8 @@ export class SideBarComponent implements OnInit {
     this.user_email = this.PersonalInformationService.getEmail()!;
     this.studentsServices.getStudent(this.user_email).subscribe(
       data => {
-        console.log(data)
-        if(data.project != null){
+        console.log(data.data)
+        if(data.data.project != null){
           this.user_options.shift()
           this.user_options[0].link = "project/"+data.project.id
         }else{
